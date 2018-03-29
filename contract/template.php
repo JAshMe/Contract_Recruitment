@@ -27,17 +27,11 @@
                             <a class="list-group-item" name="logout" href="./logout.php" style="background:#E53935;color:white">Logout <span class="glyphicon glyphicon-off"></span></a>
                             <a class="list-group-item <?php if(isset($_GET['val']) && $_GET['val']=='perinfo' ) echo "active"; ?> " name="profile" href="./home.php?val=perinfo" >Personal Information</a>
                             <a class="list-group-item <?php if(isset($_GET['val']) && $_GET['val']=='image' ) echo "active"; ?>" id="midframe" href="./home.php?val=image">Upload Photograph</a>
-                            <a class="list-group-item <?php if(isset($_GET['val']) && $_GET['val']=='phd_info' ) echo "active"; ?>" id="midframe" href="./home.php?val=phd_info">Educational Qualification (Ph. D.)</a>
                             <a class="list-group-item <?php if(isset($_GET['val']) && $_GET['val']=='education_qual' ) echo "active"; ?>" id="midframe" href="./home.php?val=education_qual">Educational Qualification</a>
-                            <a class="list-group-item <?php if(isset($_GET['val']) && $_GET['val']=='other_acads' ) echo "active"; ?>" id="midframe" href="./home.php?val=other_acads">Other Acad. Qualifications (Optional)</a>
                             <a class="list-group-item <?php if(isset($_GET['val']) && $_GET['val']=='present_emp' ) echo "active"; ?>" id="midframe" href="./home.php?val=present_emp">Present Employer</a>
-                            <a class="list-group-item <?php if(isset($_GET['val']) && $_GET['val']=='tech_exp' ) echo "active"; ?>" id="midframe" href="./home.php?val=tech_exp">Teaching Experience</a>
-                            <a class="list-group-item <?php if(isset($_GET['val']) && $_GET['val']=='research' ) echo "active"; ?>" id="midframe" href="./home.php?val=research">Research Experience</a>
-                            <a class="list-group-item <?php if(isset($_GET['val']) && $_GET['val']=='industry' ) echo "active"; ?>" id="midframe" href="./home.php?val=industry">Industrial Experience</a>
-                             <a class="list-group-item <?php if(isset($_GET['val']) && $_GET['val']=='points' ) echo "active"; ?> " id="midframe" href="./home.php?val=points">Credit Points</a>
+                            <a class="list-group-item <?php if(isset($_GET['val']) && $_GET['val']=='work_exp' ) echo "active"; ?>" id="midframe" href="./home.php?val=work_exp">Work Experience</a>
                             <a class="list-group-item <?php if(isset($_GET['val']) && $_GET['val']=='reference' ) echo "active"; ?> " id="midframe" href="./home.php?val=reference">Reference</a>
                             <a class="list-group-item <?php if(isset($_GET['val']) && $_GET['val']=='other_info' ) echo "active"; ?> " id="midframe" href="./home.php?val=other_info">Any Other Information</a>
-                            <a class="list-group-item <?php if(isset($_GET['val']) && $_GET['val']=='payment' ) echo "active"; ?> " id="midframe" href="./home.php?val=payment">Confirm &amp; Pay</a>
                             <a class="list-group-item <?php if(isset($_GET['val']) && $_GET['val']=='print' ) echo "active"; ?> " id="midframe" href="./home.php?val=print">Print Form</a>
                             <a class="list-group-item <?php if(isset($_GET['val']) && $_GET['val']=='contact' ) echo "active"; ?> " id="midframe" href="./home.php?val=contact">Contact Us</a>
 

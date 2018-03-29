@@ -363,6 +363,7 @@
 
 
 
+<<<<<<< HEAD
 <!--            <div id="diploma" class="form-group">-->
 <!--                <label class="control-label col-sm-3" for="dob"><span class="text-danger">*</span>Board:</label>-->
 <!--                <div class="col-sm-5">-->
@@ -483,12 +484,19 @@
                 <label class="control-label col-sm-2" for="email"><span class="text-danger">*</span> Degree:</label>
                 <div class="col-sm-4">
                     <input type="text" class="form-control"   name="field" required>
+=======
+            <div id="diploma" class="form-group">
+                <label class="control-label col-sm-3" for="dob"><span class="text-danger">*</span>Board:</label>
+                <div class="col-sm-5">
+                    <input type="text" class="form-control" placeholder="Eg:-CBSE,ICSE" name="board" required >
+>>>>>>> 6d2cb7ff02bb61058e476fd85ae689b14f377c55
                 </div>
             </div>
 
 
 
 
+<<<<<<< HEAD
                         <div id="ug" class="form-group">
                             <label class="control-label col-sm-3" for="dob"><span class="text-danger">*</span>Board:</label>
                             <div class="col-sm-5">
@@ -504,6 +512,13 @@
                 <label class="control-label col-sm-3" for="dob"><span class="text-danger">*</span> University:</label>
                 <div class="col-sm-4">
                     <input type="text" class="form-control"  name="university"  required>
+=======
+
+            <div id="diploma" class="form-group">
+                <label class="control-label col-sm-3" for="dob"><span class="text-danger">*</span> School Name :</label>
+                <div class="col-sm-5">
+                    <input type="text" class="form-control"  name="school"  required>
+>>>>>>> 6d2cb7ff02bb61058e476fd85ae689b14f377c55
                 </div>
             </div>
 
@@ -516,6 +531,7 @@
 
 
 
+<<<<<<< HEAD
             <div class="form-group">
                 <label class="control-label col-sm-3" for="dob"><span class="text-danger">*</span> Entry Date :</label>
                 <div class="col-sm-3">
@@ -638,10 +654,21 @@
             <!--          <label class="control-label col-sm-3" for="dob"><span class="text-danger">*</span> Board :</label>-->
             <!--          <div class="col-sm-5">-->
             <!--            <input type="text" class="form-control" name="board" required>  -->
+=======
+            <!--        <div class="form-group">-->
+            <!--          <label class="control-label col-sm-3" for="dob"><span class="text-danger">*</span> Entry Date :</label> -->
+            <!--          <div class="col-sm-3">-->
+            <!--            <input type="date" class="form-control"   name="entry_date" required id="from"> <font class="text-danger">(YYYY-MM-DD)</font>-->
+            <!--          </div>-->
+            <!--            <label class="control-label col-sm-2" for="email"><span class="text-danger">*</span> Completion Date:</label>-->
+            <!--          <div class="col-sm-4">-->
+            <!--            <input type="date" class="form-control"   name="complete_date" required id="to"> <span class="text-danger">(YYYY-MM-DD)</span>-->
+>>>>>>> 6d2cb7ff02bb61058e476fd85ae689b14f377c55
             <!--          </div>-->
             <!--        </div>-->
 
 
+<<<<<<< HEAD
 
             <div class="form-group">
                 <label class="control-label col-sm-3" for="dob"><span class="text-danger">*</span> Entry Date :</label>
@@ -655,6 +682,8 @@
             </div>
 
 
+=======
+>>>>>>> 6d2cb7ff02bb61058e476fd85ae689b14f377c55
             <div class="form-group">
                 <label class="control-label col-sm-offset-1 col-sm-2" for="email"><span class="text-danger">*</span>Marking Scheme</label>
                 <div class=" col-sm-3" for="dob">
@@ -707,7 +736,10 @@
 </div>
 
 
+<<<<<<< HEAD
 </body>
+=======
+>>>>>>> 6d2cb7ff02bb61058e476fd85ae689b14f377c55
 
 
 <script>
