@@ -7,7 +7,7 @@ class sqlfunctions {
     {
        $this->host="localhost";
        $this->user="root";
-       $pass="914passwd";
+       $pass="";
 //	   $this->$connection = mysql_connect("localhost","root",$password,TRUE);
 	   $this->connection= mysql_connect($this->host,$this->user,$pass) or die(mysql_error());
 	    $this->database = "recruitment_professor";
