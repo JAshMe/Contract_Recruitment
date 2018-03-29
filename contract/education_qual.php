@@ -278,7 +278,7 @@ $board_10=$comp_10=$school_10=$per_or_cgpa_10=$value_10=$marks_10=$max_marks_10=
                     <div id="10th" class="form-group">
                         <label class="control-label col-sm-3" for="dob"><span class="text-danger">*</span> School Name :</label>
                         <div class="col-sm-5">
-                            <input type="text" class="form-control"  name="12th_school"  required>
+                            <input type="text" class="form-control"  name="12th_school"  value="<?= $school_12 ?>" required>
                         </div>
                     </div>
 
