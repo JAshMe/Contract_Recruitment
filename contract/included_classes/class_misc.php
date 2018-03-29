@@ -253,6 +253,6 @@ TrustLogo("https://academics.mnnit.ac.in/data/comodo_secure.png", "CL1", "none")
 
 function validate($var)
 {
-  return htmlentities(trim(mysql_real_escape_string($var)));
+  return htmlentities(trim(stripslashes($var)));
 }
 ?>

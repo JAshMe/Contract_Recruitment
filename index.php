@@ -131,7 +131,7 @@
     
         <div id="headerbg" class="col-md-12" style="padding:1%"> 
             <div class="col-md-2 col-xs-4 col-xs-offset-4" style="margin-left:40px;width:150px">
-                <img class="img-responsive" src="logo-MNNIT.png" style="height:150px">
+                <img class="img-responsive" src="contract/logo-MNNIT.png" style="height:150px">
             </div>
             <div class="col-md-9">
             <center><h3 style="color:white;font-family: 'Graduate', cursive;margin-left:50px; line-height:30px;">MOTILAL NEHRU NATIONAL INSTITUTE OF TECHNOLOGY<br />ALLAHABAD<br /></h3></center>
@@ -143,6 +143,11 @@
         	<div class="row" style="margin-top:150px;">
             	<div class="col-md-4 col-md-push-4">
                 	<center><a href="assistant"><button class="btn btn-primary">Assistant Professor</button></a></center>
+                </div>
+            </div>
+            <div class="row" style="margin-top:150px;">
+                <div class="col-md-4 col-md-push-4">
+                    <center><a href="contract"><button class="btn btn-primary">Contract Employee</button></a></center>
                 </div>
             </div>
             <!--<div class="row" style="margin-top:50px;">

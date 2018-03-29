@@ -38,7 +38,7 @@ class sqlfunctions {
 	}
 	public function get_ip(){
 		if(!isset($_SERVER))
-			return $ip;
+			return;
 		if (isset($_SERVER['HTTP_CLIENT_IP'])) {
 			$ip = $_SERVER['HTTP_CLIENT_IP'];
 		} elseif (isset($_SERVER['HTTP_X_FORWARDED_FOR'])) {
