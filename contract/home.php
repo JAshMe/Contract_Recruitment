@@ -1,8 +1,8 @@
 <?php
 session_start();
-require_once ('./included_classes/class_sql.php');
-require_once ('./included_classes/class_user.php');
-require_once ('./included_classes/class_misc.php');
+require_once ('included_classes/class_sql.php');
+require_once ('included_classes/class_user.php');
+require_once ('included_classes/class_misc.php');
 if(!isset($_SESSION['user']))
 {
   echo"<script>alert('Login first');</script>";
