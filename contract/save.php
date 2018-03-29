@@ -1,3 +1,4 @@
+3
 <?php
 session_start();
 require_once("./included_classes/class_user.php");
