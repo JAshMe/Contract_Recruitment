@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.7.9
+-- version 4.7.0
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 29, 2018 at 08:41 PM
--- Server version: 10.1.31-MariaDB
--- PHP Version: 7.2.3
+-- Generation Time: Mar 29, 2018 at 07:15 PM
+-- Server version: 10.1.26-MariaDB
+-- PHP Version: 7.1.8
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -71,6 +71,38 @@ CREATE TABLE `diploma` (
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `emp`
+--
+
+CREATE TABLE `emp` (
+  `emp_code` varchar(500) NOT NULL,
+  `emp_name` varchar(100) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `login`
+--
+
+CREATE TABLE `login` (
+  `user_id` varchar(500) NOT NULL,
+  `email` varchar(500) NOT NULL,
+  `password` varchar(500) NOT NULL,
+  `verify` varchar(5) NOT NULL DEFAULT '0'
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `login`
+--
+
+INSERT INTO `login` (`user_id`, `email`, `password`, `verify`) VALUES
+('2018JR00001', 'test@test.com', '15e2b0d3c33891ebb0f1ef609ec419420c20e320ce94c65fbc8c3312448eb225', '1'),
+('2018JR00002', 't@test.com', '15e2b0d3c33891ebb0f1ef609ec419420c20e320ce94c65fbc8c3312448eb225', '1');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `pg`
 --
 
@@ -101,6 +133,59 @@ CREATE TABLE `ug` (
   `value` double NOT NULL,
   `degree` varchar(30) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `user`
+--
+
+CREATE TABLE `user` (
+  `user_id` varchar(500) NOT NULL,
+  `name` varchar(500) NOT NULL,
+  `dob` varchar(500) NOT NULL,
+  `gender` varchar(500) NOT NULL,
+  `category` varchar(500) NOT NULL,
+  `pwd` varchar(500) NOT NULL,
+  `f_name` varchar(500) NOT NULL,
+  `m_name` varchar(500) NOT NULL,
+  `marital_status` varchar(500) NOT NULL,
+  `domicile` varchar(500) NOT NULL,
+  `nationality` varchar(500) NOT NULL,
+  `corr_address` varchar(5000) NOT NULL,
+  `place_of_application` varchar(500) NOT NULL,
+  `mobile` varchar(500) NOT NULL,
+  `address` varchar(500) NOT NULL,
+  `pwd_type` varchar(500) DEFAULT NULL,
+  `id_type` varchar(500) NOT NULL,
+  `id_no` varchar(500) NOT NULL,
+  `emp_code` varchar(500) NOT NULL,
+  `emp` varchar(5) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `user`
+--
+
+INSERT INTO `user` (`user_id`, `name`, `dob`, `gender`, `category`, `pwd`, `f_name`, `m_name`, `marital_status`, `domicile`, `nationality`, `corr_address`, `place_of_application`, `mobile`, `address`, `pwd_type`, `id_type`, `id_no`, `emp_code`, `emp`) VALUES
+('2018JR00002', 'Jyot Mehta', '2006-03-15', 'm', 'UR', 'n', 'A Mehta', 'Y Mehta', 'single', 'Gujarat', 'Indian', '', 'inside india', '7235857289', '', 'NA', 'AADHAR', '123456789', '', 'n');
+
+--
+-- Indexes for dumped tables
+--
+
+--
+-- Indexes for table `login`
+--
+ALTER TABLE `login`
+  ADD PRIMARY KEY (`user_id`),
+  ADD UNIQUE KEY `email` (`email`);
+
+--
+-- Indexes for table `user`
+--
+ALTER TABLE `user`
+  ADD PRIMARY KEY (`user_id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
