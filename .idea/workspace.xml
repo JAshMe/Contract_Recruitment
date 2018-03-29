@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="270e557b-c8d6-46e2-a0c2-1e22e718a390" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/contract/education_qual.php" />
       <change beforePath="$PROJECT_DIR$/assistant/education_qual.php" afterPath="$PROJECT_DIR$/assistant/education_qual.php" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -80,19 +80,29 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="education_qual.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="education_qual.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/assistant/education_qual.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="200">
-              <caret line="504" column="36" lean-forward="false" selection-start-line="504" selection-start-column="36" selection-end-line="504" selection-end-column="36" />
+            <state relative-caret-position="598">
+              <caret line="482" column="107" lean-forward="false" selection-start-line="482" selection-start-column="107" selection-end-line="482" selection-end-column="107" />
               <folding>
                 <element signature="e#6#58#0#PHP" expanded="true" />
                 <element signature="e#1614#1616#0#PHP" expanded="true" />
-                <marker date="1522348386832" expanded="true" signature="280:332" ph="SELECT * fro... education" />
-                <marker date="1522348386832" expanded="false" signature="1168:1201" ph="..." />
-                <marker date="1522348386832" expanded="false" signature="1246:1261" ph="..." />
-                <marker date="1522348386832" expanded="true" signature="13747:14137" ph="..." />
+                <marker date="1522348699619" expanded="true" signature="280:332" ph="SELECT * fro... education" />
+                <marker date="1522348699619" expanded="false" signature="1168:1201" ph="..." />
+                <marker date="1522348699619" expanded="false" signature="1246:1261" ph="..." />
+                <marker date="1522348699619" expanded="true" signature="13747:14137" ph="..." />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="education_qual.php" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/contract/education_qual.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="0">
+              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -158,17 +168,6 @@
             <path>
               <item name="Contract_Recruitment" type="b2602c69:ProjectViewProjectNode" />
               <item name="Contract_Recruitment" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="assistant" type="2a2b976b:PhpTreeStructureProvider$1" />
-            </path>
-            <path>
-              <item name="Contract_Recruitment" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Contract_Recruitment" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="assistant" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="included_classes" type="2a2b976b:PhpTreeStructureProvider$1" />
-            </path>
-            <path>
-              <item name="Contract_Recruitment" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Contract_Recruitment" type="2a2b976b:PhpTreeStructureProvider$1" />
               <item name="contract" type="2a2b976b:PhpTreeStructureProvider$1" />
             </path>
             <path>
@@ -187,6 +186,11 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="settings.editor.selected.configurable" value="web-ide.project.structure" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\xampp\htdocs\Contract_Recruitment\contract" />
+    </key>
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -221,12 +225,12 @@
       <workItem from="1522336019777" duration="495000" />
       <workItem from="1522336517669" duration="632000" />
       <workItem from="1522337152103" duration="5447000" />
-      <workItem from="1522345382593" duration="3004000" />
+      <workItem from="1522345382593" duration="3589000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="15299000" />
+    <option name="totallyTimeSpent" value="15884000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-16" y="-16" width="3872" height="2092" extended-state="6" />
@@ -263,13 +267,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/contract/included_classes/class_sql.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1520">
-          <caret line="38" column="28" lean-forward="false" selection-start-line="38" selection-start-column="28" selection-end-line="38" selection-end-column="28" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/contract/index.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2640">
@@ -807,16 +804,24 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/assistant/education_qual.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="200">
-          <caret line="504" column="36" lean-forward="false" selection-start-line="504" selection-start-column="36" selection-end-line="504" selection-end-column="36" />
+        <state relative-caret-position="598">
+          <caret line="482" column="107" lean-forward="false" selection-start-line="482" selection-start-column="107" selection-end-line="482" selection-end-column="107" />
           <folding>
             <element signature="e#6#58#0#PHP" expanded="true" />
             <element signature="e#1614#1616#0#PHP" expanded="true" />
-            <marker date="1522348386832" expanded="true" signature="280:332" ph="SELECT * fro... education" />
-            <marker date="1522348386832" expanded="false" signature="1168:1201" ph="..." />
-            <marker date="1522348386832" expanded="false" signature="1246:1261" ph="..." />
-            <marker date="1522348386832" expanded="true" signature="13747:14137" ph="..." />
+            <marker date="1522348699619" expanded="true" signature="280:332" ph="SELECT * fro... education" />
+            <marker date="1522348699619" expanded="false" signature="1168:1201" ph="..." />
+            <marker date="1522348699619" expanded="false" signature="1246:1261" ph="..." />
+            <marker date="1522348699619" expanded="true" signature="13747:14137" ph="..." />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/contract/education_qual.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>

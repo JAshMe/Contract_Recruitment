@@ -480,7 +480,7 @@
 
 
                 </div>
-                <label class="control-label col-sm-2" for="email"><span class="text-danger">*</span> Specialisation:</label>
+                <label class="control-label col-sm-2" for="email"><span class="text-danger">*</span> Degree:</label>
                 <div class="col-sm-4">
                     <input type="text" class="form-control"   name="field" required>
                 </div>
@@ -489,12 +489,12 @@
 
 
 
-            <!--            <div id="diploma" class="form-group">-->
-            <!--                <label class="control-label col-sm-3" for="dob"><span class="text-danger">*</span>Board:</label>-->
-            <!--                <div class="col-sm-5">-->
-            <!--                    <input type="text" class="form-control" placeholder="Eg:-CBSE,ICSE" name="board" required >-->
-            <!--                </div>-->s
-            <!--            </div>-->
+                        <div id="ug" class="form-group">
+                            <label class="control-label col-sm-3" for="dob"><span class="text-danger">*</span>Board:</label>
+                            <div class="col-sm-5">
+                                <input type="text" class="form-control" placeholder="Eg:-CBSE,ICSE" name="board" required >
+                            </div>-->s
+                        </div>
 
 
 
