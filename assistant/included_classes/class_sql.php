@@ -1,7 +1,8 @@
 <?php
 class sqlfunctions {
 	public static $db;
-    private  $host,$con,$user,$pass,$connection,$arra,$curr_reg_db,$curr_sem_type;
+    private  $host,$con,$user,$pass,$arra,$curr_reg_db,$curr_sem_type;
+	public $connection;
     public  $sql,$query,$database;
 	public  function  __construct()
 	{
@@ -81,7 +82,7 @@ class sqlfunctions {
 		//echo $this->database;
 		//sv_query($query1);
 		//if(substr($query1,0,6)!='select')
-		$this->query=mysqli_query($query1)or die(mysqli_errno($this->connection));// or die("There is some Technical fault! Please try after sometime and if the problem persists, then contact Web Team");
+		$this->query=mysqli_query($this->connection,$query1)or die(mysqli_errno($this->connection));// or die("There is some Technical fault! Please try after sometime and if the problem persists, then contact Web Team");
 		//echo $query1;
         return $this->query;
     }
@@ -136,7 +137,8 @@ class sqlfunctions {
 	public function errno(){
 		return mysqli_errno($this->connection);
 	}
-	public function error(){
+	public function error()
+	{
 		return mysqli_error($this->connection);
 	}
 }

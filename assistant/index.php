@@ -41,17 +41,17 @@ include ("../mailing_script/PHPMailer/PHPMailerAutoload.php");
     }
     else if(isset($_POST['register-submit'])){
          $email = $_POST['email'];
-        $email = mysql_real_escape_string(trim(htmlentities($email)));
+        $email = mysqli_real_escape_string($db->connection,trim(htmlentities($email)));
         $pass = $_POST['pass'];
         $sql = "select * from login where email = '$email'";
         $r = $db->process_query($sql);
-        if(mysql_num_rows($r)>0){
-            $misc->palert("Email id already exists");
+        if(mysqli_num_rows($r)>0){
+            $misc->palert("Email id already exists","");
         }
         else{
 			$sql = "select * from login";
         	$r = $db->process_query($sql);
-			$r=mysql_num_rows($r)+1;
+			$r=mysqli_num_rows($r)+1;
 		
 			$id=(string) $r;
 			$id = str_pad($id,5,0,STR_PAD_LEFT);
@@ -63,7 +63,6 @@ include ("../mailing_script/PHPMailer/PHPMailerAutoload.php");
 				$emailBody="<p align=\"justify\" style=\"text-indent:20px;\" > This e-mail was generated in response to a request to register on Faculty Recruitment portal<a href=\"academics.mnnit.ac.in/recruitment\"> academics.mnnit.ac.in/recruitment </a>.</p> <p align=\"justify\" style=\"text-indent:20px;\" >If you didn't perform this action, kindly ignore this e-mail. If you are being spammed, you can complain about it at recruitmentcell@mnnit.ac.in . The verification link is given below.</p><strong>Click <a href=\"academics.mnnit.ac.in/recruitment/assistant/verify.php?return=$hash\">here</a></b> to verify your email. <br /><br />";
 		//echo $emailBody;
 		$emailUser = $email;
-		$emailUser;
 		$mail = new PHPMailer;
 		$mail->IsSMTP ();
 		$mail->Host = "smtp.gmail.com";//"74.125.71.109"; // SMTP server- gmail.com
@@ -82,14 +81,14 @@ include ("../mailing_script/PHPMailer/PHPMailerAutoload.php");
 		//$mail->Timeout = 3600;
 		$mail->isHTML(true);
 		if (! $mail->Send ()) {
-					
+
 			echo "Message sending failed . Try again later.";
 			die("Message sending failed . Try again later.");
 				//die( $mail->ErrorInfo);
+
+		}
 				
-		} 
-				
-                $misc->palert("Verification mail send successfully on your Email-Id");
+                $misc->palert("Verification mail send successfully on your Email-Id","");
             }
         }
         
