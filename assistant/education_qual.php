@@ -1,78 +1,86 @@
 <?php
-//require_once("./included_classes/class_user.php");
-//    require_once("./included_classes/class_misc.php");
-//    require_once("./included_classes/class_sql.php");
-//    $misc= new miscfunctions();
-//    $db = new sqlfunctions();
-//   $id=$_SESSION['user'];
-//    $query="SELECT * from `education` where `user_id` like '$id'";
-//    $c = $db->process_query($query);
-//
-//?>
-<!--<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">-->
-<!--<html xmlns="http://www.w3.org/1999/xhtml">-->
-<!--<head>-->
-<!--<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />-->
-<!--<title>Educational Information</title>-->
-<!--<style>-->
-<!--.login {-->
-<!--	display:none;-->
-<!--}-->
-<!--#loginbox{-->
-<!--	display:none;-->
-<!--	text-align:center;-->
-<!--	margin:65px 7px -25px 5px;-->
-<!--	padding:25px 5px 15px 55px;-->
-<!--	background:#fff;-->
-<!--	color:#b22d00;-->
-<!--	-moz-border-radius:6px;-->
-<!--	-webkit-border-radius:6px;-->
-<!--}-->
-<!--.submit{-->
-<!--	height:20px;-->
-<!--	width:80px;-->
-<!--}-->
-<!--</style>-->
-<!--</head>-->
-<!---->
-<!--<body>-->
-<!--<div id="main" style="font-size:13px; margin:0px 0 0 0;" align="justify">-->
-<!--	<center><b style="font-size:18px;">Educational Information</b></center>-->
-<!--<hr>-->
-<!---->
-<!---->
-<!--<table class="table table-striped">-->
-<!--  <tr><th>Qualification</th><th>Degree</th><th>Discipline</th><th>Institute</th><th>Board/Univ</th><th>Marks/CGPA</th><th>Max Marks/CGPA</th><th>Entry Date</th><th>Comp. Date</th><th>Div.</th><th>% age</th><th>Remove</th></tr>-->
+require_once("./included_classes/class_user.php");
+    require_once("./included_classes/class_misc.php");
+    require_once("./included_classes/class_sql.php");
+    $misc= new miscfunctions();
+    $db = new sqlfunctions();
+   $id=$_SESSION['user'];
+    $query="SELECT * from `education` where `user_id` like '$id'";
+    $c = $db->process_query($query);
+
+?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Educational Information</title>
+<style>
+.login {
+	display:none;
+}
+#loginbox{
+	display:none;
+	text-align:center;
+	margin:65px 7px -25px 5px;
+	padding:25px 5px 15px 55px;
+	background:#fff;
+	color:#b22d00;
+	-moz-border-radius:6px;
+	-webkit-border-radius:6px;
+}
+.submit{
+	height:20px;
+	width:80px;
+}
+</style>
+</head>
+
+<body>
+<div id="main" style="font-size:13px; margin:0px 0 0 0;" align="justify">
+	<center><b style="font-size:18px;">Educational Information</b></center>
+<hr>
+
+
+<table class="table table-striped">
+  <tr><th>Qualification</th><th>Degree</th><th>Discipline</th><th>Institute</th><th>Board/Univ</th><th>Marks/CGPA</th><th>Max Marks/CGPA</th><th>Entry Date</th><th>Comp. Date</th><th>Div.</th><th>% age</th><th>Remove</th></tr>
 <?php
-//
-//
-//    while(($r = $db->fetch_rows($c)))
-//    {
-//  $tmp_id=$r['id'];
-//  $degree = validate($r['degree']);
-//  $subject = validate($r['subject']);
-//  $inst_name = validate($r['inst_name']);
-//  $entry_date = validate($r['entry_date']);
-//  $complete_date = validate($r['complete_date']);
-//  $marks = validate($r['marks']);
-//  $max_marks = validate($r['max_marks']);
-//  $perc_marks = validate($r['perc_marks']);
-//  $division = validate($r['division']);
-//  $qualification = validate($r['qualification']);
-//  $board = validate($r['board']);
-//
-//  echo "<tr><td>$qualification</td><td>$degree</td><td>$subject</td><td>$inst_name</td><td>$board</td><td>$marks</td><td>$max_marks</td><td>$entry_date</td><td>$complete_date</td><td>$division</td><td>$perc_marks</td><td><a href='delete.php?id=$tmp_id&page=education_qual'>Remove</a></td></tr>";
-//
-//}
-////?>
-<!--</table>-->
-<!--<p align="justify" class="larger-font"> -->
-<!---->
-<!--<ul class="text-danger">-->
-<!--  <li> * Marked fields are mandatory.</li>-->
-<!--</ul>-->
-<!---->
-<!--</script>-->
+
+
+    while(($r = $db->fetch_rows($c)))
+    {
+  $tmp_id=$r['id'];
+  $degree = validate($r['degree']);
+  $subject = validate($r['subject']);
+  $inst_name = validate($r['inst_name']);
+  $entry_date = validate($r['entry_date']);
+  $complete_date = validate($r['complete_date']);
+  $marks = validate($r['marks']);
+  $max_marks = validate($r['max_marks']);
+  $perc_marks = validate($r['perc_marks']);
+  $division = validate($r['division']);
+  $qualification = validate($r['qualification']);
+  $board = validate($r['board']);
+
+  echo "<tr><td>$qualification</td><td>$degree</td><td>$subject</td><td>$inst_name</td><td>$board</td><td>$marks</td><td>$max_marks</td><td>$entry_date</td><td>$complete_date</td><td>$division</td><td>$perc_marks</td><td><a href='delete.php?id=$tmp_id&page=education_qual'>Remove</a></td></tr>";
+
+}
+//?>
+</table>
+<p align="justify" class="larger-font">
+
+<ul class="text-danger">
+  <li> * Marked fields are mandatory.</li>
+</ul>
+
+
+
+
+
+
+
+
+
+
 <form id ="10th" class="form-horizontal" name="reg_frm" method="post" action="save.php" onSubmit="return validate();">
 <div class="tab-content">
       <div id="home" class="tab-pane fade in active">
