@@ -73,70 +73,74 @@ require_once("./included_classes/class_sql.php");
                 </div>
             </div>
             <hr>
+    </form>
 
-<!--   -----------------------------10th Div ---------------------------------------------->
-                <div id ="10th" class="qual_div">
+                <!---------------------------------------------------10th Div ---------------------------------------------------------->
+                <form class="form-horizontal" name="reg_frm" method="post" action="save.php" onSubmit="return validate();">
+                        <div id ="10th" class="qual_div">
 
-                    <div class="row">
-                        <div class="form-group">
-                             <label class="control-label col-sm-3" for="email"><span class="text-danger">*</span> Completion Date:</label>
-                                <div class="col-sm-3">
-                                    <input type="date" class="form-control"   name="10th_completion_date" required>
+                            <div class="row">
+                                <div class="form-group">
+                                     <label class="control-label col-sm-3" for="email"><span class="text-danger">*</span> Completion Date:</label>
+                                        <div class="col-sm-3">
+                                            <input type="date" class="form-control"   name="completion_date_10th" required>
+                                        </div>
+                                        <label class="control-label col-sm-2" for="dob"><span class="text-danger">*</span>Board:</label>
+                                        <div class="col-sm-3">
+                                            <input type="text" class="form-control" placeholder="Eg:-CBSE,ICSE" name="board_10th" required >
+                                        </div>
+                                    </div>
+                            </div>
+
+
+                                <div id="10th" class="form-group">
+                                    <label class="control-label col-sm-3" for="dob"><span class="text-danger">*</span> School Name :</label>
+                                    <div class="col-sm-5">
+                                        <input type="text" class="form-control"  name="school_10th"  required>
+                                    </div>
                                 </div>
-                                <label class="control-label col-sm-2" for="dob"><span class="text-danger">*</span>Board:</label>
-                                <div class="col-sm-3">
-                                    <input type="text" class="form-control" placeholder="Eg:-CBSE,ICSE" name="board" required >
+
+                                <div class="form-group">
+                                <label class="control-label col-sm-offset-1 col-sm-2" for="email"><span class="text-danger">*</span>Marking Scheme</label>
+                                <div class=" col-sm-3" for="dob">
+
+                                    <label class="radio-inline">
+                                    <input type="radio" class="radio-inline" value="0" name="per_or_cgp_10th" required>CGPA<br></label>
+                                    <label class="radio-inline">
+                                        <input type="radio" class="radio-inline" value="1" name="per_or_cgp_10th" required>Percentage
+                                    </label>
                                 </div>
-                            </div>
-                    </div>
+                                </div>
 
 
-                        <div id="10th" class="form-group">
-                            <label class="control-label col-sm-3" for="dob"><span class="text-danger">*</span> School Name :</label>
-                            <div class="col-sm-5">
-                                <input type="text" class="form-control"  name="10th_school"  required>
-                            </div>
+                                <div class="form-group">
+                                    <label class="control-label col-sm-3" for="dob"><span class="text-danger">*</span> Marks/CGPA Obtained :</label>
+                                    <div class="col-sm-3">
+                                        <input type="text" class="form-control"   name="marks_10th" required id="marks">
+                                    </div>
+                                    <label class="control-label col-sm-2" for="email"><span class="text-danger">*</span> Maximum Marks/CGPA:</label>
+                                    <div class="col-sm-4">
+                                        <input type="text" class="form-control"  name="max_marks_10th" required id="max_marks">
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="control-label col-sm-3" for="dob"><span class="text-danger">*</span> % Marks/CGPA :</label>
+                                    <div class="col-sm-3">
+                                        <input type="text" class="form-control"   name="perc_marks_10th" readonly>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <div class="col-sm-offset-4 col-sm-4">
+                                        <button type="submit" name="edu_ch_0" class="btn btn-primary col-sm-12">Submit Information</button>
+                                    </div>
+                                </div>
                         </div>
-
-                        <div class="form-group">
-                        <label class="control-label col-sm-offset-1 col-sm-2" for="email"><span class="text-danger">*</span>Marking Scheme</label>
-                        <div class=" col-sm-3" for="dob">
-
-                            <label class="radio-inline">
-                            <input type="radio" class="radio-inline" value="CGPA" name="10th_per_or_cgp" required>CGPA<br></label>
-                            <label class="radio-inline">
-                                <input type="radio" class="radio-inline" value="Percentage" name="10th_per_or_cgp" required>Percentage
-                            </label>
-                        </div>
-                        </div>
-
-
-                        <div class="form-group">
-                            <label class="control-label col-sm-3" for="dob"><span class="text-danger">*</span> Marks/CGPA Obtained :</label>
-                            <div class="col-sm-3">
-                                <input type="text" class="form-control"   name="10th_marks" required id="marks">
-                            </div>
-                            <label class="control-label col-sm-2" for="email"><span class="text-danger">*</span> Maximum Marks/CGPA:</label>
-                            <div class="col-sm-4">
-                                <input type="text" class="form-control"  name="max_marks" required id="max_marks">
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <label class="control-label col-sm-3" for="dob"><span class="text-danger">*</span> % Marks/CGPA :</label>
-                            <div class="col-sm-3">
-                                <input type="text" class="form-control"   name="10th_perc_marks" readonly>
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <div class="col-sm-offset-4 col-sm-4">
-                                <button type="submit" name="10th_edu_ch" class="btn btn-primary col-sm-12">Submit Information</button>
-                            </div>
-                        </div>
-                </div>
+                </form>
             <!-------------------------------------------------------------Diploma---------------------------------------------------------->
-                <div id="diploma" class="qual_div"  style=" display: none;">
+                <form class="form-horizontal" name="reg_frm" method="post" action="save.php" onSubmit="return validate();">
+                        <div id="diploma" class="qual_div"  style=" display: none;">
 
                     <div class="form-group">
                         <label class="control-label col-sm-2" for="email"><span class="text-danger">*</span> Specialisation:</label>
@@ -167,9 +171,9 @@ require_once("./included_classes/class_sql.php");
                             <label class="control-label col-sm-offset-1 col-sm-2" for="email"><span class="text-danger">*</span>Marking Scheme</label>
                             <div class=" col-sm-3" for="dob">
                                 <label class="radio-inline">
-                                    <input type="radio" class="radio-inline" value="CGPA" name="dip_per_or_cgp" required>CGPA<br></label>
+                                    <input type="radio" class="radio-inline" value="0" name="dip_per_or_cgp" required>CGPA<br></label>
                                 <label class="radio-inline">
-                                    <input type="radio" class="radio-inline" value="Percentage" name="dip_per_or_cgp" required>Percentage
+                                    <input type="radio" class="radio-inline" value="1" name="dip_per_or_cgp" required>Percentage
                                 </label>
                             </div>
                         </div>
@@ -194,23 +198,25 @@ require_once("./included_classes/class_sql.php");
 
                     <div class="form-group">
                         <div class="col-sm-offset-4 col-sm-4">
-                            <button type="submit" name="edu_ch" class="btn btn-primary col-sm-12">Submit Information</button>
+                            <button type="submit" name="edu_ch_1" class="btn btn-primary col-sm-12">Submit Information</button>
                         </div>
                     </div>
                 </div>
+                </form>
 
                 <!-------------------------------------------------------------12th---------------------------------------------------------->
-                <div id="12th" class="qual_div" style=" display: none;">
+                <form class="form-horizontal" name="reg_frm" method="post" action="save.php" onSubmit="return validate();">
+                        <div id="12th" class="qual_div" style=" display: none;">
 
                     <div class="row">
                         <div class="form-group">
                             <label class="control-label col-sm-3" for="email"><span class="text-danger">*</span> Completion Date:</label>
                             <div class="col-sm-3">
-                                <input type="date" class="form-control"   name="12th_completion_date" required>
+                                <input type="date" class="form-control"   name="completion_date_12th" required>
                             </div>
                             <label class="control-label col-sm-2" for="dob"><span class="text-danger">*</span>Board:</label>
                             <div class="col-sm-3">
-                                <input type="text" class="form-control" placeholder="Eg:-CBSE,ICSE" name="12th_board" required >
+                                <input type="text" class="form-control" placeholder="Eg:-CBSE,ICSE" name="board_12th" required >
                             </div>
                         </div>
                     </div>
@@ -219,7 +225,7 @@ require_once("./included_classes/class_sql.php");
                     <div id="10th" class="form-group">
                         <label class="control-label col-sm-3" for="dob"><span class="text-danger">*</span> School Name :</label>
                         <div class="col-sm-5">
-                            <input type="text" class="form-control"  name="12th_school"  required>
+                            <input type="text" class="form-control"  name="school_12th"  required>
                         </div>
                     </div>
 
@@ -228,9 +234,9 @@ require_once("./included_classes/class_sql.php");
                         <div class=" col-sm-3" for="dob">
 
                             <label class="radio-inline">
-                                <input type="radio" class="radio-inline" value="CGPA" name="12th_per_or_cgp" required>CGPA<br></label>
+                                <input type="radio" class="radio-inline" value="0" name="per_or_cgp_12th" required>CGPA<br></label>
                             <label class="radio-inline">
-                                <input type="radio" class="radio-inline" value="Percentage" name="12th_per_or_cgp" required>Percentage
+                                <input type="radio" class="radio-inline" value="1" name="per_or_cgp_12th" required>Percentage
                             </label>
                         </div>
                     </div>
@@ -239,30 +245,32 @@ require_once("./included_classes/class_sql.php");
                     <div class="form-group">
                         <label class="control-label col-sm-3" for="dob"><span class="text-danger">*</span> Marks/CGPA Obtained :</label>
                         <div class="col-sm-3">
-                            <input type="text" class="form-control"   name="12th_marks" required id="marks">
+                            <input type="text" class="form-control"   name="marks_12th" required id="marks">
                         </div>
                         <label class="control-label col-sm-2" for="email"><span class="text-danger">*</span> Maximum Marks/CGPA:</label>
                         <div class="col-sm-4">
-                            <input type="text" class="form-control"  name="12th_max_marks" required id="max_marks">
+                            <input type="text" class="form-control"  name="max_marks_12th" required id="max_marks">
                         </div>
                     </div>
 
                     <div class="form-group">
                         <label class="control-label col-sm-3" for="dob"><span class="text-danger">*</span> % Marks/CGPA :</label>
                         <div class="col-sm-3">
-                            <input type="text" class="form-control"   name="12th_perc_marks" readonly>
+                            <input type="text" class="form-control"   name="perc_marks_12th" readonly>
                         </div>
                     </div>
 
                     <div class="form-group">
                         <div class="col-sm-offset-4 col-sm-4">
-                            <button type="submit" name="edu_ch" class="btn btn-primary col-sm-12">Submit Information</button>
+                            <button type="submit" name="edu_ch_2" class="btn btn-primary col-sm-12">Submit Information</button>
                         </div>
                     </div>
                 </div>
+                </form>
 
             <!-------------------------------------------------------------UG---------------------------------------------------------->
-            <div id="ug" class="qual_div"  style=" display: none;">
+                <form class="form-horizontal" name="reg_frm" method="post" action="save.php" onSubmit="return validate();">
+                        <div id="ug" class="qual_div"  style=" display: none;">
                 <div class="form-group">
                     <label class="control-label col-sm-2" for="email"><span class="text-danger">*</span> Degree:</label>
                     <div class="col-sm-3">
@@ -299,9 +307,9 @@ require_once("./included_classes/class_sql.php");
                     <div class=" col-sm-5" for="dob">
 
                         <label class="radio-inline">
-                            <input type="radio" class="radio-inline" value="CGPA" name="ug_per_or_cgp" required>CGPA<br></label>
+                            <input type="radio" class="radio-inline" value="0" name="ug_per_or_cgp" required>CGPA<br></label>
                         <label class="radio-inline">
-                            <input type="radio" class="radio-inline" value="Percentage" name="ug_per_or_cgp" required>Percentage
+                            <input type="radio" class="radio-inline" value="1" name="ug_per_or_cgp" required>Percentage
                         </label>
 
                     </div>
@@ -325,19 +333,21 @@ require_once("./included_classes/class_sql.php");
 
                     <label class="control-label col-sm-3" for="dob"><span class="text-danger">*</span> % Marks/CGPA :</label>
                     <div class="col-sm-3">
-                        <input type="text" class="form-control"   name="perc_marks" readonly>
+                        <input type="text" class="form-control"   name="ug_perc_marks" readonly>
                     </div>
 
                 </div>
 
                 <div class="form-group">
                     <div class="col-sm-offset-4 col-sm-4">
-                        <button type="submit" name="edu_ch" class="btn btn-primary col-sm-12">Submit Information</button>
+                        <button type="submit" name="edu_ch_3" class="btn btn-primary col-sm-12">Submit Information</button>
                     </div>
                 </div>
             </div>
+                </form>
             <!-------------------------------------------------------------PG---------------------------------------------------------->
-            <div id="pg"  class="qual_div" style=" display: none;">
+                <form class="form-horizontal" name="reg_frm" method="post" action="save.php" onSubmit="return validate();">
+                        <div id="pg"  class="qual_div" style=" display: none;">
                 <div class="form-group">
                     <label class="control-label col-sm-2" for="email"><span class="text-danger">*</span> Degree:</label>
                     <div class="col-sm-3">
@@ -352,7 +362,7 @@ require_once("./included_classes/class_sql.php");
                 <div id="ug" class="form-group">
                     <label class="control-label col-sm-2" for="dob"><span class="text-danger">*</span> University:</label>
                     <div class="col-sm-5">
-                        <input type="text" class="form-control"  name="university"  required>
+                        <input type="text" class="form-control"  name="pg_university"  required>
                     </div>
                 </div>
 
@@ -374,9 +384,9 @@ require_once("./included_classes/class_sql.php");
                     <div class=" col-sm-5" for="dob">
 
                         <label class="radio-inline">
-                            <input type="radio" class="radio-inline" value="CGPA" name="pg_per_or_cgp" required>CGPA<br></label>
+                            <input type="radio" class="radio-inline" value="0" name="pg_per_or_cgp" required>CGPA<br></label>
                         <label class="radio-inline">
-                            <input type="radio" class="radio-inline" value="Percentage" name="pg_per_or_cgp" required>Percentage
+                            <input type="radio" class="radio-inline" value="1" name="pg_per_or_cgp" required>Percentage
                         </label>
 
                     </div>
@@ -407,10 +417,11 @@ require_once("./included_classes/class_sql.php");
 
                 <div class="form-group">
                     <div class="col-sm-offset-4 col-sm-4">
-                        <button type="submit" name="edu_ch" class="btn btn-primary col-sm-12">Submit Information</button>
+                        <button type="submit" name="edu_ch_4" class="btn btn-primary col-sm-12">Submit Information</button>
                     </div>
                 </div>
         </div>
+                </form>
 
     </form>
 </div>
@@ -421,16 +432,17 @@ require_once("./included_classes/class_sql.php");
 
     <script>
     function validate(){
-        if($('#from').val()>$('#to').val()){
+        if($(this).children().filter('#from').val()>$(this).children().filter('#to').val()){
             alert("Completion Date must be greater than start date!");
-            $('#from').val('');
-            $('#to').val('');
+            $(this).children().filter('#from').val('');
+                    $(this).children().filter('#to').val('');
             return false;
         }
-        if($('#marks').val()>$('#max_marks').val()){
+        if( $(this).children().filter('#marks').val()> $(this).children().filter('#max_marks').val()){
+                console.log( $(this).children().filter('#marks').val()+"  "+ $(this).children().filter('#max_marks').val());
             alert("Marks should not be greater than maximum marks!");
-            $('#marks').val('');
-            $('#max_marks').val('');
+                $(this).children().filter('#marks').val('');
+                $(this).children().filter('#max_marks').val('');
             return false;
         }
         return true;
