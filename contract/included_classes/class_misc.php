@@ -134,7 +134,7 @@ TrustLogo("https://academics.mnnit.ac.in/data/comodo_secure.png", "CL1", "none")
 	public function Extension($name) 	//filename extension
 		{
 			$pos=strpos($name,'.');
-			return substr($name,$pos+1,3);
+			return substr($name,$pos+1);
 		}
 		
 	public function get_current_table()

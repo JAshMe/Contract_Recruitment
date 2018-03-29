@@ -11,14 +11,14 @@ require_once("./included_classes/class_user.php");
 	$emp="";
     $query="SELECT * from `department` where `user_id` like '$id'";
     $c = $db->process_query($query);
-    if(mysql_num_rows($c)>0)
+    if(mysqli_num_rows($c)>0)
     {
        while($r = $db->fetch_rows($c))
        array_push($dept, $r['dept']);
      }  
 $query="SELECT * from `user` where `user_id` like '$id'";
 $r = $db->process_query($query);
-if(mysql_num_rows($r)>0)
+if(mysqli_num_rows($r)>0)
 {
   $r = $db->fetch_rows($r);
   $post_applied=$r['post_applied'];
@@ -84,7 +84,7 @@ $emp_code=validate($r['emp_code']);
   <li> * Marked fields are mandatory.</li>
 </ul>
 
-</script>
+</div>
 <form class="form-horizontal" name="reg_frm" method="post" action="save.php" >
 <div class="tab-content">
       <div id="home" class="tab-pane fade in active">

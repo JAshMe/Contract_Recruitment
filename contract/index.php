@@ -23,7 +23,7 @@ include ("../mailing_script/PHPMailer/PHPMailerAutoload.php");
             $email = $_POST['email'];
             $email = mysqli_real_escape_string($db->connection,trim(htmlentities($email)));
             $pass = $_POST['pass'];
-            $pass = md5($pass);
+            $pass = hash('sha256',$pass);
             $sql = "select * from login where email = '$email' and password like '$pass'";
 
             $r = $db->process_query($sql);
