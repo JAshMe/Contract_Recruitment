@@ -17,7 +17,7 @@ require_once("./included_classes/class_user.php");
 //	}
 	
 	
-    if(isset($_POST['phd_ch']))
+if(isset($_POST['phd_ch']))
     {     	
 	$status = validate($_POST['status']);
 $date = validate($_POST['date']);
@@ -45,8 +45,7 @@ if($r){
                 $misc->palert("Some error occured","home.php?val=phd_info");
        }
     }
-    
-    if(isset($_POST['per_ch']))
+if(isset($_POST['per_ch']))
     {
 	$name=validate($_POST['name']);
 	$dob=validate($_POST['dob']);
@@ -109,23 +108,21 @@ if($r){
 	else
 		$misc->palert("Some error occured","home.php?val=perinfo");
     }
-if(isset($_POST['edu_ch']))
+if(isset($_POST['edu_ch_0']))
 {
-	$degree = validate($_POST['degree']);
-	$subject = validate($_POST['subject']);
-	$inst_name = validate($_POST['inst_name']);
-	$entry_date = validate($_POST['entry_date']);
-	$complete_date = validate($_POST['complete_date']);
-	$marks = validate($_POST['marks']);
-	$max_marks = validate($_POST['max_marks']);
-	$perc_marks = validate($_POST['perc_marks']);
-	$division = validate($_POST['division']);
-	$qualification = validate($_POST['qualification']);
-	$board = validate($_POST['board']);
+	// 10th data
+	$per_cgp_10th = validate($_POST['per_or_cgp_10th']);
+	$school_10th = validate($_POST['school_10th']);
+	$completion_date_10th = validate($_POST['completion_date_10th']);
+	$marks_10th = validate($_POST['marks_10th']);
+	$max_marks_10th = validate($_POST['max_marks_10th']);
+	$perc_marks_10th = validate($_POST['perc_marks_10th']);
+	$board_10th = validate($_POST['board_10th']);
 
 
-$q="INSERT INTO `education`(`user_id`, `degree`, `subject`, `inst_name`, `entry_date`, `complete_date`, `marks`, `max_marks`, `perc_marks`, `division`, `qualification`, `board`) VALUES ('$id','$degree','$subject','$inst_name','$entry_date','$complete_date','$marks','$max_marks','$perc_marks','$division','$qualification','$board')";
-$r=$db->process_query($q);
+$q="INSERT INTO `10th_mark` VALUES ('$id','$completion_date_10th','$board_10th','$school_10th','$marks_10th','$max_marks_10th','$per_cgp_10th','$perc_marks_10th')";
+	echo $q;
+	$r=$db->process_query($q);
 if($r){
                 $misc->palert("Details Submitted","home.php?val=education_qual");
        }
@@ -134,6 +131,103 @@ if($r){
                 $misc->palert("Some error occured","home.php?val=education_qual");
        }
     	
+}
+if(isset($_POST['edu_ch_1']))
+{
+	// diploma data
+	$spec = validate($_POST['dip_field']);
+	$per_cgp = validate($_POST['dip_per_or_cgp']);
+	$university = validate($_POST['dip_university']);
+	$start_date = validate($_POST['dip_start_date']);
+	$completion_date= validate($_POST['dip_completion_date']);
+	$marks = validate($_POST['dip_marks']);
+	$max_marks = validate($_POST['dip_max_marks']);
+	$perc_marks = validate($_POST['dip_perc_marks']);
+
+
+	$q="INSERT INTO `diploma` VALUES ('$id','$spec','$start_date','$completion_date','$university','$marks','$max_marks','$per_cgp','$perc_marks')";
+	$r=$db->process_query($q);
+	if($r){
+		$misc->palert("Details Submitted","home.php?val=education_qual");
+	}
+	else
+	{
+		$misc->palert("Some error occured","home.php?val=education_qual");
+	}
+
+}
+if(isset($_POST['edu_ch_2']))
+{
+	// 12th data
+	$per_cgp = validate($_POST['per_or_cgp_12th']);
+	$school = validate($_POST['school_12th']);
+	$completion_date = validate($_POST['completion_date_12th']);
+	$marks = validate($_POST['marks_12th']);
+	$max_marks= validate($_POST['max_marks_12th']);
+	$perc_marks = validate($_POST['perc_marks_12th']);
+	$board = validate($_POST['board_12th']);
+
+
+	$q="INSERT INTO `12th_mark` VALUES ('$id','$completion_date','$board','$school','$marks','$max_marks','$per_cgp','$perc_marks')";
+	$r=$db->process_query($q);
+	if($r){
+		$misc->palert("Details Submitted","home.php?val=education_qual");
+	}
+	else
+	{
+		$misc->palert("Some error occured","home.php?val=education_qual");
+	}
+
+}
+if(isset($_POST['edu_ch_3']))
+{
+	// ug data
+	$degree = validate($_POST['ug_field']);
+	$spec = validate($_POST['ug_specialization']);
+	$per_cgp = validate($_POST['ug_per_or_cgp']);
+	$university = validate($_POST['ug_university']);
+	$start_date = validate($_POST['ug_start_date']);
+	$completion_date= validate($_POST['ug_end_date']);
+	$marks = validate($_POST['ug_marks']);
+	$max_marks = validate($_POST['ug_max_marks']);
+	$perc_marks = validate($_POST['ug_perc_marks']);
+
+
+	$q="INSERT INTO `ug` VALUES ('$id','$spec','$start_date','$completion_date','$university','$marks','$max_marks','$per_cgp','$perc_marks','$degree')";
+	$r=$db->process_query($q);
+	if($r){
+		$misc->palert("Details Submitted","home.php?val=education_qual");
+	}
+	else
+	{
+		$misc->palert("Some error occured","home.php?val=education_qual");
+	}
+
+}
+if(isset($_POST['edu_ch_4']))
+{
+	// pg data
+	$degree = validate($_POST['pg_field']);
+	$spec = validate($_POST['pg_specialization']);
+	$per_cgp = validate($_POST['pg_per_or_cgp']);
+	$university = validate($_POST['pg_university']);
+	$start_date = validate($_POST['pg_start_date']);
+	$completion_date= validate($_POST['pg_end_date']);
+	$marks = validate($_POST['pg_marks']);
+	$max_marks = validate($_POST['pg_max_marks']);
+	$perc_marks = validate($_POST['pg_perc_marks']);
+
+
+	$q="INSERT INTO `pg` VALUES ('$id','$spec','$start_date','$completion_date','$university','$marks','$max_marks','$per_cgp','$perc_marks','$degree')";
+	$r=$db->process_query($q);
+	if($r){
+		$misc->palert("Details Submitted","home.php?val=education_qual");
+	}
+	else
+	{
+		$misc->palert("Some error occured","home.php?val=education_qual");
+	}
+
 }
 if(isset($_POST['other_ch']))
 {
@@ -202,7 +296,7 @@ if($r){
                 $misc->palert("Some error occured","home.php?val=education_qual");
        }
     }
-    if(isset($_POST['teach_ch']))
+if(isset($_POST['teach_ch']))
 {
 	$organisation=validate($_POST['organisation']);
 	$position=validate($_POST['position']);
@@ -365,5 +459,7 @@ if($r){
                 $misc->palert("Some error occured","home.php?val=other_info");
        }
     }
+
+echo "nowhere!!!";
 	
 ?>
