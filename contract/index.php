@@ -27,7 +27,7 @@ include ("../mailing_script/PHPMailer/PHPMailerAutoload.php");
             $sql = "select * from login where email = '$email' and password like '$pass'";
 
             $r = $db->process_query($sql);
-            if(mysql_num_rows($r)>0){
+            if(mysqli_num_rows($r)>0){
                     $r = $db->fetch_rows($r);
                     $_SESSION['user'] = $r['user_id'];
                     $verify=$r['verify'];
@@ -48,7 +48,7 @@ include ("../mailing_script/PHPMailer/PHPMailerAutoload.php");
     else if(isset($_POST['register-submit'])){
             $email = validate($_POST['email']);
             $email = mysqli_real_escape_string($db->connection,trim(htmlentities($email)));
-            $pass = $_POST['pass'];
+            $pass =hash('sha256',$_POST['pass']);
             $sql = "select * from login where email = '$email'";
             $r = $db->process_query($sql);
             if(mysqli_num_rows($r)>0){
@@ -61,8 +61,8 @@ include ("../mailing_script/PHPMailer/PHPMailerAutoload.php");
 
                     $id=(string) $r;
                     $id = str_pad($id,5,0,STR_PAD_LEFT);
-                    $id=date('Y').'AS'.$id;
-                    $sql = "insert into login(`user_id`,`email`,`password`,`verify`) values ('$id','$email',md5('$pass'),'0')";
+                    $id=date('Y').'JR'.$id;
+                    $sql = "insert into login(`user_id`,`email`,`password`,`verify`) values ('$id','$email','$pass','1')";
                     $r = $db->process_query($sql);
                     if($r){
                             $hash=base64_encode($id);
@@ -86,13 +86,13 @@ include ("../mailing_script/PHPMailer/PHPMailerAutoload.php");
                             // Send and verify
                             //$mail->Timeout = 3600;
                             $mail->isHTML(true);
-                            if (! $mail->Send ()) {
-
-                                    echo "Message sending failed . Try again later.";
-                                    die("Message sending failed . Try again later.");
-                                    //die( $mail->ErrorInfo);
-
-                            }
+//                            if (! $mail->Send ()) {
+//
+//                                    echo "Message sending failed . Try again later.";
+//                                    die("Message sending failed . Try again later.");
+//                                    //die( $mail->ErrorInfo);
+//
+//                            }
 
                             $misc->palert("Verification mail send successfully on your Email-Id","");
                     }
