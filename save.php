@@ -139,6 +139,7 @@ if($r){
        }
     	
 }
+//test comment
 if(isset($_POST['other_ch']))
 {
 	$exam = validate($_POST['exam']);
