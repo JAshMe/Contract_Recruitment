@@ -3,10 +3,10 @@
     require_once("./included_classes/class_user.php");
     require_once("./included_classes/class_misc.php");
     require_once("./included_classes/class_sql.php");
-	require_once ("../../mailing_script/class_misc.php");
-require_once ("../../mailing_script/class_sql.php");
-
-include ("../../mailing_script/PHPMailer/PHPMailerAutoload.php");
+	require_once ("../mailing_script/class_misc.php");
+require_once ("../mailing_script/class_sql.php");
+//
+include ("../mailing_script/PHPMailer/PHPMailerAutoload.php");
     $misc= new miscfunctions();
     $db = new sqlfunctions();
     
