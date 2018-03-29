@@ -20,20 +20,20 @@
             <state relative-caret-position="1440">
               <caret line="36" column="48" lean-forward="false" selection-start-line="36" selection-start-column="48" selection-end-line="36" selection-end-column="48" />
               <folding>
-                <marker date="1522325889546" expanded="true" signature="1883:1948" ph="SELECT * FRO... updates" />
-                <marker date="1522325889546" expanded="true" signature="4621:4652" ph="select cur_r... current_reg" />
-                <marker date="1522325889546" expanded="true" signature="5079:5110" ph="select cur_r... current_reg" />
-                <marker date="1522325889546" expanded="true" signature="5268:5299" ph="select cur_r... current_reg" />
-                <marker date="1522325889546" expanded="true" signature="5640:5646" ph=" " />
-                <marker date="1522325889546" expanded="true" signature="5646:5652" ph=" " />
-                <marker date="1522325889546" expanded="true" signature="5876:5882" ph=" " />
-                <marker date="1522325889546" expanded="true" signature="5882:5888" ph=" " />
-                <marker date="1522325889546" expanded="true" signature="6038:6044" ph=" " />
-                <marker date="1522325889546" expanded="true" signature="6044:6050" ph=" " />
-                <marker date="1522325889546" expanded="true" signature="6206:6212" ph=" " />
-                <marker date="1522325889546" expanded="true" signature="6212:6218" ph=" " />
-                <marker date="1522325889546" expanded="true" signature="12620:12626" ph=" " />
-                <marker date="1522325889546" expanded="true" signature="12626:12632" ph=" " />
+                <marker date="1522347030132" expanded="true" signature="1883:1948" ph="SELECT * FRO... updates" />
+                <marker date="1522347030132" expanded="true" signature="4621:4652" ph="select cur_r... current_reg" />
+                <marker date="1522347030132" expanded="true" signature="5079:5110" ph="select cur_r... current_reg" />
+                <marker date="1522347030132" expanded="true" signature="5268:5299" ph="select cur_r... current_reg" />
+                <marker date="1522347030132" expanded="true" signature="5640:5646" ph=" " />
+                <marker date="1522347030132" expanded="true" signature="5646:5652" ph=" " />
+                <marker date="1522347030132" expanded="true" signature="5876:5882" ph=" " />
+                <marker date="1522347030132" expanded="true" signature="5882:5888" ph=" " />
+                <marker date="1522347030132" expanded="true" signature="6038:6044" ph=" " />
+                <marker date="1522347030132" expanded="true" signature="6044:6050" ph=" " />
+                <marker date="1522347030132" expanded="true" signature="6206:6212" ph=" " />
+                <marker date="1522347030132" expanded="true" signature="6212:6218" ph=" " />
+                <marker date="1522347030132" expanded="true" signature="12620:12626" ph=" " />
+                <marker date="1522347030132" expanded="true" signature="12626:12632" ph=" " />
               </folding>
             </state>
           </provider>
@@ -74,7 +74,7 @@
         <entry file="file://$PROJECT_DIR$/assistant/home.php">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="2160">
-              <caret line="54" column="62" lean-forward="true" selection-start-line="54" selection-start-column="41" selection-end-line="54" selection-end-column="62" />
+              <caret line="54" column="62" lean-forward="false" selection-start-line="54" selection-start-column="41" selection-end-line="54" selection-end-column="62" />
               <folding />
             </state>
           </provider>
@@ -83,20 +83,26 @@
       <file leaf-file-name="education_qual.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/assistant/education_qual.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="953">
-              <caret line="376" column="28" lean-forward="false" selection-start-line="376" selection-start-column="28" selection-end-line="376" selection-end-column="28" />
+            <state relative-caret-position="200">
+              <caret line="504" column="36" lean-forward="false" selection-start-line="504" selection-start-column="36" selection-end-line="504" selection-end-column="36" />
               <folding>
                 <element signature="e#6#58#0#PHP" expanded="true" />
                 <element signature="e#1614#1616#0#PHP" expanded="true" />
-                <marker date="1522346832416" expanded="true" signature="280:332" ph="SELECT * fro... education" />
-                <marker date="1522346832416" expanded="false" signature="1168:1201" ph="..." />
-                <marker date="1522346832416" expanded="false" signature="1246:1261" ph="..." />
+                <marker date="1522348386832" expanded="true" signature="280:332" ph="SELECT * fro... education" />
+                <marker date="1522348386832" expanded="false" signature="1168:1201" ph="..." />
+                <marker date="1522348386832" expanded="false" signature="1246:1261" ph="..." />
+                <marker date="1522348386832" expanded="true" signature="13747:14137" ph="..." />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
     </leaf>
+  </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>bod</find>
+    </findStrings>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -215,12 +221,12 @@
       <workItem from="1522336019777" duration="495000" />
       <workItem from="1522336517669" duration="632000" />
       <workItem from="1522337152103" duration="5447000" />
-      <workItem from="1522345382593" duration="1492000" />
+      <workItem from="1522345382593" duration="3004000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="13787000" />
+    <option name="totallyTimeSpent" value="15299000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-16" y="-16" width="3872" height="2092" extended-state="6" />
@@ -290,20 +296,20 @@
         <state relative-caret-position="1440">
           <caret line="36" column="48" lean-forward="false" selection-start-line="36" selection-start-column="48" selection-end-line="36" selection-end-column="48" />
           <folding>
-            <marker date="1522325889546" expanded="true" signature="1883:1948" ph="SELECT * FRO... updates" />
-            <marker date="1522325889546" expanded="true" signature="4621:4652" ph="select cur_r... current_reg" />
-            <marker date="1522325889546" expanded="true" signature="5079:5110" ph="select cur_r... current_reg" />
-            <marker date="1522325889546" expanded="true" signature="5268:5299" ph="select cur_r... current_reg" />
-            <marker date="1522325889546" expanded="true" signature="5640:5646" ph=" " />
-            <marker date="1522325889546" expanded="true" signature="5646:5652" ph=" " />
-            <marker date="1522325889546" expanded="true" signature="5876:5882" ph=" " />
-            <marker date="1522325889546" expanded="true" signature="5882:5888" ph=" " />
-            <marker date="1522325889546" expanded="true" signature="6038:6044" ph=" " />
-            <marker date="1522325889546" expanded="true" signature="6044:6050" ph=" " />
-            <marker date="1522325889546" expanded="true" signature="6206:6212" ph=" " />
-            <marker date="1522325889546" expanded="true" signature="6212:6218" ph=" " />
-            <marker date="1522325889546" expanded="true" signature="12620:12626" ph=" " />
-            <marker date="1522325889546" expanded="true" signature="12626:12632" ph=" " />
+            <marker date="1522347030132" expanded="true" signature="1883:1948" ph="SELECT * FRO... updates" />
+            <marker date="1522347030132" expanded="true" signature="4621:4652" ph="select cur_r... current_reg" />
+            <marker date="1522347030132" expanded="true" signature="5079:5110" ph="select cur_r... current_reg" />
+            <marker date="1522347030132" expanded="true" signature="5268:5299" ph="select cur_r... current_reg" />
+            <marker date="1522347030132" expanded="true" signature="5640:5646" ph=" " />
+            <marker date="1522347030132" expanded="true" signature="5646:5652" ph=" " />
+            <marker date="1522347030132" expanded="true" signature="5876:5882" ph=" " />
+            <marker date="1522347030132" expanded="true" signature="5882:5888" ph=" " />
+            <marker date="1522347030132" expanded="true" signature="6038:6044" ph=" " />
+            <marker date="1522347030132" expanded="true" signature="6044:6050" ph=" " />
+            <marker date="1522347030132" expanded="true" signature="6206:6212" ph=" " />
+            <marker date="1522347030132" expanded="true" signature="6212:6218" ph=" " />
+            <marker date="1522347030132" expanded="true" signature="12620:12626" ph=" " />
+            <marker date="1522347030132" expanded="true" signature="12626:12632" ph=" " />
           </folding>
         </state>
       </provider>
@@ -383,20 +389,20 @@
         <state relative-caret-position="1440">
           <caret line="36" column="48" lean-forward="false" selection-start-line="36" selection-start-column="48" selection-end-line="36" selection-end-column="48" />
           <folding>
-            <marker date="1522325889546" expanded="true" signature="1883:1948" ph="SELECT * FRO... updates" />
-            <marker date="1522325889546" expanded="true" signature="4621:4652" ph="select cur_r... current_reg" />
-            <marker date="1522325889546" expanded="true" signature="5079:5110" ph="select cur_r... current_reg" />
-            <marker date="1522325889546" expanded="true" signature="5268:5299" ph="select cur_r... current_reg" />
-            <marker date="1522325889546" expanded="true" signature="5640:5646" ph=" " />
-            <marker date="1522325889546" expanded="true" signature="5646:5652" ph=" " />
-            <marker date="1522325889546" expanded="true" signature="5876:5882" ph=" " />
-            <marker date="1522325889546" expanded="true" signature="5882:5888" ph=" " />
-            <marker date="1522325889546" expanded="true" signature="6038:6044" ph=" " />
-            <marker date="1522325889546" expanded="true" signature="6044:6050" ph=" " />
-            <marker date="1522325889546" expanded="true" signature="6206:6212" ph=" " />
-            <marker date="1522325889546" expanded="true" signature="6212:6218" ph=" " />
-            <marker date="1522325889546" expanded="true" signature="12620:12626" ph=" " />
-            <marker date="1522325889546" expanded="true" signature="12626:12632" ph=" " />
+            <marker date="1522347030132" expanded="true" signature="1883:1948" ph="SELECT * FRO... updates" />
+            <marker date="1522347030132" expanded="true" signature="4621:4652" ph="select cur_r... current_reg" />
+            <marker date="1522347030132" expanded="true" signature="5079:5110" ph="select cur_r... current_reg" />
+            <marker date="1522347030132" expanded="true" signature="5268:5299" ph="select cur_r... current_reg" />
+            <marker date="1522347030132" expanded="true" signature="5640:5646" ph=" " />
+            <marker date="1522347030132" expanded="true" signature="5646:5652" ph=" " />
+            <marker date="1522347030132" expanded="true" signature="5876:5882" ph=" " />
+            <marker date="1522347030132" expanded="true" signature="5882:5888" ph=" " />
+            <marker date="1522347030132" expanded="true" signature="6038:6044" ph=" " />
+            <marker date="1522347030132" expanded="true" signature="6044:6050" ph=" " />
+            <marker date="1522347030132" expanded="true" signature="6206:6212" ph=" " />
+            <marker date="1522347030132" expanded="true" signature="6212:6218" ph=" " />
+            <marker date="1522347030132" expanded="true" signature="12620:12626" ph=" " />
+            <marker date="1522347030132" expanded="true" signature="12626:12632" ph=" " />
           </folding>
         </state>
       </provider>
@@ -461,20 +467,20 @@
         <state relative-caret-position="1440">
           <caret line="36" column="48" lean-forward="false" selection-start-line="36" selection-start-column="48" selection-end-line="36" selection-end-column="48" />
           <folding>
-            <marker date="1522325889546" expanded="true" signature="1883:1948" ph="SELECT * FRO... updates" />
-            <marker date="1522325889546" expanded="true" signature="4621:4652" ph="select cur_r... current_reg" />
-            <marker date="1522325889546" expanded="true" signature="5079:5110" ph="select cur_r... current_reg" />
-            <marker date="1522325889546" expanded="true" signature="5268:5299" ph="select cur_r... current_reg" />
-            <marker date="1522325889546" expanded="true" signature="5640:5646" ph=" " />
-            <marker date="1522325889546" expanded="true" signature="5646:5652" ph=" " />
-            <marker date="1522325889546" expanded="true" signature="5876:5882" ph=" " />
-            <marker date="1522325889546" expanded="true" signature="5882:5888" ph=" " />
-            <marker date="1522325889546" expanded="true" signature="6038:6044" ph=" " />
-            <marker date="1522325889546" expanded="true" signature="6044:6050" ph=" " />
-            <marker date="1522325889546" expanded="true" signature="6206:6212" ph=" " />
-            <marker date="1522325889546" expanded="true" signature="6212:6218" ph=" " />
-            <marker date="1522325889546" expanded="true" signature="12620:12626" ph=" " />
-            <marker date="1522325889546" expanded="true" signature="12626:12632" ph=" " />
+            <marker date="1522347030132" expanded="true" signature="1883:1948" ph="SELECT * FRO... updates" />
+            <marker date="1522347030132" expanded="true" signature="4621:4652" ph="select cur_r... current_reg" />
+            <marker date="1522347030132" expanded="true" signature="5079:5110" ph="select cur_r... current_reg" />
+            <marker date="1522347030132" expanded="true" signature="5268:5299" ph="select cur_r... current_reg" />
+            <marker date="1522347030132" expanded="true" signature="5640:5646" ph=" " />
+            <marker date="1522347030132" expanded="true" signature="5646:5652" ph=" " />
+            <marker date="1522347030132" expanded="true" signature="5876:5882" ph=" " />
+            <marker date="1522347030132" expanded="true" signature="5882:5888" ph=" " />
+            <marker date="1522347030132" expanded="true" signature="6038:6044" ph=" " />
+            <marker date="1522347030132" expanded="true" signature="6044:6050" ph=" " />
+            <marker date="1522347030132" expanded="true" signature="6206:6212" ph=" " />
+            <marker date="1522347030132" expanded="true" signature="6212:6218" ph=" " />
+            <marker date="1522347030132" expanded="true" signature="12620:12626" ph=" " />
+            <marker date="1522347030132" expanded="true" signature="12626:12632" ph=" " />
           </folding>
         </state>
       </provider>
@@ -512,20 +518,20 @@
         <state relative-caret-position="1440">
           <caret line="36" column="48" lean-forward="false" selection-start-line="36" selection-start-column="48" selection-end-line="36" selection-end-column="48" />
           <folding>
-            <marker date="1522325889546" expanded="true" signature="1883:1948" ph="SELECT * FRO... updates" />
-            <marker date="1522325889546" expanded="true" signature="4621:4652" ph="select cur_r... current_reg" />
-            <marker date="1522325889546" expanded="true" signature="5079:5110" ph="select cur_r... current_reg" />
-            <marker date="1522325889546" expanded="true" signature="5268:5299" ph="select cur_r... current_reg" />
-            <marker date="1522325889546" expanded="true" signature="5640:5646" ph=" " />
-            <marker date="1522325889546" expanded="true" signature="5646:5652" ph=" " />
-            <marker date="1522325889546" expanded="true" signature="5876:5882" ph=" " />
-            <marker date="1522325889546" expanded="true" signature="5882:5888" ph=" " />
-            <marker date="1522325889546" expanded="true" signature="6038:6044" ph=" " />
-            <marker date="1522325889546" expanded="true" signature="6044:6050" ph=" " />
-            <marker date="1522325889546" expanded="true" signature="6206:6212" ph=" " />
-            <marker date="1522325889546" expanded="true" signature="6212:6218" ph=" " />
-            <marker date="1522325889546" expanded="true" signature="12620:12626" ph=" " />
-            <marker date="1522325889546" expanded="true" signature="12626:12632" ph=" " />
+            <marker date="1522347030132" expanded="true" signature="1883:1948" ph="SELECT * FRO... updates" />
+            <marker date="1522347030132" expanded="true" signature="4621:4652" ph="select cur_r... current_reg" />
+            <marker date="1522347030132" expanded="true" signature="5079:5110" ph="select cur_r... current_reg" />
+            <marker date="1522347030132" expanded="true" signature="5268:5299" ph="select cur_r... current_reg" />
+            <marker date="1522347030132" expanded="true" signature="5640:5646" ph=" " />
+            <marker date="1522347030132" expanded="true" signature="5646:5652" ph=" " />
+            <marker date="1522347030132" expanded="true" signature="5876:5882" ph=" " />
+            <marker date="1522347030132" expanded="true" signature="5882:5888" ph=" " />
+            <marker date="1522347030132" expanded="true" signature="6038:6044" ph=" " />
+            <marker date="1522347030132" expanded="true" signature="6044:6050" ph=" " />
+            <marker date="1522347030132" expanded="true" signature="6206:6212" ph=" " />
+            <marker date="1522347030132" expanded="true" signature="6212:6218" ph=" " />
+            <marker date="1522347030132" expanded="true" signature="12620:12626" ph=" " />
+            <marker date="1522347030132" expanded="true" signature="12626:12632" ph=" " />
           </folding>
         </state>
       </provider>
@@ -553,6 +559,24 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="800">
           <caret line="20" column="68" lean-forward="true" selection-start-line="20" selection-start-column="68" selection-end-line="20" selection-end-column="68" />
+          <folding>
+            <marker date="1522325889538" expanded="true" signature="1951:2265" ph="INSERT INTO `fees`.`bank_detail`... " />
+            <marker date="1522325889538" expanded="true" signature="4992:5048" ph="SELECT * fro... bank_detail" />
+            <marker date="1522325889538" expanded="true" signature="8760:8913" ph="select * fro... bank_detail" />
+            <marker date="1522325889538" expanded="true" signature="8931:8987" ph="select * fro... bank_detail" />
+            <marker date="1522325889538" expanded="true" signature="10141:10380" ph="UPDATE fees.bank_detail... " />
+            <marker date="1522325889538" expanded="true" signature="12149:12478" ph="INSERT INTO `fees`.`bank_detail`... " />
+            <marker date="1522325889538" expanded="true" signature="12863:12941" ph="INSERT INTO `certificates`.refno_map_appid... " />
+            <marker date="1522325889538" expanded="true" signature="14538:14654" ph="select * fro... bank_detail" />
+            <marker date="1522325889538" expanded="true" signature="14672:14728" ph="select * fro... bank_detail" />
+            <marker date="1522325889538" expanded="true" signature="16444:16680" ph="UPDATE fees.bank_detail... " />
+            <marker date="1522325889538" expanded="true" signature="17922:17978" ph="SELECT * fro... bank_detail" />
+            <marker date="1522325889538" expanded="true" signature="18211:18311" ph="select * fro... stu_acad_rec" />
+            <marker date="1522325889538" expanded="true" signature="18504:18604" ph="select * fro... stu_acad_rec" />
+            <marker date="1522325889538" expanded="true" signature="22543:22653" ph="SELECT * fro... bank_detail" />
+            <marker date="1522325889538" expanded="true" signature="22812:22960" ph="SELECT * fro... bank_detail" />
+            <marker date="1522325889538" expanded="true" signature="23315:23460" ph="SELECT * fro... bank_detail" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -579,6 +603,24 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <marker date="1522325889538" expanded="true" signature="1951:2265" ph="INSERT INTO `fees`.`bank_detail`... " />
+            <marker date="1522325889538" expanded="true" signature="4992:5048" ph="SELECT * fro... bank_detail" />
+            <marker date="1522325889538" expanded="true" signature="8760:8913" ph="select * fro... bank_detail" />
+            <marker date="1522325889538" expanded="true" signature="8931:8987" ph="select * fro... bank_detail" />
+            <marker date="1522325889538" expanded="true" signature="10141:10380" ph="UPDATE fees.bank_detail... " />
+            <marker date="1522325889538" expanded="true" signature="12149:12478" ph="INSERT INTO `fees`.`bank_detail`... " />
+            <marker date="1522325889538" expanded="true" signature="12863:12941" ph="INSERT INTO `certificates`.refno_map_appid... " />
+            <marker date="1522325889538" expanded="true" signature="14538:14654" ph="select * fro... bank_detail" />
+            <marker date="1522325889538" expanded="true" signature="14672:14728" ph="select * fro... bank_detail" />
+            <marker date="1522325889538" expanded="true" signature="16444:16680" ph="UPDATE fees.bank_detail... " />
+            <marker date="1522325889538" expanded="true" signature="17922:17978" ph="SELECT * fro... bank_detail" />
+            <marker date="1522325889538" expanded="true" signature="18211:18311" ph="select * fro... stu_acad_rec" />
+            <marker date="1522325889538" expanded="true" signature="18504:18604" ph="select * fro... stu_acad_rec" />
+            <marker date="1522325889538" expanded="true" signature="22543:22653" ph="SELECT * fro... bank_detail" />
+            <marker date="1522325889538" expanded="true" signature="22812:22960" ph="SELECT * fro... bank_detail" />
+            <marker date="1522325889538" expanded="true" signature="23315:23460" ph="SELECT * fro... bank_detail" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -614,6 +656,24 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="800">
           <caret line="20" column="68" lean-forward="false" selection-start-line="20" selection-start-column="68" selection-end-line="20" selection-end-column="68" />
+          <folding>
+            <marker date="1522325889538" expanded="true" signature="1951:2265" ph="INSERT INTO `fees`.`bank_detail`... " />
+            <marker date="1522325889538" expanded="true" signature="4992:5048" ph="SELECT * fro... bank_detail" />
+            <marker date="1522325889538" expanded="true" signature="8760:8913" ph="select * fro... bank_detail" />
+            <marker date="1522325889538" expanded="true" signature="8931:8987" ph="select * fro... bank_detail" />
+            <marker date="1522325889538" expanded="true" signature="10141:10380" ph="UPDATE fees.bank_detail... " />
+            <marker date="1522325889538" expanded="true" signature="12149:12478" ph="INSERT INTO `fees`.`bank_detail`... " />
+            <marker date="1522325889538" expanded="true" signature="12863:12941" ph="INSERT INTO `certificates`.refno_map_appid... " />
+            <marker date="1522325889538" expanded="true" signature="14538:14654" ph="select * fro... bank_detail" />
+            <marker date="1522325889538" expanded="true" signature="14672:14728" ph="select * fro... bank_detail" />
+            <marker date="1522325889538" expanded="true" signature="16444:16680" ph="UPDATE fees.bank_detail... " />
+            <marker date="1522325889538" expanded="true" signature="17922:17978" ph="SELECT * fro... bank_detail" />
+            <marker date="1522325889538" expanded="true" signature="18211:18311" ph="select * fro... stu_acad_rec" />
+            <marker date="1522325889538" expanded="true" signature="18504:18604" ph="select * fro... stu_acad_rec" />
+            <marker date="1522325889538" expanded="true" signature="22543:22653" ph="SELECT * fro... bank_detail" />
+            <marker date="1522325889538" expanded="true" signature="22812:22960" ph="SELECT * fro... bank_detail" />
+            <marker date="1522325889538" expanded="true" signature="23315:23460" ph="SELECT * fro... bank_detail" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -692,20 +752,20 @@
         <state relative-caret-position="1440">
           <caret line="36" column="48" lean-forward="false" selection-start-line="36" selection-start-column="48" selection-end-line="36" selection-end-column="48" />
           <folding>
-            <marker date="1522325889546" expanded="true" signature="1883:1948" ph="SELECT * FRO... updates" />
-            <marker date="1522325889546" expanded="true" signature="4621:4652" ph="select cur_r... current_reg" />
-            <marker date="1522325889546" expanded="true" signature="5079:5110" ph="select cur_r... current_reg" />
-            <marker date="1522325889546" expanded="true" signature="5268:5299" ph="select cur_r... current_reg" />
-            <marker date="1522325889546" expanded="true" signature="5640:5646" ph=" " />
-            <marker date="1522325889546" expanded="true" signature="5646:5652" ph=" " />
-            <marker date="1522325889546" expanded="true" signature="5876:5882" ph=" " />
-            <marker date="1522325889546" expanded="true" signature="5882:5888" ph=" " />
-            <marker date="1522325889546" expanded="true" signature="6038:6044" ph=" " />
-            <marker date="1522325889546" expanded="true" signature="6044:6050" ph=" " />
-            <marker date="1522325889546" expanded="true" signature="6206:6212" ph=" " />
-            <marker date="1522325889546" expanded="true" signature="6212:6218" ph=" " />
-            <marker date="1522325889546" expanded="true" signature="12620:12626" ph=" " />
-            <marker date="1522325889546" expanded="true" signature="12626:12632" ph=" " />
+            <marker date="1522347030132" expanded="true" signature="1883:1948" ph="SELECT * FRO... updates" />
+            <marker date="1522347030132" expanded="true" signature="4621:4652" ph="select cur_r... current_reg" />
+            <marker date="1522347030132" expanded="true" signature="5079:5110" ph="select cur_r... current_reg" />
+            <marker date="1522347030132" expanded="true" signature="5268:5299" ph="select cur_r... current_reg" />
+            <marker date="1522347030132" expanded="true" signature="5640:5646" ph=" " />
+            <marker date="1522347030132" expanded="true" signature="5646:5652" ph=" " />
+            <marker date="1522347030132" expanded="true" signature="5876:5882" ph=" " />
+            <marker date="1522347030132" expanded="true" signature="5882:5888" ph=" " />
+            <marker date="1522347030132" expanded="true" signature="6038:6044" ph=" " />
+            <marker date="1522347030132" expanded="true" signature="6044:6050" ph=" " />
+            <marker date="1522347030132" expanded="true" signature="6206:6212" ph=" " />
+            <marker date="1522347030132" expanded="true" signature="6212:6218" ph=" " />
+            <marker date="1522347030132" expanded="true" signature="12620:12626" ph=" " />
+            <marker date="1522347030132" expanded="true" signature="12626:12632" ph=" " />
           </folding>
         </state>
       </provider>
@@ -728,7 +788,7 @@
     <entry file="file://$PROJECT_DIR$/assistant/home.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2160">
-          <caret line="54" column="62" lean-forward="true" selection-start-line="54" selection-start-column="41" selection-end-line="54" selection-end-column="62" />
+          <caret line="54" column="62" lean-forward="false" selection-start-line="54" selection-start-column="41" selection-end-line="54" selection-end-column="62" />
           <folding />
         </state>
       </provider>
@@ -747,14 +807,15 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/assistant/education_qual.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="953">
-          <caret line="376" column="28" lean-forward="false" selection-start-line="376" selection-start-column="28" selection-end-line="376" selection-end-column="28" />
+        <state relative-caret-position="200">
+          <caret line="504" column="36" lean-forward="false" selection-start-line="504" selection-start-column="36" selection-end-line="504" selection-end-column="36" />
           <folding>
             <element signature="e#6#58#0#PHP" expanded="true" />
             <element signature="e#1614#1616#0#PHP" expanded="true" />
-            <marker date="1522346832416" expanded="true" signature="280:332" ph="SELECT * fro... education" />
-            <marker date="1522346832416" expanded="false" signature="1168:1201" ph="..." />
-            <marker date="1522346832416" expanded="false" signature="1246:1261" ph="..." />
+            <marker date="1522348386832" expanded="true" signature="280:332" ph="SELECT * fro... education" />
+            <marker date="1522348386832" expanded="false" signature="1168:1201" ph="..." />
+            <marker date="1522348386832" expanded="false" signature="1246:1261" ph="..." />
+            <marker date="1522348386832" expanded="true" signature="13747:14137" ph="..." />
           </folding>
         </state>
       </provider>

@@ -363,21 +363,21 @@
 
 
 
-            <div id="diploma" class="form-group">
-                <label class="control-label col-sm-3" for="dob"><span class="text-danger">*</span>Board:</label>
-                <div class="col-sm-5">
-                    <input type="text" class="form-control" placeholder="Eg:-CBSE,ICSE" name="board" required >
-                </div>
-            </div>
+<!--            <div id="diploma" class="form-group">-->
+<!--                <label class="control-label col-sm-3" for="dob"><span class="text-danger">*</span>Board:</label>-->
+<!--                <div class="col-sm-5">-->
+<!--                    <input type="text" class="form-control" placeholder="Eg:-CBSE,ICSE" name="board" required >-->
+<!--                </div>-->
+<!--            </div>-->
 
 
 
 
 
             <div id="diploma" class="form-group">
-                <label class="control-label col-sm-3" for="dob"><span class="text-danger">*</span> School Name :</label>
+                <label class="control-label col-sm-3" for="dob"><span class="text-danger">*</span> University:</label>
                 <div class="col-sm-5">
-                    <input type="text" class="form-control"  name="school"  required>
+                    <input type="text" class="form-control"  name="university"  required>
                 </div>
             </div>
 
@@ -390,16 +390,16 @@
 
 
 
-            <!--        <div class="form-group">-->
-            <!--          <label class="control-label col-sm-3" for="dob"><span class="text-danger">*</span> Entry Date :</label> -->
-            <!--          <div class="col-sm-3">-->
-            <!--            <input type="date" class="form-control"   name="entry_date" required id="from"> <font class="text-danger">(YYYY-MM-DD)</font>-->
-            <!--          </div>-->
-            <!--            <label class="control-label col-sm-2" for="email"><span class="text-danger">*</span> Completion Date:</label>-->
-            <!--          <div class="col-sm-4">-->
-            <!--            <input type="date" class="form-control"   name="complete_date" required id="to"> <span class="text-danger">(YYYY-MM-DD)</span>-->
-            <!--          </div>-->
-            <!--        </div>-->
+                    <div class="form-group">
+                      <label class="control-label col-sm-3" for="dob"><span class="text-danger">*</span> Entry Date :</label>
+                      <div class="col-sm-3">
+                        <input type="date" class="form-control"   name="start_date" required id="from"> <span class="text-danger">(YYYY-MM-DD)</span>
+                      </div>
+                        <label class="control-label col-sm-2" for="email"><span class="text-danger">*</span> Completion Date:</label>
+                      <div class="col-sm-4">
+                        <input type="date" class="form-control"   name="end_date" required id="to"> <span class="text-danger">(YYYY-MM-DD)</span>
+                      </div>
+                    </div>
 
 
             <div class="form-group">
@@ -454,6 +454,260 @@
 </div>
 
 
+//undergradute
+
+
+<form id ="ug" class="form-horizontal" name="reg_frm" method="post" action="save.php" onSubmit="return validate();">
+    <div class="tab-content">
+        <div id="home" class="tab-pane fade in active">
+            <h3>Details of Academic Record (In Reverse Cronological Order) :</h3>
+            <hr>
+
+
+
+
+            <div class="form-group">
+                <label class="control-label col-sm-3" for="dob"><span class="text-danger">*</span> Qualification :</label>
+                <div class="col-sm-3">
+                    <select name="qualification" required>
+                        <option value="10th_mark" >10th Standard</option>
+                        <option value="diploma" >Diploma</option>
+                        <option value="12th_mark">12th Standard</option>
+                        <option value="ug" >Under Graduate</option>
+                        <option value="pg">Post Graduate</option>
+                    </select>
+
+
+
+                </div>
+                <label class="control-label col-sm-2" for="email"><span class="text-danger">*</span> Specialisation:</label>
+                <div class="col-sm-4">
+                    <input type="text" class="form-control"   name="field" required>
+                </div>
+            </div>
+
+
+
+
+            <!--            <div id="diploma" class="form-group">-->
+            <!--                <label class="control-label col-sm-3" for="dob"><span class="text-danger">*</span>Board:</label>-->
+            <!--                <div class="col-sm-5">-->
+            <!--                    <input type="text" class="form-control" placeholder="Eg:-CBSE,ICSE" name="board" required >-->
+            <!--                </div>-->s
+            <!--            </div>-->
+
+
+
+
+
+            <div id="ug" class="form-group">
+                <label class="control-label col-sm-3" for="dob"><span class="text-danger">*</span> University:</label>
+                <div class="col-sm-4">
+                    <input type="text" class="form-control"  name="university"  required>
+                </div>
+            </div>
+
+            <!--        <div class="form-group">-->
+            <!--          <label class="control-label col-sm-3" for="dob"><span class="text-danger">*</span> Board :</label>-->
+            <!--          <div class="col-sm-5">-->
+            <!--            <input type="text" class="form-control" name="board" required>  -->
+            <!--          </div>-->
+            <!--        </div>-->
+
+
+
+            <div class="form-group">
+                <label class="control-label col-sm-3" for="dob"><span class="text-danger">*</span> Entry Date :</label>
+                <div class="col-sm-3">
+                    <input type="date" class="form-control"   name="start_date" required id="from"> <span class="text-danger">(YYYY-MM-DD)</span>
+                </div>
+                <label class="control-label col-sm-2" for="email"><span class="text-danger">*</span> Completion Date:</label>
+                <div class="col-sm-4">
+                    <input type="date" class="form-control"   name="end_date" required id="to"> <span class="text-danger">(YYYY-MM-DD)</span>
+                </div>
+            </div>
+
+
+            <div class="form-group">
+                <label class="control-label col-sm-offset-1 col-sm-2" for="email"><span class="text-danger">*</span>Marking Scheme</label>
+                <div class=" col-sm-3" for="dob">
+
+                    <label class="radio-inline">
+                        <input type="radio" class="radio-inline" value="CGPA" name="per_or_cgp" required>CGPA<br></label>
+                    <label class="radio-inline">
+                        <input type="radio" class="radio-inline" value="Percentage" name="per_or_cgp" required>Percentage
+                    </label>
+
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="control-label col-sm-3" for="dob"><span class="text-danger">*</span> Marks/CGPA Obtained :</label>
+                <div class="col-sm-3">
+                    <input type="text" class="form-control"   name="marks" required id="marks">
+                </div>
+                <label class="control-label col-sm-2" for="email"><span class="text-danger">*</span> Maximum Marks/CGPA:</label>
+                <div class="col-sm-4">
+                    <input type="text" class="form-control"  name="max_marks" required id="max_marks">
+                </div>
+            </div>
+
+
+
+
+            <div class="form-group">
+
+                <label class="control-label col-sm-3" for="dob"><span class="text-danger">*</span> % Marks/CGPA :</label>
+                <div class="col-sm-3">
+                    <input type="text" class="form-control"   name="perc_marks" readonly>
+                </div>
+
+            </div>
+
+
+
+
+
+
+
+
+            <div class="form-group">
+                <div class="col-sm-offset-4 col-sm-4">
+                    <button type="submit" name="edu_ch" class="btn btn-primary col-sm-12">Submit Information</button>
+                </div>
+            </div>
+</form>
+</div>
+
+
+
+//post graduate
+
+
+<form id ="pg" class="form-horizontal" name="reg_frm" method="post" action="save.php" onSubmit="return validate();">
+    <div class="tab-content">
+        <div id="home" class="tab-pane fade in active">
+            <h3>Details of Academic Record (In Reverse Cronological Order) :</h3>
+            <hr>
+
+
+
+
+            <div class="form-group">
+                <label class="control-label col-sm-3" for="dob"><span class="text-danger">*</span> Qualification :</label>
+                <div class="col-sm-3">
+                    <select name="qualification" required>
+                        <option value="10th_mark" >10th Standard</option>
+                        <option value="diploma" >Diploma</option>
+                        <option value="12th_mark">12th Standard</option>
+                        <option value="ug" >Under Graduate</option>
+                        <option value="pg">Post Graduate</option>
+                    </select>
+
+
+
+                </div>
+                <label class="control-label col-sm-2" for="email"><span class="text-danger">*</span> Specialisation:</label>
+                <div class="col-sm-4">
+                    <input type="text" class="form-control"   name="field" required>
+                </div>
+            </div>
+
+
+
+
+            <!--            <div id="diploma" class="form-group">-->
+            <!--                <label class="control-label col-sm-3" for="dob"><span class="text-danger">*</span>Board:</label>-->
+            <!--                <div class="col-sm-5">-->
+            <!--                    <input type="text" class="form-control" placeholder="Eg:-CBSE,ICSE" name="board" required >-->
+            <!--                </div>-->
+            <!--            </div>-->
+
+
+
+
+
+            <div id="pg" class="form-group">
+                <label class="control-label col-sm-3" for="dob"><span class="text-danger">*</span> University:</label>
+                <div class="col-sm-4">
+                    <input type="text" class="form-control"  name="university"  required>
+                </div>
+            </div>
+
+            <!--        <div class="form-group">-->
+            <!--          <label class="control-label col-sm-3" for="dob"><span class="text-danger">*</span> Board :</label>-->
+            <!--          <div class="col-sm-5">-->
+            <!--            <input type="text" class="form-control" name="board" required>  -->
+            <!--          </div>-->
+            <!--        </div>-->
+
+
+
+            <div class="form-group">
+                <label class="control-label col-sm-3" for="dob"><span class="text-danger">*</span> Entry Date :</label>
+                <div class="col-sm-3">
+                    <input type="date" class="form-control"   name="start_date" required id="from"> <span class="text-danger">(YYYY-MM-DD)</span>
+                </div>
+                <label class="control-label col-sm-2" for="email"><span class="text-danger">*</span> Completion Date:</label>
+                <div class="col-sm-4">
+                    <input type="date" class="form-control"   name="end_date" required id="to"> <span class="text-danger">(YYYY-MM-DD)</span>
+                </div>
+            </div>
+
+
+            <div class="form-group">
+                <label class="control-label col-sm-offset-1 col-sm-2" for="email"><span class="text-danger">*</span>Marking Scheme</label>
+                <div class=" col-sm-3" for="dob">
+
+                    <label class="radio-inline">
+                        <input type="radio" class="radio-inline" value="CGPA" name="per_or_cgp" required>CGPA<br></label>
+                    <label class="radio-inline">
+                        <input type="radio" class="radio-inline" value="Percentage" name="per_or_cgp" required>Percentage
+                    </label>
+
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="control-label col-sm-3" for="dob"><span class="text-danger">*</span> Marks/CGPA Obtained :</label>
+                <div class="col-sm-3">
+                    <input type="text" class="form-control"   name="marks" required id="marks">
+                </div>
+                <label class="control-label col-sm-2" for="email"><span class="text-danger">*</span> Maximum Marks/CGPA:</label>
+                <div class="col-sm-4">
+                    <input type="text" class="form-control"  name="max_marks" required id="max_marks">
+                </div>
+            </div>
+
+
+
+
+            <div class="form-group">
+
+                <label class="control-label col-sm-3" for="dob"><span class="text-danger">*</span> % Marks/CGPA :</label>
+                <div class="col-sm-3">
+                    <input type="text" class="form-control"   name="perc_marks" readonly>
+                </div>
+
+            </div>
+
+
+
+
+
+
+
+
+            <div class="form-group">
+                <div class="col-sm-offset-4 col-sm-4">
+                    <button type="submit" name="edu_ch" class="btn btn-primary col-sm-12">Submit Information</button>
+                </div>
+            </div>
+</form>
+</div>
+
+
+</body>
 
 
 <script>
