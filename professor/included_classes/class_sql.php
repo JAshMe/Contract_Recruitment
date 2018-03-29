@@ -2,36 +2,32 @@
 class sqlfunctions {
 	public static $db;
     private  $host,$con,$user,$pass,$connection,$arra,$curr_reg_db,$curr_sem_type;
-    public  $sql,$query,$database; 
-    public  function  __construct()
-    {
-       $this->host="localhost";
-       $this->user="root";
-       $pass="";
-//	   $this->$connection = mysql_connect("localhost","root",$password,TRUE);
-	   $this->connection= mysql_connect($this->host,$this->user,$pass) or die(mysql_error());
-	    $this->database = "recruitment_professor";
-	   //$this->connect_db("tab");
-	   //$this->curr_reg_db = $this->get_value("cur_reg","current_reg","1","1");
-	   //$this->curr_sem_type = $this->get_value("cur_sem","current_reg","1","1");
-	  
-    }
-   public function connect_db($db)
-    {
-		//$this->connection;
+    public  $sql,$query,$database;
+	public  function  __construct()
+	{
+		$this->connect_db("recruitment_assistant");
+
+	}
+	public function connect_db($db)
+	{
+
+		$this->host="localhost";
+		$this->user="root";
+		$pass="";
+		$con= mysqli_connect($this->host,$this->user,$pass,$db) or die(mysqli_error($con));
+		$this->connection = $con;
 		$this->database=$db;
-       mysql_select_db($this->database,$this->connection) or die("database not connected 2");
-    }
+	}
    public function get_value($column, $table , $var,$value)
     {  
-		$value=mysql_real_escape_string($value);
+		$value=mysqli_real_escape_string($this->connection,$value);
        $this->sql = "SELECT $column from $table WHERE $var = \"$value\"";
 	     //echo $this->sql;
     	/*if($_SESSION['regno']=='20148035')
 		 echo $this->sql;*/
 		//echo $this->database;
         $this->query=$this->process_query($this->sql);
-		$this->arra=mysql_fetch_array($this->query);
+		$this->arra=mysqli_fetch_array($this->query);
 		//echo $this->arra[0];
         return $this->arra[0];
     }
@@ -70,10 +66,10 @@ class sqlfunctions {
 		} else {
 			$ip = $_SERVER['REMOTE_ADDR'];
 		}
-		mysql_query("INSERT INTO post.sql_queries (query,date,ip) VALUES ('$query1',NOW(),'$ip')") or die(mysql_error());
+		mysqli_query("INSERT INTO post.sql_queries (query,date,ip) VALUES ('$query1',NOW(),'$ip')") or die(mysqli_error($this->connection));
 		//echo $this->database;
 		//sv_query($query1);
-		$this->query=mysql_query($query1) or die("There is some Technical fault! Please try after sometime and if the problem persists, then contact Web Team");
+		$this->query=mysqli_query($query1) or die("There is some Technical fault! Please try after sometime and if the problem persists, then contact Web Team");
 		//echo $query1;
         return $this->query;
     }
@@ -85,7 +81,7 @@ class sqlfunctions {
 		//echo $this->database;
 		//sv_query($query1);
 		//if(substr($query1,0,6)!='select')
-		$this->query=mysql_query($query1)or die(mysql_errno());// or die("There is some Technical fault! Please try after sometime and if the problem persists, then contact Web Team");
+		$this->query=mysqli_query($query1)or die(mysqli_errno($this->connection));// or die("There is some Technical fault! Please try after sometime and if the problem persists, then contact Web Team");
 		//echo $query1;
         return $this->query;
     }
@@ -122,12 +118,12 @@ class sqlfunctions {
 	
     public function fetch_rows ($query2)
     {
-		return mysql_fetch_array($query2);
+		return mysqli_fetch_array($query2);
     }
 	
     public  function close_con()
     {
-	return mysql_close($this->connection);
+	return mysqli_close($this->connection);
     }
 	public function get_curr_reg()
 	{
@@ -138,10 +134,10 @@ class sqlfunctions {
 		return $this->curr_sem_type;
 	}
 	public function errno(){
-		return mysql_errno($this->connection);	
+		return mysqli_errno($this->connection);
 	}
 	public function error(){
-		return mysql_error($this->connection);	
+		return mysqli_error($this->connection);
 	}
 }
 ?>

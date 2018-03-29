@@ -5,22 +5,18 @@ class sqlfunctions {
     public  $sql,$query,$database; 
     public  function  __construct()
     {
-       $this->host="localhost";
-       $this->user="root";
-       $pass="";
-//	   $this->$connection = mysql_connect("localhost","root",$password,TRUE);
-	   $this->connection= mysql_connect($this->host,$this->user,$pass) or die(mysql_error());
-	    $this->database = "recruitment_assistant";
-	   //$this->connect_db("tab");
-	   //$this->curr_reg_db = $this->get_value("cur_reg","current_reg","1","1");
-	   //$this->curr_sem_type = $this->get_value("cur_sem","current_reg","1","1");
+      		$this->connect_db("recruitment_assistant");
 	  
     }
    public function connect_db($db)
     {
-		//$this->connection;
-		$this->database=$db;
-       mysql_select_db($this->database,$this->connection) or die("database not connected 2");
+
+		    $this->host="localhost";
+		    $this->user="root";
+		    $pass="";
+		   $con= mysqli_connect($this->host,$this->user,$pass,$db) or die(mysqli_error($con));
+	          $this->connection = $con;
+	           $this->database=$db;
     }
    public function get_value($column, $table , $var,$value)
     {  

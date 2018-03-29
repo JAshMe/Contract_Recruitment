@@ -28,7 +28,7 @@ class userfunctions
                 }
                 $sql=new sqlfunctions();
 		$sql->connect_db("login");
-		$dummy=mysql_real_escape_string($sql->get_value("pass","login","regno",$username));
+		$dummy=mysqli_real_escape_string($sql->connection,$sql->get_value("pass","login","regno",$username));
 		// $sql->get_value("pass","login","regno=",$username);
 		 //$this->login->sql="select * from login where regno=\"$username\" and pass=\"$password\" and regno not in (select regno from reg_e_11.track)";
      	 //.$this->login->process_query($this->login->sql);

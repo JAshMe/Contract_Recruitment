@@ -15,7 +15,7 @@ include ("../mailing_script/PHPMailer/PHPMailerAutoload.php");
 
     if(isset($_POST['login-submit'])){
         $email = $_POST['email'];
-        $email = mysql_real_escape_string(trim(htmlentities($email)));
+        $email = mysqli_real_escape_string($db->connection,trim(htmlentities($email)));
         $pass = $_POST['pass'];
         $pass = md5($pass);
         $sql = "select * from login where email = '$email' and password like '$pass'";
