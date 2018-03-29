@@ -1,4 +1,4 @@
-<?php
+ <?php
 class sqlfunctions {
 	public static $db;
     private  $host,$con,$user,$pass,$arra,$curr_reg_db,$curr_sem_type;

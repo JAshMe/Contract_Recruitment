@@ -5,7 +5,7 @@ require_once("./included_classes/class_user.php");
     $misc= new miscfunctions();
     $db = new sqlfunctions();
    $id=$_SESSION['user'];
-    $query="SELECT * from `education` where `user_id` like '$id'";
+    $query="SELECT * from `10th_mark` where `user_id` like '$id'";
     $c = $db->process_query($query);
 
 ?>
@@ -41,31 +41,102 @@ require_once("./included_classes/class_user.php");
 <hr>
 
 
-<table class="table table-striped">
-  <tr><th>Qualification</th><th>Degree</th><th>Discipline</th><th>Institute</th><th>Board/Univ</th><th>Marks/CGPA</th><th>Max Marks/CGPA</th><th>Entry Date</th><th>Comp. Date</th><th>Div.</th><th>% age</th><th>Remove</th></tr>
+
+<!--<table class="table table-striped">-->
+<!--  <tr><th>Qualification</th><th>Degree</th><th>Discipline</th><th>Institute</th><th>Board/Univ</th><th>Marks/CGPA</th><th>Max Marks/CGPA</th><th>Entry Date</th><th>Comp. Date</th><th>Div.</th><th>% age</th><th>Remove</th></tr>-->
 <?php
+$board_10=$comp_10=$school_10=$per_or_cgpa_10=$value_10=$marks_10=$max_marks_10=null;
+        if(mysqli_num_rows($c)>0) {
+            $board_10 = $r['board'];
+            $comp_10 = $r['completion date'];
+            $school_10 = $r['school'];
+            $per_or_cgpa_10 = $r['per_or_cgpa'];
+            $value_10 = $r['value'];
+            $marks_10 = $r['marks'];
+            $max_marks_10 = $r['max_marks'];
+        }
+?>
 
 
-    while(($r = $db->fetch_rows($c)))
-    {
-  $tmp_id=$r['id'];
-  $degree = validate($r['degree']);
-  $subject = validate($r['subject']);
-  $inst_name = validate($r['inst_name']);
-  $entry_date = validate($r['entry_date']);
-  $complete_date = validate($r['complete_date']);
-  $marks = validate($r['marks']);
-  $max_marks = validate($r['max_marks']);
-  $perc_marks = validate($r['perc_marks']);
-  $division = validate($r['division']);
-  $qualification = validate($r['qualification']);
-  $board = validate($r['board']);
 
-  echo "<tr><td>$qualification</td><td>$degree</td><td>$subject</td><td>$inst_name</td><td>$board</td><td>$marks</td><td>$max_marks</td><td>$entry_date</td><td>$complete_date</td><td>$division</td><td>$perc_marks</td><td><a href='delete.php?id=$tmp_id&page=education_qual'>Remove</a></td></tr>";
+ <?php
+ $id=$_SESSION['user'];
+ $query="SELECT * from `12th_mark` where `user_id` like '$id'";
+ $c = $db->process_query($query);
+ /*while(($r = $db->fetch_rows($c)))
+ {*/
+ $board_12=$comp_12=$school_12=$per_or_cgpa_12=$value_12=$marks_12=$max_marks_12=null;
+ if(mysqli_num_rows($c)>0) {
+     $board_12 = $r['board'];
+     $comp_12 = $r['completion_date'];
+     $school_12 = $r['school'];
+     $per_or_cgpa_12 = $r['per_or_cgpa'];
+     $value_12 = $r['value'];
+     $marks_12 = $r['marks'];
+     $max_marks_12 = $r['max_marks'];
+ }
+ /*}*/
 
-}
-//?>
-</table>
+ ?>
+
+ <?php
+ $id=$_SESSION['user'];
+ $query="SELECT * from `diploma` where `user_id` like '$id'";
+ $c = $db->process_query($query);
+// while(($r = $db->fetch_rows($c)))
+// {
+ $field_d=$start_date_d=$end_data_d=$per_or_cgpa_d=$value_d=$marks_d=$max_marks_d=$university_d=null;
+ if(mysqli_num_rows($c)>0) {
+     $field_d = $r['field'];
+     $start_date_d = $r['start_date'];
+     $end_data_d = $r['end_data'];
+     $per_or_cgpa_d = $r['per_or_cgpa'];
+     $value_d = $r['value'];
+     $marks_d = $r['marks'];
+     $max_marks_d = $r['max_marks'];
+     $university_d = $r['university'];
+ }
+// }
+?>
+
+
+    <?php
+    $id=$_SESSION['user'];
+    $query="SELECT * from `ug` where `user_id` like '$id'";
+    $c = $db->process_query($query);
+    $degree_ug=$specialization_ug=$start_date_ug=$completion_date_ug=$per_or_cgpa_ug=$value_ug=$marks_ug=$max_marks_ug=$university_ug=null;
+    if(mysqli_num_rows($c)>0) {
+        $degree_ug = $r['degree'];
+        $specialization_ug = $r['specialization'];
+        $start_date_ug = $r['start_date'];
+        $completion_date_ug = $r['completion_data'];
+        $per_or_cgpa_ug = $r['per_or_cgpa'];
+        $value_ug = $r['value'];
+        $marks_ug = $r['marks'];
+        $max_marks_ug = $r['max_marks'];
+        $university_ug = $r['university'];
+    }
+    ?>
+    <?php
+    $id=$_SESSION['user'];
+    $query="SELECT * from `pg` where `user_id` like '$id'";
+    $c = $db->process_query($query);
+    $degree_pg=$specialization_pg=$start_date_pg=$completion_date_pg=$per_or_cgpa_pg=$value_pg=$marks_pg=$max_marks_pg=$university_pg=null;
+    if(mysqli_num_rows($c)>0) {
+        $degree_pg = $r['degree'];
+        $specialization_pg = $r['specialization'];
+        $start_date_pg = $r['start_date'];
+        $completion_date_pg = $r['completion_data'];
+        $per_or_cgpa_pg = $r['per_or_cgpa'];
+        $value_pg = $r['value'];
+        $marks_pg = $r['marks'];
+        $max_marks_pg = $r['max_marks'];
+        $university_pg = $r['university'];
+    }
+    ?>
+
+
+<!--</table>-->
 <p align="justify" class="larger-font">
 
 <ul class="text-danger">
@@ -74,17 +145,10 @@ require_once("./included_classes/class_user.php");
 
 
 
-
-
-
-
-
-
-
 <form id ="10th" class="form-horizontal" name="reg_frm" method="post" action="save.php" onSubmit="return validate();">
 <div class="tab-content">
       <div id="home" class="tab-pane fade in active">
-        <h3>Details of Academic Record (In Reverse Cronological Order) :</h3>
+        <h3>Details of Academic Record (In Reverse Chronological Order) :</h3>
         <hr>
 
 
@@ -107,7 +171,7 @@ require_once("./included_classes/class_user.php");
           </div>
             <label class="control-label col-sm-2" for="email"><span class="text-danger">*</span> Completion Date:</label>
           <div class="col-sm-4">
-            <input type="date" class="form-control"   name="completion_date" required>
+            <input type="date" class="form-control"   name="completion_date" value="<?= $comp_10?>" required>
           </div>
         </div>
 
@@ -117,7 +181,7 @@ require_once("./included_classes/class_user.php");
       	<div id="10th" class="form-group">
          	<label class="control-label col-sm-3" for="dob"><span class="text-danger">*</span>Board:</label>
           	<div class="col-sm-5">
-          		<input type="text" class="form-control" placeholder="Eg:-CBSE,ICSE" name="board" required >
+          		<input type="text" class="form-control" placeholder="Eg:-CBSE,ICSE" name="board" value="<?= $board_10?>" required >
           	</div>
       	</div>
 
@@ -128,7 +192,7 @@ require_once("./included_classes/class_user.php");
       	<div id="10th" class="form-group">
           <label class="control-label col-sm-3" for="dob"><span class="text-danger">*</span> School Name :</label>
           <div class="col-sm-5">
-            <input type="text" class="form-control"  name="school"  required>
+            <input type="text" class="form-control"  name="school"  value="<?= $school_10?>" required>
           </div>
         </div>
 
@@ -137,7 +201,6 @@ require_once("./included_classes/class_user.php");
 <!--          <div class="col-sm-5">-->
 <!--            <input type="text" class="form-control" name="board" required>  -->
 <!--          </div>-->
-<!--        </div>-->
 
 
 
@@ -158,9 +221,10 @@ require_once("./included_classes/class_user.php");
               <div class=" col-sm-3" for="dob">
 
                   <label class="radio-inline">
-                      <input type="radio" class="radio-inline" value="CGPA" name="per_or_cgp" required>CGPA<br></label>
+                      <input type="radio" class="radio-inline" value="CGPA" name="per_or_cgp" <?php if(isset($per_or_cgpa_10) && $per_or_cgpa_10=='CGPA') echo 'checked="checked"'; ?> required>CGPA<br>
+                  </label>
                   <label class="radio-inline">
-                      <input type="radio" class="radio-inline" value="Percentage" name="per_or_cgp" required>Percentage
+                      <input type="radio" class="radio-inline" value="Percentage" name="per_or_cgp" <?php if(isset($per_or_cgpa_10) && $per_or_cgpa_10=='Percentage') echo 'checked="checked"'; ?> required>Percentage
                   </label>
 
               </div>
@@ -170,11 +234,11 @@ require_once("./included_classes/class_user.php");
         <div class="form-group">
           <label class="control-label col-sm-3" for="dob"><span class="text-danger">*</span> Marks/CGPA Obtained :</label>
           <div class="col-sm-3">
-            <input type="text" class="form-control"   name="marks" required id="marks">
+            <input type="text" class="form-control"   name="marks" value="<?= $marks_10?>" required id="marks">
           </div>
             <label class="control-label col-sm-2" for="email"><span class="text-danger">*</span> Maximum Marks/CGPA:</label>
           <div class="col-sm-4">
-            <input type="text" class="form-control"  name="max_marks" required id="max_marks">
+            <input type="text" class="form-control"  name="max_marks" value="<?= $max_marks_10?>" required id="max_marks">
           </div>
         </div>
 
@@ -185,7 +249,7 @@ require_once("./included_classes/class_user.php");
 
           <label class="control-label col-sm-3" for="dob"><span class="text-danger">*</span> % Marks/CGPA :</label>
           <div class="col-sm-3">
-            <input type="text" class="form-control"   name="perc_marks" readonly>
+            <input type="text" class="form-control"   name="perc_marks" value="<?= $value_10?>" readonly>
           </div>
 
         </div>
@@ -199,7 +263,7 @@ require_once("./included_classes/class_user.php");
 
 <div class="form-group">
     <div class="col-sm-offset-4 col-sm-4">
-      <button type="submit" name="edu_ch" class="btn btn-primary col-sm-12">Submit Information</button>
+      <button type="submit" name="edu_ch[]" class="btn btn-primary col-sm-12">Submit Information</button>
     </div>
   </div>
   </form>
@@ -214,7 +278,7 @@ require_once("./included_classes/class_user.php");
 <form id ="12th" class="form-horizontal" name="reg_frm" method="post" action="save.php" onSubmit="return validate();">
     <div class="tab-content">
         <div id="home" class="tab-pane fade in active">
-            <h3>Details of Academic Record (In Reverse Cronological Order) :</h3>
+            <h3>Details of Academic Record (In Reverse Chronological Order) :</h3>
             <hr>
 
 
@@ -236,7 +300,7 @@ require_once("./included_classes/class_user.php");
                 </div>
                 <label class="control-label col-sm-2" for="email"><span class="text-danger">*</span> Completion Date:</label>
                 <div class="col-sm-4">
-                    <input type="date" class="form-control"   name="completion_date" required>
+                    <input type="date" class="form-control"   name="completion_date" value="<?= $comp_12?>" required>
                 </div>
             </div>
 
@@ -246,7 +310,7 @@ require_once("./included_classes/class_user.php");
             <div id="10th" class="form-group">
                 <label class="control-label col-sm-3" for="dob"><span class="text-danger">*</span>Board:</label>
                 <div class="col-sm-5">
-                    <input type="text" class="form-control" placeholder="Eg:-CBSE,ICSE" name="board" required >
+                    <input type="text" class="form-control" placeholder="Eg:-CBSE,ICSE" name="board" value="<?= $board_12?>" required >
                 </div>
             </div>
 
@@ -257,7 +321,7 @@ require_once("./included_classes/class_user.php");
             <div id="10th" class="form-group">
                 <label class="control-label col-sm-3" for="dob"><span class="text-danger">*</span> School Name :</label>
                 <div class="col-sm-5">
-                    <input type="text" class="form-control"  name="school"  required>
+                    <input type="text" class="form-control"  name="school"  value="<?= $school_12?>" required>
                 </div>
             </div>
 
@@ -287,9 +351,9 @@ require_once("./included_classes/class_user.php");
                 <div class=" col-sm-3" for="dob">
 
                     <label class="radio-inline">
-                        <input type="radio" class="radio-inline" value="CGPA" name="per_or_cgp" required>CGPA<br></label>
+                        <input type="radio" class="radio-inline" value="CGPA" name="per_or_cgp" <?php if(isset($per_or_cgpa_12) && $per_or_cgpa_12=='CGPA') echo 'checked="checked"'; ?> required>CGPA<br></label>
                     <label class="radio-inline">
-                        <input type="radio" class="radio-inline" value="Percentage" name="per_or_cgp" required>Percentage
+                        <input type="radio" class="radio-inline" value="Percentage" name="per_or_cgp" <?php if(isset($per_or_cgpa_12) && $per_or_cgpa_10=='Percentage') echo 'checked="checked"'; ?> required>Percentage
                     </label>
 
                 </div>
@@ -298,11 +362,11 @@ require_once("./included_classes/class_user.php");
                     <div class="form-group">
                       <label class="control-label col-sm-3" for="dob"><span class="text-danger">*</span> Marks/CGPA Obtained :</label>
                       <div class="col-sm-3">
-                        <input type="text" class="form-control"   name="marks" required id="marks">
+                        <input type="text" class="form-control"   name="marks" required id="marks" value="<?= $marks_12?>" >
                       </div>
                         <label class="control-label col-sm-2" for="email"><span class="text-danger">*</span> Maximum Marks/CGPA:</label>
                       <div class="col-sm-4">
-                        <input type="text" class="form-control"  name="max_marks" required id="max_marks">
+                        <input type="text" class="form-control"  name="max_marks" required id="max_marks" value="<?= $max_marks_12?>" >
                       </div>
                     </div>
 
@@ -313,7 +377,7 @@ require_once("./included_classes/class_user.php");
 
                 <label class="control-label col-sm-3" for="dob"><span class="text-danger">*</span> % Marks/CGPA :</label>
                 <div class="col-sm-3">
-                    <input type="text" class="form-control"   name="perc_marks" readonly>
+                    <input type="text" class="form-control"   name="perc_marks" value="<?= $value_12?>" readonly>
                 </div>
 
             </div>
@@ -327,7 +391,7 @@ require_once("./included_classes/class_user.php");
 
             <div class="form-group">
                 <div class="col-sm-offset-4 col-sm-4">
-                    <button type="submit" name="edu_ch" class="btn btn-primary col-sm-12">Submit Information</button>
+                    <button type="submit" name="edu_ch[]" class="btn btn-primary col-sm-12">Submit Information</button>
                 </div>
             </div>
 </form>
@@ -342,7 +406,7 @@ require_once("./included_classes/class_user.php");
 <form id ="diploma" class="form-horizontal" name="reg_frm" method="post" action="save.php" onSubmit="return validate();">
     <div class="tab-content">
         <div id="home" class="tab-pane fade in active">
-            <h3>Details of Academic Record (In Reverse Cronological Order) :</h3>
+            <h3>Details of Academic Record (In Reverse Chronological Order) :</h3>
             <hr>
 
 
@@ -364,7 +428,7 @@ require_once("./included_classes/class_user.php");
                 </div>
                 <label class="control-label col-sm-2" for="email"><span class="text-danger">*</span> Specialisation:</label>
                 <div class="col-sm-4">
-                    <input type="text" class="form-control"   name="field" required>
+                    <input type="text" class="form-control"   name="field" value="<?= $field_d?>" required>
                 </div>
             </div>
 
@@ -385,7 +449,7 @@ require_once("./included_classes/class_user.php");
             <div id="diploma" class="form-group">
                 <label class="control-label col-sm-3" for="dob"><span class="text-danger">*</span> University:</label>
                 <div class="col-sm-5">
-                    <input type="text" class="form-control"  name="university"  required>
+                    <input type="text" class="form-control"  name="university" value="<?= $university_d?>" required>
                 </div>
             </div>
 
@@ -401,11 +465,11 @@ require_once("./included_classes/class_user.php");
                     <div class="form-group">
                       <label class="control-label col-sm-3" for="dob"><span class="text-danger">*</span> Entry Date :</label>
                       <div class="col-sm-3">
-                        <input type="date" class="form-control"   name="start_date" required id="from"> <span class="text-danger">(YYYY-MM-DD)</span>
+                        <input type="date" class="form-control"   name="start_date" required id="from" value="<?= $start_date_d?>" > <span class="text-danger">(YYYY-MM-DD)</span>
                       </div>
                         <label class="control-label col-sm-2" for="email"><span class="text-danger">*</span> Completion Date:</label>
                       <div class="col-sm-4">
-                        <input type="date" class="form-control"   name="end_date" required id="to"> <span class="text-danger">(YYYY-MM-DD)</span>
+                        <input type="date" class="form-control"   name="end_date" required id="to" value="<?= $end_data_d?>" > <span class="text-danger">(YYYY-MM-DD)</span>
                       </div>
                     </div>
 
@@ -415,9 +479,9 @@ require_once("./included_classes/class_user.php");
                 <div class=" col-sm-3" for="dob">
 
                     <label class="radio-inline">
-                        <input type="radio" class="radio-inline" value="CGPA" name="per_or_cgp" required>CGPA<br></label>
+                        <input type="radio" class="radio-inline" value="CGPA" name="per_or_cgp" <?php if(isset($per_or_cgpa_12) && $per_or_cgpa_12=='CGPA') echo 'checked="checked"';  ?> required>CGPA<br></label>
                     <label class="radio-inline">
-                        <input type="radio" class="radio-inline" value="Percentage" name="per_or_cgp" required>Percentage
+                        <input type="radio" class="radio-inline" value="Percentage" name="per_or_cgp" <?php if(isset($per_or_cgpa_12) && $per_or_cgpa_12=='percentage') echo 'checked="checked"'; ?> required>Percentage
                     </label>
 
                 </div>
@@ -426,11 +490,11 @@ require_once("./included_classes/class_user.php");
             <div class="form-group">
                 <label class="control-label col-sm-3" for="dob"><span class="text-danger">*</span> Marks/CGPA Obtained :</label>
                 <div class="col-sm-3">
-                    <input type="text" class="form-control"   name="marks" required id="marks">
+                    <input type="text" class="form-control"   name="marks" required id="marks" value="<?= $marks_d?>" >
                 </div>
                 <label class="control-label col-sm-2" for="email"><span class="text-danger">*</span> Maximum Marks/CGPA:</label>
                 <div class="col-sm-4">
-                    <input type="text" class="form-control"  name="max_marks" required id="max_marks">
+                    <input type="text" class="form-control"  name="max_marks" required id="max_marks" value="<?= $max_marks_d?>" >
                 </div>
             </div>
 
@@ -441,7 +505,7 @@ require_once("./included_classes/class_user.php");
 
                 <label class="control-label col-sm-3" for="dob"><span class="text-danger">*</span> % Marks/CGPA :</label>
                 <div class="col-sm-3">
-                    <input type="text" class="form-control"   name="perc_marks" readonly>
+                    <input type="text" class="form-control"   name="perc_marks" readonly value="<?= $value_d?>" >
                 </div>
 
             </div>
@@ -455,7 +519,7 @@ require_once("./included_classes/class_user.php");
 
             <div class="form-group">
                 <div class="col-sm-offset-4 col-sm-4">
-                    <button type="submit" name="edu_ch" class="btn btn-primary col-sm-12">Submit Information</button>
+                    <button type="submit" name="edu_ch[]" class="btn btn-primary col-sm-12">Submit Information</button>
                 </div>
             </div>
 </form>
@@ -468,7 +532,7 @@ require_once("./included_classes/class_user.php");
 <form id ="ug" class="form-horizontal" name="reg_frm" method="post" action="save.php" onSubmit="return validate();">
     <div class="tab-content">
         <div id="home" class="tab-pane fade in active">
-            <h3>Details of Academic Record (In Reverse Cronological Order) :</h3>
+            <h3>Details of Academic Record (In Reverse Chronological Order) :</h3>
             <hr>
 
 
@@ -490,14 +554,14 @@ require_once("./included_classes/class_user.php");
                 </div>
                 <label class="control-label col-sm-2" for="email"><span class="text-danger">*</span> Degree:</label>
                 <div class="col-sm-4">
-                    <input type="text" class="form-control"   name="field" required>
+                    <input type="text" class="form-control"   name="field" required value="<?= $degree_pg?>" >
                 </div>
             </div>
 
             <div id="pg" class="form-group">
                 <label class="control-label col-sm-3" for="dob"><span class="text-danger">*</span>Specialization</label>
                 <div class="col-sm-5">
-                    <input type="text" class="form-control" name="Specialization" required >
+                    <input type="text" class="form-control" name="Specialization" required value="<?= $specialization_pg?>" >
                 </div>
             </div>
 
@@ -518,7 +582,7 @@ require_once("./included_classes/class_user.php");
             <div id="ug" class="form-group">
                 <label class="control-label col-sm-3" for="dob"><span class="text-danger">*</span> University:</label>
                 <div class="col-sm-4">
-                    <input type="text" class="form-control"  name="university"  required>
+                    <input type="text" class="form-control"  name="university"  required value="<?= $university_pg?>" >
                 </div>
             </div>
 
@@ -534,11 +598,11 @@ require_once("./included_classes/class_user.php");
             <div class="form-group">
                 <label class="control-label col-sm-3" for="dob"><span class="text-danger">*</span> Entry Date :</label>
                 <div class="col-sm-3">
-                    <input type="date" class="form-control"   name="start_date" required id="from"> <span class="text-danger">(YYYY-MM-DD)</span>
+                    <input type="date" class="form-control"   name="start_date" required id="from" value="<?= $start_date_ug?>" > <span class="text-danger">(YYYY-MM-DD)</span>
                 </div>
                 <label class="control-label col-sm-2" for="email"><span class="text-danger">*</span> Completion Date:</label>
                 <div class="col-sm-4">
-                    <input type="date" class="form-control"   name="end_date" required id="to"> <span class="text-danger">(YYYY-MM-DD)</span>
+                    <input type="date" class="form-control"   name="end_date" required id="to" value="<?= $completion_date_ug?>" > <span class="text-danger">(YYYY-MM-DD)</span>
                 </div>
             </div>
 
@@ -548,9 +612,9 @@ require_once("./included_classes/class_user.php");
                 <div class=" col-sm-3" for="dob">
 
                     <label class="radio-inline">
-                        <input type="radio" class="radio-inline" value="CGPA" name="per_or_cgp" required>CGPA<br></label>
+                        <input type="radio" class="radio-inline" value="CGPA" name="per_or_cgp" <?php if(isset($per_or_cgpa_12) && $per_or_cgpa_12=='CGPA') echo 'checked="checked"';  ?> required>CGPA<br></label>
                     <label class="radio-inline">
-                        <input type="radio" class="radio-inline" value="Percentage" name="per_or_cgp" required>Percentage
+                        <input type="radio" class="radio-inline" value="Percentage" name="per_or_cgp" <?php if(isset($per_or_cgpa_12) && $per_or_cgpa_12=='Percentage') echo 'checked="checked"';  ?> required>Percentage
                     </label>
 
                 </div>
@@ -559,11 +623,11 @@ require_once("./included_classes/class_user.php");
             <div class="form-group">
                 <label class="control-label col-sm-3" for="dob"><span class="text-danger">*</span> Marks/CGPA Obtained :</label>
                 <div class="col-sm-3">
-                    <input type="text" class="form-control"   name="marks" required id="marks">
+                    <input type="text" class="form-control"   name="marks" required id="marks" value="<?= $marks_ug?>" >
                 </div>
                 <label class="control-label col-sm-2" for="email"><span class="text-danger">*</span> Maximum Marks/CGPA:</label>
                 <div class="col-sm-4">
-                    <input type="text" class="form-control"  name="max_marks" required id="max_marks">
+                    <input type="text" class="form-control"  name="max_marks" required id="max_marks" value="<?= $max_marks_ug?>" >
                 </div>
             </div>
 
@@ -574,7 +638,7 @@ require_once("./included_classes/class_user.php");
 
                 <label class="control-label col-sm-3" for="dob"><span class="text-danger">*</span> % Marks/CGPA :</label>
                 <div class="col-sm-3">
-                    <input type="text" class="form-control"   name="perc_marks" readonly>
+                    <input type="text" class="form-control"   name="perc_marks" readonly value="<?= $value_ug?>" >
                 </div>
 
             </div>
@@ -588,7 +652,7 @@ require_once("./included_classes/class_user.php");
 
             <div class="form-group">
                 <div class="col-sm-offset-4 col-sm-4">
-                    <button type="submit" name="edu_ch" class="btn btn-primary col-sm-12">Submit Information</button>
+                    <button type="submit" name="edu_ch[]" class="btn btn-primary col-sm-12">Submit Information</button>
                 </div>
             </div>
 </form>
@@ -602,7 +666,7 @@ require_once("./included_classes/class_user.php");
 <form id ="pg" class="form-horizontal" name="reg_frm" method="post" action="save.php" onSubmit="return validate();">
     <div class="tab-content">
         <div id="home" class="tab-pane fade in active">
-            <h3>Details of Academic Record (In Reverse Cronological Order) :</h3>
+            <h3>Details of Academic Record (In Reverse Chronological Order) :</h3>
             <hr>
 
 
@@ -624,7 +688,7 @@ require_once("./included_classes/class_user.php");
                 </div>
                 <label class="control-label col-sm-2" for="email"><span class="text-danger">*</span> Degree:</label>
                 <div class="col-sm-4">
-                    <input type="text" class="form-control"   name="degree" required>
+                    <input type="text" class="form-control"   name="degree" required value="<?= $degree_pg?>" >
                 </div>
             </div>
 
@@ -634,7 +698,7 @@ require_once("./included_classes/class_user.php");
                         <div id="pg" class="form-group">
                             <label class="control-label col-sm-3" for="dob"><span class="text-danger">*</span>Specialization</label>
                             <div class="col-sm-5">
-                                <input type="text" class="form-control" name="Specialization" required >
+                                <input type="text" class="form-control" name="Specialization" required value="<?= $specialization_pg?>" >
                             </div>
                         </div>
 
@@ -645,7 +709,7 @@ require_once("./included_classes/class_user.php");
             <div id="pg" class="form-group">
                 <label class="control-label col-sm-3" for="dob"><span class="text-danger">*</span> University:</label>
                 <div class="col-sm-4">
-                    <input type="text" class="form-control"  name="university"  required>
+                    <input type="text" class="form-control"  name="university"  required value="<?= $university_pg?>" >
                 </div>
             </div>
 
@@ -661,11 +725,11 @@ require_once("./included_classes/class_user.php");
             <div class="form-group">
                 <label class="control-label col-sm-3" for="dob"><span class="text-danger">*</span> Entry Date :</label>
                 <div class="col-sm-3">
-                    <input type="date" class="form-control"   name="start_date" required id="from"> <span class="text-danger">(YYYY-MM-DD)</span>
+                    <input type="date" class="form-control"   name="start_date" required id="from" value="<?= $start_date_pg?>" > <span class="text-danger">(YYYY-MM-DD)</span>
                 </div>
                 <label class="control-label col-sm-2" for="email"><span class="text-danger">*</span> Completion Date:</label>
                 <div class="col-sm-4">
-                    <input type="date" class="form-control"   name="end_date" required id="to"> <span class="text-danger">(YYYY-MM-DD)</span>
+                    <input type="date" class="form-control"   name="end_date" required id="to" value="<?= $completion_date_pg?>" > <span class="text-danger">(YYYY-MM-DD)</span>
                 </div>
             </div>
 
@@ -675,22 +739,22 @@ require_once("./included_classes/class_user.php");
                 <div class=" col-sm-3" for="dob">
 
                     <label class="radio-inline">
-                        <input type="radio" class="radio-inline" value="CGPA" name="per_or_cgp" required>CGPA<br></label>
+                        <input type="radio" class="radio-inline" value="CGPA" name="per_or_cgp" <?php if(isset($per_or_cgpa_12) && $per_or_cgpa_12=='CGPA') echo 'checked="checked"';  ?> required>CGPA<br></label>
                     <label class="radio-inline">
-                        <input type="radio" class="radio-inline" value="Percentage" name="per_or_cgp" required>Percentage
+                        <input type="radio" class="radio-inline" value="Percentage" name="per_or_cgp" required <?php if(isset($per_or_cgpa_12) && $per_or_cgpa_12=='Percentage') echo 'checked="checked"';  ?>>Percentage
                     </label>
 
                 </div>
             </div>
 
             <div class="form-group">
-                <label class="control-label col-sm-3" for="dob"><span class="text-danger">*</span> Marks/CGPA Obtained :</label>
+                <label class="control-label col-sm-3" for="dob" value="<?= $marks_ug?>" ><span class="text-danger">*</span> Marks/CGPA Obtained :</label>
                 <div class="col-sm-3">
                     <input type="text" class="form-control"   name="marks" required id="marks">
                 </div>
-                <label class="control-label col-sm-2" for="email"><span class="text-danger">*</span> Maximum Marks/CGPA:</label>
+                <label class="control-label col-sm-2" for="email" ><span class="text-danger">*</span> Maximum Marks/CGPA:</label>
                 <div class="col-sm-4">
-                    <input type="text" class="form-control"  name="max_marks" required id="max_marks">
+                    <input type="text" class="form-control"  name="max_marks" required id="max_marks" value="<?= $max_marks_pg?>" >
                 </div>
             </div>
 
@@ -701,7 +765,7 @@ require_once("./included_classes/class_user.php");
 
                 <label class="control-label col-sm-3" for="dob"><span class="text-danger">*</span> % Marks/CGPA :</label>
                 <div class="col-sm-3">
-                    <input type="text" class="form-control"   name="perc_marks" readonly>
+                    <input type="text" class="form-control"   name="perc_marks" readonly value="<?= $value_pg?>" >
                 </div>
 
             </div>
@@ -715,7 +779,7 @@ require_once("./included_classes/class_user.php");
 
             <div class="form-group">
                 <div class="col-sm-offset-4 col-sm-4">
-                    <button type="submit" name="edu_ch" class="btn btn-primary col-sm-12">Submit Information</button>
+                    <button type="submit" name="edu_ch[]" class="btn btn-primary col-sm-12">Submit Information</button>
                 </div>
             </div>
 </form>
