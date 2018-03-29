@@ -143,7 +143,7 @@ TrustLogo("https://academics.mnnit.ac.in/data/comodo_secure.png", "CL1", "none")
 		$sql->connect_db("tab");
 		echo $sql1="select cur_reg from current_reg";
 		$sql->query=$sql->process_query($sql1);
-		$array=mysql_fetch_array($sql->query);
+		$array=mysqli_fetch_array($sql->query);
 		return $array['cur_reg'];
 	}
 
