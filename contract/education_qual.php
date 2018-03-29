@@ -14,7 +14,7 @@ $board_10=$comp_10=$school_10=$per_or_cgpa_10=$value_10=$marks_10=$max_marks_10=
         if(mysqli_num_rows($c)>0) {
             $c = $db->fetch_rows($c);
             $board_10 = $c['board'];
-            $comp_10 = $c['completion date'];
+            $comp_10 = $c['completion_date'];
             $school_10 = $c['school'];
             $per_or_cgpa_10 = $c['per_or_cgpa'];
             $value_10 = $c['value'];
@@ -78,7 +78,7 @@ $board_10=$comp_10=$school_10=$per_or_cgpa_10=$value_10=$marks_10=$max_marks_10=
         $degree_ug = $c['degree'];
         $specialization_ug = $c['specialization'];
         $start_date_ug = $c['start_date'];
-        $completion_date_ug = $c['completion_data'];
+        $completion_date_ug = $c['completion_date'];
         $per_or_cgpa_ug = $c['per_or_cgpa'];
         $value_ug = $c['value'];
         $marks_ug = $c['marks'];
@@ -96,7 +96,7 @@ $board_10=$comp_10=$school_10=$per_or_cgpa_10=$value_10=$marks_10=$max_marks_10=
         $degree_pg = $c['degree'];
         $specialization_pg = $c['specialization'];
         $start_date_pg = $c['start_date'];
-        $completion_date_pg = $c['completion_data'];
+        $completion_date_pg = $c['completion_date'];
         $per_or_cgpa_pg = $c['per_or_cgpa'];
         $value_pg = $c['value'];
         $marks_pg = $c['marks'];
@@ -159,9 +159,9 @@ $board_10=$comp_10=$school_10=$per_or_cgpa_10=$value_10=$marks_10=$max_marks_10=
                         <div class=" col-sm-3" for="dob">
 
                             <label class="radio-inline">
-                            <input type="radio" class="radio-inline" value="0" name="per_or_cgp_10th" required  <?php if(isset($per_or_cgpa_10) && $per_or_cgpa_10=='CGPA') echo 'checked="checked"'; ?> >CGPA<br></label>
+                            <input type="radio" class="radio-inline" value="0" name="per_or_cgp_10th" required  <?php if(isset($per_or_cgpa_10) && $per_or_cgpa_10=='0') echo 'checked="checked"'; ?> >CGPA<br></label>
                             <label class="radio-inline">
-                                <input type="radio" class="radio-inline" value="1" name="per_or_cgp_10th" required  <?php if(isset($per_or_cgpa_10) && $per_or_cgpa_10=='Percentage') echo 'checked="checked"'; ?> >Percentage
+                                <input type="radio" class="radio-inline" value="1" name="per_or_cgp_10th" required  <?php if(isset($per_or_cgpa_10) && $per_or_cgpa_10=='1') echo 'checked="checked"'; ?> >Percentage
                             </label>
                         </div>
                         </div>
@@ -225,9 +225,9 @@ $board_10=$comp_10=$school_10=$per_or_cgpa_10=$value_10=$marks_10=$max_marks_10=
                             <label class="control-label col-sm-offset-1 col-sm-2" for="email"><span class="text-danger">*</span>Marking Scheme</label>
                             <div class=" col-sm-3" for="dob">
                                 <label class="radio-inline">
-                                    <input type="radio" class="radio-inline" value="0" name="dip_per_or_cgp" required  <?php if(isset($per_or_cgpa_10) && $per_or_cgpa_10=='CGPA') echo 'checked="checked"'; ?> >CGPA<br></label>
+                                    <input type="radio" class="radio-inline" value="0" name="dip_per_or_cgp" required  <?php if(isset($per_or_cgpa_d) && $per_or_cgpa_d=='0') echo 'checked="checked"'; ?> >CGPA<br></label>
                                 <label class="radio-inline">
-                                    <input type="radio" class="radio-inline" value="1" name="dip_per_or_cgp" required  <?php if(isset($per_or_cgpa_10) && $per_or_cgpa_10=='Percentage') echo 'checked="checked"'; ?>>Percentage
+                                    <input type="radio" class="radio-inline" value="1" name="dip_per_or_cgp" required  <?php if(isset($per_or_cgpa_d) && $per_or_cgpa_d=='1') echo 'checked="checked"'; ?>>Percentage
                                 </label>
                             </div>
                         </div>
@@ -287,9 +287,9 @@ $board_10=$comp_10=$school_10=$per_or_cgpa_10=$value_10=$marks_10=$max_marks_10=
                         <div class=" col-sm-3" for="dob">
 
                             <label class="radio-inline">
-                                <input type="radio" class="radio-inline" value="0" name="per_or_cgp_12th" required  <?php if(isset($per_or_cgpa_10) && $per_or_cgpa_10=='CGPA') echo 'checked="checked"'; ?>>CGPA<br></label>
+                                <input type="radio" class="radio-inline" value="0" name="per_or_cgp_12th" required  <?php if(isset($per_or_cgpa_12) && $per_or_cgpa_12=='0') echo 'checked="checked"'; ?>>CGPA<br></label>
                             <label class="radio-inline">
-                                <input type="radio" class="radio-inline" value="1" name="per_or_cgp_12th" required  <?php if(isset($per_or_cgpa_10) && $per_or_cgpa_10=='Percentage') echo 'checked="checked"'; ?>>Percentage
+                                <input type="radio" class="radio-inline" value="1" name="per_or_cgp_12th" required  <?php if(isset($per_or_cgpa_12) && $per_or_cgpa_12=='1') echo 'checked="checked"'; ?>>Percentage
                             </label>
                         </div>
                     </div>
@@ -359,9 +359,9 @@ $board_10=$comp_10=$school_10=$per_or_cgpa_10=$value_10=$marks_10=$max_marks_10=
                     <div class=" col-sm-5" for="dob">
 
                         <label class="radio-inline">
-                            <input type="radio" class="radio-inline" value="0" name="ug_per_or_cgp" required  <?php if(isset($per_or_cgpa_10) && $per_or_cgpa_10=='CGPA') echo 'checked="checked"'; ?> >CGPA<br></label>
+                            <input type="radio" class="radio-inline" value="0" name="ug_per_or_cgp" required  <?php if(isset($per_or_cgpa_ug) && $per_or_cgpa_ug=='0') echo 'checked="checked"'; ?> >CGPA<br></label>
                         <label class="radio-inline">
-                            <input type="radio" class="radio-inline" value="1" name="ug_per_or_cgp" required  <?php if(isset($per_or_cgpa_10) && $per_or_cgpa_10=='Percentage') echo 'checked="checked"'; ?> >Percentage
+                            <input type="radio" class="radio-inline" value="1" name="ug_per_or_cgp" required  <?php if(isset($per_or_cgpa_ug) && $per_or_cgpa_ug=='1') echo 'checked="checked"'; ?> >Percentage
                         </label>
 
                     </div>
@@ -436,9 +436,9 @@ $board_10=$comp_10=$school_10=$per_or_cgpa_10=$value_10=$marks_10=$max_marks_10=
                     <div class=" col-sm-5" for="dob">
 
                         <label class="radio-inline">
-                            <input type="radio" class="radio-inline" value="0" name="pg_per_or_cgp" required  <?php if(isset($per_or_cgpa_10) && $per_or_cgpa_10=='CGPA') echo 'checked="checked"'; ?> >CGPA<br></label>
+                            <input type="radio" class="radio-inline" value="0" name="pg_per_or_cgp" required  <?php if(isset($per_or_cgpa_pg) && $per_or_cgpa_pg=='0') echo 'checked="checked"'; ?> >CGPA<br></label>
                         <label class="radio-inline">
-                            <input type="radio" class="radio-inline" value="1" name="pg_per_or_cgp" required  <?php if(isset($per_or_cgpa_10) && $per_or_cgpa_10=='Percentage') echo 'checked="checked"'; ?> >Percentage
+                            <input type="radio" class="radio-inline" value="1" name="pg_per_or_cgp" required  <?php if(isset($per_or_cgpa_pg) && $per_or_cgpa_pg=='1') echo 'checked="checked"'; ?> >Percentage
                         </label>
 
                     </div>
