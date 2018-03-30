@@ -504,3 +504,4 @@ $board_10=$comp_10=$school_10=$per_or_cgpa_10=$value_10=$marks_10=$max_marks_10=
     });
 </script>
 
+ 
