@@ -3,6 +3,7 @@ session_start();
 require_once("./included_classes/class_user.php");
     require_once("./included_classes/class_misc.php");
     require_once("./included_classes/class_sql.php");
+    require_once ("./include/verify_document.php");
     $misc= new miscfunctions();
     $db = new sqlfunctions();
  
@@ -120,7 +121,7 @@ if(isset($_POST['edu_ch_1']))
 	$perc_marks = validate($_POST['dip_perc_marks']);
 
 	//checking if data already exists
-	$q = "select user_id from 10th_mark where user_id = '$id' ";
+	$q = "select user_id from diploma where user_id = '$id' ";
 	$r = $db->process_query($q);
 
 	if(mysqli_num_rows($r)>0)
@@ -150,7 +151,7 @@ if(isset($_POST['edu_ch_2']))
 	$board = validate($_POST['board_12th']);
 
 	//checking if data already exists
-	$q = "select user_id from 10th_mark where user_id = '$id' ";
+	$q = "select user_id from 12th_mark where user_id = '$id' ";
 	$r = $db->process_query($q);
 
 	if(mysqli_num_rows($r)>0) //then update
@@ -183,7 +184,7 @@ if(isset($_POST['edu_ch_3']))
 
 
 	//checking if data already exists
-	$q = "select user_id from 10th_mark where user_id = '$id' ";
+	$q = "select user_id from ug where user_id = '$id' ";
 	$r = $db->process_query($q);
 
 	if(mysqli_num_rows($r)>0)
@@ -215,7 +216,7 @@ if(isset($_POST['edu_ch_4']))
 	$perc_marks = validate($_POST['pg_perc_marks']);
 
 	//checking if data already exists
-	$q = "select user_id from 10th_mark where user_id = '$id' ";
+	$q = "select user_id from pg where user_id = '$id' ";
 	$r = $db->process_query($q);
 
 	if(mysqli_num_rows($r)>0)  //update
@@ -231,6 +232,33 @@ if(isset($_POST['edu_ch_4']))
 		$misc->palert("Some error occured","home.php?val=education_qual");
 	}
 
+}
+if(isset($_POST['work_exp']))
+{
+    $organisation=validate($_POST['organisation']);
+    $position=validate($_POST['position']);
+    $from=validate($_POST['from']);
+    $to=validate($_POST['to']);
+    $pay=validate($_POST['pay']);
+    $nature=validate($_POST['nature']);
+    $emp_type=validate($_POST['emp_type']);
+    $tot_exp=validate($_POST['experience']);
+
+    $q="INSERT INTO `experience` VALUES ('$id','','$organisation','$position','$emp_type',
+  		'$from','$to','$pay','$nature','$tot_exp')";
+
+    // $imageName = stripslashes($_FILES['doc_exp']['name']);
+    // echo $imageName;
+    verify_doc("doc_exp",'./doc_exp','work_exp');
+
+    $r=$db->process_query($q);
+    if($r){
+        $misc->palert("Details Submitted","home.php?val=work_exp");
+    }
+    else
+    {
+        $misc->palert("Some error occured","home.php?val=work_exp");
+    }
 }
 if(isset($_POST['other_ch']))
 {
@@ -282,7 +310,7 @@ $id=$_SESSION['user'];
 $query="SELECT * from `employer` where `user_id` like '$id'";
 $r = $db->process_query($query);
 
-if(mysql_num_rows($r)>0)
+if(mysqli_num_rows($r)>0)
 {
 	$q="UPDATE `employer` SET `position`='$position',`from`='$from',`to`='$to',`pay`='$pay',`agp`='$agp',`basic_pay`='$basic_pay',`nature`='$nature',`organisation`='$organisation',`emp_type`='$emp_type' WHERE user_id = '$id'";
 }
@@ -445,7 +473,7 @@ if(strlen($info)>500)
 {
 	$misc->palert("Only 500 characters allowed","home.php?val=info");
 }
-if(mysql_num_rows($r)>0)
+if(mysqli_num_rows($r)>0)
 {
 	$q="UPDATE `other_info` SET `info`='$info' WHERE user_id = '$id'";
 }
