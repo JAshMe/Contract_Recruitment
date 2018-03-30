@@ -206,11 +206,30 @@ $board_10=$comp_10=$school_10=$per_or_cgpa_10=$value_10=$marks_10=$max_marks_10=
 
                     <div class="form-group">
                         <label class="control-label col-sm-2" for="field_d"><span class="text-danger">*</span> Specialisation:</label>
-                            <div class="col-sm-5">
-                                <input type="text" class="form-control"  id="field_d" name="dip_field" required value="<?= $field_d?>">
-                            </div>
+<!--                            <div class="col-sm-5">-->
+<!--                                <input type="text" class="form-control"  id="field_d" name="dip_field" required value="--><?//= $field_d?><!--">-->
+<!--                            </div>-->
+
+                        <div class="col-sm-3">
+                            <select id="degree2" name="degree2" required class="form-control">
+                                <option value="EE" id="ee" <?php if($field_d=="EE") echo "selected" ?> >Electical Engineering</option>
+                                <option value="CE" id="ce" <?php if($field_d=="CE") echo "selected" ?> >Civil Engineering</option>
+                                <option value="Others" id="others2" <?php if($field_d=="Others") echo "selected" ?> >Others</option>
+                            </select>
                         </div>
-                    <div class="form-group">
+                        </div>
+
+
+                <div class="form-group"   id="otherscome2" <?php if(isset($degree_pg) && $field_d=='Others') echo"style=\"display:block\""; else echo "style=\"display:none\"; ";?> >
+                    <label class="control-label col-sm-2" for="degree_d"><span class="text-danger">*</span>Others:</label>
+                    <div class="col-sm-4">
+                        <input type="text" class="form-control"  id="degree_d" value="<?php if(isset($field_d)) echo "$field_d"; ?>" name="degree_pg" required >
+                    </div>
+                </div>
+
+
+
+                <div class="form-group">
                             <label class="control-label col-sm-2" for="university_d" ><span class="text-danger">*</span> University:</label>
                             <div class="col-sm-5">
                                 <input type="text" class="form-control"  id="university_d" name="dip_university"  required value="<?= $university_d?>">
@@ -496,10 +515,10 @@ $board_10=$comp_10=$school_10=$per_or_cgpa_10=$value_10=$marks_10=$max_marks_10=
 
                         <div class="col-sm-3">
                             <select id="degree" name="degree_pg" required class="form-control">
-                                <option value="M Tech" id="mtech" <?php if($degree_pg=="M Tech") echo "selected" ?> >M Tech</option>
-                                <option value="MSC" id="msc" <?php if($degree_pg=="MSC") echo "selected" ?> >MSC</option>
-                                <option value="MS" id="ms" <?php if($degree_pg=="MS") echo "selected" ?> >MS</option>
-                                <option value="ME" id="me" <?php if($degree_pg=="ME") echo "selected" ?> >ME</option>
+                                <option value="M Tech" id="mtech" <?php if($degree_pg=="M Tech") echo "selected" ?> >Master of Tech (M.Tech)</option>
+                                <option value="MSC" id="msc" <?php if($degree_pg=="MSC") echo "selected" ?> >Master of Science (M.Sc)</option>
+                                <option value="MS" id="ms" <?php if($degree_pg=="MS") echo "selected" ?> >Master of Science (MS)</option>
+                                <option value="ME" id="me" <?php if($degree_pg=="ME") echo "selected" ?> >Master of Engineering (ME)</option>
                                 <option value="Others" id="others" <?php if($degree_pg=="Others") echo "selected" ?> >Others</option>
                             </select>
                         </div>
@@ -634,3 +653,19 @@ $board_10=$comp_10=$school_10=$per_or_cgpa_10=$value_10=$marks_10=$max_marks_10=
 
 </script>
 
+<script>
+    $(document).ready(function () {
+        $('#otherscome2').hide();
+
+        $('#degree2').change(function () {
+            var val = $(this).val();
+            if (val === "Others")
+                $('#otherscome2').stop(true, true).show(200).attr("required","true"); //than show
+            else
+                $('#otherscome2').stop(true, true).hide(200).removeAttr("required"); //than hide
+
+
+        });
+    });
+
+</script>
