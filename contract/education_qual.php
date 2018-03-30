@@ -135,9 +135,9 @@ $board_10=$comp_10=$school_10=$per_or_cgpa_10=$value_10=$marks_10=$max_marks_10=
 
                     <div class="row">
                         <div class="form-group">
-                             <label class="control-label col-sm-3" for="email"><span class="text-danger">*</span> Completion Date:</label>
+                             <label class="control-label col-sm-3" for="completion_date_10th"><span class="text-danger">*</span> Completion Date:</label>
                                 <div class="col-sm-3">
-                                    <input type="date" class="form-control"   name="10th_completion_date" required value="<?= $comp_10?>" >
+                                    <input type="date" class="form-control" id="completion_date_10th"  name="completion_date_10th" required value="<?= $comp_10?>" >
                                 </div>
                                 <label class="control-label col-sm-2" for="dob"><span class="text-danger">*</span>Board:</label>
                                 <div class="col-sm-3">
@@ -148,40 +148,40 @@ $board_10=$comp_10=$school_10=$per_or_cgpa_10=$value_10=$marks_10=$max_marks_10=
 
 
                         <div id="10th" class="form-group">
-                            <label class="control-label col-sm-3" for="dob"><span class="text-danger">*</span> School Name :</label>
+                            <label class="control-label col-sm-3" for="school_1th"><span class="text-danger">*</span> School Name :</label>
                             <div class="col-sm-5">
-                                <input type="text" class="form-control"  name="school_10th"  required value="<?= $school_10?>" >
+                                <input type="text" class="form-control" id="school_1th" name="school_10th"  required value="<?= $school_10?>" >
                             </div>
                         </div>
 
                         <div class="form-group">
                         <label class="control-label col-sm-offset-1 col-sm-2" for="email"><span class="text-danger">*</span>Marking Scheme</label>
-                        <div class=" col-sm-3" for="dob">
+                        <div class=" col-sm-3">
 
-                            <label class="radio-inline">
-                            <input type="radio" class="radio-inline" value="0" name="per_or_cgp_10th" required  <?php if(isset($per_or_cgpa_10) && $per_or_cgpa_10=='0') echo 'checked="checked"'; ?> >CGPA<br></label>
-                            <label class="radio-inline">
-                                <input type="radio" class="radio-inline" value="1" name="per_or_cgp_10th" required  <?php if(isset($per_or_cgpa_10) && $per_or_cgpa_10=='1') echo 'checked="checked"'; ?> >Percentage
+                            <label class="radio-inline" for="per_or_cgp_100">
+                            <input type="radio" class="radio-inline" value="0" id="per_or_cgp_100" name="per_or_cgp_10th" required  <?php if(isset($per_or_cgpa_10) && $per_or_cgpa_10=='0') echo 'checked="checked"'; ?> >CGPA<br></label>
+                            <label class="radio-inline" for="per_or_cgp_101">
+                                <input type="radio" class="radio-inline" value="1" id="per_or_cgp_101" name="per_or_cgp_10th" required  <?php if(isset($per_or_cgpa_10) && $per_or_cgpa_10=='1') echo 'checked="checked"'; ?> >Percentage
                             </label>
                         </div>
                         </div>
 
 
                         <div class="form-group">
-                            <label class="control-label col-sm-3" for="dob"><span class="text-danger">*</span> Marks/CGPA Obtained :</label>
+                            <label class="control-label col-sm-3" for="marks"><span class="text-danger">*</span> Marks/CGPA Obtained :</label>
                             <div class="col-sm-3">
                                 <input type="text" class="form-control"   name="marks_10th" required id="marks" value="<?= $marks_10?>" >
                             </div>
-                            <label class="control-label col-sm-2" for="email"><span class="text-danger">*</span> Maximum Marks/CGPA:</label>
+                            <label class="control-label col-sm-2" for="max_marks"><span class="text-danger">*</span> Maximum Marks/CGPA:</label>
                             <div class="col-sm-4">
                                 <input type="text" class="form-control"  name="max_marks_10th" required id="max_marks" value="<?= $max_marks_10?>">
                             </div>
                         </div>
 
                         <div class="form-group">
-                            <label class="control-label col-sm-3" for="dob"><span class="text-danger">*</span> % Marks/CGPA :</label>
+                            <label class="control-label col-sm-3" for="per_or_cgp_10"><span class="text-danger">*</span> % Marks/CGPA :</label>
                             <div class="col-sm-3">
-                                <input type="text" class="form-control"   name="perc_marks_10th" readonly value="<?= $marks_10?>" >
+                                <input type="text" class="form-control"   id="per_or_cgp_10" name="perc_marks_10th" readonly value="<?= $marks_10?>" >
                             </div>
                         </div>
 
@@ -197,24 +197,24 @@ $board_10=$comp_10=$school_10=$per_or_cgpa_10=$value_10=$marks_10=$max_marks_10=
             <div id="diploma" class="qual_div"  style=" display: none;">
 
                     <div class="form-group">
-                        <label class="control-label col-sm-2" for="email"><span class="text-danger">*</span> Specialisation:</label>
+                        <label class="control-label col-sm-2" for="field_d"><span class="text-danger">*</span> Specialisation:</label>
                             <div class="col-sm-5">
-                                <input type="text" class="form-control"   name="dip_field" required value="<?= $field_d?>">
+                                <input type="text" class="form-control"  id="field_d" name="dip_field" required value="<?= $field_d?>">
                             </div>
                         </div>
                     <div class="form-group">
-                            <label class="control-label col-sm-2" for="dob"><span class="text-danger">*</span> University:</label>
+                            <label class="control-label col-sm-2" for="university_d" ><span class="text-danger">*</span> University:</label>
                             <div class="col-sm-5">
-                                <input type="text" class="form-control"  name="dip_university"  required value="<?= $university_d?>">
+                                <input type="text" class="form-control"  id="university_d" name="dip_university"  required value="<?= $university_d?>">
                             </div>
                         </div>
 
                         <div class="form-group">
-                            <label class="control-label col-sm-2" for="dob"><span class="text-danger">*</span> Entry Date :</label>
+                            <label class="control-label col-sm-2" for="from"><span class="text-danger">*</span> Entry Date :</label>
                             <div class="col-sm-3">
                                 <input type="date" class="form-control"   name="dip_start_date" required id="from" value="<?= $start_date_d?>" > <span class="text-danger">(YYYY-MM-DD)</span>
                             </div>
-                            <label class="control-label col-sm-2" for="email"><span class="text-danger">*</span> Completion Date:</label>
+                            <label class="control-label col-sm-2" for="to"><span class="text-danger">*</span> Completion Date:</label>
                             <div class="col-sm-3">
                                 <input type="date" class="form-control"   name="dip_end_date" required id="to" value="<?= $end_data_d?>" > <span class="text-danger">(YYYY-MM-DD)</span>
                             </div>
@@ -223,11 +223,11 @@ $board_10=$comp_10=$school_10=$per_or_cgpa_10=$value_10=$marks_10=$max_marks_10=
 
                         <div class="form-group">
                             <label class="control-label col-sm-offset-1 col-sm-2" for="email"><span class="text-danger">*</span>Marking Scheme</label>
-                            <div class=" col-sm-3" for="dob">
-                                <label class="radio-inline">
-                                    <input type="radio" class="radio-inline" value="0" name="dip_per_or_cgp" required  <?php if(isset($per_or_cgpa_d) && $per_or_cgpa_d=='0') echo 'checked="checked"'; ?> >CGPA<br></label>
-                                <label class="radio-inline">
-                                    <input type="radio" class="radio-inline" value="1" name="dip_per_or_cgp" required  <?php if(isset($per_or_cgpa_d) && $per_or_cgpa_d=='1') echo 'checked="checked"'; ?>>Percentage
+                            <div class=" col-sm-3" >
+                                <label class="radio-inline" for="per_or_cgp_d0">
+                                    <input type="radio" class="radio-inline" id="per_or_cgp_d0" value="0" name="dip_per_or_cgp" required  <?php if(isset($per_or_cgpa_d) && $per_or_cgpa_d=='0') echo 'checked="checked"'; ?> >CGPA<br></label>
+                                <label class="radio-inline" for="per_or_cgp_d1">
+                                    <input type="radio" class="radio-inline" value="1" id="per_or_cgp_d1" name="dip_per_or_cgp" required  <?php if(isset($per_or_cgpa_d) && $per_or_cgpa_d=='1') echo 'checked="checked"'; ?>>Percentage
                                 </label>
                             </div>
                         </div>
@@ -244,9 +244,9 @@ $board_10=$comp_10=$school_10=$per_or_cgpa_10=$value_10=$marks_10=$max_marks_10=
                         </div>
 
                         <div class="form-group">
-                            <label class="control-label col-sm-3" for="dob"><span class="text-danger">*</span> % Marks/CGPA :</label>
+                            <label class="control-label col-sm-3" for="value_d"><span class="text-danger">*</span> % Marks/CGPA :</label>
                             <div class="col-sm-3">
-                                <input type="text" class="form-control"   name="dip_perc_marks" readonly value="<?= $value_d?>" >
+                                <input type="text" class="form-control"  id="value_d" name="dip_perc_marks" readonly value="<?= $value_d?>" >
                             </div>
                         </div>
 
@@ -263,9 +263,9 @@ $board_10=$comp_10=$school_10=$per_or_cgpa_10=$value_10=$marks_10=$max_marks_10=
 
                     <div class="row">
                         <div class="form-group">
-                            <label class="control-label col-sm-3" for="email"><span class="text-danger">*</span> Completion Date:</label>
+                            <label class="control-label col-sm-3" for="comp_12"><span class="text-danger">*</span> Completion Date:</label>
                             <div class="col-sm-3">
-                                <input type="date" class="form-control"   name="12th_completion_date" required value="<?= $comp_12?>" >
+                                <input type="date" class="form-control"   id="comp_12" name="completion_date_12th" required value="<?= $comp_12?>" >
                             </div>
                             <label class="control-label col-sm-2" for="dob"><span class="text-danger">*</span>Board:</label>
                             <div class="col-sm-3">
@@ -276,20 +276,20 @@ $board_10=$comp_10=$school_10=$per_or_cgpa_10=$value_10=$marks_10=$max_marks_10=
 
 
                     <div id="10th" class="form-group">
-                        <label class="control-label col-sm-3" for="dob"><span class="text-danger">*</span> School Name :</label>
+                        <label class="control-label col-sm-3" for="school_12th"><span class="text-danger">*</span> School Name :</label>
                         <div class="col-sm-5">
-                            <input type="text" class="form-control"  name="12th_school"  value="<?= $school_12 ?>" required>
+                            <input type="text" class="form-control"  name="school_12th"  id="school_12th" value="<?= $school_12 ?>" required>
                         </div>
                     </div>
 
                     <div class="form-group">
                         <label class="control-label col-sm-offset-1 col-sm-2" for="email"><span class="text-danger">*</span>Marking Scheme</label>
-                        <div class=" col-sm-3" for="dob">
+                        <div class=" col-sm-3" >
 
-                            <label class="radio-inline">
-                                <input type="radio" class="radio-inline" value="0" name="per_or_cgp_12th" required  <?php if(isset($per_or_cgpa_12) && $per_or_cgpa_12=='0') echo 'checked="checked"'; ?>>CGPA<br></label>
-                            <label class="radio-inline">
-                                <input type="radio" class="radio-inline" value="1" name="per_or_cgp_12th" required  <?php if(isset($per_or_cgpa_12) && $per_or_cgpa_12=='1') echo 'checked="checked"'; ?>>Percentage
+                            <label class="radio-inline" for="per_or_cgp_12th0">
+                                <input type="radio" class="radio-inline" id="per_or_cgp_12th0" value="0" name="per_or_cgp_12th" required  <?php if(isset($per_or_cgpa_12) && $per_or_cgpa_12=='0') echo 'checked="checked"'; ?>>CGPA<br></label>
+                            <label class="radio-inline" for="per_or_cgp_12th1">
+                                <input type="radio" class="radio-inline" value="1" id="per_or_cgp_12th1" name="per_or_cgp_12th" required  <?php if(isset($per_or_cgpa_12) && $per_or_cgpa_12=='1') echo 'checked="checked"'; ?>>Percentage
                             </label>
                         </div>
                     </div>
@@ -307,9 +307,9 @@ $board_10=$comp_10=$school_10=$per_or_cgpa_10=$value_10=$marks_10=$max_marks_10=
                     </div>
 
                     <div class="form-group">
-                        <label class="control-label col-sm-3" for="dob"><span class="text-danger">*</span> % Marks/CGPA :</label>
+                        <label class="control-label col-sm-3" for="per_or_cgp_12"><span class="text-danger">*</span> % Marks/CGPA :</label>
                         <div class="col-sm-3">
-                            <input type="text" class="form-control"   name="perc_marks_12th" readonly value="<?= $value_12?>"  >
+                            <input type="text" class="form-control"   name="perc_marks_12th" readonly value="<?= $value_12?>"  id="per_or_cgp_12" >
                         </div>
                     </div>
 
@@ -324,20 +324,20 @@ $board_10=$comp_10=$school_10=$per_or_cgpa_10=$value_10=$marks_10=$max_marks_10=
             <form class="form-horizontal" name="reg_frm" method="post" action="save.php" onSubmit="return validate();">
             <div id="ug" class="qual_div"  style=" display: none;">
                 <div class="form-group">
-                    <label class="control-label col-sm-2" for="email"><span class="text-danger">*</span> Degree:</label>
+                    <label class="control-label col-sm-2" for="field_ug"><span class="text-danger">*</span> Degree:</label>
                     <div class="col-sm-3">
-                        <input type="text" class="form-control"   name="ug_field" required value="<?= $degree_ug?>"  >
+                        <input type="text" class="form-control"   name="ug_field" required value="<?= $degree_ug?>"  id="field_ug">
                     </div>
-                    <label class="control-label col-sm-2" for="dob"><span class="text-danger">*</span>Specialization</label>
+                    <label class="control-label col-sm-2" for="specialization_ug"><span class="text-danger">*</span>Specialization</label>
                     <div class="col-sm-5">
-                        <input type="text" class="form-control" name="ug_specialization" required value="<?= $specialization_ug?>"   >
+                        <input type="text" class="form-control" name="ug_specialization" id="specialization_ug" required value="<?= $specialization_ug?>"   >
                     </div>
                 </div>
 
                 <div id="ug" class="form-group">
-                    <label class="control-label col-sm-2" for="dob"><span class="text-danger">*</span> University:</label>
+                    <label class="control-label col-sm-2" for="university_ug"><span class="text-danger">*</span> University:</label>
                     <div class="col-sm-5">
-                        <input type="text" class="form-control"  name="ug_university"  requiredvalue="<?= $university_ug?>"  >
+                        <input type="text" class="form-control"  name="ug_university" id="university_ug" required value="<?= $university_ug?>"  >
                     </div>
                 </div>
 
@@ -349,19 +349,19 @@ $board_10=$comp_10=$school_10=$per_or_cgpa_10=$value_10=$marks_10=$max_marks_10=
                     </div>
                     <label class="control-label col-sm-2" for="email"><span class="text-danger">*</span> Completion Date:</label>
                     <div class="col-sm-3">
-                        <input type="date" class="form-control"   name="ug_end_date" required id="to"> <span class="text-danger" value="<?= $completion_date_ug?>"  >(YYYY-MM-DD)</span>
+                        <input type="date" class="form-control"   name="ug_end_date" required id="to" value="<?= $completion_date_ug?>"> <span class="text-danger"   >(YYYY-MM-DD)</span>
                     </div>
                 </div>
 
 
                 <div class="form-group">
-                    <label class="control-label col-sm-3" for="email"><span class="text-danger">*</span>Marking Scheme:</label>
-                    <div class=" col-sm-5" for="dob">
+                    <label class="control-label col-sm-3" for="email"> <span class="text-danger">*</span>Marking Scheme:</label>
+                    <div class=" col-sm-5" >
 
-                        <label class="radio-inline">
-                            <input type="radio" class="radio-inline" value="0" name="ug_per_or_cgp" required  <?php if(isset($per_or_cgpa_ug) && $per_or_cgpa_ug=='0') echo 'checked="checked"'; ?> >CGPA<br></label>
-                        <label class="radio-inline">
-                            <input type="radio" class="radio-inline" value="1" name="ug_per_or_cgp" required  <?php if(isset($per_or_cgpa_ug) && $per_or_cgpa_ug=='1') echo 'checked="checked"'; ?> >Percentage
+                        <label class="radio-inline" for="per_or_cgp_ug0">
+                            <input type="radio" id="per_or_cgp_ug0" class="radio-inline" value="0" name="ug_per_or_cgp" required  <?php if(isset($per_or_cgpa_ug) && $per_or_cgpa_ug=='0') echo 'checked="checked"'; ?> >CGPA<br></label>
+                        <label class="radio-inline" for="per_or_cgp_ug1">
+                            <input type="radio" id="per_or_cgp_ug1" class="radio-inline" value="1" name="ug_per_or_cgp" required  <?php if(isset($per_or_cgpa_ug) && $per_or_cgpa_ug=='1') echo 'checked="checked"'; ?> >Percentage
                         </label>
 
                     </div>
@@ -383,9 +383,9 @@ $board_10=$comp_10=$school_10=$per_or_cgpa_10=$value_10=$marks_10=$max_marks_10=
 
                 <div class="form-group">
 
-                    <label class="control-label col-sm-3" for="dob"><span class="text-danger">*</span> % Marks/CGPA :</label>
+                    <label class="control-label col-sm-3" for="value_ug"><span class="text-danger">*</span> % Marks/CGPA :</label>
                     <div class="col-sm-3">
-                        <input type="text" class="form-control"   name="perc_marks" readonly value="<?= $value_ug?>">
+                        <input type="text" class="form-control"   id="value_ug" name="ug_perc_marks" readonly value="<?= $value_ug?>">
                     </div>
 
                 </div>
@@ -400,56 +400,85 @@ $board_10=$comp_10=$school_10=$per_or_cgpa_10=$value_10=$marks_10=$max_marks_10=
             <!-------------------------------------------------------------PG---------------------------------------------------------->
             <form class="form-horizontal" name="reg_frm" method="post" action="save.php" onSubmit="return validate();">
             <div id="pg"  class="qual_div" style=" display: none;">
-                <div class="form-group">
-                    <label class="control-label col-sm-2" for="email"><span class="text-danger">*</span> Degree:</label>
-                    <div class="col-sm-3">
-                        <input type="text" class="form-control"   name="pg_field" required value="<?= $degree_pg ?>">
-                    </div>
-                    <label class="control-label col-sm-2" for="dob"><span class="text-danger">*</span>Specialization</label>
+<!--                <div class="form-group">-->
+<!--                    <label class="control-label col-sm-2" for="email"><span class="text-danger">*</span> Degree:</label>-->
+<!--                    <div class="col-sm-3">-->
+<!--                        <input type="text" class="form-control"   name="pg_field" required value="--><?//= $degree_pg ?><!--">-->
+<!--                    </div>-->
+<!--                    <label class="control-label col-sm-2" for="dob"><span class="text-danger">*</span>Specialization</label>-->
+<!--                    <div class="col-sm-5">-->
+<!--                        <input type="text" class="form-control" name="pg_specialization" required value="--><?//= $specialization_pg?><!--">-->
+<!--                    </div>-->
+<!--                </div>-->
+
+
+
+
+                <div id="pg" class="form-group">
+                    <label class="control-label col-sm-2" for="university_ug"><span class="text-danger">*</span> University:</label>
                     <div class="col-sm-5">
-                        <input type="text" class="form-control" name="pg_specialization" required value="<?= $specialization_pg?>">
+                        <input type="text" class="form-control"  name="ug_university"  required value="<?= $university_pg?>" id="university_ug">
                     </div>
                 </div>
 
-                <div id="ug" class="form-group">
-                    <label class="control-label col-sm-2" for="dob"><span class="text-danger">*</span> University:</label>
-                    <div class="col-sm-5">
-                        <input type="text" class="form-control"  name="university"  required value="<?= $university_pg?>">
-                    </div>
-                </div>
-
 
                 <div class="form-group">
-                    <label class="control-label col-sm-2" for="dob"><span class="text-danger">*</span> Entry Date :</label>
+                    <label class="control-label col-sm-2" for="from"><span class="text-danger">*</span> Entry Date :</label>
                     <div class="col-sm-3">
                         <input type="date" class="form-control"   name="pg_start_date" required id="from" value="<?= $start_date_pg?>"> <span class="text-danger">(YYYY-MM-DD)</span>
                     </div>
-                    <label class="control-label col-sm-2" for="email"><span class="text-danger">*</span> Completion Date:</label>
+                    <label class="control-label col-sm-2" for="to"><span class="text-danger">*</span> Completion Date:</label>
                     <div class="col-sm-3">
                         <input type="date" class="form-control"   name="pg_end_date" required id="to" value="<?= $completion_date_pg?>" > <span class="text-danger">(YYYY-MM-DD)</span>
                     </div>
                 </div>
 
 
+
+                    <div class="form-group">
+                        <label class="control-label col-sm-2" for="degree"><span class="text-danger">*</span> Degree:</label>
+
+                        <div class="col-sm-3">
+                            <select id="degree" name="degree_pg" required class="form-control">
+                                <option value="M Tech" id="mtech" <?php if($degree_pg=="M Tech") echo "selected" ?> >M Tech</option>
+                                <option value="MSC" id="msc" <?php if($degree_pg=="MSC") echo "selected" ?> >MSC</option>
+                                <option value="MS" id="ms" <?php if($degree_pg=="MS") echo "selected" ?> >MS</option>
+                                <option value="ME" id="me" <?php if($degree_pg=="ME") echo "selected" ?> >ME</option>
+                                <option value="Others" id="others" <?php if($degree_pg=="Others") echo "selected" ?> >Others</option>
+                            </select>
+                        </div>
+                    </div>
+
+
+                <div class="form-group"   id="otherscome" <?php if(isset($degree_pg) && $degree_pg=='Others') echo"style=\"display:block\""; else echo "style=\"display:none\"; ";?> >
+                    <label class="control-label col-sm-2" for="degree_pg"><span class="text-danger">*</span>Others:</label>
+                    <div class="col-sm-4">
+                        <input type="text" class="form-control"  id="degree_pg" value="<?php if(isset($degree_pg)) echo "$degree_pg"; ?>" name="degree_pg" required >
+                    </div>
+                </div>
+
+
+
+
                 <div class="form-group">
                     <label class="control-label col-sm-3" for="email"><span class="text-danger">*</span>Marking Scheme:</label>
-                    <div class=" col-sm-5" for="dob">
+                    <div class=" col-sm-5" >
 
-                        <label class="radio-inline">
-                            <input type="radio" class="radio-inline" value="0" name="pg_per_or_cgp" required  <?php if(isset($per_or_cgpa_pg) && $per_or_cgpa_pg=='0') echo 'checked="checked"'; ?> >CGPA<br></label>
-                        <label class="radio-inline">
-                            <input type="radio" class="radio-inline" value="1" name="pg_per_or_cgp" required  <?php if(isset($per_or_cgpa_pg) && $per_or_cgpa_pg=='1') echo 'checked="checked"'; ?> >Percentage
+                        <label class="radio-inline" for="per_or_cgp_pg0">
+                            <input type="radio" class="radio-inline" id="per_or_cgp_pg0" value="0" name="pg_per_or_cgp" required  <?php if(isset($per_or_cgpa_pg) && $per_or_cgpa_pg=='0') echo 'checked="checked"'; ?> >CGPA<br></label>
+                        <label class="radio-inline" for="per_or_cgp_pg1">
+                            <input type="radio" class="radio-inline" id="per_or_cgp_pg1" value="1" name="pg_per_or_cgp" required  <?php if(isset($per_or_cgpa_pg) && $per_or_cgpa_pg=='1') echo 'checked="checked"'; ?> >Percentage
                         </label>
 
                     </div>
                 </div>
 
                 <div class="form-group">
-                    <label class="control-label col-sm-3" for="dob"><span class="text-danger" >*</span> Marks/CGPA Obtained :</label>
+                    <label class="control-label col-sm-3" for="marks"><span class="text-danger" >*</span> Marks/CGPA Obtained :</label>
                     <div class="col-sm-3">
                         <input type="text" class="form-control"   name="pg_marks" required id="marks" value="<?= $marks_pg?>" >
                     </div>
-                    <label class="control-label col-sm-2" for="email"><span class="text-danger">*</span> Maximum Marks/CGPA:</label>
+                    <label class="control-label col-sm-2" for="max_marks"><span class="text-danger">*</span> Maximum Marks/CGPA:</label>
                     <div class="col-sm-4">
                         <input type="text" class="form-control"  name="pg_max_marks" required id="max_marks"  value="<?= $max_marks_pg?>" >
                     </div>
@@ -460,9 +489,9 @@ $board_10=$comp_10=$school_10=$per_or_cgpa_10=$value_10=$marks_10=$max_marks_10=
 
                 <div class="form-group">
 
-                    <label class="control-label col-sm-3" for="dob"><span class="text-danger">*</span> % Marks/CGPA :</label>
+                    <label class="control-label col-sm-3" for="value"><span class="text-danger">*</span> % Marks/CGPA :</label>
                     <div class="col-sm-3">
-                        <input type="text" class="form-control"   name="pg_perc_marks" readonly  value="<?= $value_pg?>" >
+                        <input type="text" class="form-control"   name="pg_perc_marks" readonly  value="<?= $value_pg?>" id="value" >
                     </div>
 
                 </div>
@@ -472,18 +501,18 @@ $board_10=$comp_10=$school_10=$per_or_cgpa_10=$value_10=$marks_10=$max_marks_10=
                         <button type="submit" name="edu_ch_4" class="btn btn-primary col-sm-12">Submit Information</button>
                     </div>
                 </div>
-        </div>
 
+            </div>
     </form>
 </div>
 
 
-    </body>
+
 
 
     <script>
         function validate(){
-            if($(this).children().filter('#from').val()>$(this).children().filter('#to')..val()){
+            if($(this).children().filter('#from').val()>$(this).children().filter('#to').val()){
                 alert("Completion Date must be greater than start date!");
                 $(this).children().filter('#from').val('');
                 $(this).children().filter('#to').val('');
@@ -508,3 +537,20 @@ $board_10=$comp_10=$school_10=$per_or_cgpa_10=$value_10=$marks_10=$max_marks_10=
                 $(qual).show();
     });
 </script>
+
+    <script>
+        $(document).ready(function () {
+            $('#otherscome').hide();
+
+            $('#degree').change(function () {
+                var val = $(this).val();
+                if (val === "Others")
+                    $('#otherscome').stop(true, true).show(200).attr("required","true"); //than show
+                else
+                    $('#otherscome').stop(true, true).hide(200).removeAttr("required"); //than hide
+
+
+            });
+        });
+
+        </script>
