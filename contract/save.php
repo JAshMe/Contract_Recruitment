@@ -1,4 +1,3 @@
-3
 <?php
 session_start();
 require_once("./included_classes/class_user.php");
@@ -17,35 +16,7 @@ require_once("./included_classes/class_user.php");
 //		$misc->palert("You cannot modify you information after you have freezed your form","home.php?val=perinfo");
 //	}
 	
-	
-if(isset($_POST['phd_ch']))
-    {     	
-	$status = validate($_POST['status']);
-$date = validate($_POST['date']);
-$title = validate($_POST['title']);
-$university = validate($_POST['university']);
 
-$id=$_SESSION['user'];
-$query="SELECT * from `phd_info` where `user_id` like '$id'";
-$r = $db->process_query($query);
-
-if(mysql_num_rows($r)>0)
-{
-	$q="UPDATE `phd_info` SET `date`='$date',`title`='$title',`university`='$university',`status`='$status' WHERE `user_id` = '$id'";
-}
-else
-{
-	  $q="INSERT INTO `phd_info`(`user_id`, `date`, `title`, `university`,`status`) VALUES ('$id','$date','$title','$university','$status')";
-}
-$r=$db->process_query($q);
-if($r){
-                $misc->palert("Details Submitted","home.php?val=education_qual");
-       }
-       else
-       {
-                $misc->palert("Some error occured","home.php?val=phd_info");
-       }
-    }
 if(isset($_POST['per_ch']))
     {
 	$name=validate($_POST['name']);
@@ -120,17 +91,20 @@ if(isset($_POST['edu_ch_0']))
 	$perc_marks_10th = validate($_POST['perc_marks_10th']);
 	$board_10th = validate($_POST['board_10th']);
 
+	//checking if data already exists
+	$q = "select user_id from 10th_mark where user_id = '$id' ";
+	$r = $db->process_query($q);
 
-$q="INSERT INTO `10th_mark` VALUES ('$id','$completion_date_10th','$board_10th','$school_10th','$marks_10th','$max_marks_10th','$per_cgp_10th','$perc_marks_10th')";
+	if(mysqli_num_rows($r)>0) //then update
+		$q = "update 10th_mark set completion_date = '$completion_date_10th',board = '$board_10th',school = '$school_10th', marks = '$marks_10th', max_marks = '$max_marks_10th', per_or_cgpa = '$per_cgp_10th', `value` = '$perc_marks_10th' where user_id = '$id' ";
+	else  //insert in table
+		$q="INSERT INTO `10th_mark` VALUES ('$id','$completion_date_10th','$board_10th','$school_10th','$marks_10th','$max_marks_10th','$per_cgp_10th','$perc_marks_10th')";
 	echo $q;
 	$r=$db->process_query($q);
-if($r){
-                $misc->palert("Details Submitted","home.php?val=education_qual");
-       }
+	if($r)
+		$misc->palert("Details Submitted","home.php?val=education_qual");
        else
-       {
                 $misc->palert("Some error occured","home.php?val=education_qual");
-       }
     	
 }
 if(isset($_POST['edu_ch_1']))
@@ -145,8 +119,15 @@ if(isset($_POST['edu_ch_1']))
 	$max_marks = validate($_POST['dip_max_marks']);
 	$perc_marks = validate($_POST['dip_perc_marks']);
 
+	//checking if data already exists
+	$q = "select user_id from 10th_mark where user_id = '$id' ";
+	$r = $db->process_query($q);
 
-	$q="INSERT INTO `diploma` VALUES ('$id','$spec','$start_date','$completion_date','$university','$marks','$max_marks','$per_cgp','$perc_marks')";
+	if(mysqli_num_rows($r)>0)
+		$q = "update diploma set field = '$spec', start_date = '$start_date' , end_date = '$completion_date', university = '$university', marks = '$marks', max_marks = '$max_marks', per_or_val = '$per_cgp', `value` = '$value' where user_id = '$id';";
+	else
+		$q="INSERT INTO `diploma` VALUES ('$id','$spec','$start_date','$completion_date','$university','$marks','$max_marks','$per_cgp','$perc_marks')";
+
 	$r=$db->process_query($q);
 	if($r){
 		$misc->palert("Details Submitted","home.php?val=education_qual");
@@ -168,10 +149,17 @@ if(isset($_POST['edu_ch_2']))
 	$perc_marks = validate($_POST['perc_marks_12th']);
 	$board = validate($_POST['board_12th']);
 
+	//checking if data already exists
+	$q = "select user_id from 10th_mark where user_id = '$id' ";
+	$r = $db->process_query($q);
 
-	$q="INSERT INTO `12th_mark` VALUES ('$id','$completion_date','$board','$school','$marks','$max_marks','$per_cgp','$perc_marks')";
+	if(mysqli_num_rows($r)>0) //then update
+		$q = "update 12th_mark set completion_date = '$completion_date',board = '$board',school = '$school', marks = '$marks', max_marks = '$max_marks', per_or_cgpa = '$per_cgp', `value` = '$perc_marks' where user_id = '$id' ";
+	else  //insert in table
+		$q="INSERT INTO `12th_mark` VALUES ('$id','$completion_date','$board','$school','$marks','$max_marks','$per_cgp','$perc_marks')";
 	$r=$db->process_query($q);
-	if($r){
+	if($r)
+	{
 		$misc->palert("Details Submitted","home.php?val=education_qual");
 	}
 	else
@@ -194,9 +182,17 @@ if(isset($_POST['edu_ch_3']))
 	$perc_marks = validate($_POST['ug_perc_marks']);
 
 
-	$q="INSERT INTO `ug` VALUES ('$id','$spec','$start_date','$completion_date','$university','$marks','$max_marks','$per_cgp','$perc_marks','$degree')";
+	//checking if data already exists
+	$q = "select user_id from 10th_mark where user_id = '$id' ";
+	$r = $db->process_query($q);
+
+	if(mysqli_num_rows($r)>0)
+		$q = "update ug set specialization = '$spec', start_date = '$start_date' , completion_date = '$completion_date', university = '$university', marks = '$marks', max_marks = '$max_marks', per_or_cgpa = '$per_cgp', `value` = '$perc_marks', degree = '$degree' where user_id = '$id';";
+	else
+		$q="INSERT INTO `ug` VALUES ('$id','$spec','$start_date','$completion_date','$university','$marks','$max_marks','$per_cgp','$perc_marks','$degree')";
 	$r=$db->process_query($q);
-	if($r){
+	if($r)
+	{
 		$misc->palert("Details Submitted","home.php?val=education_qual");
 	}
 	else
@@ -218,8 +214,14 @@ if(isset($_POST['edu_ch_4']))
 	$max_marks = validate($_POST['pg_max_marks']);
 	$perc_marks = validate($_POST['pg_perc_marks']);
 
+	//checking if data already exists
+	$q = "select user_id from 10th_mark where user_id = '$id' ";
+	$r = $db->process_query($q);
 
-	$q="INSERT INTO `pg` VALUES ('$id','$spec','$start_date','$completion_date','$university','$marks','$max_marks','$per_cgp','$perc_marks','$degree')";
+	if(mysqli_num_rows($r)>0)  //update
+		$q = "update ug set specialization = '$spec', start_date = '$start_date' , completion_date = '$completion_date', university = '$university', marks = '$marks', max_marks = '$max_marks', per_or_cgpa = '$per_cgp', `value` = '$perc_marks', degree = '$degree' where user_id = '$id';";
+	else  //insert
+		$q="INSERT INTO `pg` VALUES ('$id','$spec','$start_date','$completion_date','$university','$marks','$max_marks','$per_cgp','$perc_marks','$degree')";
 	$r=$db->process_query($q);
 	if($r){
 		$misc->palert("Details Submitted","home.php?val=education_qual");

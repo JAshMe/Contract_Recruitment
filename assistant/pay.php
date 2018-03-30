@@ -103,7 +103,7 @@ $db = new sqlfunctions();
 	$newName=$targetDir."/".$imageName;
 	if (!file_exists($newName))
 	{
-		$misc->palert("Please upload you photo","home.php?val=image");
+		$misc->palert("Please upload you photos","home.php?val=image");
 	}
 	$targetDir="./photos";
 	$imageName=$_SESSION['user'].'_2.'."JPG";

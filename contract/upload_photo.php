@@ -96,5 +96,5 @@
 				$misc->palert("Copy Unsuccessfull!","home.php?val=image");
 		}
 	}
-	$misc->palert("Image successfully uploaded !!!","home.php?val=phd_info");
+	$misc->palert("Image successfully uploaded !!!","home.php?val=education_qual");
 ?>

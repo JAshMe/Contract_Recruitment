@@ -80,7 +80,7 @@ class sqlfunctions {
 		//echo $this->database;
 		//sv_query($query1);
 		//if(substr($query1,0,6)!='select')
-		$this->query=mysqli_query($this->connection,$query1)or die(mysqli_errno($this->connection));// or die("There is some Technical fault! Please try after sometime and if the problem persists, then contact Web Team");
+		$this->query=mysqli_query($this->connection,$query1)or die(mysqli_error($this->connection));// or die("There is some Technical fault! Please try after sometime and if the problem persists, then contact Web Team");
 		//echo $query1;
 	return $this->query;
     }
