@@ -95,12 +95,12 @@ if(isset($_POST['edu_ch_0']))
 	//checking if data already exists
 	$q = "select user_id from 10th_mark where user_id = '$id' ";
 	$r = $db->process_query($q);
-
+    verify_doc("doc_10th",'./doc_edu','education_qual');
 	if(mysqli_num_rows($r)>0) //then update
 		$q = "update 10th_mark set completion_date = '$completion_date_10th',board = '$board_10th',school = '$school_10th', marks = '$marks_10th', max_marks = '$max_marks_10th', per_or_cgpa = '$per_cgp_10th', `value` = '$perc_marks_10th' where user_id = '$id' ";
 	else  //insert in table
 		$q="INSERT INTO `10th_mark` VALUES ('$id','$completion_date_10th','$board_10th','$school_10th','$marks_10th','$max_marks_10th','$per_cgp_10th','$perc_marks_10th')";
-	echo $q;
+
 	$r=$db->process_query($q);
 	if($r)
 		$misc->palert("Details Submitted","home.php?val=education_qual");
@@ -115,7 +115,7 @@ if(isset($_POST['edu_ch_1']))
 	$per_cgp = validate($_POST['dip_per_or_cgp']);
 	$university = validate($_POST['dip_university']);
 	$start_date = validate($_POST['dip_start_date']);
-	$completion_date= validate($_POST['dip_completion_date']);
+	$completion_date= validate($_POST['dip_end_date']);
 	$marks = validate($_POST['dip_marks']);
 	$max_marks = validate($_POST['dip_max_marks']);
 	$perc_marks = validate($_POST['dip_perc_marks']);
@@ -123,9 +123,9 @@ if(isset($_POST['edu_ch_1']))
 	//checking if data already exists
 	$q = "select user_id from diploma where user_id = '$id' ";
 	$r = $db->process_query($q);
-
+    verify_doc("doc_diploma",'./doc_edu','education_qual');
 	if(mysqli_num_rows($r)>0)
-		$q = "update diploma set field = '$spec', start_date = '$start_date' , end_date = '$completion_date', university = '$university', marks = '$marks', max_marks = '$max_marks', per_or_val = '$per_cgp', `value` = '$value' where user_id = '$id';";
+		$q = "update diploma set field = '$spec', start_date = '$start_date' , end_date = '$completion_date', university = '$university', marks = '$marks', max_marks = '$max_marks', per_or_cgpa = '$per_cgp', `value` = '$value' where user_id = '$id';";
 	else
 		$q="INSERT INTO `diploma` VALUES ('$id','$spec','$start_date','$completion_date','$university','$marks','$max_marks','$per_cgp','$perc_marks')";
 
@@ -149,11 +149,10 @@ if(isset($_POST['edu_ch_2']))
 	$max_marks= validate($_POST['max_marks_12th']);
 	$perc_marks = validate($_POST['perc_marks_12th']);
 	$board = validate($_POST['board_12th']);
-
 	//checking if data already exists
 	$q = "select user_id from 12th_mark where user_id = '$id' ";
 	$r = $db->process_query($q);
-
+    verify_doc("doc_12th",'./doc_edu','education_qual');
 	if(mysqli_num_rows($r)>0) //then update
 		$q = "update 12th_mark set completion_date = '$completion_date',board = '$board',school = '$school', marks = '$marks', max_marks = '$max_marks', per_or_cgpa = '$per_cgp', `value` = '$perc_marks' where user_id = '$id' ";
 	else  //insert in table
@@ -186,6 +185,7 @@ if(isset($_POST['edu_ch_3']))
 	//checking if data already exists
 	$q = "select user_id from ug where user_id = '$id' ";
 	$r = $db->process_query($q);
+    verify_doc("doc_ug",'./doc_edu','education_qual');
 
 	if(mysqli_num_rows($r)>0)
 		$q = "update ug set specialization = '$spec', start_date = '$start_date' , completion_date = '$completion_date', university = '$university', marks = '$marks', max_marks = '$max_marks', per_or_cgpa = '$per_cgp', `value` = '$perc_marks', degree = '$degree' where user_id = '$id';";
@@ -218,9 +218,10 @@ if(isset($_POST['edu_ch_4']))
 	//checking if data already exists
 	$q = "select user_id from pg where user_id = '$id' ";
 	$r = $db->process_query($q);
+    verify_doc("doc_pg",'./doc_edu','education_qual');
 
 	if(mysqli_num_rows($r)>0)  //update
-		$q = "update ug set specialization = '$spec', start_date = '$start_date' , completion_date = '$completion_date', university = '$university', marks = '$marks', max_marks = '$max_marks', per_or_cgpa = '$per_cgp', `value` = '$perc_marks', degree = '$degree' where user_id = '$id';";
+		$q = "update pg set specialization = '$spec', start_date = '$start_date' , completion_date = '$completion_date', university = '$university', marks = '$marks', max_marks = '$max_marks', per_or_cgpa = '$per_cgp', `value` = '$perc_marks', degree = '$degree' where user_id = '$id';";
 	else  //insert
 		$q="INSERT INTO `pg` VALUES ('$id','$spec','$start_date','$completion_date','$university','$marks','$max_marks','$per_cgp','$perc_marks','$degree')";
 	$r=$db->process_query($q);
