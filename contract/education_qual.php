@@ -148,7 +148,7 @@ $board_10=$comp_10=$school_10=$per_or_cgpa_10=$value_10=$marks_10=$max_marks_10=
 
 
                         <div id="10th" class="form-group">
-                            <label class="control-label col-sm-3" for="school_1th"><span class="text-danger">*</span> School Name :</label>
+                            <label class="control-label col-sm-3" for="school_1th"><span class="text-danger">*</span> School Name:</label>
                             <div class="col-sm-5">
                                 <input type="text" class="form-control" id="school_1th" name="school_10th"  required value="<?= $school_10?>" >
                             </div>
@@ -185,6 +185,14 @@ $board_10=$comp_10=$school_10=$per_or_cgpa_10=$value_10=$marks_10=$max_marks_10=
                             </div>
                         </div>
 
+                    <div class="form-group">
+                        <label class="control-label col-sm-3" for="doc_10th"><span class="text-danger">*</span> Attach Appropriate proof:</label>
+                        <div class="col-sm-5">
+                            <input type="file"  name="doc_10th" id="doc_10th" required>
+                        </div>
+                    </div>
+
+
                         <div class="form-group">
                             <div class="col-sm-offset-4 col-sm-4">
                                 <button type="submit" name="edu_ch_0" class="btn btn-primary col-sm-12">Submit Information</button>
@@ -212,11 +220,11 @@ $board_10=$comp_10=$school_10=$per_or_cgpa_10=$value_10=$marks_10=$max_marks_10=
                         <div class="form-group">
                             <label class="control-label col-sm-2" for="from"><span class="text-danger">*</span> Entry Date :</label>
                             <div class="col-sm-3">
-                                <input type="date" class="form-control"   name="dip_start_date" required id="from" value="<?= $start_date_d?>" > <span class="text-danger">(YYYY-MM-DD)</span>
+                                <input type="date" class="form-control"   name="dip_start_date" required id="from" value="<?= $start_date_d?>" > <span class="text-danger">(DD-MM-YYYY)</span>
                             </div>
                             <label class="control-label col-sm-2" for="to"><span class="text-danger">*</span> Completion Date:</label>
                             <div class="col-sm-3">
-                                <input type="date" class="form-control"   name="dip_end_date" required id="to" value="<?= $end_data_d?>" > <span class="text-danger">(YYYY-MM-DD)</span>
+                                <input type="date" class="form-control"   name="dip_end_date" required id="to" value="<?= $end_data_d?>" > <span class="text-danger">(DD-MM-YYYY)</span>
                             </div>
                         </div>
 
@@ -249,6 +257,13 @@ $board_10=$comp_10=$school_10=$per_or_cgpa_10=$value_10=$marks_10=$max_marks_10=
                                 <input type="text" class="form-control"  id="value_d" name="dip_perc_marks" readonly value="<?= $value_d?>" >
                             </div>
                         </div>
+
+                <div class="form-group">
+                    <label class="control-label col-sm-3" for="doc_diploma"><span class="text-danger">*</span> Attach Appropriate proof:</label>
+                    <div class="col-sm-5">
+                        <input type="file"  name="doc_diploma" id="pdf1" required>
+                    </div>
+                </div>
 
                     <div class="form-group">
                         <div class="col-sm-offset-4 col-sm-4">
@@ -314,6 +329,13 @@ $board_10=$comp_10=$school_10=$per_or_cgpa_10=$value_10=$marks_10=$max_marks_10=
                     </div>
 
                     <div class="form-group">
+                        <label class="control-label col-sm-3" for="doc_12th"><span class="text-danger">*</span> Attach Appropriate proof:</label>
+                        <div class="col-sm-5">
+                            <input type="file"  name="doc_12th" id="doc_12th" required>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
                         <div class="col-sm-offset-4 col-sm-4">
                             <button type="submit" name="edu_ch_2" class="btn btn-primary col-sm-12">Submit Information</button>
                         </div>
@@ -323,33 +345,72 @@ $board_10=$comp_10=$school_10=$per_or_cgpa_10=$value_10=$marks_10=$max_marks_10=
             <!-------------------------------------------------------------UG---------------------------------------------------------->
             <form class="form-horizontal" name="reg_frm" method="post" action="save.php" onSubmit="return validate();">
             <div id="ug" class="qual_div"  style=" display: none;">
+<!--                <div class="form-group">-->
+<!--                    <label class="control-label col-sm-2" for="field_ug"><span class="text-danger">*</span> Degree:</label>-->
+<!--                    <div class="col-sm-3">-->
+<!--                        <input type="text" class="form-control"   name="ug_field" required value="--><?//= $degree_ug?><!--"  id="field_ug">-->
+<!--                    </div>-->
+
+
                 <div class="form-group">
-                    <label class="control-label col-sm-2" for="field_ug"><span class="text-danger">*</span> Degree:</label>
+                    <label class="control-label col-sm-2" for="degree1"><span class="text-danger">*</span> Degree:</label>
+
                     <div class="col-sm-3">
-                        <input type="text" class="form-control"   name="ug_field" required value="<?= $degree_ug?>"  id="field_ug">
+                        <select id="degree1" name="degree1" required class="form-control">
+                            <option value="BA" id="ba" <?php if($degree_ug=="BA") echo "selected" ?> >Bachelor of Arts (BA)</option>
+                            <option value="B.Sc" id="bsc" <?php if($degree_ug=="B.Sc") echo "selected" ?> >Bachelor of Science (B.Sc)</option>
+                            <option value="B.Com" id="ms" <?php if($degree_ug=="B.Com") echo "selected" ?> >Bachelor of Commerce (B.Com)</option>
+                            <option value="BE" id="be" <?php if($degree_ug=="BE") echo "selected" ?> >Bachelor of Engineering (BE)</option>
+                            <option value="B.Tech" id="btech" <?php if($degree_ug=="B.Tech)") echo "selected" ?> >Bachelor of Technology (B.Tech)</option>
+                            <option value="LLB" id="llb" <?php if($degree_ug=="LLB") echo "selected" ?> >Bachelor of Law (LLB)</option>
+                            <option value="BCA" id="bca" <?php if($degree_ug=="BCA") echo "selected" ?> >Bachelor of Computer Application (BCA)</option>
+                            <option value="BBA" id="bba" <?php if($degree_ug=="BBA") echo "selected" ?> >Bachelor of Business Administration (BBA)</option>
+                            <option value="B.Pharma" id="bpharma" <?php if($degree_ug=="B.Pharma") echo "selected" ?> >Bachelor of Pharmacy (B.Pharma)</option>
+                            <option value="B.Arch" id="barch" <?php if($degree_ug=="B.Arch") echo "selected" ?> >Bachelor of Architecture (B.Arch)</option>
+                            <option value="BDS" id="bds" <?php if($degree_ug=="BDS") echo "selected" ?> >Bachelor of Dental Surgery (BDS)</option>
+                            <option value="BHMS" id="bhms" <?php if($degree_ug=="BHMS") echo "selected" ?> >Bachelor of Homeopathic Medicine & Surgery (BHMS)</option>
+                            <option value="BAMS" id="bams" <?php if($degree_ug=="BAMS") echo "selected" ?> >Bachelor of Ayurvedic Medicine & Surgery (BAMS)</option>
+                            <option value="BHM" id="bhm" <?php if($degree_ug=="BHM") echo "selected" ?> >Bachelor of Hotel Management (BHM)</option>
+                            <option value="B.P.Ed" id="bped" <?php if($degree_ug=="B.P.Ed") echo "selected" ?> >Bachelor of Physical Education (B.P.Ed)</option>
+                            <option value="B.Ed" id="bed" <?php if($degree_ug=="B.Ed") echo "selected" ?> >Bachelor of Education (B.Ed)</option>
+                            <option value="Others" id="others" <?php if($degree_ug=="Others") echo "selected" ?> >Others</option>
+                        </select>
                     </div>
-                    <label class="control-label col-sm-2" for="specialization_ug"><span class="text-danger">*</span>Specialization</label>
-                    <div class="col-sm-5">
+                </div>
+
+
+                <div class="form-group"   id="otherscome1" <?php if(isset($degree_ug) && $degree_ug=='Others') echo"style=\"display:block\""; else echo "style=\"display:none\"; ";?> >
+                    <label class="control-label col-sm-2" for="degree_ug"><span class="text-danger">*</span>Others:</label>
+                    <div class="col-sm-4">
+                        <input type="text" class="form-control"  id="degree_ug" value="<?php if(isset($degree_ug)) echo "$degree_ug"; ?>" name="degree_ug" required >
+                    </div>
+                </div>
+
+
+
+                <div id="ug" class="form-group">
+                <label class="control-label col-sm-2" for="specialization_ug"><span class="text-danger">*</span>Specialization:</label>
+                    <div class="col-sm-4">
                         <input type="text" class="form-control" name="ug_specialization" id="specialization_ug" required value="<?= $specialization_ug?>"   >
                     </div>
                 </div>
 
                 <div id="ug" class="form-group">
                     <label class="control-label col-sm-2" for="university_ug"><span class="text-danger">*</span> University:</label>
-                    <div class="col-sm-5">
+                    <div class="col-sm-4">
                         <input type="text" class="form-control"  name="ug_university" id="university_ug" required value="<?= $university_ug?>"  >
                     </div>
                 </div>
 
 
                 <div class="form-group">
-                    <label class="control-label col-sm-2" for="dob"><span class="text-danger">*</span> Entry Date :</label>
+                    <label class="control-label col-sm-2" for="from"><span class="text-danger">*</span> Entry Date :</label>
                     <div class="col-sm-3">
-                        <input type="date" class="form-control"   name="ug_start_date" required id="from" value="<?= $start_date_ug?>"  > <span class="text-danger">(YYYY-MM-DD)</span>
+                        <input type="date" class="form-control" name="ug_start_date" required id="from" value="<?= $start_date_ug?>"  > <span class="text-danger">(DD-MM-YYYY)</span>
                     </div>
-                    <label class="control-label col-sm-2" for="email"><span class="text-danger">*</span> Completion Date:</label>
+                    <label class="control-label col-sm-3" for="to"><span class="text-danger">*</span> Completion Date:</label>
                     <div class="col-sm-3">
-                        <input type="date" class="form-control"   name="ug_end_date" required id="to" value="<?= $completion_date_ug?>"> <span class="text-danger"   >(YYYY-MM-DD)</span>
+                        <input type="date" class="form-control"   name="ug_end_date" required id="to" value="<?= $completion_date_ug?>"> <span class="text-danger"   >(DD-MM-YYYY)</span>
                     </div>
                 </div>
 
@@ -387,7 +448,13 @@ $board_10=$comp_10=$school_10=$per_or_cgpa_10=$value_10=$marks_10=$max_marks_10=
                     <div class="col-sm-3">
                         <input type="text" class="form-control"   id="value_ug" name="ug_perc_marks" readonly value="<?= $value_ug?>">
                     </div>
+                </div>
 
+                <div class="form-group">
+                    <label class="control-label col-sm-3" for="doc_ug"><span class="text-danger">*</span> Attach Appropriate proof:</label>
+                    <div class="col-sm-5">
+                        <input type="file"  name="doc_ug" id="doc_ug" required>
+                    </div>
                 </div>
 
                 <div class="form-group">
@@ -425,11 +492,11 @@ $board_10=$comp_10=$school_10=$per_or_cgpa_10=$value_10=$marks_10=$max_marks_10=
                 <div class="form-group">
                     <label class="control-label col-sm-2" for="from"><span class="text-danger">*</span> Entry Date :</label>
                     <div class="col-sm-3">
-                        <input type="date" class="form-control"   name="pg_start_date" required id="from" value="<?= $start_date_pg?>"> <span class="text-danger">(YYYY-MM-DD)</span>
+                        <input type="date" class="form-control"   name="pg_start_date" required id="from" value="<?= $start_date_pg?>"> <span class="text-danger">(DD-MM-YYYY)</span>
                     </div>
                     <label class="control-label col-sm-2" for="to"><span class="text-danger">*</span> Completion Date:</label>
                     <div class="col-sm-3">
-                        <input type="date" class="form-control"   name="pg_end_date" required id="to" value="<?= $completion_date_pg?>" > <span class="text-danger">(YYYY-MM-DD)</span>
+                        <input type="date" class="form-control"   name="pg_end_date" required id="to" value="<?= $completion_date_pg?>" > <span class="text-danger">(DD-MM-YYYY)</span>
                     </div>
                 </div>
 
@@ -493,7 +560,13 @@ $board_10=$comp_10=$school_10=$per_or_cgpa_10=$value_10=$marks_10=$max_marks_10=
                     <div class="col-sm-3">
                         <input type="text" class="form-control"   name="pg_perc_marks" readonly  value="<?= $value_pg?>" id="value" >
                     </div>
+                </div>
 
+                <div class="form-group">
+                    <label class="control-label col-sm-3" for="doc_pg"><span class="text-danger">*</span> Attach Appropriate proof:</label>
+                    <div class="col-sm-5">
+                        <input type="file"  name="doc_pg" id="doc_pg" required>
+                    </div>
                 </div>
 
                 <div class="form-group">
@@ -554,3 +627,21 @@ $board_10=$comp_10=$school_10=$per_or_cgpa_10=$value_10=$marks_10=$max_marks_10=
         });
 
         </script>
+
+<script>
+    $(document).ready(function () {
+        $('#otherscome1').hide();
+
+        $('#degree1').change(function () {
+            var val = $(this).val();
+            if (val === "Others")
+                $('#otherscome1').stop(true, true).show(200).attr("required","true"); //than show
+            else
+                $('#otherscome1').stop(true, true).hide(200).removeAttr("required"); //than hide
+
+
+        });
+    });
+
+</script>
+
