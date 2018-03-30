@@ -94,7 +94,7 @@ $emol   =  validate($r['emoluments']);
           </div>
             <label class="control-label col-sm-2" for="email"><span class="text-danger">*</span> To:</label>
           <div class="col-sm-3">
-            <input type="date" class="form-control"  value="<?php if(isset($to)) echo "$to"; ?>" name="to" required id="to"> <font class="text-danger">(YYYY-MM-DD)</font>
+            <input type="text" class="form-control"  value="<?= date("m-d-Y") ?>" readonly name="to" required id="to">
           </div>
         </div>
 
@@ -142,9 +142,10 @@ $emol   =  validate($r['emoluments']);
   </form>
 </div>
 </body>
+<script src="include/date_functions.js"></script>
 <script>
 function validate(){
-    if($('#from').val()>$('#to').val()){
+    if(datediff($('#from').val(),$('#to').val())<0){
         alert("Completion Date must be greater than start date!");
         $('#from').val('');
         $('#to').val('');
