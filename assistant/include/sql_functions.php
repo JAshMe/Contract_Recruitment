@@ -186,7 +186,7 @@ function get_dues($roll)
 			$file2="signature/".$_SESSION['roll'].".JPG";
 			if(!file_exists($file1) || !file_exists($file2))
 			{
-				palert("You still photo uploads remaining.","index.php?val=upload_photo");
+				palert("You still photos uploads remaining.","index.php?val=upload_photo");
 			}
 		}
 		else

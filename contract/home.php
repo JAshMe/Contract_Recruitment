@@ -49,20 +49,12 @@ if(!isset($_SESSION['user']))
                              	                        include("personal_info.php");
 							else  if($_GET['val']=="image")
 								include("image.php");
-							else  if($_GET['val']=="phd_info")
-								include("phd_info.php");
 							else  if($_GET['val']=="education_qual")
 								include("education_qual.php");
-							else  if($_GET['val']=="other_acads")
-								include("other_acads.php");
 							else  if($_GET['val']=="present_emp")
 								include("present_emp.php");
-							else  if($_GET['val']=="tech_exp")
-								include("teaching_exp.php");
-							else  if($_GET['val']=="research")
-								include("research.php");
-							else  if($_GET['val']=="industry")
-								include("industrial.php");
+							else  if($_GET['val']=="work_exp")
+								include("work_exp.php");
 							else  if($_GET['val']=="reference")
 								include("reference.php");
 							else  if($_GET['val']=="other_info")

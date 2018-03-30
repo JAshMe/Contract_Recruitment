@@ -13,11 +13,11 @@
 	$r = $db->process_query($query);
 	if(mysql_num_rows($r)>0)
 	{
-		$misc->palert("You cannot upload photo after you have freezed your form","home.php?val=perinfo");
+		$misc->palert("You cannot upload photos after you have freezed your form","home.php?val=perinfo");
 	}
 	
 	$targetDir="./photos";
-	$imageName=stripslashes($_FILES['photo']['name']);
+	$imageName=stripslashes($_FILES['photos']['name']);
 	//echo $imageName;
 	//echo $misc->Extension($imageName);
 	//print_r($_FILES);
@@ -35,7 +35,7 @@
 		$errorInUploading++;
 		$misc->palert("The Extension of your file was ".$extension.". Only JPG Files are allowed!","home.php?val=image");
 	}
-	else if(filesize($_FILES['photo']['tmp_name'])>1024*300)
+	else if(filesize($_FILES['photos']['tmp_name'])>1024*300)
 	{
 		$errorInUploading++;
 		$misc->palert("File exceeds 300KB size Limit !!","home.php?val=image"); 
@@ -50,7 +50,7 @@
 		if (!is_writable($targetDir))   die('Upload directory is not writable');
 		//echo $newName;
 		//echo $_FILES['image']['tmp_name'];
-		$copied = move_uploaded_file($_FILES['photo']['tmp_name'], $newName);
+		$copied = move_uploaded_file($_FILES['photos']['tmp_name'], $newName);
 		//$misc->palert($newName,"");
 		if (!$copied) 
 		{ 
