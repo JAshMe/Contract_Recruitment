@@ -8,7 +8,7 @@ require_once("./included_classes/class_user.php");
     $id=$_SESSION['user'];
     $query="SELECT * from `employer` where `user_id` like '$id'";
 $r = $db->process_query($query);
-if(mysql_num_rows($r)>0)
+if(mysqli_num_rows($r)>0)
 {
   $r = $db->fetch_rows($r);
   $position=validate($r['position']);
@@ -63,7 +63,6 @@ if(mysql_num_rows($r)>0)
   <li> * Marked fields are mandatory.</li>
 </ul>
 
-</script>
 <form class="form-horizontal" name="reg_frm" method="post" action="save.php" onSubmit="return validate();">
 <div class="tab-content">
       <div id="home" class="tab-pane fade in active">

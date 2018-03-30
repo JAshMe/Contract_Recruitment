@@ -400,17 +400,6 @@ $board_10=$comp_10=$school_10=$per_or_cgpa_10=$value_10=$marks_10=$max_marks_10=
             <!-------------------------------------------------------------PG---------------------------------------------------------->
             <form class="form-horizontal" name="reg_frm" method="post" action="save.php" onSubmit="return validate();">
             <div id="pg"  class="qual_div" style=" display: none;">
-<!--                <div class="form-group">-->
-<!--                    <label class="control-label col-sm-2" for="email"><span class="text-danger">*</span> Degree:</label>-->
-<!--                    <div class="col-sm-3">-->
-<!--                        <input type="text" class="form-control"   name="pg_field" required value="--><?//= $degree_pg ?><!--">-->
-<!--                    </div>-->
-<!--                    <label class="control-label col-sm-2" for="dob"><span class="text-danger">*</span>Specialization</label>-->
-<!--                    <div class="col-sm-5">-->
-<!--                        <input type="text" class="form-control" name="pg_specialization" required value="--><?//= $specialization_pg?><!--">-->
-<!--                    </div>-->
-<!--                </div>-->
-
 
 
 
