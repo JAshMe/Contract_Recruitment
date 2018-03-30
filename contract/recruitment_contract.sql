@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.7.0
+-- version 4.7.9
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 29, 2018 at 07:15 PM
--- Server version: 10.1.26-MariaDB
--- PHP Version: 7.1.8
+-- Generation Time: Mar 30, 2018 at 03:48 PM
+-- Server version: 10.1.31-MariaDB
+-- PHP Version: 7.2.3
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -33,9 +33,20 @@ CREATE TABLE `10th_mark` (
   `completion_date` date NOT NULL,
   `board` varchar(30) NOT NULL,
   `school` varchar(30) NOT NULL,
+  `marks` double NOT NULL,
+  `max_marks` double NOT NULL,
   `per_or_cgpa` tinyint(1) NOT NULL,
-  `Value` double NOT NULL
+  `value` double NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `10th_mark`
+--
+
+INSERT INTO `10th_mark` (`user_id`, `completion_date`, `board`, `school`, `marks`, `max_marks`, `per_or_cgpa`, `value`) VALUES
+('2018AS05792', '0000-00-00', 'dfsf', 'fdsf', 6, 10, 0, 0),
+('2018AS05792', '0000-00-00', 'dfsf', 'fdsf', 6, 10, 0, 6),
+('2018AS05792', '0000-00-00', 'dfsf', 'fdsf', 6, 10, 0, 6);
 
 -- --------------------------------------------------------
 
@@ -46,8 +57,10 @@ CREATE TABLE `10th_mark` (
 CREATE TABLE `12th_mark` (
   `user_id` varchar(20) NOT NULL,
   `completion_date` date NOT NULL,
-  `school` varchar(30) NOT NULL,
   `board` varchar(30) NOT NULL,
+  `school` varchar(30) NOT NULL,
+  `marks` double NOT NULL,
+  `max_marks` double NOT NULL,
   `per_or_cgpa` tinyint(1) NOT NULL,
   `value` double NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -64,6 +77,8 @@ CREATE TABLE `diploma` (
   `start_date` date NOT NULL,
   `end_date` date NOT NULL,
   `university` varchar(30) NOT NULL,
+  `marks` double NOT NULL,
+  `max_marks` double NOT NULL,
   `per_or_val` tinyint(1) NOT NULL,
   `value` double NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -112,6 +127,8 @@ CREATE TABLE `pg` (
   `start_date` date NOT NULL,
   `completion_date` date NOT NULL,
   `university` varchar(30) NOT NULL,
+  `marks` double NOT NULL,
+  `max_marks` double NOT NULL,
   `per_or_cgpa` tinyint(1) NOT NULL,
   `value` double NOT NULL,
   `degree` varchar(30) NOT NULL
@@ -129,6 +146,8 @@ CREATE TABLE `ug` (
   `start_date` date NOT NULL,
   `completion_date` date NOT NULL,
   `university` varchar(30) NOT NULL,
+  `marks` double NOT NULL,
+  `max_marks` double NOT NULL,
   `per_or_cgpa` tinyint(1) NOT NULL,
   `value` double NOT NULL,
   `degree` varchar(30) NOT NULL
