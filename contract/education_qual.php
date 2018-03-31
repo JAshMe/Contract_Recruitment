@@ -243,11 +243,11 @@ $board_10=$comp_10=$school_10=$per_or_cgpa_10=$value_10=$marks_10=$max_marks_10=
                 <div class="form-group">
                     <label class="control-label col-sm-2" for="from_dip"><span class="text-danger">*</span> Entry Date :</label>
                     <div class="col-sm-3">
-                        <input type="date" class="form-control from_1"   name="dip_start_date" required id="from_dip" value="<?= $start_date_d?>" > <span class="text-danger">(DD-MM-YYYY)</span>
+                        <input type="date" class="form-control from_1"   name="dip_start_date" required id="from_dip" value="<?= $start_date_d?>" > 
                     </div>
                     <label class="control-label col-sm-2" for="to_dip"><span class="text-danger">*</span> Completion Date:</label>
                     <div class="col-sm-3">
-                        <input type="date" class="form-control to_1"   name="dip_end_date" required id="to_dip" value="<?= $end_data_d?>" > <span class="text-danger">(DD-MM-YYYY)</span>
+                        <input type="date" class="form-control to_1"   name="dip_end_date" required id="to_dip" value="<?= $end_data_d?>" > 
                     </div>
                 </div>
 
@@ -429,7 +429,7 @@ $board_10=$comp_10=$school_10=$per_or_cgpa_10=$value_10=$marks_10=$max_marks_10=
                 <div class="form-group">
                     <label class="control-label col-sm-2" for="from"><span class="text-danger">*</span> Entry Date :</label>
                     <div class="col-sm-3">
-                        <input type="date" class="form-control from_1" name="ug_start_date" required id="from" value="<?= $start_date_ug?>"  > <span class="text-danger">(DD-MM-YYYY)</span>
+                        <input type="date" class="form-control from_1" name="ug_start_date" required id="from" value="<?= $start_date_ug?>"  > 
                     </div>
                     <label class="control-label col-sm-3" for="to"><span class="text-danger">*</span> Completion Date:</label>
                     <div class="col-sm-3">
@@ -504,11 +504,11 @@ $board_10=$comp_10=$school_10=$per_or_cgpa_10=$value_10=$marks_10=$max_marks_10=
                 <div class="form-group">
                     <label class="control-label col-sm-2" for="from"><span class="text-danger">*</span> Entry Date :</label>
                     <div class="col-sm-3">
-                        <input type="date" class="form-control from_1"   name="pg_start_date" required id="from" value="<?= $start_date_pg?>"> <span class="text-danger">(DD-MM-YYYY)</span>
+                        <input type="date" class="form-control from_1"   name="pg_start_date" required id="from" value="<?= $start_date_pg?>"> 
                     </div>
                     <label class="control-label col-sm-2" for="to"><span class="text-danger">*</span> Completion Date:</label>
                     <div class="col-sm-3">
-                        <input type="date" class="form-control to_1"   name="pg_end_date" required id="to" value="<?= $completion_date_pg?>" > <span class="text-danger">(DD-MM-YYYY)</span>
+                        <input type="date" class="form-control to_1"   name="pg_end_date" required id="to" value="<?= $completion_date_pg?>" > 
                     </div>
                 </div>
 
@@ -702,7 +702,11 @@ $board_10=$comp_10=$school_10=$per_or_cgpa_10=$value_10=$marks_10=$max_marks_10=
         }
 
         var ans=marks_fl/max_marks_fl;
+        var x= $(this).parents("form").find("input[type=radio]").val();
+        if(x==='1')
         ans=ans*100.0;
+        else
+            ans=ans*10;
         $(this).parents("form").find("input[readonly]").val(ans);
     });
 </script>
