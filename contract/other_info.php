@@ -42,7 +42,7 @@ require_once("./included_classes/class_user.php");
         <div class="form-group">
             <label class="control-label col-sm-2" for="email"> Other Information:<br>(Max. 500 characters)</label>
           <div class="col-sm-6">
-            <textarea  row="50" class="form-control"   name="info" required maxlength="500"> <?php if(isset($info)) echo "$info"; ?> </textarea>
+            <textarea  row="50" class="form-control"   name="info" required maxlength="500"></textarea>
           </div>
         </div>
 

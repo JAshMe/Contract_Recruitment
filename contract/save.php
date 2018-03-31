@@ -353,7 +353,7 @@ if(isset($_POST['emp_ch']))
 	}
 	$r=$db->process_query($q);
 	if($r){
-	                $misc->palert("Details Submitted","home.php?val=work_exp");
+	                $misc->palert("Details Submitted","home.php?val=present_emp");
 	       }
 	       else
 	       {
@@ -407,31 +407,32 @@ if(isset($_POST['reference']))
 }
 if(isset($_POST['info_pg']))
 {
- $info=validate($_POST['info']);
-$id=$_SESSION['user'];
-$query="SELECT * from `other_info` where `user_id` like '$id'";
-$r = $db->process_query($query);
-if(strlen($info)>500)
-{
-	$misc->palert("Only 500 characters allowed","home.php?val=info");
+ 	$info=validate($_POST['info']);
+	$id=$_SESSION['user'];
+	$query="SELECT * from `other_info` where `user_id` like '$id'";
+	$r = $db->process_query($query);
+	if(strlen($info)>500)
+	{
+		$misc->palert("Only 500 characters allowed","home.php?val=info");
+	}
+	if(mysqli_num_rows($r)>0)
+	{
+		$q="UPDATE `other_info` SET `info`='$info' WHERE user_id = '$id'";
+	}
+	else
+	{
+		 $q="INSERT INTO `other_info`(`user_id`, `info`) VALUES ('$id','$info')";
+	}
+	$r=$db->process_query($q);
+	if($r)
+	{
+	    $misc->palert("Details Submitted","home.php?val=other_info");
+	}
+	else
+	{
+	    $misc->palert("Some error occured","home.php?val=other_info");
+	}
 }
-if(mysqli_num_rows($r)>0)
-{
-	$q="UPDATE `other_info` SET `info`='$info' WHERE user_id = '$id'";
-}
-else
-{
-	 $q="INSERT INTO `other_info`(`user_id`, `info`) VALUES ('$id','$info')";
-}
-$r=$db->process_query($q);
-if($r){
-                $misc->palert("Details Submitted","home.php?val=other_info");
-       }
-       else
-       {
-                $misc->palert("Some error occured","home.php?val=other_info");
-       }
-    }
 
 echo "nowhere!!!";
 	

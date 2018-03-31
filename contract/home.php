@@ -59,6 +59,8 @@ if(!isset($_SESSION['user']))
 								include("reference.php");
 							else if($_GET['val']=="print")
 								include("print.php");
+              else if($_GET['val']=='other_info')
+                include("other_info.php");
 							else if($_GET['val']=="contact")
 								include("contact.php");
            	   				?>
