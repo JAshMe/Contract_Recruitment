@@ -45,8 +45,8 @@ if(!isset($_SESSION['user']))
                 	<div class="well">
                         <div class="list-group">
                              <?php 
-        					if($_GET['val']=="perinfo")
-                             	                        include("personal_info.php");
+        			if($_GET['val']=="perinfo")
+                 include("personal_info.php");
 							else  if($_GET['val']=="image")
 								include("image.php");
 							else  if($_GET['val']=="education_qual")
