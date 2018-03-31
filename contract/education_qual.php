@@ -170,18 +170,18 @@ $board_10=$comp_10=$school_10=$per_or_cgpa_10=$value_10=$marks_10=$max_marks_10=
                         <div class="form-group">
                             <label class="control-label col-sm-3" for="marks"><span class="text-danger">*</span> Marks/CGPA Obtained :</label>
                             <div class="col-sm-3">
-                                <input type="text" class="form-control"   name="marks_10th" required id="marks" value="<?= $marks_10?>" >
+                                <input type="text" class="form-control"   name="marks_10th" required id="marks_10" value="<?= $marks_10?>" >
                             </div>
                             <label class="control-label col-sm-2" for="max_marks"><span class="text-danger">*</span> Maximum Marks/CGPA:</label>
                             <div class="col-sm-4">
-                                <input type="text" class="form-control"  name="max_marks_10th" required id="max_marks" value="<?= $max_marks_10?>">
+                                <input type="text" class="form-control"  name="max_marks_10th" required id="max_marks_10" value="<?= $max_marks_10?>">
                             </div>
                         </div>
 
                         <div class="form-group">
                             <label class="control-label col-sm-3" for="per_or_cgp_10"><span class="text-danger">*</span> % Marks/CGPA :</label>
                             <div class="col-sm-3">
-                                <input type="text" class="form-control"   id="per_or_cgp_10" name="perc_marks_10th" readonly value="<?= $marks_10?>" >
+                                <input type="text" class="form-control"   id="value_10" name="perc_marks_10th" readonly value="<?= $marks_10?>" >
                             </div>
                         </div>
 
@@ -262,11 +262,11 @@ $board_10=$comp_10=$school_10=$per_or_cgpa_10=$value_10=$marks_10=$max_marks_10=
                         <div class="form-group">
                             <label class="control-label col-sm-3" for="dob"><span class="text-danger">*</span> Marks/CGPA Obtained :</label>
                             <div class="col-sm-3">
-                                <input type="text" class="form-control"   name="dip_marks" required id="marks" value="<?= $marks_d?>" >
+                                <input type="text" class="form-control"   name="dip_marks" required id="marks_d" value="<?= $marks_d?>" >
                             </div>
                             <label class="control-label col-sm-2" for="email"><span class="text-danger">*</span> Maximum Marks/CGPA:</label>
                             <div class="col-sm-4">
-                                <input type="text" class="form-control"  name="dip_max_marks" required id="max_marks" value="<?= @$max_marks_d?>" >
+                                <input type="text" class="form-control"  name="dip_max_marks" required id="max_marks_d" value="<?= @$max_marks_d?>" >
                             </div>
                         </div>
 
@@ -332,18 +332,18 @@ $board_10=$comp_10=$school_10=$per_or_cgpa_10=$value_10=$marks_10=$max_marks_10=
                     <div class="form-group">
                         <label class="control-label col-sm-3" for="dob"><span class="text-danger">*</span> Marks/CGPA Obtained :</label>
                         <div class="col-sm-3">
-                            <input type="text" class="form-control"   name="marks_12th" required id="marks" value="<?= @$marks_12?>"  >
+                            <input type="text" class="form-control"   name="marks_12th" required id="marks_12" value="<?= @$marks_12?>"  >
                         </div>
                         <label class="control-label col-sm-2" for="email"><span class="text-danger">*</span> Maximum Marks/CGPA:</label>
                         <div class="col-sm-4">
-                            <input type="text" class="form-control"  name="max_marks_12th" required id="max_marks" value="<?= $max_marks_12?>"  >
+                            <input type="text" class="form-control"  name="max_marks_12th" required id="max_marks_12" value="<?= $max_marks_12?>"  >
                         </div>
                     </div>
 
                     <div class="form-group">
                         <label class="control-label col-sm-3" for="per_or_cgp_12"><span class="text-danger">*</span> % Marks/CGPA :</label>
                         <div class="col-sm-3">
-                            <input type="text" class="form-control"   name="perc_marks_12th" readonly value="<?= $value_12?>"  id="per_or_cgp_12" >
+                            <input type="text" class="form-control"   name="perc_marks_12th" readonly value="<?= $value_12?>"  id="value_12" >
                         </div>
                     </div>
 
@@ -450,11 +450,11 @@ $board_10=$comp_10=$school_10=$per_or_cgpa_10=$value_10=$marks_10=$max_marks_10=
                 <div class="form-group">
                     <label class="control-label col-sm-3" for="dob"><span class="text-danger">*</span> Marks/CGPA Obtained :</label>
                     <div class="col-sm-3">
-                        <input type="text" class="form-control"   name="ug_marks" required id="marks" value="<?= $marks_ug?>">
+                        <input type="text" class="form-control"   name="ug_marks" required id="marks_ug" value="<?= $marks_ug?>">
                     </div>
                     <label class="control-label col-sm-2" for="email"><span class="text-danger">*</span> Maximum Marks/CGPA:</label>
                     <div class="col-sm-4">
-                        <input type="text" class="form-control"  name="ug_max_marks" required id="max_marks" value="<?= $max_marks_ug?>">
+                        <input type="text" class="form-control"  name="ug_max_marks" required id="max_marks_ug" value="<?= $max_marks_ug?>">
                     </div>
                 </div>
 
@@ -557,11 +557,11 @@ $board_10=$comp_10=$school_10=$per_or_cgpa_10=$value_10=$marks_10=$max_marks_10=
                 <div class="form-group">
                     <label class="control-label col-sm-3" for="marks"><span class="text-danger" >*</span> Marks/CGPA Obtained :</label>
                     <div class="col-sm-3">
-                        <input type="text" class="form-control"   name="pg_marks" required id="marks" value="<?= $marks_pg?>" >
+                        <input type="text" class="form-control"   name="pg_marks" required id="marks_pg" value="<?= $marks_pg?>" >
                     </div>
                     <label class="control-label col-sm-2" for="max_marks"><span class="text-danger">*</span> Maximum Marks/CGPA:</label>
                     <div class="col-sm-4">
-                        <input type="text" class="form-control"  name="pg_max_marks" required id="max_marks"  value="<?= $max_marks_pg?>" >
+                        <input type="text" class="form-control"  name="pg_max_marks" required id="max_marks_pg"  value="<?= $max_marks_pg?>" >
                     </div>
                 </div>
 
@@ -572,7 +572,7 @@ $board_10=$comp_10=$school_10=$per_or_cgpa_10=$value_10=$marks_10=$max_marks_10=
 
                     <label class="control-label col-sm-3" for="value"><span class="text-danger">*</span> % Marks/CGPA :</label>
                     <div class="col-sm-3">
-                        <input type="text" class="form-control"   name="pg_perc_marks" readonly  value="<?= $value_pg?>" id="value" >
+                        <input type="text" class="form-control"   name="pg_perc_marks" readonly  value="<?= $value_pg?>" id="value_pg" >
                     </div>
                 </div>
 
@@ -673,5 +673,17 @@ $board_10=$comp_10=$school_10=$per_or_cgpa_10=$value_10=$marks_10=$max_marks_10=
 
         });
     });
+
+</script>
+
+<script>
+    document.getElementById("max_marks_10").onchange = function() {myfunction()};
+    function myfunction(){
+        var input = parseFloat(document.getElementById("marks_10").value);
+        var input2 = parseFloat(document.getElementById("max_marks_10").value);
+        var ans=input/input2;
+        ans=ans*100.0;
+        document.getElementById('value_10').value = ans.toString();
+    }
 
 </script>
