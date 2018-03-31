@@ -5,7 +5,7 @@ include_once('included_classes/class_misc.php');
 
 //$db = new sqlfunctions();
 
-function verify_doc($fileval,$targetDir,$site)
+function verify_doc($fileval,$targetDir,$site,$filename)
 {
     $FileName = stripslashes($_FILES[$fileval]['name']);
     //echo $FileName;
@@ -23,7 +23,7 @@ function verify_doc($fileval,$targetDir,$site)
         $errorInUploading++;
         $misc->palert("File exceeds 1MB size Limit !!", "home.php?val=".$site);
     } else if ($errorInUploading == 0) {
-        $FileName = $_SESSION['user'].'_'.$fileval.".pdf";
+        $FileName = $_SESSION['user'].'_'.$fileval.$filename.".pdf";
         $newName = $targetDir . "/" . $FileName;
         exec("chmod 777 " . $newName);
         if (file_exists($newName))
