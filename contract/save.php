@@ -95,7 +95,7 @@ if(isset($_POST['edu_ch_0']))
 	//checking if data already exists
 	$q = "select user_id from 10th_mark where user_id = '$id' ";
 	$r = $db->process_query($q);
-    verify_doc("doc_10th",'./doc_edu','education_qual');
+    verify_doc("doc_10th",'./doc_edu','education_qual',"");
 	if(mysqli_num_rows($r)>0) //then update
 		$q = "update 10th_mark set completion_date = '$completion_date_10th',board = '$board_10th',school = '$school_10th', marks = '$marks_10th', max_marks = '$max_marks_10th', per_or_cgpa = '$per_cgp_10th', `value` = '$perc_marks_10th' where user_id = '$id' ";
 	else  //insert in table
@@ -123,7 +123,7 @@ if(isset($_POST['edu_ch_1']))
 	//checking if data already exists
 	$q = "select user_id from diploma where user_id = '$id' ";
 	$r = $db->process_query($q);
-    verify_doc("doc_diploma",'./doc_edu','education_qual');
+    verify_doc("doc_diploma",'./doc_edu','education_qual',"");
 	if(mysqli_num_rows($r)>0)
 		$q = "update diploma set field = '$spec', start_date = '$start_date' , end_date = '$completion_date', university = '$university', marks = '$marks', max_marks = '$max_marks', per_or_cgpa = '$per_cgp', `value` = '$value' where user_id = '$id';";
 	else
@@ -152,7 +152,7 @@ if(isset($_POST['edu_ch_2']))
 	//checking if data already exists
 	$q = "select user_id from 12th_mark where user_id = '$id' ";
 	$r = $db->process_query($q);
-    verify_doc("doc_12th",'./doc_edu','education_qual');
+    verify_doc("doc_12th",'./doc_edu','education_qual',"");
 	if(mysqli_num_rows($r)>0) //then update
 		$q = "update 12th_mark set completion_date = '$completion_date',board = '$board',school = '$school', marks = '$marks', max_marks = '$max_marks', per_or_cgpa = '$per_cgp', `value` = '$perc_marks' where user_id = '$id' ";
 	else  //insert in table
@@ -185,7 +185,7 @@ if(isset($_POST['edu_ch_3']))
 	//checking if data already exists
 	$q = "select user_id from ug where user_id = '$id' ";
 	$r = $db->process_query($q);
-    verify_doc("doc_ug",'./doc_edu','education_qual');
+    verify_doc("doc_ug",'./doc_edu','education_qual',"");
 
 	if(mysqli_num_rows($r)>0)
 		$q = "update ug set specialization = '$spec', start_date = '$start_date' , completion_date = '$completion_date', university = '$university', marks = '$marks', max_marks = '$max_marks', per_or_cgpa = '$per_cgp', `value` = '$perc_marks', degree = '$degree' where user_id = '$id';";
@@ -218,7 +218,7 @@ if(isset($_POST['edu_ch_4']))
 	//checking if data already exists
 	$q = "select user_id from pg where user_id = '$id' ";
 	$r = $db->process_query($q);
-    verify_doc("doc_pg",'./doc_edu','education_qual');
+    verify_doc("doc_pg",'./doc_edu','education_qual',"");
 
 	if(mysqli_num_rows($r)>0)  //update
 		$q = "update pg set specialization = '$spec', start_date = '$start_date' , completion_date = '$completion_date', university = '$university', marks = '$marks', max_marks = '$max_marks', per_or_cgpa = '$per_cgp', `value` = '$perc_marks', degree = '$degree' where user_id = '$id';";
@@ -250,7 +250,7 @@ if(isset($_POST['work_exp']))
 
     // $imageName = stripslashes($_FILES['doc_exp']['name']);
     // echo $imageName;
-    verify_doc("doc_exp",'./doc_exp','work_exp');
+    verify_doc("doc_exp",'./doc_exp','work_exp',"");
 
     $r=$db->process_query($q);
     if($r){

@@ -8,6 +8,7 @@ $id=$_SESSION['user'];
 $query="SELECT * from `10th_mark` where `user_id` like '$id'";
 $c = $db->process_query($query);
 ?>
+<script type="text/javascript" src="./include/date_functions.js"></script>
 
 <?php
 $board_10=$comp_10=$school_10=$per_or_cgpa_10=$value_10=$marks_10=$max_marks_10=null;
@@ -170,11 +171,11 @@ $board_10=$comp_10=$school_10=$per_or_cgpa_10=$value_10=$marks_10=$max_marks_10=
                         <div class="form-group">
                             <label class="control-label col-sm-3" for="marks"><span class="text-danger">*</span> Marks/CGPA Obtained :</label>
                             <div class="col-sm-3">
-                                <input type="text" class="form-control"   name="marks_10th" required id="marks_10" value="<?= $marks_10?>" >
+                                <input type="text" class="form-control marks"   name="marks_10th" required id="marks_10" value="<?= $marks_10?>" >
                             </div>
                             <label class="control-label col-sm-2" for="max_marks"><span class="text-danger">*</span> Maximum Marks/CGPA:</label>
                             <div class="col-sm-4">
-                                <input type="text" class="form-control"  name="max_marks_10th" required id="max_marks_10" value="<?= $max_marks_10?>">
+                                <input type="text" class="form-control max_marks"  name="max_marks_10th" required id="max_marks_10" value="<?= $max_marks_10?>">
                             </div>
                         </div>
 
@@ -239,11 +240,11 @@ $board_10=$comp_10=$school_10=$per_or_cgpa_10=$value_10=$marks_10=$max_marks_10=
                         <div class="form-group">
                             <label class="control-label col-sm-2" for="from"><span class="text-danger">*</span> Entry Date :</label>
                             <div class="col-sm-3">
-                                <input type="date" class="form-control"   name="dip_start_date" required id="from" value="<?= $start_date_d?>" > <span class="text-danger">(DD-MM-YYYY)</span>
+                                <input type="date" class="form-control"   name="dip_start_date" required id="from_dip" value="<?= $start_date_d?>" > <span class="text-danger">(DD-MM-YYYY)</span>
                             </div>
                             <label class="control-label col-sm-2" for="to"><span class="text-danger">*</span> Completion Date:</label>
                             <div class="col-sm-3">
-                                <input type="date" class="form-control"   name="dip_end_date" required id="to" value="<?= $end_data_d?>" > <span class="text-danger">(DD-MM-YYYY)</span>
+                                <input type="date" class="form-control"   name="dip_end_date" required id="to_dip" value="<?= $end_data_d?>" > <span class="text-danger">(DD-MM-YYYY)</span>
                             </div>
                         </div>
 
@@ -262,11 +263,11 @@ $board_10=$comp_10=$school_10=$per_or_cgpa_10=$value_10=$marks_10=$max_marks_10=
                         <div class="form-group">
                             <label class="control-label col-sm-3" for="dob"><span class="text-danger">*</span> Marks/CGPA Obtained :</label>
                             <div class="col-sm-3">
-                                <input type="text" class="form-control"   name="dip_marks" required id="marks_d" value="<?= $marks_d?>" >
+                                <input type="text" class="form-control marks"   name="dip_marks" required id="marks_d" value="<?= $marks_d?>" >
                             </div>
                             <label class="control-label col-sm-2" for="email"><span class="text-danger">*</span> Maximum Marks/CGPA:</label>
                             <div class="col-sm-4">
-                                <input type="text" class="form-control"  name="dip_max_marks" required id="max_marks_d" value="<?= @$max_marks_d?>" >
+                                <input type="text" class="form-control max_marks"  name="dip_max_marks" required id="max_marks_d" value="<?= @$max_marks_d?>" >
                             </div>
                         </div>
 
@@ -332,11 +333,11 @@ $board_10=$comp_10=$school_10=$per_or_cgpa_10=$value_10=$marks_10=$max_marks_10=
                     <div class="form-group">
                         <label class="control-label col-sm-3" for="dob"><span class="text-danger">*</span> Marks/CGPA Obtained :</label>
                         <div class="col-sm-3">
-                            <input type="text" class="form-control"   name="marks_12th" required id="marks_12" value="<?= @$marks_12?>"  >
+                            <input type="text" class="form-control max_marks"   name="marks_12th" required id="marks_12" value="<?= @$marks_12?>"  >
                         </div>
                         <label class="control-label col-sm-2" for="email"><span class="text-danger">*</span> Maximum Marks/CGPA:</label>
                         <div class="col-sm-4">
-                            <input type="text" class="form-control"  name="max_marks_12th" required id="max_marks_12" value="<?= $max_marks_12?>"  >
+                            <input type="text" class="form-control marks"  name="max_marks_12th" required id="max_marks_12" value="<?= $max_marks_12?>"  >
                         </div>
                     </div>
 
@@ -450,11 +451,11 @@ $board_10=$comp_10=$school_10=$per_or_cgpa_10=$value_10=$marks_10=$max_marks_10=
                 <div class="form-group">
                     <label class="control-label col-sm-3" for="dob"><span class="text-danger">*</span> Marks/CGPA Obtained :</label>
                     <div class="col-sm-3">
-                        <input type="text" class="form-control"   name="ug_marks" required id="marks_ug" value="<?= $marks_ug?>">
+                        <input type="text" class="form-control marks"   name="ug_marks" required id="marks_ug" value="<?= $marks_ug?>">
                     </div>
                     <label class="control-label col-sm-2" for="email"><span class="text-danger">*</span> Maximum Marks/CGPA:</label>
                     <div class="col-sm-4">
-                        <input type="text" class="form-control"  name="ug_max_marks" required id="max_marks_ug" value="<?= $max_marks_ug?>">
+                        <input type="text" class="form-control max_marks"  name="ug_max_marks" required id="max_marks_ug" value="<?= $max_marks_ug?>">
                     </div>
                 </div>
 
@@ -557,11 +558,11 @@ $board_10=$comp_10=$school_10=$per_or_cgpa_10=$value_10=$marks_10=$max_marks_10=
                 <div class="form-group">
                     <label class="control-label col-sm-3" for="marks"><span class="text-danger" >*</span> Marks/CGPA Obtained :</label>
                     <div class="col-sm-3">
-                        <input type="text" class="form-control"   name="pg_marks" required id="marks_pg" value="<?= $marks_pg?>" >
+                        <input type="text" class="form-control marks"   name="pg_marks" required id="marks_pg" value="<?= $marks_pg?>" >
                     </div>
                     <label class="control-label col-sm-2" for="max_marks"><span class="text-danger">*</span> Maximum Marks/CGPA:</label>
                     <div class="col-sm-4">
-                        <input type="text" class="form-control"  name="pg_max_marks" required id="max_marks_pg"  value="<?= $max_marks_pg?>" >
+                        <input type="text" class="form-control max_marks"  name="pg_max_marks" required id="max_marks_pg"  value="<?= $max_marks_pg?>" >
                     </div>
                 </div>
 
@@ -598,18 +599,19 @@ $board_10=$comp_10=$school_10=$per_or_cgpa_10=$value_10=$marks_10=$max_marks_10=
 
 
     <script>
+        // function validate(){
+        //     if($(this).children().filter('#from').val()>$(this).children().filter('#to').val()){
+        //         alert("Completion Date must be greater than start date!");
+        //         $(this).children().filter('#from').val('');
+        //         $(this).children().filter('#to').val('');
+        //         return false;
+        //     }
         function validate(){
-            if($(this).children().filter('#from').val()>$(this).children().filter('#to').val()){
-                alert("Completion Date must be greater than start date!");
-                $(this).children().filter('#from').val('');
-                $(this).children().filter('#to').val('');
-                return false;
-            }
-            if( $(this).children().filter('#marks').val()> $(this).children().filter('#max_marks').val()){
-                console.log( $(this).children().filter('#marks').val()+"  "+ $(this).children().filter('#max_marks').val());
+            if($(this).children().filter('.marks').val()> $(this).children().filter('.max_marks').val()){
+                console.log( $(this).children().filter('.marks').val()+"  "+ $(this).children().filter('.max_marks').val());
                 alert("Marks should not be greater than maximum marks!");
-                $(this).children().filter('#marks').val('');
-                $(this).children().filter('#max_marks').val('');
+                $(this).children().filter('.marks').val('');
+                $(this).children().filter('.max_marks').val('');
                 return false;
             }
             return true;
@@ -686,4 +688,29 @@ $board_10=$comp_10=$school_10=$per_or_cgpa_10=$value_10=$marks_10=$max_marks_10=
         document.getElementById('value_10').value = ans.toString();
     }
 
+</script>
+
+<script>
+    $("input[type=date").on('focusout',function(){
+        //alert('change');
+        var fd=new Date($('#from_dip').val());
+        var td=new Date($('#to_dip').val());
+        if(fd=='Invalid Date' || td=='Invalid Date'){
+            //alert('ignore');
+        }
+        else{
+            var diff=datediff(fd,td);
+            var year=Math.floor(diff/365);
+            var month=Math.floor((diff-(year)*365)/30);
+            if(diff<0)
+            {
+                alert('Invalid dates:FROM date should be before TO date');
+                $("input[type=date]").val("");
+                $('#experience').val("");
+            }
+            else{
+                $('#experience').val(year+' Years and '+month+' Months');
+            }
+        }
+    });
 </script>
