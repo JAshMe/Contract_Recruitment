@@ -53,7 +53,7 @@ $board_10=$comp_10=$school_10=$per_or_cgpa_10=$value_10=$marks_10=$max_marks_10=
  $c = $db->process_query($query);
 // while(($c = $db->fetch_rows($c)))
 // {
- $field_d=$start_date_d=$end_data_d=$per_or_cgpa_d=$value_d=$marks_d=$max_marks_d=$university_d=null;
+ $field_d=$start_date_d=$end_data_d=$per_or_cgpa_d=$value_d=$marks_d=$max_marks_d=$university_d=$is_others_d=null;
  if(mysqli_num_rows($c)>0) {
      $c = $db->fetch_rows($c);
      $field_d = $c['field'];
@@ -64,6 +64,7 @@ $board_10=$comp_10=$school_10=$per_or_cgpa_10=$value_10=$marks_10=$max_marks_10=
      $marks_d = $c['marks'];
      $max_marks_d = $c['max_marks'];
      $university_d = $c['university'];
+     $is_others_d= $c['is_others'];
  }
 // }
 ?>
@@ -73,7 +74,7 @@ $board_10=$comp_10=$school_10=$per_or_cgpa_10=$value_10=$marks_10=$max_marks_10=
     $id=$_SESSION['user'];
     $query="SELECT * from `ug` where `user_id` like '$id'";
     $c = $db->process_query($query);
-    $degree_ug=$specialization_ug=$start_date_ug=$completion_date_ug=$per_or_cgpa_ug=$value_ug=$marks_ug=$max_marks_ug=$university_ug=null;
+    $degree_ug=$specialization_ug=$start_date_ug=$completion_date_ug=$per_or_cgpa_ug=$value_ug=$marks_ug=$max_marks_ug=$university_ug=$is_others_ug=null;
     if(mysqli_num_rows($c)>0) {
         $c = $db->fetch_rows($c);
         $degree_ug = $c['degree'];
@@ -85,13 +86,14 @@ $board_10=$comp_10=$school_10=$per_or_cgpa_10=$value_10=$marks_10=$max_marks_10=
         $marks_ug = $c['marks'];
         $max_marks_ug = $c['max_marks'];
         $university_ug = $c['university'];
+        $is_others_ug= $c['is_others'];
     }
     ?>
     <?php
     $id=$_SESSION['user'];
     $query="SELECT * from `pg` where `user_id` like '$id'";
     $c = $db->process_query($query);
-    $degree_pg=$specialization_pg=$start_date_pg=$completion_date_pg=$per_or_cgpa_pg=$value_pg=$marks_pg=$max_marks_pg=$university_pg=null;
+    $degree_pg=$specialization_pg=$start_date_pg=$completion_date_pg=$per_or_cgpa_pg=$value_pg=$marks_pg=$max_marks_pg=$university_pg=$is_others_pg=null;
     if(mysqli_num_rows($c)>0) {
         $c = $db->fetch_rows($c);
         $degree_pg = $c['degree'];
@@ -103,6 +105,7 @@ $board_10=$comp_10=$school_10=$per_or_cgpa_10=$value_10=$marks_10=$max_marks_10=
         $marks_pg = $c['marks'];
         $max_marks_pg = $c['max_marks'];
         $university_pg = $c['university'];
+        $is_others_pg= $c['is_others'];
     }
     ?>
     <p align="justify" class="larger-font">
@@ -149,9 +152,9 @@ $board_10=$comp_10=$school_10=$per_or_cgpa_10=$value_10=$marks_10=$max_marks_10=
 
 
                         <div id="10th" class="form-group">
-                            <label class="control-label col-sm-3" for="school_1th"><span class="text-danger">*</span> School Name:</label>
+                            <label class="control-label col-sm-3" for="school_10th"><span class="text-danger">*</span> School Name:</label>
                             <div class="col-sm-5">
-                                <input type="text" class="form-control" id="school_1th" name="school_10th"  required value="<?= $school_10?>" >
+                                <input type="text" class="form-control" id="school_10th" name="school_10th"  required value="<?= $school_10?>" >
                             </div>
                         </div>
 
@@ -169,20 +172,20 @@ $board_10=$comp_10=$school_10=$per_or_cgpa_10=$value_10=$marks_10=$max_marks_10=
 
 
                         <div class="form-group">
-                            <label class="control-label col-sm-3" for="marks"><span class="text-danger">*</span> Marks/CGPA Obtained :</label>
+                            <label class="control-label col-sm-3" for="marks_10"><span class="text-danger">*</span> Marks/CGPA Obtained :</label>
                             <div class="col-sm-3">
-                                <input type="text" class="form-control marks"   name="marks_10th" required id="marks_10" value="<?= $marks_10?>" >
+                                <input type="text" class="form-control marks event_marks"   name="marks_10th" required id="marks_10" value="<?= $marks_10?>" >
                             </div>
-                            <label class="control-label col-sm-2" for="max_marks"><span class="text-danger">*</span> Maximum Marks/CGPA:</label>
+                            <label class="control-label col-sm-2" for="max_marks_10"><span class="text-danger">*</span> Maximum Marks/CGPA:</label>
                             <div class="col-sm-4">
-                                <input type="text" class="form-control max_marks"  name="max_marks_10th" required id="max_marks_10" value="<?= $max_marks_10?>">
+                                <input type="text" class="form-control max_marks event_marks"  name="max_marks_10th" required id="max_marks_10" value="<?= $max_marks_10?>">
                             </div>
                         </div>
 
                         <div class="form-group">
-                            <label class="control-label col-sm-3" for="per_or_cgp_10"><span class="text-danger">*</span> % Marks/CGPA :</label>
+                            <label class="control-label col-sm-3" for="value_10"><span class="text-danger">*</span> % Marks/CGPA :</label>
                             <div class="col-sm-3">
-                                <input type="text" class="form-control"   id="value_10" name="perc_marks_10th" readonly value="<?= $marks_10?>" >
+                                <input type="text" class="form-control"   id="value_10" name="perc_marks_10th" readonly value="<?= $value_10?>" >
                             </div>
                         </div>
 
@@ -212,41 +215,41 @@ $board_10=$comp_10=$school_10=$per_or_cgpa_10=$value_10=$marks_10=$max_marks_10=
 <!--                            </div>-->
 
                         <div class="col-sm-3">
-                            <select id="degree2" name="dip_field" required class="form-control">
+                            <select id="degree2" name="dip_field" required class="form-control degree2">
                                 <option value="EE" id="ee" <?php if($field_d=="EE") echo "selected" ?> >Electical Engineering</option>
                                 <option value="CE" id="ce" <?php if($field_d=="CE") echo "selected" ?> >Civil Engineering</option>
-                                <option value="Others" id="others2" <?php if($field_d=="Others") echo "selected" ?> >Others</option>
+                                <option value="1" id="others2" <?php if($is_others_d== '1') echo "selected" ?> >Others</option>
                             </select>
                         </div>
                         </div>
 
 
-                <div class="form-group"   id="otherscome2" <?php if(isset($field_d) && $field_d=='Others') echo"style=\"display:block\""; else echo "style=\"display:none\"; ";?> >
+                <div class="form-group otherscome2"   id="otherscome2" <?php if(isset($is_others_d) && $is_others_d=='1') echo"style=\"display:block\""; else echo "style=\"display:none\"; ";?> >
                     <label class="control-label col-sm-2" for="degree_d"><span class="text-danger">*</span>Others:</label>
                     <div class="col-sm-4">
-                        <input type="text" class="form-control"  id="degree_d" <?php if(isset($field_d) && $field_d=="Others") echo "value=\"$field_d\" required "; ?> name="dip_other_degree" >
+                        <input type="text" class="form-control"  id="degree_d" <?php if(isset($field_d) && $is_others_d=='1') echo "value=\"$field_d\" required "; ?> name="dip_other_degree" >
                     </div>
                 </div>
 
 
 
                 <div class="form-group">
-                            <label class="control-label col-sm-2" for="university_d" ><span class="text-danger">*</span> University:</label>
-                            <div class="col-sm-5">
-                                <input type="text" class="form-control"  id="university_d" name="dip_university"  required value="<?= $university_d?>">
-                            </div>
-                        </div>
+                    <label class="control-label col-sm-2" for="university_d" ><span class="text-danger">*</span> University:</label>
+                    <div class="col-sm-5">
+                        <input type="text" class="form-control"  id="university_d" name="dip_university"  required value="<?= $university_d?>">
+                    </div>
+                </div>
 
-                        <div class="form-group">
-                            <label class="control-label col-sm-2" for="from"><span class="text-danger">*</span> Entry Date :</label>
-                            <div class="col-sm-3">
-                                <input type="date" class="form-control"   name="dip_start_date" required id="from_dip" value="<?= $start_date_d?>" > <span class="text-danger">(DD-MM-YYYY)</span>
-                            </div>
-                            <label class="control-label col-sm-2" for="to"><span class="text-danger">*</span> Completion Date:</label>
-                            <div class="col-sm-3">
-                                <input type="date" class="form-control"   name="dip_end_date" required id="to_dip" value="<?= $end_data_d?>" > <span class="text-danger">(DD-MM-YYYY)</span>
-                            </div>
-                        </div>
+                <div class="form-group">
+                    <label class="control-label col-sm-2" for="from_dip"><span class="text-danger">*</span> Entry Date :</label>
+                    <div class="col-sm-3">
+                        <input type="date" class="form-control from_1"   name="dip_start_date" required id="from_dip" value="<?= $start_date_d?>" > <span class="text-danger">(DD-MM-YYYY)</span>
+                    </div>
+                    <label class="control-label col-sm-2" for="to_dip"><span class="text-danger">*</span> Completion Date:</label>
+                    <div class="col-sm-3">
+                        <input type="date" class="form-control to_1"   name="dip_end_date" required id="to_dip" value="<?= $end_data_d?>" > <span class="text-danger">(DD-MM-YYYY)</span>
+                    </div>
+                </div>
 
 
                         <div class="form-group">
@@ -261,13 +264,13 @@ $board_10=$comp_10=$school_10=$per_or_cgpa_10=$value_10=$marks_10=$max_marks_10=
                         </div>
 
                         <div class="form-group">
-                            <label class="control-label col-sm-3" for="dob"><span class="text-danger">*</span> Marks/CGPA Obtained :</label>
+                            <label class="control-label col-sm-3" for="marks_d"><span class="text-danger">*</span> Marks/CGPA Obtained :</label>
                             <div class="col-sm-3">
-                                <input type="text" class="form-control marks"   name="dip_marks" required id="marks_d" value="<?= $marks_d?>" >
+                                <input type="text" class="form-control marks event_marks"   name="dip_marks" required id="marks_d" value="<?= $marks_d?>" >
                             </div>
-                            <label class="control-label col-sm-2" for="email"><span class="text-danger">*</span> Maximum Marks/CGPA:</label>
+                            <label class="control-label col-sm-2" for="max_marks_d"><span class="text-danger">*</span> Maximum Marks/CGPA:</label>
                             <div class="col-sm-4">
-                                <input type="text" class="form-control max_marks"  name="dip_max_marks" required id="max_marks_d" value="<?= @$max_marks_d?>" >
+                                <input type="text" class="form-control max_marks event_marks"  name="dip_max_marks" required id="max_marks_d" value="<?= @$max_marks_d?>" >
                             </div>
                         </div>
 
@@ -331,18 +334,18 @@ $board_10=$comp_10=$school_10=$per_or_cgpa_10=$value_10=$marks_10=$max_marks_10=
 
 
                     <div class="form-group">
-                        <label class="control-label col-sm-3" for="dob"><span class="text-danger">*</span> Marks/CGPA Obtained :</label>
+                        <label class="control-label col-sm-3" for="marks_12"><span class="text-danger">*</span> Marks/CGPA Obtained :</label>
                         <div class="col-sm-3">
-                            <input type="text" class="form-control max_marks"   name="marks_12th" required id="marks_12" value="<?= @$marks_12?>"  >
+                            <input type="text" class="form-control marks event_marks"   name="marks_12th" required id="marks_12" value="<?= @$marks_12?>"  >
                         </div>
-                        <label class="control-label col-sm-2" for="email"><span class="text-danger">*</span> Maximum Marks/CGPA:</label>
+                        <label class="control-label col-sm-2" for="max_marks_12"><span class="text-danger">*</span> Maximum Marks/CGPA:</label>
                         <div class="col-sm-4">
-                            <input type="text" class="form-control marks"  name="max_marks_12th" required id="max_marks_12" value="<?= $max_marks_12?>"  >
+                            <input type="text" class="form-control max_marks event_marks"  name="max_marks_12th" required id="max_marks_12" value="<?= $max_marks_12?>"  >
                         </div>
                     </div>
 
                     <div class="form-group">
-                        <label class="control-label col-sm-3" for="per_or_cgp_12"><span class="text-danger">*</span> % Marks/CGPA :</label>
+                        <label class="control-label col-sm-3" for="value_12"><span class="text-danger">*</span> % Marks/CGPA :</label>
                         <div class="col-sm-3">
                             <input type="text" class="form-control"   name="perc_marks_12th" readonly value="<?= $value_12?>"  id="value_12" >
                         </div>
@@ -376,7 +379,7 @@ $board_10=$comp_10=$school_10=$per_or_cgpa_10=$value_10=$marks_10=$max_marks_10=
                     <label class="control-label col-sm-2" for="degree1"><span class="text-danger">*</span> Degree:</label>
 
                     <div class="col-sm-3">
-                        <select id="degree1" name="ug_degree" required class="form-control">
+                        <select id="degree1" name="ug_degree" required class="form-control degree2">
                             <option value="BA" id="ba" <?php if($degree_ug=="BA") echo "selected" ?> >Bachelor of Arts (BA)</option>
                             <option value="B.Sc" id="bsc" <?php if($degree_ug=="B.Sc") echo "selected" ?> >Bachelor of Science (B.Sc)</option>
                             <option value="B.Com" id="ms" <?php if($degree_ug=="B.Com") echo "selected" ?> >Bachelor of Commerce (B.Com)</option>
@@ -393,16 +396,16 @@ $board_10=$comp_10=$school_10=$per_or_cgpa_10=$value_10=$marks_10=$max_marks_10=
                             <option value="BHM" id="bhm" <?php if($degree_ug=="BHM") echo "selected" ?> >Bachelor of Hotel Management (BHM)</option>
                             <option value="B.P.Ed" id="bped" <?php if($degree_ug=="B.P.Ed") echo "selected" ?> >Bachelor of Physical Education (B.P.Ed)</option>
                             <option value="B.Ed" id="bed" <?php if($degree_ug=="B.Ed") echo "selected" ?> >Bachelor of Education (B.Ed)</option>
-                            <option value="Others" id="others" <?php if($degree_ug=="Others") echo "selected" ?> >Others</option>
+                            <option value="Others" id="others" <?php if($is_others_ug=='1') echo "selected" ?> >Others</option>
                         </select>
                     </div>
                 </div>
 
 
-                <div class="form-group"   id="otherscome1" <?php if(isset($degree_ug) && $degree_ug=='Others') echo"style=\"display:block\""; else echo "style=\"display:none\"; ";?> >
+                <div class="form-group otherscome2"   id="otherscome1" <?php if(isset($is_others_ug) && $is_others_ug=='1') echo"style=\"display:block\""; else echo "style=\"display:none\"; ";?> >
                     <label class="control-label col-sm-2" for="degree_ug"><span class="text-danger">*</span>Others:</label>
                     <div class="col-sm-4">
-                        <input type="text" class="form-control"  id="degree_ug" <?php if(isset($degree_ug) && $degree_ug=='Others') echo "value=\"$degree_ug\" required "; ?> name="ug_other_degree"  >
+                        <input type="text" class="form-control"  id="degree_ug" <?php if(isset($degree_ug) && $is_others_ug=='1') echo "value=\"$degree_ug\" required "; ?> name="ug_other_degree"  >
                     </div>
                 </div>
 
@@ -426,11 +429,11 @@ $board_10=$comp_10=$school_10=$per_or_cgpa_10=$value_10=$marks_10=$max_marks_10=
                 <div class="form-group">
                     <label class="control-label col-sm-2" for="from"><span class="text-danger">*</span> Entry Date :</label>
                     <div class="col-sm-3">
-                        <input type="date" class="form-control" name="ug_start_date" required id="from" value="<?= $start_date_ug?>"  > <span class="text-danger">(DD-MM-YYYY)</span>
+                        <input type="date" class="form-control from_1" name="ug_start_date" required id="from" value="<?= $start_date_ug?>"  > <span class="text-danger">(DD-MM-YYYY)</span>
                     </div>
                     <label class="control-label col-sm-3" for="to"><span class="text-danger">*</span> Completion Date:</label>
                     <div class="col-sm-3">
-                        <input type="date" class="form-control"   name="ug_end_date" required id="to" value="<?= $completion_date_ug?>"> <span class="text-danger"   >(DD-MM-YYYY)</span>
+                        <input type="date" class="form-control to_1"   name="ug_end_date" required id="to" value="<?= $completion_date_ug?>"> <span class="text-danger"   >(DD-MM-YYYY)</span>
                     </div>
                 </div>
 
@@ -449,13 +452,13 @@ $board_10=$comp_10=$school_10=$per_or_cgpa_10=$value_10=$marks_10=$max_marks_10=
                 </div>
 
                 <div class="form-group">
-                    <label class="control-label col-sm-3" for="dob"><span class="text-danger">*</span> Marks/CGPA Obtained :</label>
+                    <label class="control-label col-sm-3" for="marks_ug"><span class="text-danger">*</span> Marks/CGPA Obtained :</label>
                     <div class="col-sm-3">
-                        <input type="text" class="form-control marks"   name="ug_marks" required id="marks_ug" value="<?= $marks_ug?>">
+                        <input type="text" class="form-control marks event_marks"   name="ug_marks" required id="marks_ug" value="<?= $marks_ug?>">
                     </div>
-                    <label class="control-label col-sm-2" for="email"><span class="text-danger">*</span> Maximum Marks/CGPA:</label>
+                    <label class="control-label col-sm-2" for="max_marks_ug"><span class="text-danger">*</span> Maximum Marks/CGPA:</label>
                     <div class="col-sm-4">
-                        <input type="text" class="form-control max_marks"  name="ug_max_marks" required id="max_marks_ug" value="<?= $max_marks_ug?>">
+                        <input type="text" class="form-control max_marks event_marks"  name="ug_max_marks" required id="max_marks_ug" value="<?= $max_marks_ug?>">
                     </div>
                 </div>
 
@@ -501,11 +504,11 @@ $board_10=$comp_10=$school_10=$per_or_cgpa_10=$value_10=$marks_10=$max_marks_10=
                 <div class="form-group">
                     <label class="control-label col-sm-2" for="from"><span class="text-danger">*</span> Entry Date :</label>
                     <div class="col-sm-3">
-                        <input type="date" class="form-control"   name="pg_start_date" required id="from" value="<?= $start_date_pg?>"> <span class="text-danger">(DD-MM-YYYY)</span>
+                        <input type="date" class="form-control from_1"   name="pg_start_date" required id="from" value="<?= $start_date_pg?>"> <span class="text-danger">(DD-MM-YYYY)</span>
                     </div>
                     <label class="control-label col-sm-2" for="to"><span class="text-danger">*</span> Completion Date:</label>
                     <div class="col-sm-3">
-                        <input type="date" class="form-control"   name="pg_end_date" required id="to" value="<?= $completion_date_pg?>" > <span class="text-danger">(DD-MM-YYYY)</span>
+                        <input type="date" class="form-control to_1"   name="pg_end_date" required id="to" value="<?= $completion_date_pg?>" > <span class="text-danger">(DD-MM-YYYY)</span>
                     </div>
                 </div>
 
@@ -515,21 +518,21 @@ $board_10=$comp_10=$school_10=$per_or_cgpa_10=$value_10=$marks_10=$max_marks_10=
                         <label class="control-label col-sm-2" for="degree"><span class="text-danger">*</span> Degree:</label>
 
                         <div class="col-sm-3">
-                            <select id="degree" name="pg_field" required class="form-control">
+                            <select id="degree" name="pg_field" required class="form-control degree2">
                                 <option value="M Tech" id="mtech" <?php if($degree_pg=="M Tech") echo "selected" ?> >Master of Tech (M.Tech)</option>
                                 <option value="MSC" id="msc" <?php if($degree_pg=="MSC") echo "selected" ?> >Master of Science (M.Sc)</option>
                                 <option value="MS" id="ms" <?php if($degree_pg=="MS") echo "selected" ?> >Master of Science (MS)</option>
                                 <option value="ME" id="me" <?php if($degree_pg=="ME") echo "selected" ?> >Master of Engineering (ME)</option>
-                                <option value="Others" id="others" <?php if($degree_pg=="Others") echo "selected" ?> >Others</option>
+                                <option value="Others" id="others" <?php if($is_others_pg=='1') echo "selected" ?> >Others</option>
                             </select>
                         </div>
                     </div>
 
 
-                <div class="form-group"   id="otherscome" <?php if(isset($degree_pg) && $degree_pg=='Others') echo"style=\"display:block\""; else echo "style=\"display:none\"; ";?> >
+                <div class="form-group otherscome2"   id="otherscome" <?php if(isset($is_others_pg) && $is_others_pg=='1') echo"style=\"display:block\""; else echo "style=\"display:none\"; ";?> >
                     <label class="control-label col-sm-2" for="degree_pg"><span class="text-danger">*</span>Others:</label>
                     <div class="col-sm-4">
-                        <input type="text" class="form-control"  id="degree_pg" <?php if(isset($degree_pg) && $degree_pg=='Others') echo "value=\"$degree_pg\" required "; ?> name="pg_other_specialization" >
+                        <input type="text" class="form-control"  id="degree_pg" <?php if(isset($degree_pg) && $is_others_pg=='1') echo "value=\"$degree_pg\" required "; ?> name="pg_other_specialization" >
                     </div>
                 </div>
 
@@ -556,13 +559,13 @@ $board_10=$comp_10=$school_10=$per_or_cgpa_10=$value_10=$marks_10=$max_marks_10=
                 </div>
 
                 <div class="form-group">
-                    <label class="control-label col-sm-3" for="marks"><span class="text-danger" >*</span> Marks/CGPA Obtained :</label>
+                    <label class="control-label col-sm-3" for="marks_pg"><span class="text-danger" >*</span> Marks/CGPA Obtained :</label>
                     <div class="col-sm-3">
-                        <input type="text" class="form-control marks"   name="pg_marks" required id="marks_pg" value="<?= $marks_pg?>" >
+                        <input type="text" class="form-control marks event_marks"   name="pg_marks" required id="marks_pg" value="<?= $marks_pg?>" >
                     </div>
-                    <label class="control-label col-sm-2" for="max_marks"><span class="text-danger">*</span> Maximum Marks/CGPA:</label>
+                    <label class="control-label col-sm-2" for="max_marks_pg"><span class="text-danger">*</span> Maximum Marks/CGPA:</label>
                     <div class="col-sm-4">
-                        <input type="text" class="form-control max_marks"  name="pg_max_marks" required id="max_marks_pg"  value="<?= $max_marks_pg?>" >
+                        <input type="text" class="form-control max_marks event_marks"  name="pg_max_marks" required id="max_marks_pg"  value="<?= $max_marks_pg?>" >
                     </div>
                 </div>
 
@@ -571,7 +574,7 @@ $board_10=$comp_10=$school_10=$per_or_cgpa_10=$value_10=$marks_10=$max_marks_10=
 
                 <div class="form-group">
 
-                    <label class="control-label col-sm-3" for="value"><span class="text-danger">*</span> % Marks/CGPA :</label>
+                    <label class="control-label col-sm-3" for="value_pg"><span class="text-danger">*</span> % Marks/CGPA :</label>
                     <div class="col-sm-3">
                         <input type="text" class="form-control"   name="pg_perc_marks" readonly  value="<?= $value_pg?>" id="value_pg" >
                     </div>
@@ -625,35 +628,52 @@ $board_10=$comp_10=$school_10=$per_or_cgpa_10=$value_10=$marks_10=$max_marks_10=
                 qual = "#".concat(qual);
                 $(qual).show();
     });
-</script>
-
-    <script>
-        $(document).ready(function () {
-            $('#otherscome').hide();
-
-            $('#degree').change(function () {
-                var val = $(this).val();
-                if (val === "Others")
-                    $('#otherscome').stop(true, true).show(200).attr("required","true"); //than show
-                else
-                    $('#otherscome').stop(true, true).hide(200).removeAttr("required"); //than hide
-
-
-            });
-        });
-
-        </script>
+<!--</script>-->
+<!---->
+<!--    <script>-->
+<!--        $(document).ready(function () {-->
+<!--            $('#otherscome').hide();-->
+<!---->
+<!--            $('#degree').change(function () {-->
+<!--                var val = $(this).val();-->
+<!--                if (val === "Others")-->
+<!--                    $('#otherscome').stop(true, true).show(200).attr("required","true"); //than show-->
+<!--                else-->
+<!--                    $('#otherscome').stop(true, true).hide(200).removeAttr("required"); //than hide-->
+<!---->
+<!---->
+<!--            });-->
+<!--        });-->
+<!---->
+<!--        </script>-->
+<!---->
+<!--<script>-->
+<!--    $(document).ready(function () {-->
+<!--        $('#otherscome1').hide();-->
+<!---->
+<!--        $('#degree1').change(function () {-->
+<!--            var val = $(this).val();-->
+<!--            if (val === "Others")-->
+<!--                $('#otherscome1').stop(true, true).show(200).attr("required","true"); //than show-->
+<!--            else-->
+<!--                $('#otherscome1').stop(true, true).hide(200).removeAttr("required"); //than hide-->
+<!---->
+<!---->
+<!--        });-->
+<!--    });-->
+<!---->
+<!--</script>-->
 
 <script>
     $(document).ready(function () {
-        $('#otherscome1').hide();
+        $('.otherscome2').hide();
 
-        $('#degree1').change(function () {
+        $('.degree2').change(function () {
             var val = $(this).val();
             if (val === "Others")
-                $('#otherscome1').stop(true, true).show(200).attr("required","true"); //than show
+                $('.otherscome2').stop(true, true).show(200).attr("required","true"); //than show
             else
-                $('#otherscome1').stop(true, true).hide(200).removeAttr("required"); //than hide
+                $('.otherscome2').stop(true, true).hide(200).removeAttr("required"); //than hide
 
 
         });
@@ -662,55 +682,61 @@ $board_10=$comp_10=$school_10=$per_or_cgpa_10=$value_10=$marks_10=$max_marks_10=
 </script>
 
 <script>
-    $(document).ready(function () {
-        $('#otherscome2').hide();
+    $(".event_marks").on('focusout',function(){
+       // console.log('change');
+        var marks = $(this).parents('form').find(".marks");
+        var max_marks = $(this).parents('form').find(".max_marks");
+        var marks_fl = parseFloat(marks.val());
+        var max_marks_fl = parseFloat(max_marks.val());
+       // console.log(marks_fl+" "+max_marks_fl);
+        if(max_marks_fl === 0)
+        {
+            alert("Max Marks is zero . Change the value to a valid number");
+            $(this).val("");
+        }
 
-        $('#degree2').change(function () {
-            var val = $(this).val();
-            if (val === "Others")
-                $('#otherscome2').stop(true, true).show(200).attr("required","true"); //than show
-            else
-                $('#otherscome2').stop(true, true).hide(200).removeAttr("required"); //than hide
+        if(marks_fl>max_marks_fl)
+        {
+            alert("Max Marks is less than your original marks");
+            $(this).val("")
+        }
 
-
-        });
-    });
-
-</script>
-
-<script>
-    document.getElementById("max_marks_10").onchange = function() {myfunction()};
-    function myfunction(){
-        var input = parseFloat(document.getElementById("marks_10").value);
-        var input2 = parseFloat(document.getElementById("max_marks_10").value);
-        var ans=input/input2;
+        var ans=marks_fl/max_marks_fl;
         ans=ans*100.0;
-        document.getElementById('value_10').value = ans.toString();
-    }
-
+        $(this).parents("form").find("input[readonly]").val(ans);
+    });
 </script>
+
+<!--<script>-->
+<!--    document.getElementsByClassName("marks_10").onchange = function(){myfunction()};-->
+<!--    document.getElementsByClassName("max_marks_10").onchange = function() {myfunction()};-->
+<!--    function myfunction(){-->
+<!--        var input = parseFloat(document.getElementById("marks_10").value);-->
+<!--        var input2 = parseFloat(document.getElementById("max_marks_10").value);-->
+<!--        var ans=input/input2;-->
+<!--        ans=ans*100.0;-->
+<!--        document.getElementById('value_10').value = ans.toString();-->
+<!--    }-->
+<!---->
+<!--</script>-->
 
 <script>
     $("input[type=date").on('focusout',function(){
-        //alert('change');
-        var fd=new Date($('#from_dip').val());
-        var td=new Date($('#to_dip').val());
-        if(fd=='Invalid Date' || td=='Invalid Date'){
-            //alert('ignore');
+        console.log('change');
+        var from_date = $(this).parents(".form-group").find('.from_1');
+        var to_date = $(this).parents(".form-group").find('.to_1');
+        var fd=new Date(from_date.val());
+        var td=new Date(to_date.val());
+        console.log(from_date.val());
+        console.log(to_date.val());
+        var diff=datediff(fd,td);
+        if(diff<0)
+        {
+            alert('Invalid dates: FROM date should be before TO date');
+            $(this).val("");
+
         }
-        else{
-            var diff=datediff(fd,td);
-            var year=Math.floor(diff/365);
-            var month=Math.floor((diff-(year)*365)/30);
-            if(diff<0)
-            {
-                alert('Invalid dates:FROM date should be before TO date');
-                $("input[type=date]").val("");
-                $('#experience').val("");
-            }
-            else{
-                $('#experience').val(year+' Years and '+month+' Months');
-            }
-        }
+
     });
 </script>
+
