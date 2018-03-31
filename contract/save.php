@@ -346,51 +346,51 @@ if(isset($_POST['emp_ch']))
 
 if(isset($_POST['reference']))
 {
-	$city="--";
-	$pincode="--";
-	$mobile="--";
 	$name=validate($_POST['name']);
 	$designation=validate($_POST['designation']);
 	$address=validate($_POST['address']);
-	if(isset($_POST['city']))
 	$city=validate($_POST['city']);
-	if(isset($_POST['pincode']))
 	$pincode=validate($_POST['pincode']);
-	if(isset($_POST['mobile']))
 	$mobile=validate($_POST['mobile']);
 	$email=validate($_POST['email']);
 	
-	if(!is_numeric($mobile))	{
-	$misc->palert("Enter 10 digit valid mobile number","home.php?val=reference");
-}
+	if(!is_numeric($mobile)){
+		$misc->palert("Enter 10 digit valid mobile number","home.php?val=reference");
+	}
 
 	if(strlen($mobile)!=10)
-{
-	$misc->palert("Enter 10 digit mobile number","home.php?val=reference");
-}
+	{
+		$misc->palert("Enter 10 digit mobile number","home.php?val=reference");
+	}
 
-if(isset($pincode)&&strlen($pincode)!=6)
-{
-	$misc->palert("Enter 6 digit Pin Code","home.php?val=reference");
-}
+	if(!is_numeric($pincode))
+	{
+		$misc->palert("Enter 6 digit Pin Code","home.php?val=reference");
+	}
+
+	if(strlen($pincode)!=6)
+	{
+		$misc->palert("Enter 6 digit Pin Code","home.php?val=reference");
+	}
 	$q="Select * from reference where user_id='$id'";
 	$r=$db->process_query($q);
-     if(mysql_num_rows($r)==2){
-		  $misc->palert("Only 2 references can be submitted","home.php?val=reference");
-	 }
+    if(mysqli_num_rows($r)==2){
+		$misc->palert("Only 2 references can be submitted","home.php?val=reference");
+	}
 
-$q="INSERT INTO `reference`( `user_id`, `name`, `designation`, `address`, `city`, `pincode`, `mobile`, `email`) VALUES ('$id','$name','$designation','$address','$city','$pincode','$mobile','$email')";
+	$q="INSERT INTO `reference`( `user_id`, `name`, `designation`, `address`, `city`, `pincode`, `mobile`, `email`) VALUES ('$id','$name','$designation','$address','$city','$pincode','$mobile','$email')";
 
-$r=$db->process_query($q);
-if($r){
-                $misc->palert("Details Submitted","home.php?val=reference");
-       }
-       else
-       {
-                $misc->palert("Some error occured","home.php?val=reference");
-       }
-    	
+	$r=$db->process_query($q);
+	if($r){
+	    $misc->palert("Details Submitted","home.php?val=reference");
+	}
+	else
+	{
+	    $misc->palert("Some error occured","home.php?val=reference");
+	}   	
 }
+
+
 if(isset($_POST['info_pg']))
     {
  $info=validate($_POST['info']);

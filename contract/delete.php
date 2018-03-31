@@ -27,4 +27,18 @@
 			$misc->palert("Some error occured","home.php?val=work_exp");
 		}
     }
+
+    if($_GET['page']=='reference')
+    {
+        $q="delete from reference where id = '$tmp_id'";
+        $q = $db->process_query($q);
+        if($q)
+        {
+            $misc->palert("Deleted successfully","home.php?val=reference");
+        }
+        else
+        {
+            $misc->palert("Some error occured","home.php?val=reference");
+        }
+    }
 ?>

@@ -121,8 +121,8 @@ while(($r = $db->fetch_rows($c)))
         </div>
 
 
-<div class="form-group"> 
-    <div class="col-sm-offset-4 col-sm-4">
+      <div class="form-group"> 
+        <div class="col-sm-offset-4 col-sm-4">
       <button type="submit" name="reference" class="btn btn-primary col-sm-12">Submit Information</button>
     </div>
   </div>
