@@ -5,24 +5,65 @@
  * Date: 3/29/2018
  * Time: 5:54 PM
  */
+// if(substr($_SERVER['REMOTE_ADDR'],0,9)!='172.31.9.')
+//	die('Website Under Maintenance!!');
     session_start();
     require_once("included_classes/class_user.php");
     require_once("included_classes/class_misc.php");
     require_once("included_classes/class_sql.php");
-	require_once ("../mailing_script/class_misc.php");
-require_once ("../mailing_script/class_sql.php");
-//
-include ("../mailing_script/PHPMailer/PHPMailerAutoload.php");
     $misc= new miscfunctions();
     $db = new sqlfunctions();
 
     if(isset($_SESSION['user']))
             $misc->redirect("home.php?val=perinfo");
+	if(isset($_POST['register-submit']))
+	{
+		//getting the data
+		$email = validate($_POST['email']);
+		$otp = validate($_POST['otp']);
+		$pass = validate($_POST['pass']);
+		$conf_pass = validate($_POST['conf_pass']);
+		if($pass != $conf_pass)
+			$misc->palert("Passwords donot match!! Please try again.","index.php");
+		
+		$timeout = 30*60;  //half and hour timeout
+		
+		//getting the details of the user
+		$detailQuery = "select * from login where email = '$email'";
+		$r = $db->process_query($detailQuery);
+		if(mysqli_num_rows($r)>0)
+		{
+			$r = $db->fetch_rows($r);
+			$db_otp = validate($r['otp']);
+			$otp_sent = validate($r['otp_sent']);
+			
+			//checking the timeout of otp and its value
+			$now = time();
+			if($now-$otp_sent>$timeout)
+				$misc->palert("OTP has been expired! Please contact webteam.","index.php");
+			
+			if($otp != $db_otp)
+				$misc->palert("OTP is Not Matched!! Please try again.(No need to generate OTP again for this email)","index.php");
+				
+			
+			$pass = hash("sha256",$pass);
+			//update verify, password
+			$verifyQuery = "update login set verify = '1', password = '$pass' where email = '$email'";
+			$r = $db->process_query($verifyQuery);
+			
+			
+			//success message
+			$misc->palert("You have succesfully registered. Please Login to continue.","index.php");
+				
+		}
+		else
+			die('<h3>No user exists!!</h3>');
+	}
 
     if(isset($_POST['login-submit'])){
-            $email = $_POST['email'];
+            $email = validate($_POST['email']);
             $email = mysqli_real_escape_string($db->connection,trim(htmlentities($email)));
-            $pass = $_POST['pass'];
+            $pass = validate($_POST['pass']);
             $pass = hash('sha256',$pass);
             $sql = "select * from login where email = '$email' and password like '$pass'";
 
@@ -44,60 +85,6 @@ include ("../mailing_script/PHPMailer/PHPMailerAutoload.php");
                     $misc->palert("Log in failed","index.php");
 
             }
-    }
-    else if(isset($_POST['register-submit'])){
-            $email = validate($_POST['email']);
-            $email = mysqli_real_escape_string($db->connection,trim(htmlentities($email)));
-            $pass =hash('sha256',$_POST['pass']);
-            $sql = "select * from login where email = '$email'";
-            $r = $db->process_query($sql);
-            if(mysqli_num_rows($r)>0){
-                    $misc->palert("Email id already exists","");
-            }
-            else{
-                    $sql = "select * from login";
-                    $r = $db->process_query($sql);
-                    $r=mysqli_num_rows($r)+1;
-
-                    $id=(string) $r;
-                    $id = str_pad($id,5,0,STR_PAD_LEFT);
-                    $id=date('Y').'JR'.$id;
-                    $sql = "insert into login(`user_id`,`email`,`password`,`verify`) values ('$id','$email','$pass','1')";
-                    $r = $db->process_query($sql);
-                    if($r){
-                            $hash=base64_encode($id);
-                            $emailBody="<p align=\"justify\" style=\"text-indent:20px;\" > This e-mail was generated in response to a request to register on Faculty Recruitment portal<a href=\"academics.mnnit.ac.in/recruitment\"> academics.mnnit.ac.in/recruitment </a>.</p> <p align=\"justify\" style=\"text-indent:20px;\" >If you didn't perform this action, kindly ignore this e-mail. If you are being spammed, you can complain about it at recruitmentcell@mnnit.ac.in . The verification link is given below.</p><strong>Click <a href=\"academics.mnnit.ac.in/recruitment/assistant/verify.php?return=$hash\">here</a></b> to verify your email. <br /><br />";
-                            //echo $emailBody;
-                            $emailUser = $email;
-                            $mail = new PHPMailer;
-                            $mail->IsSMTP ();
-                            $mail->Host = "smtp.gmail.com";//"74.125.71.109"; // SMTP server- gmail.com
-                            $mail->SMTPAuth = true; // enable SMTP authentication
-                            $mail->SMTPSecure = "tls";
-                            //$mail->Host       = "172.31.100.9"; // sets the SMTP server
-                            $mail->Port = 587; // set the SMTP port for the GMAIL server
-                            $mail->Username = "academics@mnnit.ac.in"; // SMTP account username
-                            $mail->Password = "D_acad@2014"; // SMTP account password
-                            $mail->SetFrom('academics@mnnit.ac.in', 'Faculty Recruitment');
-                            $mail->Subject = "Email Verification";
-                            $mail->Body = $emailBody;
-                            $mail->AddAddress($emailUser);
-                            //$mail->SMTPDebug  = true;
-                            // Send and verify
-                            //$mail->Timeout = 3600;
-                            $mail->isHTML(true);
-//                            if (! $mail->Send ()) {
-//
-//                                    echo "Message sending failed . Try again later.";
-//                                    die("Message sending failed . Try again later.");
-//                                    //die( $mail->ErrorInfo);
-//
-//                            }
-
-                            $misc->palert("Verification mail send successfully on your Email-Id","");
-                    }
-            }
-
     }
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
@@ -273,7 +260,7 @@ include ("../mailing_script/PHPMailer/PHPMailerAutoload.php");
                                                                 </div>
 
                                                         </form>
-                                                        <form id="register-form" action="" method="post" role="form" style="display: none;" onSubmit="return validate();">
+                                                        <form id="register-form" action="" method="post" role="form" style="display: none;">
                                                                 <div class="form-group">
                                                                         <input type="email" name="email" id="email" tabindex="1" class="form-control" placeholder="Email Address" value="">
                                                                 </div>
@@ -282,6 +269,16 @@ include ("../mailing_script/PHPMailer/PHPMailerAutoload.php");
                                                                 </div>
                                                                 <div class="form-group">
                                                                         <input type="password" name="conf_pass" id="conf_pass" tabindex="2" class="form-control" placeholder="Confirm Password">
+                                                                </div>
+                                                                <div class="form-group">
+                                                                        <div class="row">
+                                                                                <div class="col-sm-6 col-sm-offset-3">
+                                                                                        <button type="button" name="otp_btn" id="otp_btn" tabindex="4" class="form-control btn btn-info">Generate OTP</button>
+                                                                                </div>
+                                                                        </div>
+                                                                </div>
+                                                                <div class="form-group">
+                                                                        <input type="password" name="otp" id="otp" tabindex="2" class="form-control" placeholder="Enter OTP Sent to the provided E-mail">
                                                                 </div>
                                                                 <div class="form-group">
                                                                         <div class="row">
@@ -310,7 +307,8 @@ include ("../mailing_script/PHPMailer/PHPMailerAutoload.php");
                 This is a &beta; version and is under devleopment.
         </p>
 </footer>
-<script>
+
+<script type="text/javascript">
         function validate(){
                 if($('#pass').val()!=$('#conf_pass').val()){
                         alert("Passwords don't match!");
@@ -321,6 +319,63 @@ include ("../mailing_script/PHPMailer/PHPMailerAutoload.php");
                 return true;
         }
 </script>
+
+<script type="text/javascript">
+
+//send ajax request for generating otp for this user and email it
+$("#otp_btn").click(function(){
+
+		console.log("Here");
+		if(validate())
+		{
+			$.post("generateOTP.php",
+				{
+					email: $("#email").val(),
+					pass: $("#pass").val(),
+					conf_pass: $("#conf_pass").val()
+				},
+				function(data,status){
+					//alert("Sent: "+data);
+					console.log("pnm");
+					console.log(data);
+					if(status=="success")
+					{
+						if(data == "pnm")
+						{
+							alert("Passwords don't match");
+						}
+						else if(data == "uae")
+						{
+							alert("User with this email already exists!!");
+
+						}
+						else if(data == "oag")
+						{
+							alert("OTP is already generated for this user. Please fill it below to continue.")
+
+						}
+						else if(data == "msf")
+						{
+							alert("Message sending failed . Try again later.");
+						}
+						else if(data == "vss")
+						{
+							alert("OTP has been sent to your Email ID. Please enter it below to proceed further.");
+						}
+						else if(data == "te")
+						{
+							alert("Techincal Error!!! Please contact Web Team");
+						}
+					}
+				}
+			);
+		}
+
+});
+
+
+</script>
+
 <script type="text/javascript">
         $(function() {
 

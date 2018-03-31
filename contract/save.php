@@ -119,15 +119,20 @@ if(isset($_POST['edu_ch_1']))
 	$marks = validate($_POST['dip_marks']);
 	$max_marks = validate($_POST['dip_max_marks']);
 	$perc_marks = validate($_POST['dip_perc_marks']);
+    $is_others=validate($_POST['dip_other_degree']);
+    if(isset($is_others) && $spec =="Others"){
 
+    }
+    else
+        $is_others="0";
 	//checking if data already exists
 	$q = "select user_id from diploma where user_id = '$id' ";
 	$r = $db->process_query($q);
     verify_doc("doc_diploma",'./doc_edu','education_qual',"");
 	if(mysqli_num_rows($r)>0)
-		$q = "update diploma set field = '$spec', start_date = '$start_date' , end_date = '$completion_date', university = '$university', marks = '$marks', max_marks = '$max_marks', per_or_cgpa = '$per_cgp', `value` = '$value' where user_id = '$id';";
+		$q = "update diploma set field = '$spec', start_date = '$start_date' , end_date = '$completion_date', university = '$university', marks = '$marks', max_marks = '$max_marks', per_or_cgpa = '$per_cgp', `value` = '$perc_marks' , is_others = '$is_others' where user_id = '$id';";
 	else
-		$q="INSERT INTO `diploma` VALUES ('$id','$spec','$start_date','$completion_date','$university','$marks','$max_marks','$per_cgp','$perc_marks')";
+		$q="INSERT INTO `diploma` VALUES ('$id','$spec','$start_date','$completion_date','$university','$marks','$max_marks','$per_cgp','$perc_marks','$is_others')";
 
 	$r=$db->process_query($q);
 	if($r){
@@ -149,6 +154,8 @@ if(isset($_POST['edu_ch_2']))
 	$max_marks= validate($_POST['max_marks_12th']);
 	$perc_marks = validate($_POST['perc_marks_12th']);
 	$board = validate($_POST['board_12th']);
+
+
 	//checking if data already exists
 	$q = "select user_id from 12th_mark where user_id = '$id' ";
 	$r = $db->process_query($q);
@@ -171,7 +178,7 @@ if(isset($_POST['edu_ch_2']))
 if(isset($_POST['edu_ch_3']))
 {
 	// ug data
-	$degree = validate($_POST['ug_field']);
+	$degree = validate($_POST['ug_degree']);
 	$spec = validate($_POST['ug_specialization']);
 	$per_cgp = validate($_POST['ug_per_or_cgp']);
 	$university = validate($_POST['ug_university']);
@@ -180,17 +187,21 @@ if(isset($_POST['edu_ch_3']))
 	$marks = validate($_POST['ug_marks']);
 	$max_marks = validate($_POST['ug_max_marks']);
 	$perc_marks = validate($_POST['ug_perc_marks']);
+    $is_others=validate($_POST['ug_other_degree']);
+    if(isset($is_others) && $degree =="Others"){
 
-
+    }
+    else
+        $is_others="0";
 	//checking if data already exists
 	$q = "select user_id from ug where user_id = '$id' ";
 	$r = $db->process_query($q);
     verify_doc("doc_ug",'./doc_edu','education_qual',"");
 
 	if(mysqli_num_rows($r)>0)
-		$q = "update ug set specialization = '$spec', start_date = '$start_date' , completion_date = '$completion_date', university = '$university', marks = '$marks', max_marks = '$max_marks', per_or_cgpa = '$per_cgp', `value` = '$perc_marks', degree = '$degree' where user_id = '$id';";
+		$q = "update ug set specialization = '$spec', start_date = '$start_date' , completion_date = '$completion_date', university = '$university', marks = '$marks', max_marks = '$max_marks', per_or_cgpa = '$per_cgp', `value` = '$perc_marks', degree = '$degree' , is_others = '$is_others' where user_id = '$id';";
 	else
-		$q="INSERT INTO `ug` VALUES ('$id','$spec','$start_date','$completion_date','$university','$marks','$max_marks','$per_cgp','$perc_marks','$degree')";
+		$q="INSERT INTO `ug` VALUES ('$id','$spec','$start_date','$completion_date','$university','$marks','$max_marks','$per_cgp','$perc_marks','$degree','$is_others')";
 	$r=$db->process_query($q);
 	if($r)
 	{
@@ -214,16 +225,22 @@ if(isset($_POST['edu_ch_4']))
 	$marks = validate($_POST['pg_marks']);
 	$max_marks = validate($_POST['pg_max_marks']);
 	$perc_marks = validate($_POST['pg_perc_marks']);
+	$is_others=validate($_POST['pg_other_specialization']);
 
 	//checking if data already exists
+    if(isset($is_others) && $degree =="Others"){
+
+    }
+    else
+        $is_others="0";
 	$q = "select user_id from pg where user_id = '$id' ";
 	$r = $db->process_query($q);
     verify_doc("doc_pg",'./doc_edu','education_qual',"");
 
 	if(mysqli_num_rows($r)>0)  //update
-		$q = "update pg set specialization = '$spec', start_date = '$start_date' , completion_date = '$completion_date', university = '$university', marks = '$marks', max_marks = '$max_marks', per_or_cgpa = '$per_cgp', `value` = '$perc_marks', degree = '$degree' where user_id = '$id';";
+		$q = "update pg set specialization = '$spec', start_date = '$start_date' , completion_date = '$completion_date', university = '$university', marks = '$marks', max_marks = '$max_marks', per_or_cgpa = '$per_cgp', `value` = '$perc_marks', degree = '$degree'is_others = '$is_others' where user_id = '$id';";
 	else  //insert
-		$q="INSERT INTO `pg` VALUES ('$id','$spec','$start_date','$completion_date','$university','$marks','$max_marks','$per_cgp','$perc_marks','$degree')";
+		$q="INSERT INTO `pg` VALUES ('$id','$spec','$start_date','$completion_date','$university','$marks','$max_marks','$per_cgp','$perc_marks','$degree','$is_others')";
 	$r=$db->process_query($q);
 	if($r){
 		$misc->palert("Details Submitted","home.php?val=education_qual");
@@ -309,6 +326,7 @@ if($r){
 }
 if(isset($_POST['emp_ch']))
 {
+	 $nat_emp = validate($_POST['nat_emp']);
 	 $position=validate($_POST['position']);
 	 $from=validate($_POST['from']);
 	 $to=validate($_POST['to']);
@@ -318,6 +336,7 @@ if(isset($_POST['emp_ch']))
 	 $nature=validate($_POST['nature']);
 	 $organisation=validate($_POST['organisation']);
 	 $emp_type=validate($_POST['emp_type']);
+	$emol = validate($_POST['emol']);
 
 
 	$id=$_SESSION['user'];
@@ -326,24 +345,21 @@ if(isset($_POST['emp_ch']))
 
 	if(mysqli_num_rows($r)>0)
 	{
-		$q="UPDATE `employer` SET `position`='$position',`from`='$from',`to`='$to',`pay`='$pay',`agp`='$agp',`basic_pay`='$basic_pay',`nature`='$nature',`organisation`='$organisation',`emp_type`='$emp_type' WHERE user_id = '$id'";
+		$q="UPDATE `employer` SET nat_emp = '$nat_emp', `position`='$position',`from`='$from',`to`='$to',`pay`='$pay',`agp`='$agp',`basic_pay`='$basic_pay',`nature`='$nature',`organisation`='$organisation',`emp_type`='$emp_type', emoluments = '$emol' WHERE user_id = '$id'";
 	}
 	else
 	{
-		 $q="INSERT INTO `employer`(`user_id`, `position`, `from`, `to`, `pay`, `agp`, `basic_pay`, `nature`, `organisation`, `emp_type`) VALUES ('$id','$position','$from','$to','$pay','$agp','$basic_pay','$nature','$organisation','$emp_type')";
+		 $q="INSERT INTO `employer`(`user_id`, `nat_emp`,`position`, `from`, `to`, `pay`, `agp`, `basic_pay`, `nature`, `organisation`, `emp_type`, `emoluments`) VALUES ('$id','$nat_emp','$position','$from','$to','$pay','$agp','$basic_pay','$nature','$organisation','$emp_type','$emol')";
 	}
 	$r=$db->process_query($q);
 	if($r){
-	                $misc->palert("Details Submitted","home.php?val=tech_exp");
+	                $misc->palert("Details Submitted","home.php?val=present_emp");
 	       }
 	       else
 	       {
-	                $misc->palert("Some error occured","home.php?val=education_qual");
+	                $misc->palert("Some error occured","home.php?val=present_emp");
 	       }
 }
-
-
-
 if(isset($_POST['reference']))
 {
 	$name=validate($_POST['name']);
@@ -389,35 +405,34 @@ if(isset($_POST['reference']))
 	    $misc->palert("Some error occured","home.php?val=reference");
 	}   	
 }
-
-
 if(isset($_POST['info_pg']))
-    {
- $info=validate($_POST['info']);
-$id=$_SESSION['user'];
-$query="SELECT * from `other_info` where `user_id` like '$id'";
-$r = $db->process_query($query);
-if(strlen($info)>500)
 {
-	$misc->palert("Only 500 characters allowed","home.php?val=info");
+ 	$info=validate($_POST['info']);
+	$id=$_SESSION['user'];
+	$query="SELECT * from `other_info` where `user_id` like '$id'";
+	$r = $db->process_query($query);
+	if(strlen($info)>500)
+	{
+		$misc->palert("Only 500 characters allowed","home.php?val=info");
+	}
+	if(mysqli_num_rows($r)>0)
+	{
+		$q="UPDATE `other_info` SET `info`='$info' WHERE user_id = '$id'";
+	}
+	else
+	{
+		 $q="INSERT INTO `other_info`(`user_id`, `info`) VALUES ('$id','$info')";
+	}
+	$r=$db->process_query($q);
+	if($r)
+	{
+	    $misc->palert("Details Submitted","home.php?val=other_info");
+	}
+	else
+	{
+	    $misc->palert("Some error occured","home.php?val=other_info");
+	}
 }
-if(mysqli_num_rows($r)>0)
-{
-	$q="UPDATE `other_info` SET `info`='$info' WHERE user_id = '$id'";
-}
-else
-{
-	 $q="INSERT INTO `other_info`(`user_id`, `info`) VALUES ('$id','$info')";
-}
-$r=$db->process_query($q);
-if($r){
-                $misc->palert("Details Submitted","home.php?val=other_info");
-       }
-       else
-       {
-                $misc->palert("Some error occured","home.php?val=other_info");
-       }
-    }
 
 echo "nowhere!!!";
 	

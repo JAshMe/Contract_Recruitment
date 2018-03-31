@@ -1,5 +1,5 @@
 <?php
-    require_once("./included_classes/class_user.php");
+require_once("./included_classes/class_user.php");
     require_once("./included_classes/class_misc.php");
     require_once("./included_classes/class_sql.php");
     $misc= new miscfunctions();
@@ -26,24 +26,23 @@
   <li> * Marked fields are mandatory.</li>
 </ul>
 
-</script>
 <form class="form-horizontal" name="phd_frm" method="post" action="save.php" >
 <div class="tab-content">
       <div id="home" class="tab-pane fade in active">
         <h3>Any Other Information</h3>
         <hr>
-
         <div class="form-group">
             <label class="control-label col-sm-2" for="email"> Other Information:<br>(Max. 500 characters)</label>
           <div class="col-sm-6">
-            <textarea type="text" row="50" class="form-control"   name="info" required maxlength="500"> <?php if(isset($info)) echo "$info"; ?> </textarea>
+            <textarea type="text" row="50" class="form-control"   name="info" required maxlength="500"> </textarea>
           </div>
-        </div>        
+        </div>
+        
 
-<div class="form-group"> 
+  <div class="form-group"> 
     <div class="col-sm-offset-4 col-sm-4">
       <button type="submit" name="info_pg" class="btn btn-primary col-sm-12">Submit Information</button>
-    </div>
+  </div>
   </div>
   </form>
 </div>
