@@ -218,16 +218,16 @@ $board_10=$comp_10=$school_10=$per_or_cgpa_10=$value_10=$marks_10=$max_marks_10=
                             <select id="degree2" name="dip_field" required class="form-control degree2">
                                 <option value="EE" id="ee" <?php if($field_d=="EE") echo "selected" ?> >Electical Engineering</option>
                                 <option value="CE" id="ce" <?php if($field_d=="CE") echo "selected" ?> >Civil Engineering</option>
-                                <option value="1" id="others2" <?php if($is_others_d== '1') echo "selected" ?> >Others</option>
+                                <option value="Others" id="others2" <?php if($field_d== "Others") echo "selected" ?> >Others</option>
                             </select>
                         </div>
                         </div>
 
 
-                <div class="form-group otherscome2"   id="otherscome2" <?php if(isset($is_others_d) && $is_others_d=='1') echo"style=\"display:block\""; else echo "style=\"display:none\"; ";?> >
+                <div class="form-group otherscome2"   id="otherscome2" <?php if(isset($field_d) && $field_d=="Others") echo"style=\"display:block\""; else echo "style=\"display:none\"; ";?> >
                     <label class="control-label col-sm-2" for="degree_d"><span class="text-danger">*</span>Others:</label>
                     <div class="col-sm-4">
-                        <input type="text" class="form-control"  id="degree_d" <?php if(isset($field_d) && $is_others_d=='1') echo "value=\"$field_d\" required "; ?> name="dip_other_degree" >
+                        <input type="text" class="form-control"  id="degree_d" <?php if(isset($field_d) && $field_d=="Others") echo "value=\"$is_others_d\" required "; ?> name="dip_other_degree" >
                     </div>
                 </div>
 
@@ -396,16 +396,16 @@ $board_10=$comp_10=$school_10=$per_or_cgpa_10=$value_10=$marks_10=$max_marks_10=
                             <option value="BHM" id="bhm" <?php if($degree_ug=="BHM") echo "selected" ?> >Bachelor of Hotel Management (BHM)</option>
                             <option value="B.P.Ed" id="bped" <?php if($degree_ug=="B.P.Ed") echo "selected" ?> >Bachelor of Physical Education (B.P.Ed)</option>
                             <option value="B.Ed" id="bed" <?php if($degree_ug=="B.Ed") echo "selected" ?> >Bachelor of Education (B.Ed)</option>
-                            <option value="Others" id="others" <?php if($is_others_ug=='1') echo "selected" ?> >Others</option>
+                            <option value="Others" id="others" <?php if($degree_ug=="Others") echo "selected" ?> >Others</option>
                         </select>
                     </div>
                 </div>
 
 
-                <div class="form-group otherscome2"   id="otherscome1" <?php if(isset($is_others_ug) && $is_others_ug=='1') echo"style=\"display:block\""; else echo "style=\"display:none\"; ";?> >
+                <div class="form-group otherscome2"   id="otherscome1" <?php if(isset($degree_ug) && $degree_ug=="Others") echo"style=\"display:block\""; else echo "style=\"display:none\"; ";?> >
                     <label class="control-label col-sm-2" for="degree_ug"><span class="text-danger">*</span>Others:</label>
                     <div class="col-sm-4">
-                        <input type="text" class="form-control"  id="degree_ug" <?php if(isset($degree_ug) && $is_others_ug=='1') echo "value=\"$degree_ug\" required "; ?> name="ug_other_degree"  >
+                        <input type="text" class="form-control"  id="degree_ug" <?php if(isset($degree_ug) && $degree_ug=="Others") echo "value=\"$is_others_ug\" required "; ?> name="ug_other_degree"  >
                     </div>
                 </div>
 
@@ -523,16 +523,16 @@ $board_10=$comp_10=$school_10=$per_or_cgpa_10=$value_10=$marks_10=$max_marks_10=
                                 <option value="MSC" id="msc" <?php if($degree_pg=="MSC") echo "selected" ?> >Master of Science (M.Sc)</option>
                                 <option value="MS" id="ms" <?php if($degree_pg=="MS") echo "selected" ?> >Master of Science (MS)</option>
                                 <option value="ME" id="me" <?php if($degree_pg=="ME") echo "selected" ?> >Master of Engineering (ME)</option>
-                                <option value="Others" id="others" <?php if($is_others_pg=='1') echo "selected" ?> >Others</option>
+                                <option value="Others" id="others" <?php if($degree_pg=="Others") echo "selected" ?> >Others</option>
                             </select>
                         </div>
                     </div>
 
 
-                <div class="form-group otherscome2"   id="otherscome" <?php if(isset($is_others_pg) && $is_others_pg=='1') echo"style=\"display:block\""; else echo "style=\"display:none\"; ";?> >
+                <div class="form-group otherscome2"   id="otherscome" <?php if(isset($degree_pg) && $degree_pg=="Others") echo"style=\"display:block\""; else echo "style=\"display:none\"; ";?> >
                     <label class="control-label col-sm-2" for="degree_pg"><span class="text-danger">*</span>Others:</label>
                     <div class="col-sm-4">
-                        <input type="text" class="form-control"  id="degree_pg" <?php if(isset($degree_pg) && $is_others_pg=='1') echo "value=\"$degree_pg\" required "; ?> name="pg_other_specialization" >
+                        <input type="text" class="form-control"  id="degree_pg" <?php if(isset($degree_pg) && $degree_pg=="Others") echo "value=\"$is_others_pg\" required "; ?> name="pg_other_specialization" >
                     </div>
                 </div>
 
