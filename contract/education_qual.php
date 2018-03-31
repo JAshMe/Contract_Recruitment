@@ -113,6 +113,12 @@ $board_10=$comp_10=$school_10=$per_or_cgpa_10=$value_10=$marks_10=$max_marks_10=
     <ul class="text-danger">
         <li> * Marked fields are mandatory.</li>
     </ul>
+
+<style>
+    .otherscome2{
+        display: none;
+    }
+</style>
 <div id="home" class="tab-pane fade in active">
 <h3>Details of Academic Record (In Reverse Chronological Order) :</h3>
     <br>
@@ -134,8 +140,17 @@ $board_10=$comp_10=$school_10=$per_or_cgpa_10=$value_10=$marks_10=$max_marks_10=
         </div>
     </form>
 <!--   -----------------------------10th Div ---------------------------------------------->
+
+
             <form class="form-horizontal" name="reg_frm" method="post" action="save.php" onSubmit="return validate();" enctype="multipart/form-data">
                 <div id ="10th" class="qual_div">
+
+                    <div id="10th" class="form-group">
+                        <label class="control-label col-sm-3" for="school_10th"><span class="text-danger">*</span> School Name:</label>
+                        <div class="col-sm-5">
+                            <input type="text" class="form-control" id="school_10th" name="school_10th"  required value="<?= $school_10?>" >
+                        </div>
+                    </div>
 
                     <div class="row">
                         <div class="form-group">
@@ -151,12 +166,7 @@ $board_10=$comp_10=$school_10=$per_or_cgpa_10=$value_10=$marks_10=$max_marks_10=
                     </div>
 
 
-                        <div id="10th" class="form-group">
-                            <label class="control-label col-sm-3" for="school_10th"><span class="text-danger">*</span> School Name:</label>
-                            <div class="col-sm-5">
-                                <input type="text" class="form-control" id="school_10th" name="school_10th"  required value="<?= $school_10?>" >
-                            </div>
-                        </div>
+
 
                         <div class="form-group">
                         <label class="control-label col-sm-offset-1 col-sm-2" for="email"><span class="text-danger">*</span>Marking Scheme</label>
@@ -193,6 +203,7 @@ $board_10=$comp_10=$school_10=$per_or_cgpa_10=$value_10=$marks_10=$max_marks_10=
                         <label class="control-label col-sm-3" for="doc_10th"><span class="text-danger">*</span> Attach Appropriate proof:</label>
                         <div class="col-sm-5">
                             <input type="file"  name="doc_10th" id="doc_10th" required>
+                            <span class="text-danger">*Max File Size 1MB. PDF Documents Required</span>
                         </div>
                     </div>
 
@@ -218,6 +229,9 @@ $board_10=$comp_10=$school_10=$per_or_cgpa_10=$value_10=$marks_10=$max_marks_10=
                             <select id="degree2" name="dip_field" required class="form-control degree2">
                                 <option value="EE" id="ee" <?php if($field_d=="EE") echo "selected" ?> >Electical Engineering</option>
                                 <option value="CE" id="ce" <?php if($field_d=="CE") echo "selected" ?> >Civil Engineering</option>
+                                <option value="DE" id="ds" <?php if($field_d=="DE") echo "selected" ?> >Diploma in Engineering</option>
+                                <option value="DS" id="ds" <?php if($field_d=="DS") echo "selected" ?> >Diploma in Sciences</option>
+                                <option value="DT" id="dt" <?php if($field_d=="DT") echo "selected" ?> >Diploma in Technology</option>
                                 <option value="Others" id="others2" <?php if($field_d== "Others") echo "selected" ?> >Others</option>
                             </select>
                         </div>
@@ -285,6 +299,7 @@ $board_10=$comp_10=$school_10=$per_or_cgpa_10=$value_10=$marks_10=$max_marks_10=
                     <label class="control-label col-sm-3" for="doc_diploma"><span class="text-danger">*</span> Attach Appropriate proof:</label>
                     <div class="col-sm-5">
                         <input type="file"  name="doc_diploma" id="pdf1" required>
+                        <span class="text-danger">*Max File Size 1MB. PDF Documents Required</span>
                     </div>
                 </div>
 
@@ -298,6 +313,14 @@ $board_10=$comp_10=$school_10=$per_or_cgpa_10=$value_10=$marks_10=$max_marks_10=
                 <!-------------------------------------------------------------12th---------------------------------------------------------->
             <form class="form-horizontal" name="reg_frm" method="post" action="save.php" onSubmit="return validate();" enctype="multipart/form-data">
                 <div id="12th" class="qual_div" style=" display: none;">
+
+                    <div id="12th" class="form-group">
+                        <label class="control-label col-sm-3" for="school_12th"><span class="text-danger">*</span> School Name :</label>
+                        <div class="col-sm-5">
+                            <input type="text" class="form-control"  name="school_12th"  id="school_12th" value="<?= $school_12 ?>" required>
+                        </div>
+                    </div>
+
 
                     <div class="row">
                         <div class="form-group">
@@ -313,12 +336,7 @@ $board_10=$comp_10=$school_10=$per_or_cgpa_10=$value_10=$marks_10=$max_marks_10=
                     </div>
 
 
-                    <div id="10th" class="form-group">
-                        <label class="control-label col-sm-3" for="school_12th"><span class="text-danger">*</span> School Name :</label>
-                        <div class="col-sm-5">
-                            <input type="text" class="form-control"  name="school_12th"  id="school_12th" value="<?= $school_12 ?>" required>
-                        </div>
-                    </div>
+
 
                     <div class="form-group">
                         <label class="control-label col-sm-offset-1 col-sm-2" for="email"><span class="text-danger">*</span>Marking Scheme</label>
@@ -355,6 +373,7 @@ $board_10=$comp_10=$school_10=$per_or_cgpa_10=$value_10=$marks_10=$max_marks_10=
                         <label class="control-label col-sm-3" for="doc_12th"><span class="text-danger">*</span> Attach Appropriate proof:</label>
                         <div class="col-sm-5">
                             <input type="file"  name="doc_12th" id="doc_12th" required>
+                            <span class="text-danger">*Max File Size 1MB. PDF Documents Required</span>
                         </div>
                     </div>
 
@@ -396,6 +415,7 @@ $board_10=$comp_10=$school_10=$per_or_cgpa_10=$value_10=$marks_10=$max_marks_10=
                             <option value="BHM" id="bhm" <?php if($degree_ug=="BHM") echo "selected" ?> >Bachelor of Hotel Management (BHM)</option>
                             <option value="B.P.Ed" id="bped" <?php if($degree_ug=="B.P.Ed") echo "selected" ?> >Bachelor of Physical Education (B.P.Ed)</option>
                             <option value="B.Ed" id="bed" <?php if($degree_ug=="B.Ed") echo "selected" ?> >Bachelor of Education (B.Ed)</option>
+                            <option value="BHMS2" id="bhms2" <?php if($degree_ug=="BHMS2") echo "selected" ?> >Bachelor of Hospitality Management</option>
                             <option value="Others" id="others" <?php if($degree_ug=="Others") echo "selected" ?> >Others</option>
                         </select>
                     </div>
@@ -477,6 +497,7 @@ $board_10=$comp_10=$school_10=$per_or_cgpa_10=$value_10=$marks_10=$max_marks_10=
                     <label class="control-label col-sm-3" for="doc_ug"><span class="text-danger">*</span> Attach Appropriate proof:</label>
                     <div class="col-sm-5">
                         <input type="file"  name="doc_ug" id="doc_ug" required>
+                        <span class="text-danger">*Max File Size 1MB. PDF Documents Required</span>
                     </div>
                 </div>
 
@@ -490,6 +511,38 @@ $board_10=$comp_10=$school_10=$per_or_cgpa_10=$value_10=$marks_10=$max_marks_10=
             <!-------------------------------------------------------------PG---------------------------------------------------------->
             <form class="form-horizontal" name="reg_frm" method="post" action="save.php" onSubmit="return validate();" enctype="multipart/form-data">
             <div id="pg"  class="qual_div" style=" display: none;">
+
+                <div class="form-group">
+                    <label class="control-label col-sm-2" for="degree"><span class="text-danger">*</span> Degree:</label>
+
+                    <div class="col-sm-3">
+                        <select id="degree" name="pg_field" required class="form-control degree2">
+                            <option value="M.Tech" id="mtech" <?php if($degree_pg=="M.Tech") echo "selected" ?> >Master of Tech (M.Tech)</option>
+                            <option value="MSC" id="msc" <?php if($degree_pg=="MSC") echo "selected" ?> >Master of Science (M.Sc)</option>
+                            <option value="MS" id="ms" <?php if($degree_pg=="MS") echo "selected" ?> >Master of Science (MS)</option>
+                            <option value="ME" id="me" <?php if($degree_pg=="ME") echo "selected" ?> >Master of Engineering (ME)</option>
+                            <option value="MHM" id="mh," <?php if($degree_pg=="MHM") echo "selected" ?> >Master of Hotel Management (MHM)</option>
+                            <option value="ME" id="me" <?php if($degree_pg=="ME") echo "selected" ?> >Master of Engineering (ME)</option>
+                            <option value="MCA" id="mca" <?php if($degree_pg=="MCA") echo "selected" ?> >Master of Computer Applications (MCA)</option>
+                            <option value="Others" id="others" <?php if($degree_pg=="Others") echo "selected" ?> >Others</option>
+                        </select>
+                    </div>
+                </div>
+
+
+                <div class="form-group otherscome2"   id="otherscome" <?php if(isset($degree_pg) && $degree_pg=="Others") echo"style=\"display:block\""; else echo "style=\"display:none\"; ";?> >
+                    <label class="control-label col-sm-2" for="degree_pg"><span class="text-danger">*</span>Others:</label>
+                    <div class="col-sm-4">
+                        <input type="text" class="form-control"  id="degree_pg" <?php if(isset($degree_pg) && $degree_pg=="Others") echo "value=\"$is_others_pg\" required "; ?> name="pg_other_specialization" >
+                    </div>
+                </div>
+
+                <div id="ug" class="form-group">
+                    <label class="control-label col-sm-2" for="specialization_pg"><span class="text-danger">*</span>Specialization:</label>
+                    <div class="col-sm-4">
+                        <input type="text" class="form-control" name="pg_specialization" id="specialization_pg" required value="<?= $specialization_ug?>"   >
+                    </div>
+                </div>
 
 
 
@@ -514,34 +567,8 @@ $board_10=$comp_10=$school_10=$per_or_cgpa_10=$value_10=$marks_10=$max_marks_10=
 
 
 
-                    <div class="form-group">
-                        <label class="control-label col-sm-2" for="degree"><span class="text-danger">*</span> Degree:</label>
-
-                        <div class="col-sm-3">
-                            <select id="degree" name="pg_field" required class="form-control degree2">
-                                <option value="M Tech" id="mtech" <?php if($degree_pg=="M Tech") echo "selected" ?> >Master of Tech (M.Tech)</option>
-                                <option value="MSC" id="msc" <?php if($degree_pg=="MSC") echo "selected" ?> >Master of Science (M.Sc)</option>
-                                <option value="MS" id="ms" <?php if($degree_pg=="MS") echo "selected" ?> >Master of Science (MS)</option>
-                                <option value="ME" id="me" <?php if($degree_pg=="ME") echo "selected" ?> >Master of Engineering (ME)</option>
-                                <option value="Others" id="others" <?php if($degree_pg=="Others") echo "selected" ?> >Others</option>
-                            </select>
-                        </div>
-                    </div>
 
 
-                <div class="form-group otherscome2"   id="otherscome" <?php if(isset($degree_pg) && $degree_pg=="Others") echo"style=\"display:block\""; else echo "style=\"display:none\"; ";?> >
-                    <label class="control-label col-sm-2" for="degree_pg"><span class="text-danger">*</span>Others:</label>
-                    <div class="col-sm-4">
-                        <input type="text" class="form-control"  id="degree_pg" <?php if(isset($degree_pg) && $degree_pg=="Others") echo "value=\"$is_others_pg\" required "; ?> name="pg_other_specialization" >
-                    </div>
-                </div>
-
-                <div id="ug" class="form-group">
-                    <label class="control-label col-sm-2" for="specialization_pg"><span class="text-danger">*</span>Specialization:</label>
-                    <div class="col-sm-4">
-                        <input type="text" class="form-control" name="pg_specialization" id="specialization_pg" required value="<?= $specialization_ug?>"   >
-                    </div>
-                </div>
 
 
 
@@ -584,6 +611,7 @@ $board_10=$comp_10=$school_10=$per_or_cgpa_10=$value_10=$marks_10=$max_marks_10=
                     <label class="control-label col-sm-3" for="doc_pg"><span class="text-danger">*</span> Attach Appropriate proof:</label>
                     <div class="col-sm-5">
                         <input type="file"  name="doc_pg" id="doc_pg" required>
+                        <span class="text-danger">*Max File Size 1MB. PDF Documents Required</span>
                     </div>
                 </div>
 
@@ -609,17 +637,17 @@ $board_10=$comp_10=$school_10=$per_or_cgpa_10=$value_10=$marks_10=$max_marks_10=
         //         $(this).children().filter('#to').val('');
         //         return false;
         //     }
-        function validate(){
-            if($(this).children().filter('.marks').val()> $(this).children().filter('.max_marks').val()){
-                console.log( $(this).children().filter('.marks').val()+"  "+ $(this).children().filter('.max_marks').val());
-                alert("Marks should not be greater than maximum marks!");
-                $(this).children().filter('.marks').val('');
-                $(this).children().filter('.max_marks').val('');
-                return false;
-            }
-            return true;
-        }
-    </script>
+    //    function validate(){
+    //        if($(this).children().filter('.marks').val()> $(this).children().filter('.max_marks').val()){
+    //            console.log( $(this).children().filter('.marks').val()+"  "+ $(this).children().filter('.max_marks').val());
+    //            alert("Marks should not be greater than maximum marks!");
+    //            $(this).children().filter('.marks').val('');
+    //            $(this).children().filter('.max_marks').val('');
+    //            return false;
+    //        }
+    //        return true;
+    //    }
+    //</script>
 
 <script>
     $("#qual").change(function(){
@@ -666,10 +694,10 @@ $board_10=$comp_10=$school_10=$per_or_cgpa_10=$value_10=$marks_10=$max_marks_10=
 
 <script>
     $(document).ready(function () {
-        $('.otherscome2').hide();
 
         $('.degree2').change(function () {
             var val = $(this).val();
+            //console.log(val);
             if (val === "Others")
                 $('.otherscome2').stop(true, true).show(200).attr("required","true"); //than show
             else
@@ -706,7 +734,7 @@ $board_10=$comp_10=$school_10=$per_or_cgpa_10=$value_10=$marks_10=$max_marks_10=
         if(x==='1')
         ans=ans*100.0;
         else
-            ans=ans*10;
+            ans=ans*95;
         $(this).parents("form").find("input[readonly]").val(ans);
     });
 </script>
@@ -726,13 +754,13 @@ $board_10=$comp_10=$school_10=$per_or_cgpa_10=$value_10=$marks_10=$max_marks_10=
 
 <script>
     $("input[type=date").on('focusout',function(){
-        console.log('change');
+       // console.log('change');
         var from_date = $(this).parents(".form-group").find('.from_1');
         var to_date = $(this).parents(".form-group").find('.to_1');
         var fd=new Date(from_date.val());
         var td=new Date(to_date.val());
-        console.log(from_date.val());
-        console.log(to_date.val());
+        //console.log(from_date.val());
+        //console.log(to_date.val());
         var diff=datediff(fd,td);
         if(diff<0)
         {
