@@ -3,6 +3,7 @@ session_start();
 require_once ('included_classes/class_sql.php');
 require_once ('included_classes/class_user.php');
 require_once ('included_classes/class_misc.php');
+require_once ("included_classes/verify_func.php");
 if(!isset($_SESSION['user']))
 {
   echo"<script>alert('Login first');</script>";
@@ -45,8 +46,8 @@ if(!isset($_SESSION['user']))
                 	<div class="well">
                         <div class="list-group">
                              <?php 
-        			if($_GET['val']=="perinfo")
-                 include("personal_info.php");
+        			                        if($_GET['val']=="perinfo")
+                                                                 include("personal_info.php");
 							else  if($_GET['val']=="image")
 								include("image.php");
 							else  if($_GET['val']=="education_qual")
@@ -57,10 +58,12 @@ if(!isset($_SESSION['user']))
 								include("work_exp.php");
 							else  if($_GET['val']=="reference")
 								include("reference.php");
+                                                         else if($_GET['val']=="app_post")
+                                                                 include("app_post.php");
 							else if($_GET['val']=="print")
 								include("print.php");
-              else if($_GET['val']=='other_info')
-                include("other_info.php");
+                                                        else if($_GET['val']=='other_info')
+                                                                include("other_info.php");
 							else if($_GET['val']=="contact")
 								include("contact.php");
            	   				?>
