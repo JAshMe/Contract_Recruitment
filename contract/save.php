@@ -358,9 +358,6 @@ if(isset($_POST['emp_ch']))
 	                $misc->palert("Some error occured","home.php?val=education_qual");
 	       }
 }
-
-
-
 if(isset($_POST['reference']))
 {
 	$name=validate($_POST['name']);
@@ -406,10 +403,8 @@ if(isset($_POST['reference']))
 	    $misc->palert("Some error occured","home.php?val=reference");
 	}   	
 }
-
-
 if(isset($_POST['info_pg']))
-    {
+{
  $info=validate($_POST['info']);
 $id=$_SESSION['user'];
 $query="SELECT * from `other_info` where `user_id` like '$id'";
