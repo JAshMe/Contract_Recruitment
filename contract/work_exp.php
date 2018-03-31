@@ -1,7 +1,7 @@
 <?php
-require_once("./included_classes/class_user.php");
-    require_once("./included_classes/class_misc.php");
-    require_once("./included_classes/class_sql.php");
+   require_once("./included_classes/class_user.php");
+   require_once("./included_classes/class_misc.php");
+   require_once("./included_classes/class_sql.php");
    $misc= new miscfunctions();
    $db = new sqlfunctions();
    $id=$_SESSION['user'];
@@ -15,6 +15,7 @@ require_once("./included_classes/class_user.php");
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>Work Experience</title>
+<script type="text/javascript" src="./include/date_functions.js"></script>
 </head>
 
 <body>
@@ -130,46 +131,36 @@ require_once("./included_classes/class_user.php");
 	 </div>
 </form>
 <script>
-	var fd,td;
-	$('#from').on('input',function(){
-		fd=new Date($('#from').val());
-
-  		if(typeof td === 'undefined'){
-  			//alert('td is undefined');
-  		}
-  		else{ 
-  			var diff=datediff(fd,td);
-  			var year=Math.floor(diff/365);
-  			var month=Math.floor((diff-(year)*365)/30);
-  			if(diff<0){
-  				alert('To Date should be after From Date');
-  				$('#experience').attr('value','');
-  			}
-  			else{
-  				$('#experience').attr('value',year+' Years and '+month+' Months');
-  			}	
-  		}
-  		
-	});
-	$('#to').on('input',function(){
-		td=new Date($('#to').val());
-  		if(typeof fd === 'undefined'){
-  			//alert('td is undefined');
-  		}
-  		else{
-  			var diff=datediff(fd,td);	
-  			var year=Math.floor(diff/365);
-  			var month=Math.floor((diff-(year)*365)/30);
-  			if(diff<0){
-  				alert('To Date should be after From Date');
-  				$('#experience').attr('value','');
-  			}
-  			else{
-  				$('#experience').attr('value',year+' Years and '+month+' Months');
-  			}
-  		}
-  		
-	});
+  function validate(){
+      if($('#experience').val()==''){
+        alert('From and To Dates are incorrectly filled ');
+        $("input[type=date]").val("");
+        return false;
+      }
+      return true;
+  }
+  $("input[type=date").on('focusout',function(){
+      //alert('change');
+      var fd=new Date($('#from').val());
+      var td=new Date($('#to').val());
+      if(fd=='Invalid Date' || td=='Invalid Date'){
+        //alert('ignore');
+      }
+      else{
+        var diff=datediff(fd,td);
+        var year=Math.floor(diff/365);
+        var month=Math.floor((diff-(year)*365)/30);
+        if(diff<0)
+        {
+            alert('Invalid dates:FROM date should be before TO date');
+            $("input[type=date]").val("");
+            $('#experience').val("");
+        }
+        else{
+          $('#experience').val(year+' Years and '+month+' Months');
+        }
+      }
+  });
 </script>
 
 </body>
