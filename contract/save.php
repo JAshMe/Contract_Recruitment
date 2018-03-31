@@ -326,6 +326,7 @@ if($r){
 }
 if(isset($_POST['emp_ch']))
 {
+	 $nat_emp = validate($_POST['nat_emp']);
 	 $position=validate($_POST['position']);
 	 $from=validate($_POST['from']);
 	 $to=validate($_POST['to']);
@@ -335,6 +336,7 @@ if(isset($_POST['emp_ch']))
 	 $nature=validate($_POST['nature']);
 	 $organisation=validate($_POST['organisation']);
 	 $emp_type=validate($_POST['emp_type']);
+	$emol = validate($_POST['emol']);
 
 
 	$id=$_SESSION['user'];
@@ -343,19 +345,19 @@ if(isset($_POST['emp_ch']))
 
 	if(mysqli_num_rows($r)>0)
 	{
-		$q="UPDATE `employer` SET `position`='$position',`from`='$from',`to`='$to',`pay`='$pay',`agp`='$agp',`basic_pay`='$basic_pay',`nature`='$nature',`organisation`='$organisation',`emp_type`='$emp_type' WHERE user_id = '$id'";
+		$q="UPDATE `employer` SET nat_emp = '$nat_emp', `position`='$position',`from`='$from',`to`='$to',`pay`='$pay',`agp`='$agp',`basic_pay`='$basic_pay',`nature`='$nature',`organisation`='$organisation',`emp_type`='$emp_type', emoluments = '$emol' WHERE user_id = '$id'";
 	}
 	else
 	{
-		 $q="INSERT INTO `employer`(`user_id`, `position`, `from`, `to`, `pay`, `agp`, `basic_pay`, `nature`, `organisation`, `emp_type`) VALUES ('$id','$position','$from','$to','$pay','$agp','$basic_pay','$nature','$organisation','$emp_type')";
+		 $q="INSERT INTO `employer`(`user_id`, `nat_emp`,`position`, `from`, `to`, `pay`, `agp`, `basic_pay`, `nature`, `organisation`, `emp_type`, `emoluments`) VALUES ('$id','$nat_emp','$position','$from','$to','$pay','$agp','$basic_pay','$nature','$organisation','$emp_type','$emol')";
 	}
 	$r=$db->process_query($q);
 	if($r){
-	                $misc->palert("Details Submitted","home.php?val=tech_exp");
+	                $misc->palert("Details Submitted","home.php?val=work_exp");
 	       }
 	       else
 	       {
-	                $misc->palert("Some error occured","home.php?val=education_qual");
+	                $misc->palert("Some error occured","home.php?val=present_emp");
 	       }
 }
 if(isset($_POST['reference']))
