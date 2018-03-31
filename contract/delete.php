@@ -12,6 +12,11 @@
     if($_GET['page']=='work_exp')
     {
     	$q="delete from experience where id = '$tmp_id'";
+    	$filename=$id."_doc_exp".$tmp_id.".pdf";
+    	if(!unlink("./doc_exp/".$filename))
+    	{
+    		$misc->palert("Some error occured","home.php?val=work_exp");
+    	}
 		$q = $db->process_query($q);
 		if($q)
 		{

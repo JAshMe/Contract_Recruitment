@@ -5,7 +5,7 @@
    $misc= new miscfunctions();
    $db = new sqlfunctions();
    $id=$_SESSION['user'];
-   $query="SELECT * from `experience` where `user_id` like '$id'";
+   $query="SELECT * from `experience` where `user_id` like '$id' order by id desc";
    $c = $db->process_query($query);
    //var_dump($id); 
 ?>
@@ -71,7 +71,7 @@
       </div>
         <label class="control-label col-sm-2" for="emp_type"><span class="text-danger">*</span> Type of Employer:</label>
       <div class="col-sm-3">
-        <select name="emp_type" required>
+        <select name="emp_type" class="form-control" required>
             <option value="gov">Government</option>
             <option value="private">Private</option>
             <option value="psu">PSU/Autonomous Body</option>

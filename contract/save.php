@@ -245,12 +245,25 @@ if(isset($_POST['work_exp']))
     $emp_type=validate($_POST['emp_type']);
     $tot_exp=validate($_POST['experience']);
 
-    $q="INSERT INTO `experience` VALUES ('$id','','$organisation','$position','$emp_type',
+    $q1="SELECT * FROM `experience` WHERE user_id = '$id' ORDER BY id limit 1 ";
+    $r1=$db->process_query($q1);
+
+    $rowid=0;
+
+
+    if(($r2 = $db->fetch_rows($r1)))
+    {
+    	$rowid=validate($r2['id']);
+    }
+
+    $rowid=$rowid+1;
+
+    $q="INSERT INTO `experience` VALUES ('$id','$rowid','$organisation','$position','$emp_type',
   		'$from','$to','$pay','$nature','$tot_exp')";
 
     // $imageName = stripslashes($_FILES['doc_exp']['name']);
     // echo $imageName;
-    verify_doc("doc_exp",'./doc_exp','work_exp',"");
+    verify_doc("doc_exp",'./doc_exp','work_exp',"$rowid");
 
     $r=$db->process_query($q);
     if($r){
@@ -295,128 +308,42 @@ if($r){
     	
 }
 if(isset($_POST['emp_ch']))
-    {
- $position=validate($_POST['position']);
- $from=validate($_POST['from']);
- $to=validate($_POST['to']);
- $pay=validate($_POST['pay']);
- $agp=validate($_POST['agp']);
- $basic_pay=validate($_POST['basic_pay']);
- $nature=validate($_POST['nature']);
- $organisation=validate($_POST['organisation']);
- $emp_type=validate($_POST['emp_type']);
+{
+	 $position=validate($_POST['position']);
+	 $from=validate($_POST['from']);
+	 $to=validate($_POST['to']);
+	 $pay=validate($_POST['pay']);
+	 $agp=validate($_POST['agp']);
+	 $basic_pay=validate($_POST['basic_pay']);
+	 $nature=validate($_POST['nature']);
+	 $organisation=validate($_POST['organisation']);
+	 $emp_type=validate($_POST['emp_type']);
 
 
-$id=$_SESSION['user'];
-$query="SELECT * from `employer` where `user_id` like '$id'";
-$r = $db->process_query($query);
+	$id=$_SESSION['user'];
+	$query="SELECT * from `employer` where `user_id` like '$id'";
+	$r = $db->process_query($query);
 
-if(mysqli_num_rows($r)>0)
-{
-	$q="UPDATE `employer` SET `position`='$position',`from`='$from',`to`='$to',`pay`='$pay',`agp`='$agp',`basic_pay`='$basic_pay',`nature`='$nature',`organisation`='$organisation',`emp_type`='$emp_type' WHERE user_id = '$id'";
-}
-else
-{
-	 $q="INSERT INTO `employer`(`user_id`, `position`, `from`, `to`, `pay`, `agp`, `basic_pay`, `nature`, `organisation`, `emp_type`) VALUES ('$id','$position','$from','$to','$pay','$agp','$basic_pay','$nature','$organisation','$emp_type')";
-}
-$r=$db->process_query($q);
-if($r){
-                $misc->palert("Details Submitted","home.php?val=tech_exp");
-       }
-       else
-       {
-                $misc->palert("Some error occured","home.php?val=education_qual");
-       }
-    }
-if(isset($_POST['teach_ch']))
-{
-	$organisation=validate($_POST['organisation']);
-	$position=validate($_POST['position']);
-	$from=validate($_POST['from']);
-	$to=validate($_POST['to']);
-	$year=validate($_POST['year']);
-	$pay=validate($_POST['pay']);
-	
-	$emp_type=validate($_POST['emp_type']);
-		$month=validate($_POST['month']);
-		
-	if(!is_numeric($month)){
-		$misc->palert("Enter a valid month","home.php?val=tech_exp");
+	if(mysqli_num_rows($r)>0)
+	{
+		$q="UPDATE `employer` SET `position`='$position',`from`='$from',`to`='$to',`pay`='$pay',`agp`='$agp',`basic_pay`='$basic_pay',`nature`='$nature',`organisation`='$organisation',`emp_type`='$emp_type' WHERE user_id = '$id'";
 	}
-	if(!is_numeric($year)){
-		$misc->palert("Enter a valid year","home.php?val=tech_exp");
+	else
+	{
+		 $q="INSERT INTO `employer`(`user_id`, `position`, `from`, `to`, `pay`, `agp`, `basic_pay`, `nature`, `organisation`, `emp_type`) VALUES ('$id','$position','$from','$to','$pay','$agp','$basic_pay','$nature','$organisation','$emp_type')";
 	}
-
-
-$q="INSERT INTO `teaching`(`user_id`,`organisation`, `position`, `from`, `to`, `month`, `pay`, `emp_type`,`year`) VALUES ('$id','$organisation','$position','$from','$to','$month','$pay','$emp_type','$year')";
-
-$r=$db->process_query($q);
-if($r){
-                $misc->palert("Details Submitted","home.php?val=tech_exp");
-       }
-       else
-       {
-                $misc->palert("Some error occured","home.php?val=tech_exp");
-       }
-    	
+	$r=$db->process_query($q);
+	if($r){
+	                $misc->palert("Details Submitted","home.php?val=tech_exp");
+	       }
+	       else
+	       {
+	                $misc->palert("Some error occured","home.php?val=education_qual");
+	       }
 }
-if(isset($_POST['research']))
-{
-	$organisation=validate($_POST['organisation']);
-	$position=validate($_POST['position']);
-	$from=validate($_POST['from']);
-	$to=validate($_POST['to']);
-	$month=validate($_POST['month']);
-	$salary=validate($_POST['salary']);
-	$nature=validate($_POST['nature']);
-	$year=validate($_POST['year']);
-	
-	if(!is_numeric($month)){
-		$misc->palert("Enter a valid month","home.php?val=research");
-	}
-	if(!is_numeric($year)){
-		$misc->palert("Enter a valid year","home.php?val=research");
-	}
-	
 
 
-$q="INSERT INTO `research`(`user_id`, `organisation`, `position`, `from`, `to`, `month`, `salary`, `nature`,`year`) VALUES ('$id','$organisation','$position','$from','$to','$month','$salary','$nature','$year')";
 
-$r=$db->process_query($q);
-if($r){
-                $misc->palert("Details Submitted","home.php?val=research");
-       }
-       else
-       {
-                $misc->palert("Some error occured","home.php?val=research");
-       }
-    	
-}
-if(isset($_POST['industry']))
-{
-	$organisation=validate($_POST['organisation']);
-	$position=validate($_POST['position']);
-	$from=validate($_POST['from']);
-	$to=validate($_POST['to']);
-	$pay=validate($_POST['pay']);
-	$nature=validate($_POST['nature']);
-	$emp_type=validate($_POST['emp_type']);
-	
-	
-
-
-$q="INSERT INTO `industrial`(`user_id`, `organisation`, `position`, `emp_type`, `from`, `to`, `pay`, `nature`) VALUES ('$id','$organisation','$position','$emp_type','$from','$to','$pay','$nature')";
-
-$r=$db->process_query($q);
-if($r){
-                $misc->palert("Details Submitted","home.php?val=industry");
-       }
-       else
-       {
-                $misc->palert("Some error occured","home.php?val=industry");
-       }
-    	
-}
 if(isset($_POST['reference']))
 {
 	$city="--";
