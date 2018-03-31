@@ -57,12 +57,6 @@ if(!isset($_SESSION['user']))
 								include("work_exp.php");
 							else  if($_GET['val']=="reference")
 								include("reference.php");
-							else  if($_GET['val']=="other_info")
-								include("other_info.php");
-							else if($_GET['val']=="points")
-								include("points.php");
-							else if($_GET['val']=="payment")
-								include("payment.php");
 							else if($_GET['val']=="print")
 								include("print.php");
 							else if($_GET['val']=="contact")
