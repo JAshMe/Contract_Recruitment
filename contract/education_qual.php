@@ -113,6 +113,12 @@ $board_10=$comp_10=$school_10=$per_or_cgpa_10=$value_10=$marks_10=$max_marks_10=
     <ul class="text-danger">
         <li> * Marked fields are mandatory.</li>
     </ul>
+
+<style>
+    .otherscome2{
+        display: none;
+    }
+</style>
 <div id="home" class="tab-pane fade in active">
 <h3>Details of Academic Record (In Reverse Chronological Order) :</h3>
     <br>
@@ -193,6 +199,7 @@ $board_10=$comp_10=$school_10=$per_or_cgpa_10=$value_10=$marks_10=$max_marks_10=
                         <label class="control-label col-sm-3" for="doc_10th"><span class="text-danger">*</span> Attach Appropriate proof:</label>
                         <div class="col-sm-5">
                             <input type="file"  name="doc_10th" id="doc_10th" required>
+                            <span class="text-danger">*Max File Size 1MB. PDF Documents Required</span>
                         </div>
                     </div>
 
@@ -285,6 +292,7 @@ $board_10=$comp_10=$school_10=$per_or_cgpa_10=$value_10=$marks_10=$max_marks_10=
                     <label class="control-label col-sm-3" for="doc_diploma"><span class="text-danger">*</span> Attach Appropriate proof:</label>
                     <div class="col-sm-5">
                         <input type="file"  name="doc_diploma" id="pdf1" required>
+                        <span class="text-danger">*Max File Size 1MB. PDF Documents Required</span>
                     </div>
                 </div>
 
@@ -355,6 +363,7 @@ $board_10=$comp_10=$school_10=$per_or_cgpa_10=$value_10=$marks_10=$max_marks_10=
                         <label class="control-label col-sm-3" for="doc_12th"><span class="text-danger">*</span> Attach Appropriate proof:</label>
                         <div class="col-sm-5">
                             <input type="file"  name="doc_12th" id="doc_12th" required>
+                            <span class="text-danger">*Max File Size 1MB. PDF Documents Required</span>
                         </div>
                     </div>
 
@@ -477,6 +486,7 @@ $board_10=$comp_10=$school_10=$per_or_cgpa_10=$value_10=$marks_10=$max_marks_10=
                     <label class="control-label col-sm-3" for="doc_ug"><span class="text-danger">*</span> Attach Appropriate proof:</label>
                     <div class="col-sm-5">
                         <input type="file"  name="doc_ug" id="doc_ug" required>
+                        <span class="text-danger">*Max File Size 1MB. PDF Documents Required</span>
                     </div>
                 </div>
 
@@ -584,6 +594,7 @@ $board_10=$comp_10=$school_10=$per_or_cgpa_10=$value_10=$marks_10=$max_marks_10=
                     <label class="control-label col-sm-3" for="doc_pg"><span class="text-danger">*</span> Attach Appropriate proof:</label>
                     <div class="col-sm-5">
                         <input type="file"  name="doc_pg" id="doc_pg" required>
+                        <span class="text-danger">*Max File Size 1MB. PDF Documents Required</span>
                     </div>
                 </div>
 
@@ -666,10 +677,10 @@ $board_10=$comp_10=$school_10=$per_or_cgpa_10=$value_10=$marks_10=$max_marks_10=
 
 <script>
     $(document).ready(function () {
-        $('.otherscome2').hide();
 
         $('.degree2').change(function () {
             var val = $(this).val();
+            //console.log(val);
             if (val === "Others")
                 $('.otherscome2').stop(true, true).show(200).attr("required","true"); //than show
             else
@@ -726,13 +737,13 @@ $board_10=$comp_10=$school_10=$per_or_cgpa_10=$value_10=$marks_10=$max_marks_10=
 
 <script>
     $("input[type=date").on('focusout',function(){
-        console.log('change');
+       // console.log('change');
         var from_date = $(this).parents(".form-group").find('.from_1');
         var to_date = $(this).parents(".form-group").find('.to_1');
         var fd=new Date(from_date.val());
         var td=new Date(to_date.val());
-        console.log(from_date.val());
-        console.log(to_date.val());
+        //console.log(from_date.val());
+        //console.log(to_date.val());
         var diff=datediff(fd,td);
         if(diff<0)
         {
