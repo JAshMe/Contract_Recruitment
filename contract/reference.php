@@ -102,8 +102,28 @@
 				mobile=$('#mobile').val();
 				pin=$('#pincode').val();
 				email=$('#email').val();
-				alert(mobile);
-				return false;
+				if(!$.isNumeric(mobile)){
+					alert('Mobile should be numeric');
+					return false;
+				}
+				if(mobile.length!=10){
+					alert('Mobile number should be of 10 digits');
+					return false;
+				}
+				if(!$.isNumeric(pin)){
+					alert('Pincode should be numeric');
+					return false;
+				}
+				if(pin.length!=6){
+					alert('Pincode should be of 6 digits');
+					return false;
+				}
+				var filter = /^[w-.+]+@[a-zA-Z0-9.-]+.[a-zA-z0-9]{2,4}$/;
+				if (!filter.test(email)){
+					alert('Email should be of correct format');
+					return false;
+				}
+				return true;
 			}
 		</script>
 	</body>

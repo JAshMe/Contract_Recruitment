@@ -8,7 +8,7 @@ require_once("./included_classes/class_user.php");
     $id=$_SESSION['user'];
     $query="SELECT * from `other_info` where `user_id` like '$id'";
     $r = $db->process_query($query);
-    if(mysql_num_rows($r)>0)
+    if(mysqli_num_rows($r)>0)
     {
      $r = $db->fetch_rows($r);
     $info = validate($r['info']);
