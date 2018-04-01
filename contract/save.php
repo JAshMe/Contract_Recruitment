@@ -24,8 +24,28 @@ if(isset($_POST['per_ch']))
 	$dob=validate($_POST['dob']);
 	$gender=validate($_POST['gender']);
 	$category=validate($_POST['category']);
+
 	$pwd=validate($_POST['pwd']);
-	$f_name=validate($_POST['f_name']);
+
+	//verifying his age
+    $dob_date = date_create($dob);
+    $relQuery = "select rel from age_relax where cat = '$category' and isPWD = '$pwd' ";
+    $rel = $db->process_query($relQuery);
+    $rel = $db->fetch_rows($rel);
+    $rel = $rel['rel'];
+
+    $rel_days = $rel*365 + $rel/4;
+    $diff_days = 35*365+8 + $rel_days;
+
+    $curr_date = date_create(date("Y-m-d"));
+    $diff = date_diff($dob_date,$curr_date);
+    $days = $diff->days;
+
+    if($days>$diff_days)
+        $misc->palert("Your age is greater than 35 years. So you aren't eligible for any post available right now. ","home.php?val=perinfo");
+
+
+    $f_name=validate($_POST['f_name']);
 	$m_name=validate($_POST['m_name']);
 	$marital_status=validate($_POST['marital_status']);
 	$domicile=validate($_POST['domicile']);
