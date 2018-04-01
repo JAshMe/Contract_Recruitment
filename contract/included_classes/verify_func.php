@@ -77,8 +77,8 @@ function verify_fill($id)
         $r1=$db->fetch_row($r1);
         $comp_d=$r2['start_date'];
         $comp_10=$r1['completion_date'];
-        $diff_1 = date_diff(date_create($comp_10), date_create($comp_d))->days;
-        if($diff_1>10)
+        $diff = date_diff(date_create($comp_10), date_create($comp_d))->days;
+        if ($diff->format("%R") == '+')
             return "10th grade completion date greater than diploma start timing";
     }
     else
@@ -87,9 +87,14 @@ function verify_fill($id)
         $r1=$db->fetch_row($r1);
         $comp_12=$r2['completion_date'];
         $comp_10=$r1['completion_date'];
-        $diff_1 = date_diff(date_create($comp_10), date_create($comp_d))->days;
-        
+        $diff = date_diff(date_create($comp_10), date_create($comp_12))->days;
+        if ($diff->format("%R") == '+')
+            return "12th grade completion date less than 10th grade completion date";
+
 
     }
+
+
+
         return "ok";
 }
