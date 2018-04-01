@@ -605,7 +605,7 @@ $board_10=$comp_10=$school_10=$per_or_cgpa_10=$value_10=$marks_10=$max_marks_10=
                     <label class="control-label col-sm-3" for="email"><span class="text-danger">*</span>Marking Scheme:</label>
                     <div class=" col-sm-5" >
 
-                        <label class="radio-inline" for="per_or_cgp_pg0">
+                        <label class="radio-inline " for="per_or_cgp_pg0">
                             <input type="radio" class="radio-inline" id="per_or_cgp_pg0" value="0" name="pg_per_or_cgp" required  <?php if(isset($per_or_cgpa_pg) && $per_or_cgpa_pg=='0') echo 'checked="checked"'; ?> >CGPA<br></label>
                         <label class="radio-inline" for="per_or_cgp_pg1">
                             <input type="radio" class="radio-inline" id="per_or_cgp_pg1" value="1" name="pg_per_or_cgp" required  <?php if(isset($per_or_cgpa_pg) && $per_or_cgpa_pg=='1') echo 'checked="checked"'; ?> >Percentage
@@ -777,14 +777,18 @@ $board_10=$comp_10=$school_10=$per_or_cgpa_10=$value_10=$marks_10=$max_marks_10=
         }
 
         var ans=marks_fl/max_marks_fl;
-        var x= $(this).parents("form").find("input[type=radio]").val();
-        if(x === "1") {
+       // console.log(ans);
+        var x= $(this).parents("form").find("input[type=radio]:checked").val();
+        //console.log(x);
+        if(x === '1') {
+           // console.log(ans);
             ans = ans * 100;
         }
         else {
             ans = ans * 95;
         }
         ans=ans.toFixed(2);
+        //console.log(ans);
         $(this).parents("form").find("input[readonly]").val(ans);
     });
 </script>
