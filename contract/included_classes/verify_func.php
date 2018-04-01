@@ -98,8 +98,8 @@ function verify_fill($id)
                     return "12th grade completion date less than 10th grade completion date";
             }
 
-    $q = "select  user_id,completion_date from `12h_mark` where user_id= '$id'";
-    $q1= "select  user_id,completion_date from `ug` where user_id= '$id'";
+    $q = "select  user_id,completion_date from `12th_mark` where user_id= '$id'";
+    $q1= "select  user_id,start_date from `ug` where user_id= '$id'";
     $r1=$db->process_query($q);
     $r2=$db->process_query($q1);
     if(mysqli_num_rows($r2)==0)
@@ -119,11 +119,11 @@ function verify_fill($id)
     }
     else
     {
-        $r2=$db->fetch_rows($r2);
         $r1=$db->fetch_rows($r1);
-        $comp_12=$r2['start_date'];
-        $comp_10=$r1['completion_date'];
-        $diff = date_diff(date_create($comp_10), date_create($comp_12));
+        $r2=$db->fetch_rows($r2);
+        $comp_12=$r1['start_date'];
+        $comp_10=$r2['completion_date'];
+        $diff = date_diff(date_create($comp_12), date_create($comp_10));
         if ($diff->format("%R") == '+'){
 
         }
