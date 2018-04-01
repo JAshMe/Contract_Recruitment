@@ -140,8 +140,17 @@ $board_10=$comp_10=$school_10=$per_or_cgpa_10=$value_10=$marks_10=$max_marks_10=
         </div>
     </form>
 <!--   -----------------------------10th Div ---------------------------------------------->
+
+
             <form class="form-horizontal" name="reg_frm" method="post" action="save.php" onSubmit="return validate();" enctype="multipart/form-data">
                 <div id ="10th" class="qual_div">
+
+                    <div id="10th" class="form-group">
+                        <label class="control-label col-sm-3" for="school_10th"><span class="text-danger">*</span> School Name:</label>
+                        <div class="col-sm-5">
+                            <input type="text" class="form-control" id="school_10th" name="school_10th"  required value="<?= $school_10?>" >
+                        </div>
+                    </div>
 
                     <div class="row">
                         <div class="form-group">
@@ -157,12 +166,7 @@ $board_10=$comp_10=$school_10=$per_or_cgpa_10=$value_10=$marks_10=$max_marks_10=
                     </div>
 
 
-                        <div id="10th" class="form-group">
-                            <label class="control-label col-sm-3" for="school_10th"><span class="text-danger">*</span> School Name:</label>
-                            <div class="col-sm-5">
-                                <input type="text" class="form-control" id="school_10th" name="school_10th"  required value="<?= $school_10?>" >
-                            </div>
-                        </div>
+
 
                         <div class="form-group">
                         <label class="control-label col-sm-offset-1 col-sm-2" for="email"><span class="text-danger">*</span>Marking Scheme</label>
@@ -310,6 +314,14 @@ $board_10=$comp_10=$school_10=$per_or_cgpa_10=$value_10=$marks_10=$max_marks_10=
             <form class="form-horizontal" name="reg_frm" method="post" action="save.php" onSubmit="return validate();" enctype="multipart/form-data">
                 <div id="12th" class="qual_div" style=" display: none;">
 
+                    <div id="12th" class="form-group">
+                        <label class="control-label col-sm-3" for="school_12th"><span class="text-danger">*</span> School Name :</label>
+                        <div class="col-sm-5">
+                            <input type="text" class="form-control"  name="school_12th"  id="school_12th" value="<?= $school_12 ?>" required>
+                        </div>
+                    </div>
+
+
                     <div class="row">
                         <div class="form-group">
                             <label class="control-label col-sm-3" for="comp_12"><span class="text-danger">*</span> Completion Date:</label>
@@ -324,12 +336,7 @@ $board_10=$comp_10=$school_10=$per_or_cgpa_10=$value_10=$marks_10=$max_marks_10=
                     </div>
 
 
-                    <div id="10th" class="form-group">
-                        <label class="control-label col-sm-3" for="school_12th"><span class="text-danger">*</span> School Name :</label>
-                        <div class="col-sm-5">
-                            <input type="text" class="form-control"  name="school_12th"  id="school_12th" value="<?= $school_12 ?>" required>
-                        </div>
-                    </div>
+
 
                     <div class="form-group">
                         <label class="control-label col-sm-offset-1 col-sm-2" for="email"><span class="text-danger">*</span>Marking Scheme</label>
@@ -505,6 +512,38 @@ $board_10=$comp_10=$school_10=$per_or_cgpa_10=$value_10=$marks_10=$max_marks_10=
             <form class="form-horizontal" name="reg_frm" method="post" action="save.php" onSubmit="return validate();" enctype="multipart/form-data">
             <div id="pg"  class="qual_div" style=" display: none;">
 
+                <div class="form-group">
+                    <label class="control-label col-sm-2" for="degree"><span class="text-danger">*</span> Degree:</label>
+
+                    <div class="col-sm-3">
+                        <select id="degree" name="pg_field" required class="form-control degree2">
+                            <option value="M.Tech" id="mtech" <?php if($degree_pg=="M.Tech") echo "selected" ?> >Master of Tech (M.Tech)</option>
+                            <option value="MSC" id="msc" <?php if($degree_pg=="MSC") echo "selected" ?> >Master of Science (M.Sc)</option>
+                            <option value="MS" id="ms" <?php if($degree_pg=="MS") echo "selected" ?> >Master of Science (MS)</option>
+                            <option value="ME" id="me" <?php if($degree_pg=="ME") echo "selected" ?> >Master of Engineering (ME)</option>
+                            <option value="MHM" id="mh," <?php if($degree_pg=="MHM") echo "selected" ?> >Master of Hotel Management (MHM)</option>
+                            <option value="ME" id="me" <?php if($degree_pg=="ME") echo "selected" ?> >Master of Engineering (ME)</option>
+                            <option value="MCA" id="mca" <?php if($degree_pg=="MCA") echo "selected" ?> >Master of Computer Applications (MCA)</option>
+                            <option value="Others" id="others" <?php if($degree_pg=="Others") echo "selected" ?> >Others</option>
+                        </select>
+                    </div>
+                </div>
+
+
+                <div class="form-group otherscome2"   id="otherscome" <?php if(isset($degree_pg) && $degree_pg=="Others") echo"style=\"display:block\""; else echo "style=\"display:none\"; ";?> >
+                    <label class="control-label col-sm-2" for="degree_pg"><span class="text-danger">*</span>Others:</label>
+                    <div class="col-sm-4">
+                        <input type="text" class="form-control"  id="degree_pg" <?php if(isset($degree_pg) && $degree_pg=="Others") echo "value=\"$is_others_pg\" required "; ?> name="pg_other_specialization" >
+                    </div>
+                </div>
+
+                <div id="ug" class="form-group">
+                    <label class="control-label col-sm-2" for="specialization_pg"><span class="text-danger">*</span>Specialization:</label>
+                    <div class="col-sm-4">
+                        <input type="text" class="form-control" name="pg_specialization" id="specialization_pg" required value="<?= $specialization_ug?>"   >
+                    </div>
+                </div>
+
 
 
                 <div id="pg" class="form-group">
@@ -528,37 +567,8 @@ $board_10=$comp_10=$school_10=$per_or_cgpa_10=$value_10=$marks_10=$max_marks_10=
 
 
 
-                    <div class="form-group">
-                        <label class="control-label col-sm-2" for="degree"><span class="text-danger">*</span> Degree:</label>
-
-                        <div class="col-sm-3">
-                            <select id="degree" name="pg_field" required class="form-control degree2">
-                                <option value="M.Tech" id="mtech" <?php if($degree_pg=="M.Tech") echo "selected" ?> >Master of Tech (M.Tech)</option>
-                                <option value="MSC" id="msc" <?php if($degree_pg=="MSC") echo "selected" ?> >Master of Science (M.Sc)</option>
-                                <option value="MS" id="ms" <?php if($degree_pg=="MS") echo "selected" ?> >Master of Science (MS)</option>
-                                <option value="ME" id="me" <?php if($degree_pg=="ME") echo "selected" ?> >Master of Engineering (ME)</option>
-                                <option value="MHM" id="mh," <?php if($degree_pg=="MHM") echo "selected" ?> >Master of Hotel Management (MHM)</option>
-                                <option value="ME" id="me" <?php if($degree_pg=="ME") echo "selected" ?> >Master of Engineering (ME)</option>
-                                <option value="MCA" id="mca" <?php if($degree_pg=="MCA") echo "selected" ?> >Master of Computer Applications (MCA)</option>
-                                <option value="Others" id="others" <?php if($degree_pg=="Others") echo "selected" ?> >Others</option>
-                            </select>
-                        </div>
-                    </div>
 
 
-                <div class="form-group otherscome2"   id="otherscome" <?php if(isset($degree_pg) && $degree_pg=="Others") echo"style=\"display:block\""; else echo "style=\"display:none\"; ";?> >
-                    <label class="control-label col-sm-2" for="degree_pg"><span class="text-danger">*</span>Others:</label>
-                    <div class="col-sm-4">
-                        <input type="text" class="form-control"  id="degree_pg" <?php if(isset($degree_pg) && $degree_pg=="Others") echo "value=\"$is_others_pg\" required "; ?> name="pg_other_specialization" >
-                    </div>
-                </div>
-
-                <div id="ug" class="form-group">
-                    <label class="control-label col-sm-2" for="specialization_pg"><span class="text-danger">*</span>Specialization:</label>
-                    <div class="col-sm-4">
-                        <input type="text" class="form-control" name="pg_specialization" id="specialization_pg" required value="<?= $specialization_ug?>"   >
-                    </div>
-                </div>
 
 
 
