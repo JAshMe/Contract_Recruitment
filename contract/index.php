@@ -36,6 +36,7 @@
 			$r = $db->fetch_rows($r);
 			$db_otp = validate($r['otp']);
 			$otp_sent = validate($r['otp_sent']);
+                        $id = validate($r['user_id']);
 			
 			//checking the timeout of otp and its value
 			$now = time();
@@ -50,6 +51,11 @@
 			//update verify, password
 			$verifyQuery = "update login set verify = '1', password = '$pass' where email = '$email'";
 			$r = $db->process_query($verifyQuery);
+
+                        //adding a final_apply row in table so that it initialises values to 0
+                        $insQ = "insert into final_apply values ('$id',0,0,0,0,0,0,0)";
+                        $r = $db->process_query($insQ);
+
 			
 			
 			//success message

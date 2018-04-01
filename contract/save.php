@@ -454,6 +454,10 @@ if(isset($_POST['info_pg']))
 	    $misc->palert("Some error occured","home.php?val=other_info");
 	}
 }
+if(isset($_POST['post_app']))
+{
+	
+}
 
 echo "nowhere!!!";
 	
