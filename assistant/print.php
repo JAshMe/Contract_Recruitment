@@ -7,22 +7,23 @@ require_once("./included_classes/class_user.php");
 	$id=$_SESSION['user'];
     $query="SELECT * from `points` where `user_id` like '$id'";
     $r = $db->process_query($query);
-    if(mysql_num_rows($r)>0)
+    if(mysqli_num_rows($r)>0)
     {
      $r = $db->fetch_rows($r);
     $points = validate($r['points']);
     
 	}
-	$query="SELECT * from `freeze` where `user_id` like '$id'";
-    $r = $db->process_query($query);
-    if(mysql_num_rows($r)==0){
-		$misc->palert("Confirm to print form!!","home.php?val=payment");	
-		die();
-	}
+//	$query="SELECT * from `freeze` where `user_id` like '$id'";
+//    $r = $db->process_query($query);
+//    if(mysqli_num_rows($r)==0){
+//		$misc->palert("Confirm to print form!!","home.php?val=payment");
+//		die();
+//	}
 	
 	$query="SELECT * from `user` where `user_id` like '$id'";
 	$r = $db->process_query($query);
-	if(mysql_num_rows($r)>0)
+	$category = $emp = $emp_code='';
+	if(mysqli_num_rows($r)>0)
 	{
 		$r = $db->fetch_rows($r);
 		$category=validate($r['category']);
@@ -36,24 +37,24 @@ require_once("./included_classes/class_user.php");
 	{
 		$query="SELECT * FROM `emp` WHERE emp_code='$emp_code'";
 		$r = $db->process_query($query);
-		if(mysql_num_rows($r)!=0)
+		if(mysqli_num_rows($r)!=0)
 		{
 		 $amt=0;
 		}
 	}
-	$fee = new sqlfunctions();
-	$fee->database="fees";
-	if($amt>0)
-	{
-		$query="SELECT * from `bank_detail` where `regno` like '$id' and status like 'Success' and purpose like 'Recruitment'";
-		$c = $fee->process_query($query);
-		if(mysql_num_rows($c)==0)
-		{
-			$misc->palert("Pay fees to print form!!","home.php?val=payment");	
-			die();
-		}
-	}
-?>
+//	$fee = new sqlfunctions();
+//	$fee->database="fees";
+//	if($amt>0)
+//	{
+//		$query="SELECT * from `bank_detail` where `regno` like '$id' and status like 'Success' and purpose like 'Recruitment'";
+//		$c = $fee->process_query($query);
+//		if(mysqli_num_rows($c)==0)
+//		{
+//			$misc->palert("Pay fees to print form!!","home.php?val=payment");
+//			die();
+//		}
+//	}
+//?>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -92,7 +93,6 @@ require_once("./included_classes/class_user.php");
   <li> * Marked fields are mandatory.</li>
 </ul>
 
-</script>
 <form class="form-horizontal" name="phd_frm" method="post" action="upload_points.php" enctype="multipart/form-data">
 <div class="tab-content">
       <div id="home" class="tab-pane fade in active">
