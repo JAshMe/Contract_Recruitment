@@ -225,6 +225,9 @@ $board_10=$comp_10=$school_10=$per_or_cgpa_10=$value_10=$marks_10=$max_marks_10=
                             <select id="degree2" name="dip_field" required class="form-control degree2">
                                 <option value="EE" id="ee" <?php if($field_d=="EE") echo "selected" ?> >Electical Engineering</option>
                                 <option value="CE" id="ce" <?php if($field_d=="CE") echo "selected" ?> >Civil Engineering</option>
+                                <option value="DE" id="ds" <?php if($field_d=="DE") echo "selected" ?> >Diploma in Engineering</option>
+                                <option value="DS" id="ds" <?php if($field_d=="DS") echo "selected" ?> >Diploma in Sciences</option>
+                                <option value="DT" id="dt" <?php if($field_d=="DT") echo "selected" ?> >Diploma in Technology</option>
                                 <option value="Others" id="others2" <?php if($field_d== "Others") echo "selected" ?> >Others</option>
                             </select>
                         </div>
@@ -405,6 +408,7 @@ $board_10=$comp_10=$school_10=$per_or_cgpa_10=$value_10=$marks_10=$max_marks_10=
                             <option value="BHM" id="bhm" <?php if($degree_ug=="BHM") echo "selected" ?> >Bachelor of Hotel Management (BHM)</option>
                             <option value="B.P.Ed" id="bped" <?php if($degree_ug=="B.P.Ed") echo "selected" ?> >Bachelor of Physical Education (B.P.Ed)</option>
                             <option value="B.Ed" id="bed" <?php if($degree_ug=="B.Ed") echo "selected" ?> >Bachelor of Education (B.Ed)</option>
+                            <option value="BHMS2" id="bhms2" <?php if($degree_ug=="BHMS2") echo "selected" ?> >Bachelor of Hospitality Management</option>
                             <option value="Others" id="others" <?php if($degree_ug=="Others") echo "selected" ?> >Others</option>
                         </select>
                     </div>
@@ -529,10 +533,13 @@ $board_10=$comp_10=$school_10=$per_or_cgpa_10=$value_10=$marks_10=$max_marks_10=
 
                         <div class="col-sm-3">
                             <select id="degree" name="pg_field" required class="form-control degree2">
-                                <option value="M Tech" id="mtech" <?php if($degree_pg=="M Tech") echo "selected" ?> >Master of Tech (M.Tech)</option>
+                                <option value="M.Tech" id="mtech" <?php if($degree_pg=="M.Tech") echo "selected" ?> >Master of Tech (M.Tech)</option>
                                 <option value="MSC" id="msc" <?php if($degree_pg=="MSC") echo "selected" ?> >Master of Science (M.Sc)</option>
                                 <option value="MS" id="ms" <?php if($degree_pg=="MS") echo "selected" ?> >Master of Science (MS)</option>
                                 <option value="ME" id="me" <?php if($degree_pg=="ME") echo "selected" ?> >Master of Engineering (ME)</option>
+                                <option value="MHM" id="mh," <?php if($degree_pg=="MHM") echo "selected" ?> >Master of Hotel Management (MHM)</option>
+                                <option value="ME" id="me" <?php if($degree_pg=="ME") echo "selected" ?> >Master of Engineering (ME)</option>
+                                <option value="MCA" id="mca" <?php if($degree_pg=="MCA") echo "selected" ?> >Master of Computer Applications (MCA)</option>
                                 <option value="Others" id="others" <?php if($degree_pg=="Others") echo "selected" ?> >Others</option>
                             </select>
                         </div>
@@ -620,17 +627,17 @@ $board_10=$comp_10=$school_10=$per_or_cgpa_10=$value_10=$marks_10=$max_marks_10=
         //         $(this).children().filter('#to').val('');
         //         return false;
         //     }
-        function validate(){
-            if($(this).children().filter('.marks').val()> $(this).children().filter('.max_marks').val()){
-                console.log( $(this).children().filter('.marks').val()+"  "+ $(this).children().filter('.max_marks').val());
-                alert("Marks should not be greater than maximum marks!");
-                $(this).children().filter('.marks').val('');
-                $(this).children().filter('.max_marks').val('');
-                return false;
-            }
-            return true;
-        }
-    </script>
+    //    function validate(){
+    //        if($(this).children().filter('.marks').val()> $(this).children().filter('.max_marks').val()){
+    //            console.log( $(this).children().filter('.marks').val()+"  "+ $(this).children().filter('.max_marks').val());
+    //            alert("Marks should not be greater than maximum marks!");
+    //            $(this).children().filter('.marks').val('');
+    //            $(this).children().filter('.max_marks').val('');
+    //            return false;
+    //        }
+    //        return true;
+    //    }
+    //</script>
 
 <script>
     $("#qual").change(function(){
@@ -717,7 +724,7 @@ $board_10=$comp_10=$school_10=$per_or_cgpa_10=$value_10=$marks_10=$max_marks_10=
         if(x==='1')
         ans=ans*100.0;
         else
-            ans=ans*10;
+            ans=ans*95;
         $(this).parents("form").find("input[readonly]").val(ans);
     });
 </script>
