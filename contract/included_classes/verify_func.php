@@ -82,7 +82,7 @@ function verify_fill($id)
 
                  }
                 else
-                    return "10th grade completion date greater than diploma start date";
+                    return "10th std completion date greater than diploma start date";
             }
             else
             {
@@ -95,7 +95,7 @@ function verify_fill($id)
 
                 }
                 else
-                    return "12th grade completion date less than 10th grade completion date";
+                    return "10th std completion date less than 12th grade completion date";
             }
 
     $q = "select  user_id,completion_date from `12th_mark` where user_id= '$id'";
@@ -115,7 +115,7 @@ function verify_fill($id)
 
         }
         else
-            return "12th completion date less than diploma start date";
+            return "12th std completion date less than diploma start date";
     }
     else
     {
@@ -128,7 +128,7 @@ function verify_fill($id)
 
         }
         else
-            return "12th grade completion date greater than undergraduate starting date";
+            return "12th std completion date greater than undergraduate start date";
     }
     $q = "select  user_id,completion_date from `ug` where user_id= '$id'";
     $q1= "select  user_id,completion_date from `pg` where user_id= '$id'";
@@ -146,7 +146,7 @@ function verify_fill($id)
 
         }
         else
-            return "ug completion date less than pg starting date";
+            return "ug completion date less than pg start date";
     }
 
 
