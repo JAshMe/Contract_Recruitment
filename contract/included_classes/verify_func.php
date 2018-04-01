@@ -115,7 +115,7 @@ function verify_fill($id)
 
         }
         else
-            return "12th completion date greater than diploma completion date";
+            return "12th completion date less than diploma start date";
     }
     else
     {
