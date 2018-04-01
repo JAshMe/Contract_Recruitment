@@ -17,7 +17,7 @@
   		$pos5=validate($r['pos5']);
   		$pos6=validate($r['pos6']);
   		$pos7=validate($r['pos7']);
-	}
+    }
 ?>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
