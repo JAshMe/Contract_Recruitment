@@ -6,12 +6,19 @@
  * Time: 11:19 PM
  */
 
+session_start();
+if(!isset($_SESSION['verdict']))
+    die("<h3>Unauthorized Access!!</h3>");
+if(isset($_SESSION['verdict']) && $_SESSION['verdict']!="ok")
+    die("<h3>Please Complete All Details Correctly!!</h3>");
+
 
 require_once("./included_classes/class_user.php");
 require_once("./included_classes/class_misc.php");
 require_once("./included_classes/class_sql.php");
 $misc= new miscfunctions();
 $db = new sqlfunctions();
+
 
 $id=$_SESSION['user'];
 
@@ -175,15 +182,202 @@ if($max_marks_ug=='' or ($degree_pg=="B.Tech" and $degree_pg=="BE")) {
 
     if ($max_marks_d == '') {
         $post_array[4] = 0;
-        goto post_1_exp;
+        goto exp_check;
     } else {
         $diff_date_d_1 = date_diff(date_create($start_date_d), date_create($end_date_d))->days;
         $year_3 = 365 * 3;
         if ($value_d < 70 or $year_3 < $diff_date_d_1 or ($field_d != 'DE' and $field_d != 'DT')) {
             $post_array[4] = 0;
-            goto post_1_exp;
+            goto exp_check;
         }
     }
 }
 
+/*** Experience Checks ***/
+
+exp_check:
+
+//getting info of experience
+$info_query = "select * from experience where user_id='$id'";
+$r = $db->process_query($info_query);
+$exp = array(array()); //$exp[0]['organisation'] will give organisation for 1st experience
+$num_exp = 0;
+if(mysqli_num_rows($r)>0)
+{
+    while($res = $db->fetch_rows($r))
+    {
+        $exp[$num_exp]['user_id'] = $res['user_id'];
+        $exp[$num_exp]['id'] = $res['id'];
+        $exp[$num_exp]['organisation'] = $res['organisation'];
+        $exp[$num_exp]['position'] = $res['position'];
+        $exp[$num_exp]['emp_type'] = $res['emp_type'];
+        $exp[$num_exp]['from'] = $res['from'];
+        $exp[$num_exp]['to'] = $res['to'];
+        $exp[$num_exp]['pay'] = $res['pay'];
+        $exp[$num_exp]['nature'] = $res['nature'];
+        $exp[$num_exp]['tot_exp'] = $res['tot_exp'];
+        $num_exp++;
+
+    }
+}
+
+//now checking for each post
 post_1_exp:
+if($post_array[0]==0)
+    goto post_2_exp;
+
+for($i=0;$i<$num_exp;$i++)
+{
+    if($exp[$i]['tot_exp']>365) //experience less than 1 year
+        goto post_2_exp;
+}
+$post_array[0]=0;
+
+
+post_2_exp:
+
+if(!$post_array[1])
+    goto post_3_exp;
+
+for($i=0;$i<$num_exp;$i++)
+{
+    if($exp[$i]['tot_exp']>365*3) //experience greater than 3 years
+        goto post_2_exp;
+}
+$post_array[1]=0;
+
+
+post_3_exp:
+
+if(!$post_array[2])
+    goto post_4_exp;
+
+for($i=0;$i<$num_exp;$i++)
+{
+
+    if($exp[$i]['tot_exp']>365*3) //experience greater than 3 years
+    {
+        //check if the experience is after acquiring diploma or ug degree
+        $end_date = $completion_date_ug or $end_date_d;
+        $diff = date_diff(date_create($end_date), date_create($exp[$i]['from']));
+        if ($diff->format("%R") == '+') //end date is less than start of experience
+            goto post_4_exp;
+    }
+}
+$post_array[2]=0;
+
+
+post_4_exp:
+if(!$post_array[3])
+    goto post_5_exp;
+
+for($i=0;$i<$num_exp;$i++)
+{
+
+    if($exp[$i]['tot_exp']>365*3) //experience greater than 3 years
+    {
+        //check if the experience is after acquiring diploma or ug degree
+        $end_date = $completion_date_ug or $end_date_d;
+        $diff = date_diff(date_create($end_date), date_create($exp[$i]['from']));
+        if ($diff->format("%R") == '+') //end date is less than start of experience
+            goto post_5_exp;
+    }
+}
+$post_array[3]=0;
+
+
+post_5_exp:
+if(!$post_array[4])
+    goto post_6_exp;
+
+for($i=0;$i<$num_exp;$i++)
+{
+
+    if($exp[$i]['tot_exp']>365) //experience greater than 1 year
+    {
+        //check if the experience is after acquiring diploma or ug degree
+        $end_date = $completion_date_ug or $end_date_d;
+        $diff = date_diff(date_create($end_date), date_create($exp[$i]['from']));
+        if ($diff->format("%R") == '+') //end date is less than start of experience
+            goto post_6_exp;
+    }
+}
+$post_array[4]=0;
+
+post_6_exp:
+
+if(!$post_array[5] || $num_exp)  //there should be some experience
+    goto post_7_exp;
+
+$post_array[5]=0;
+
+post_7_exp:
+
+if(!$post_array[6])
+    goto end;
+
+for($i=0;$i<$num_exp;$i++)
+{
+
+    if($exp[$i]['tot_exp']>365) //experience greater than 1 year
+    {
+        //check if the experience is after acquiring diploma or ug degree
+        $end_date = $completion_date_ug or $end_date_d;
+        $diff = date_diff(date_create($end_date), date_create($exp[$i]['from']));
+        if ($diff->format("%R") == '+') //end date is less than start of experience
+            goto end;
+    }
+}
+$post_array[6]=0;
+
+
+end:
+
+//adding values to session variables
+for($i = 0; $i < 7 ; $i++)
+    $_SESSION['post_'.($i+1)] = $post_array[$i];
+
+
+?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Apply for Post</title>
+</head>
+
+<body>
+<div id="main" style="font-size:13px; margin:0px 0 0 0;" align="justify">
+    <center><b style="font-size:18px;">Apply for Post</b></center>
+    <hr>
+
+    <p align="justify" class="larger-font">
+
+    <ul class="text-danger">
+        <li> * Marked fields are mandatory.</li>
+    </ul>
+
+    <form class="form-horizontal" name="phd_frm" method="post" action="save.php" >
+        <div class="tab-content">
+            <div id="home" class="tab-pane fade in active">
+                <h3>Apply For Post</h3>
+                <hr>
+
+
+
+                <div class="form-group">
+                    <label class="control-label col-sm-5" for="app_post_label">These are the posts for which you can apply (based on the information you provided earlier) :</label>
+                    <div class="col-sm-6">
+
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-sm-offset-4 col-sm-4">
+                        <button type="submit" name="info_pg" class="btn btn-primary col-sm-12">Submit Information</button>
+                    </div>
+                </div>
+    </form>
+</div>
+</body>
+</html>
