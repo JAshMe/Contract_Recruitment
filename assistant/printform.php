@@ -83,7 +83,7 @@ margin-left:auto;
 	$queryd="SELECT * from `department` where `user_id` like '$id'";
 	$count = 0;
 	$cd = $db->process_query($queryd);
-	$totalcount = mysql_num_rows($cd);
+	$totalcount = mysqli_num_rows($cd);
 	while(($rd = $db->fetch_rows($cd))){
 		$dept = $rd['dept'];
 		$count++;
@@ -161,7 +161,7 @@ $fee = new sqlfunctions();
 $fee->database="fees";
 $query="SELECT * from `bank_detail` where `regno` like '$id' and status like 'Success'";
 $c = $fee->process_query($query);
-if(mysql_num_rows($c)==0){
+if(mysqli_num_rows($c)==0){
   $refno="NA";
   $tranid="NA";
   $amount="0 (MNNIT Staff/ PWD)";
@@ -200,7 +200,7 @@ while(($r = $db->fetch_rows($c)))
 </div></div>
 </table>
 </div>
-</div>
+</body>
 
 
 
@@ -236,7 +236,7 @@ while(($r = $db->fetch_rows($c)))
 <?php
 	$query="SELECT * from `phd_info` where `user_id` like '$id'";
     $r = $db->process_query($query);
-    if(mysql_num_rows($r)>0)
+    if(mysqli_num_rows($r)>0)
     {
 		$r = $db->fetch_rows($r);
 		$date = validate($r['date']);
@@ -294,7 +294,7 @@ while(($r = $db->fetch_rows($c)))
 <?php
 	$query="SELECT * from `other_academic` where `user_id` like '$id'";
     $c = $db->process_query($query);
-	if(mysql_num_rows($c)>0){
+	if(mysqli_num_rows($c)>0){
 ?>
 <hr />
 <h4><strong>4. Other Academic Qualification:</strong></h4>
@@ -327,7 +327,7 @@ while(($r = $db->fetch_rows($c)))
 <?php
 $query="SELECT * from `employer` where `user_id` like '$id'";
 $r = $db->process_query($query);
-if(mysql_num_rows($r)>0)
+if(mysqli_num_rows($r)>0)
 {
   $r = $db->fetch_rows($r);
   $position=validate($r['position']);
@@ -498,7 +498,7 @@ while(($r = $db->fetch_rows($c)))
 <?php
 	$query="SELECT * from `other_info` where `user_id` like '$id'";
     $r = $db->process_query($query);
-    if(mysql_num_rows($r)>0)
+    if(mysqli_num_rows($r)>0)
     {
     	$r = $db->fetch_rows($r);
    	    $info = validate($r['info']);  
@@ -516,7 +516,7 @@ while(($r = $db->fetch_rows($c)))
 <?php
 	$query="SELECT * from `points` where `user_id` like '$id'";
     $r = $db->process_query($query);
-    if(mysql_num_rows($r)>0)
+    if(mysqli_num_rows($r)>0)
     {
     	$r = $db->fetch_rows($r);
    	    $points = validate($r['points']);  
@@ -545,5 +545,7 @@ while(($r = $db->fetch_rows($c)))
 
 
 <script> window.print(); </script>
-</div> 
+
+
+</html>
 
