@@ -27,8 +27,7 @@ function verify_fill($id)
 
     if (file_exists('./photos/'.$_SESSION['user'].".JPG")){}
     else
-        return "Upload Photograph
-        ";
+        return "Upload Photograph";
 
         //check if 10th info is filled
         $q = "select  user_id from `10th_mark` where user_id= '$id'";
