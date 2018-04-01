@@ -364,7 +364,8 @@ for($i = 0; $i < 7 ; $i++)
 
                 <div class="form-group">
                     <h4><label class="control-label col-sm-11" for="app_post_label">These are the posts for which you can apply (based on the information you provided earlier) :</label></h4>
-                    <div class="col-sm-6">
+                    <br><br><br>
+                    <div class="col-sm-offset-3 col-sm-6">
                         <select id="app_post_label" class="form-control">
                                 <option value="projectsuper">Project Supervisor [Junior Engineer-Civil/ Electrical]
                                 </option>
@@ -377,7 +378,7 @@ for($i = 0; $i < 7 ; $i++)
                         </select>
                     </div>
                 </div>
-
+                <br>
                 <div class="form-group">
                     <div class="col-sm-offset-4 col-sm-4">
                         <button type="submit" name="info_pg" class="btn btn-primary col-sm-12">Submit Information</button>
