@@ -31,15 +31,17 @@
                             <a class="list-group-item <?php if(isset($_GET['val']) && $_GET['val']=='present_emp' ) echo "active"; ?>" id="midframe" href="./home.php?val=present_emp">Present Employer</a>
                             <a class="list-group-item <?php if(isset($_GET['val']) && $_GET['val']=='work_exp' ) echo "active"; ?>" id="midframe" href="./home.php?val=work_exp">Work Experience</a>
                             <a class="list-group-item <?php if(isset($_GET['val']) && $_GET['val']=='reference' ) echo "active"; ?> " id="midframe" href="./home.php?val=reference">Reference</a>
-                            <a class="list-group-item <?php if(isset($_GET['val']) && $_GET['val']=='other_info' ) echo "active"; ?> " id="midframe" href="./home.php?val=post_detail">Details Regarding Posts</a>
+                            <a class="list-group-item <?php if(isset($_GET['val']) && $_GET['val']=='post_detail' ) echo "active"; ?> " id="midframe" href="./home.php?val=post_detail">Details Regarding Posts</a>
                             <a class="list-group-item <?php if(isset($_GET['val']) && $_GET['val']=='other_info' ) echo "active"; ?> " id="midframe" href="./home.php?val=other_info">Any Other Information</a>
                                 <a class="list-group-item <?php
-                                                $verdict = verify_fill($_SESSION['user']);
-                                                if($verdict!="ok")
-                                                        echo "disabled\" href=\"#\" data-toggle=\"tooltip\" title=\"Please fill $verdict before applying for any post.\" ";
-                                                else echo " \" href=\"./home.php?val=app_post";
-                                                 if(isset($_GET['val']) && $_GET['val']=='app_post' ) echo "active";
-                                                ?>" id="midframe">Apply For Post</a>
+
+                                        $verdict = verify_fill($_SESSION['user']);
+                                        $_SESSION['verdict']=$verdict;
+                                        if($verdict!="ok")
+                                                echo "disabled\" href=\"#\" data-toggle=\"tooltip\" title=\"Please fill $verdict before applying for any post.\" ";
+                                        else echo " \" href=\"./home.php?val=app_post";
+                                         if(isset($_GET['val']) && $_GET['val']=='app_post' ) echo "active";
+                                        ?>" id="midframe">Apply For Post</a>
                                 <a class="list-group-item <?php if(isset($_GET['val']) && $_GET['val']=='print' ) echo "active"; ?> " id="midframe" href="./home.php?val=print">Print Form</a>
                             <a class="list-group-item <?php if(isset($_GET['val']) && $_GET['val']=='contact' ) echo "active"; ?> " id="midframe" href="./home.php?val=contact">Contact Us</a>
 
