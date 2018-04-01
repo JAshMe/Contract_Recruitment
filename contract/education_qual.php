@@ -731,10 +731,13 @@ $board_10=$comp_10=$school_10=$per_or_cgpa_10=$value_10=$marks_10=$max_marks_10=
 
         var ans=marks_fl/max_marks_fl;
         var x= $(this).parents("form").find("input[type=radio]").val();
-        if(x==='1')
-        ans=ans*100.0;
-        else
-            ans=ans*95;
+        if(x === "1") {
+            ans = ans * 100;
+        }
+        else {
+            ans = ans * 95;
+        }
+        ans=ans.toFixed(2);
         $(this).parents("form").find("input[readonly]").val(ans);
     });
 </script>
