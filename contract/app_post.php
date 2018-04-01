@@ -83,7 +83,6 @@ if(mysqli_num_rows($c)>0) {
 }
 
 
-
 post_1_edu:
 
 if($max_marks_ug == '' or ($specialization_ug!='EE' and $specialization_ug!="CE"))
@@ -123,23 +122,23 @@ if($degree_ug=='BHM' or $degree_ug=='BHMS2' or $degree_pg == 'MHM')
 
 post_3_edu:
 
-if($max_marks_ug='')
+if($max_marks_ug=='')
 {
     $post_array[2]=0;
     goto post_4_edu;
 }
 
-
 post_4_edu:
 if($max_marks_pg=='' or ($degree_pg!='MSC' and $degree_pg!="MS" and $degree_pg!='M.Tech') or $value_pg<55) {
     if ($max_marks_ug == '' or ($degree_ug != 'B.Sc' and $degree_ug !='B.Tech') or $value_ug<70) {
+        echo $max_marks_ug;
         if ($max_marks_d == '') {
             $post_array[3] = 0;
             goto post_5_edu;
         } else {
             $diff_date_d_1 = date_diff(date_create($start_date_d), date_create($end_date_d))->days;
             $year_3 = 365 * 3;
-            if ($value_d < 70 or $year_3 < $diff_date_d_1 or ($field_d != 'DS' and $field_d != 'DE' and $field_d != 'DT')) {
+            if ($value_d < 70 or $year_3 < $diff_date_d_1 or ($field_d == 'Others')) {
                 $post_array[3] = 0;
                 goto post_5_edu;
             }
@@ -157,7 +156,7 @@ if($max_marks_pg=='' or ($degree_pg!='MSC' and $degree_pg!="MS" and $degree_pg!=
         } else {
             $diff_date_d_1 = date_diff(date_create($start_date_d), date_create($end_date_d))->days;
             $year_3 = 365 * 3;
-            if ($value_d < 70 or $year_3 < $diff_date_d_1 or ($field_d != 'DS' and $field_d != 'DE' and $field_d != 'DT')) {
+            if ($value_d < 70 or $year_3 < $diff_date_d_1 or ($field_d == 'Others')) {
                 $post_array[4] = 0;
                 goto post_6_edu;
             }
@@ -168,24 +167,24 @@ if($max_marks_pg=='' or ($degree_pg!='MSC' and $degree_pg!="MS" and $degree_pg!=
 
 post_6_edu:
 
-if($max_marks_pg=='' or ($degree_pg=="MCA" and $degree_pg == "MSC") or $value_pg<70)
+if($max_marks_pg=='' or ($degree_pg!="MCA" and $degree_pg != "MSC") or $value_pg<70)
 {
-    if($max_marks_ug=='' or ($degree_pg=="B.Tech" and $degree_pg=="BE") or $value_ug <70){
+    if($max_marks_ug=='' or ($degree_ug!="B.Tech" and $degree_ug!="BE") or $value_ug <70){
         $post_array[5]=0;
         goto post_7_edu;
     }
 }
 
 post_7_edu:
-if($max_marks_ug=='' or ($degree_pg=="B.Tech" and $degree_pg=="BE")) {
+if($max_marks_ug=='' or ($degree_ug!="B.Tech" and $degree_ug!="BE")) {
 
     if ($max_marks_d == '') {
-        $post_array[4] = 0;
+        $post_array[6] = 0;
         goto exp_check;
     } else {
         $diff_date_d_1 = date_diff(date_create($start_date_d), date_create($end_date_d))->days;
         $year_3 = 365 * 3;
-        if ($value_d < 70 or $year_3 < $diff_date_d_1 or ($field_d != 'DE' and $field_d != 'DT')) {
+        if ($value_d < 70 or $year_3 < $diff_date_d_1 or ($field_d == 'Others' or $field_d == 'DS')) {
             $post_array[4] = 0;
             goto exp_check;
         }
@@ -195,6 +194,7 @@ if($max_marks_ug=='' or ($degree_pg=="B.Tech" and $degree_pg=="BE")) {
 /*** Experience Checks ***/
 
 exp_check:
+goto end;
 
 //getting info of experience
 $info_query = "select * from experience where user_id='$id'";
@@ -241,7 +241,7 @@ if(!$post_array[1])
 for($i=0;$i<$num_exp;$i++)
 {
     if($exp[$i]['tot_exp']>365*3) //experience greater than 3 years
-        goto post_2_exp;
+        goto post_3_exp;
 }
 $post_array[1]=0;
 
@@ -273,7 +273,7 @@ if(!$post_array[3])
 for($i=0;$i<$num_exp;$i++)
 {
 
-    if($exp[$i]['tot_exp']>365*3) //experience greater than 3 years
+    if($exp[$i]['tot_exp']>365) //experience greater than 1 year
     {
         //check if the experience is after acquiring diploma or ug degree
         $end_date = $completion_date_ug or $end_date_d;
@@ -367,27 +367,111 @@ for($i = 0; $i < 7 ; $i++)
                     <br><br><br>
                     <div class="col-sm-offset-3 col-sm-6">
                         <select id="app_post_label" class="form-control">
-                                <option value="projectsuper">Project Supervisor [Junior Engineer-Civil/ Electrical]
-                                </option>
-                                <option value="executive" >Executive in Executive Development Centre</option>
-                                <option value="officeass">Office Assistant in EDC</option>
-                                <option value="techman_clinic" >Technical Manpower [for Clinical Diagnostics and Pathological Studies</option>
-                                <option value="labass">Lab Assistant [for CMDR]</option>
-                                <option value="techoff">Technical Officer [Centre for Interdisciplinary Research (CIR)]</option>
-                                <option value="techman_CIR">Technical Manpower [Centre for Interdisciplinary Research (CIR)]</option>
+                                <option value="0">---Choose your post---</option>
+                                <?php if($post_array[0]) echo "<option value=\"1\">Project Supervisor [Junior Engineer-Civil/ Electrical]</option>" ?>
+                                <?php if($post_array[1]) echo "<option value=\"2\" >Executive in Executive Development Centre</option>" ?>
+                                <?php if($post_array[2]) echo "<option value=\"3\">Office Assistant in EDC</option>" ?>
+                                <?php if($post_array[3]) echo "<option value=\"4\" >Technical Manpower [for Clinical Diagnostics and Pathological Studies,Animal Tissue Culture, Immunodiagnostics, PCR/ Molecular Based Diagnostics Lab]</option>" ?>
+                                <?php if($post_array[4]) echo "<option value=\"5\">Lab Assistant [for CMDR]</option>" ?>
+                                <?php if($post_array[5]) echo "<option value=\"6\">Technical Officer [Centre for Interdisciplinary Research (CIR)]</option>" ?>
+                                <?php if($post_array[6]) echo "<option value=\"7\">Technical Manpower [Centre for Interdisciplinary Research (CIR)]</option> " ?>
                         </select>
                     </div>
+                </div>
+
+<!-- ------------------------Info Divs--------------------------->
+                <div class="col-md-offset-2 col-md-8 info" style="font-size: 15px;">
+                    <strong>This post requires:</strong><br><br><br>
+
+
+                    <div class="info_div" id="post_info_1">
+                        <p>First class diploma of three years duration in Civil/Electrical Engineering with one year
+                        experience in relevant field.</p><br><br><br>
+                    </div>
+
+                    <div class="info_div" id="post_info_2">
+                        <p>Graduate in any discipline
+                        At least 3 years relevant work experience.
+                        Good working knowledge of computer [MS Office], and knowledge of accounts procedures.</p>
+                        <strong>Some desirable qualifications:</strong><br>
+                        <p>Bachelors’ Degree in Hotel Management/Hospitality Management and Masters’ Degree in the relevant field.</p>
+                        <br><br><br>
+                    </div>
+
+                    <div class="info_div" id="post_info_3">
+                        <p>Bachelors Degree in any subject.</p>
+                        <p>Minimum 3 years experience in handling office papers &equipments /knowledge of computer applications etc. in reputed Industry/Educational/R&D Institutions. Knowledge of English typing/Hindi typing communication is essential. Graduate/Post-Graduate with English as a subject will be preferred. Experience of preparing report, presentation, educational material etc. is desired. Experience gained only after acquiring degree/diploma will be considered.</p>
+                        <br><br><br>
+                    </div>
+
+                    <div class="info_div" id="post_info_4">
+                        <p>First class Diploma of minimum 3 years duration in appropriate branch of Science /Engineering/ Technology. </p>
+                        <div align="center"><strong>OR</strong></div>
+                        <p>First class B.Sc. or M.Sc. degree with not less than 55% marks in appropriate branch of Science such as Biology, Zoology, Life Sciences, Biochemistry, Microbiology, Biotechnology or any other related field.</p>
+                        <p>Minimum one year experience in Industry/Educational/R&D Institutions/Laboratories in Clinical Diagnostics and Pathological Studies, Animal Tissue Culture, Immunodiagnostics, PCR/Molecular Based Diagnostics Techniques. Experience gained only after acquiring degree/diploma will be considered.</p>
+                        <br><br><br>
+                    </div>
+
+                    <div class="info_div" id="post_info_5">
+                        <p>First class Diploma of minimum 3 years duration in appropriate branch of Science /Engineering/ Technology. </p>
+                        <div align="center"><strong>OR</strong></div>
+                        <p>First class B.Sc. or M.Sc. degree with not less than 55% marks in appropriate branch of Science such as Biology, Zoology, Life Sciences, Biochemistry, Microbiology, Biotechnology or any other related field.</p>
+                        <p>Minimum one year experience in Industry/Educational/R&D Institutions/Laboratories in Clinical Diagnostics and Pathological Studies, Animal Tissue Culture, Immunodiagnostics, PCR/Molecular Based Diagnostics Techniques. Experience gained only after acquiring degree/diploma will be considered.</p>
+                        <br><br><br>
+                    </div>
+
+                    <div class="info_div" id="post_info_6">
+                        <p>B.E./ B.Tech. or M.Sc./ MCA Degree in relevant filed with first class or equivalent grade (6.5 in 10 point scale) and consistently excellent academic record.</p>
+                        <p>Work experience in relevant field e.g. maintenance of scientific equipment, system administration, software development/ experience of working with different types of software, fabrication and support to research.</p>
+
+                        <div align="center"><strong>OR</strong></div>
+
+                        <p>Experience of handling research equipments such as XRD, SEM, AFM, Sputtering, PLD, Ellipsometer etc. will be preferred.</p>
+                        <br><br><br>
+                    </div>
+
+                    <div class="info_div" id="post_info_7">
+                        <p>First class Diploma of minimum 3 years duration in appropriate branch of Engineering/ Technology.</p>
+                        <p>Minimum one year experience in Industry/Educational/R&D Institutions. Experience gained only after acquiring degree/ diploma will be considered. </p>
+
+                        <div align="center"><strong>OR</strong></div>
+
+                        <p>Experience of handling research equipments such as XRD, SEM, AFM, Sputtering, PLD, Ellipsometer etc. will be preferred.</p>
+
+                        <br><br><br>
+                    </div>
+
+
+                    <span class="text-danger">If you agree to possess this qualifications then only apply for this post.</span>
+                    <br><br>
                 </div>
                 <br>
                 <div class="form-group">
                     <div class="col-sm-offset-4 col-sm-4">
-                        <button type="submit" name="info_pg" class="btn btn-primary col-sm-12">Submit Information</button>
+                        <button type="submit" name="post_app" class="btn btn-primary col-sm-12">Apply</button>
                     </div>
                 </div>
             </div>
         </div>
     </form>
+
 </div>
+<script type="text/javascript">
+    $(".info").hide();
+    $("#app_post_label").change(function(){
+        var id = $(this).val();
+        var first = 1;
+        if(id=="0")
+                $(".info").slideUp();
+        else
+            $(".info").slideDown();
+        id = "#post_info_"+id;
+        $(".info_div").hide();
+        $(id).show();
+
+
+    });
+</script>
 
 </body>
 </html>
