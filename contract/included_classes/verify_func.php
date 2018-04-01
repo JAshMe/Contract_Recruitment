@@ -65,33 +65,90 @@ function verify_fill($id)
                 else
                         return $ans."s";
         }
-//            $q = "select  user_id,completion_date from `10th_mark` where user_id= '$id'";
-//            $q1= "select  user_id,completion_date from `12th_mark` where user_id= '$id'";
-//            $r1=$db->process_query($q);
-//            $r2=$db->process_query($q1);
-//            if(mysqli_num_rows($r2)==0)
-//            {
-//                $q1= "select  user_id,start_date from `diploma` where user_id= '$id'";
-//                $r2=$db->process_query($q1);
-//                $r2=$db->fetch_rows($r2);
-//                $r1=$db->fetch_rows($r1);
-//                $comp_d=$r2['start_date'];
-//                $comp_10=$r1['completion_date'];
-//                $diff = date_diff(date_create($comp_10), date_create($comp_d))->days;
-//                if ($diff->format("%R") == '+')
-//                    return "10th grade completion date greater than diploma start timing";
-//            }
-//            else
-//            {
-//                $r2=$db->fetch_rows($r2);
-//                $r1=$db->fetch_rows($r1);
-//                $comp_12=$r2['completion_date'];
-//                $comp_10=$r1['completion_date'];
-//                $diff = date_diff(date_create($comp_10), date_create($comp_12))->days;
-//                if ($diff->format("%R") == '+')
-//                    return "12th grade completion date less than 10th grade completion date";
-//
-//
-//            }
+            $q = "select  user_id,completion_date from `10th_mark` where user_id= '$id'";
+            $q1= "select  user_id,completion_date from `12th_mark` where user_id= '$id'";
+            $r1=$db->process_query($q);
+            $r2=$db->process_query($q1);
+            if(mysqli_num_rows($r2)==0)
+            {
+                $q1= "select  user_id,start_date from `diploma` where user_id= '$id'";
+                $r2=$db->process_query($q1);
+                $r2=$db->fetch_rows($r2);
+                $r1=$db->fetch_rows($r1);
+                $comp_d=$r2['start_date'];
+                $comp_10=$r1['completion_date'];
+                $diff = date_diff(date_create($comp_10), date_create($comp_d));
+                 if ($diff->format("%R") == '+'){
+
+                 }
+                else
+                    return "10th grade completion date greater than diploma start date";
+            }
+            else
+            {
+                $r2=$db->fetch_rows($r2);
+                $r1=$db->fetch_rows($r1);
+                $comp_12=$r2['completion_date'];
+                $comp_10=$r1['completion_date'];
+                $diff = date_diff(date_create($comp_10), date_create($comp_12));
+                if ($diff->format("%R") == '+'){
+
+                }
+                else
+                    return "12th grade completion date less than 10th grade completion date";
+            }
+
+    $q = "select  user_id,completion_date from `12h_mark` where user_id= '$id'";
+    $q1= "select  user_id,completion_date from `ug` where user_id= '$id'";
+    $r1=$db->process_query($q);
+    $r2=$db->process_query($q1);
+    if(mysqli_num_rows($r2)==0)
+    {
+        $q1= "select  user_id,start_date from `diploma` where user_id= '$id'";
+        $r2=$db->process_query($q1);
+        $r2=$db->fetch_rows($r2);
+        $r1=$db->fetch_rows($r1);
+        $comp_d=$r2['start_date'];
+        $comp_10=$r1['completion_date'];
+        $diff = date_diff(date_create($comp_10), date_create($comp_d));
+        if ($diff->format("%R") == '+'){
+
+        }
+        else
+            return "12th completion date greater than diploma completion date";
+    }
+    else
+    {
+        $r2=$db->fetch_rows($r2);
+        $r1=$db->fetch_rows($r1);
+        $comp_12=$r2['start_date'];
+        $comp_10=$r1['completion_date'];
+        $diff = date_diff(date_create($comp_10), date_create($comp_12));
+        if ($diff->format("%R") == '+'){
+
+        }
+        else
+            return "12th grade completion date greater than undergraduate starting date";
+    }
+    $q = "select  user_id,completion_date from `ug` where user_id= '$id'";
+    $q1= "select  user_id,completion_date from `pg` where user_id= '$id'";
+    $r1=$db->process_query($q);
+    $r2=$db->process_query($q1);
+
+    if(mysqli_num_rows($r2)>0)
+    {
+        $r2=$db->fetch_rows($r2);
+        $r1=$db->fetch_rows($r1);
+        $comp_12=$r2['start_date'];
+        $comp_10=$r1['completion_date'];
+        $diff = date_diff(date_create($comp_10), date_create($comp_12));
+        if ($diff->format("%R") == '+'){
+
+        }
+        else
+            return "ug completion date less than pg starting date";
+    }
+
+
                 return "ok";
 }
