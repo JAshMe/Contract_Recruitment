@@ -38,7 +38,7 @@
                                         $verdict = verify_fill($_SESSION['user']);
                                         $_SESSION['verdict']=$verdict;
                                         if($verdict!="ok")
-                                                echo "disabled\" href=\"#\" data-toggle=\"tooltip\" title=\"Please fill $verdict before applying for any post.\" ";
+                                                echo "disabled\" href=\"#\" data-toggle=\"tooltip\" title=\"$verdict before applying for any post.\" ";
                                         else echo " \" href=\"./home.php?val=app_post";
                                          if(isset($_GET['val']) && $_GET['val']=='app_post' ) echo "active";
                                         ?>" id="midframe">Apply For Post</a>

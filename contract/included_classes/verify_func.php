@@ -25,18 +25,22 @@ function verify_fill($id)
         if(mysqli_num_rows($r)==0)
                 return "Personal Details";
 
+    if (file_exists('./photos/'.$_SESSION['user'].".JPG")){}
+    else
+        return "Upload Photograph
+        ";
 
         //check if 10th info is filled
         $q = "select  user_id from `10th_mark` where user_id= '$id'";
         $r=$db->process_query($q);
-        if(mysqli_num_rows($r)==0) return "10th Details";
+        if(mysqli_num_rows($r)==0) return "Fill 10th Standard Details";
 
 
         $q1= "select  user_id from `12th_mark` where user_id= '$id'";
         $q2= "select  user_id from `diploma` where user_id= '$id'";
         $r1=$db->process_query($q1);
         $r2=$db->process_query($q2);
-        if(mysqli_num_rows($r2)==0&&mysqli_num_rows($r1)==0) return "12th/Diploma Details";
+        if(mysqli_num_rows($r2)==0&&mysqli_num_rows($r1)==0) return "Fill 12th/Diploma Details";
 
 
         $q1= "select  user_id from `ug` where user_id= '$id'";
@@ -45,14 +49,14 @@ function verify_fill($id)
         $r2=$db->process_query($q2);
         if(mysqli_num_rows($r2)>0)
         {
-            if(mysqli_num_rows($r1)==0) return "UG Details";
+            if(mysqli_num_rows($r1)==0) return "Fill UG Details";
         }
 
 
         $q = "select  user_id  from `employer` where user_id= '$id'";
         $r=$db->process_query($q);
         if(mysqli_num_rows($r)==0)
-                return "Present Employment";
+                return "Fill Present Employment";
 
         $q = "select  user_id  from `reference` where user_id= '$id'";
         $r=$db->process_query($q);
@@ -61,9 +65,9 @@ function verify_fill($id)
                 $num = mysqli_num_rows($r);
                 $ans = 2-$num." Reference";
                 if($num==1)
-                        return $ans;
+                        return "Fill".$ans;
                 else
-                        return $ans."s";
+                        return "Fill".$ans."s";
         }
             $q = "select  user_id,completion_date from `10th_mark` where user_id= '$id'";
             $q1= "select  user_id,completion_date from `12th_mark` where user_id= '$id'";
@@ -82,7 +86,7 @@ function verify_fill($id)
 
                  }
                 else
-                    return "10th std completion date greater than diploma start date";
+                    return "Fill 10th std completion date greater than diploma start date";
             }
             else
             {
@@ -95,7 +99,7 @@ function verify_fill($id)
 
                 }
                 else
-                    return "10th std completion date less than 12th grade completion date";
+                    return "Fill 10th std completion date less than 12th grade completion date";
             }
 
     $q = "select  user_id,completion_date from `12th_mark` where user_id= '$id'";
@@ -115,7 +119,7 @@ function verify_fill($id)
 
         }
         else
-            return "12th std completion date less than diploma start date";
+            return "Fill 12th std completion date less than diploma start date";
     }
     else
     {
@@ -128,7 +132,7 @@ function verify_fill($id)
 
         }
         else
-            return "12th std completion date greater than undergraduate start date";
+            return "Fill 12th std completion date greater than undergraduate start date";
     }
     $q = "select  user_id,completion_date from `ug` where user_id= '$id'";
     $q1= "select  user_id,completion_date from `pg` where user_id= '$id'";
@@ -146,7 +150,7 @@ function verify_fill($id)
 
         }
         else
-            return "ug completion date less than pg start date";
+            return "Fill ug completion date less than pg start date";
     }
 
 
