@@ -39,6 +39,9 @@
   		$nature=validate($r['nature']);
   		$emp_type=validate($r['emp_type']);
   		$tot_exp=validate($r['tot_exp']);
+      $tot=floor($tot_exp/365);
+      $tot_exp=floor(($tot_exp-($tot*365))/30);
+      $tot_exp=$tot.' Years and '.$tot_exp.' Months';
   		echo "<tr><td>$organisation</td><td>$position</td><td>$from</td><td>$to</td>
   		<td>$tot_exp</td><td>$pay</td><td>$emp_type</td><td>$nature</td><td><a href='delete.php?id=$tmp_id&page=work_exp'>Remove</a></td></tr>";
 		}

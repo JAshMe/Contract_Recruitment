@@ -39,7 +39,7 @@ if(!isset($_SESSION['user']))
             <div class="panel panel-default" style="border:0px">
                 <div class="panel panel-heading" style="background:#012B5D">
                         <h3 align="center" class="text-info" style="font-family: 'Yanone Kaffeesatz', sans-serif;font-size:26px;color:#fff;margin-top:10px">
-                        	Online Application for Faculty position
+                        	Online Application for Contract Employee Position
                         </h3>
                 </div>
                 <div class="panel panel-body" style="padding:0px;">
