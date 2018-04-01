@@ -26,9 +26,9 @@
 	<form class="form-horizontal" name="reg_frm" method="post" action="">
         <div class="tab-content">
             <div class="form-group">
-                <label class="control-label col-sm-3" for="posts"><span class="text-danger">*</span> Posts :</label>
-                <div class="col-sm-3">
-                    <select id="posts" name="posts" required class="form-control" style="width:100%;">
+                <label class="control-label col-sm-2" for="posts"><span class="text-danger">*</span> Posts :</label>
+                <div class="col-sm-4">
+                    <select id="posts" name="posts" required class="form-control">
                         <option value="projectsuper">Project Supervisor [Junior Engineer-Civil/ Electrical]
                         </option>
                         <option value="executive" >Executive in Executive Development Centre</option>
