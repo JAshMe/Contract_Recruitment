@@ -280,7 +280,7 @@ if(isset($_POST['work_exp']))
     $pay=validate($_POST['pay']);
     $nature=validate($_POST['nature']);
     $emp_type=validate($_POST['emp_type']);
-    $tot_exp=validate($_POST['experience']);
+    $tot_exp= date_diff(date_create($from), date_create($to))->days;
 
     $q1="SELECT * FROM `experience` WHERE user_id = '$id' ORDER BY id limit 1 ";
     $r1=$db->process_query($q1);

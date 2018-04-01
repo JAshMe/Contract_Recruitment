@@ -134,14 +134,14 @@ $emp_code=validate($r['emp_code']);
 		<div class="form-group">
 			<label class="control-label col-sm-3" for="dob"><span class="text-danger">*</span> Physically Handicapped:</label>
 			<div class="col-sm-3">
-				<label class="radio-inline"><input type="radio" required name="pwd" value="y" <?php if(isset($pwd) && $pwd=='y') echo 'checked';?> >Yes</label>
-			<label class="radio-inline"><input type="radio" required name="pwd" value="n" <?php if(isset($pwd) && $pwd=='n') echo 'checked';?> >No</label>
+				<label class="radio-inline"><input type="radio" required name="pwd" id="yes" value="y" <?php if(isset($pwd) && $pwd=='y') echo 'checked';?> >Yes</label>
+			<label class="radio-inline"><input type="radio" required name="pwd" id="no" value="n"<?php if(isset($pwd) && $pwd=='n') echo 'checked';?> >No</label>
 			</div>
 		</div>
-		<div class="form-group">
+		<div class="form-group" id="phyhandicap">
 			<label class="control-label col-sm-3" for="type_dis"><span class="text-danger">*</span> Type of Disability :</label>
 			<div class="col-sm-5">
-				<select  id="type_dis" class="form-control" name="pwd_type" >
+			<select  id="type_dis" class="form-control" name="pwd_type" id="selectphy" >
 			  <option value="NA" <?php if(isset($pwd_type) && $pwd_type=='NA') echo 'selected';?> >NA</option>
 					  <option value="OH" <?php if(isset($pwd_type) && $pwd_type=='OH') echo 'selected';?> >Orthopedically Handicapped</option>
 					  <option value="VH" <?php if(isset($pwd_type) && $pwd_type=='VH') echo 'selected';?> >Visually Handicapped</option>
@@ -288,5 +288,12 @@ if($emp!='y')
 });
 <?php
 }?>
+
+$('#yes').click(function() {
+   if($('#yes').is(':checked')) { $('#phyhandicap').removeClass('hidden'); $('#selectphy').addClass('required'); }
+});
+$('#no').click(function() {
+   if($('#no').is(':checked')) { $('#phyhandicap').addClass('hidden'); $('#selectphy').addClass('required'); }
+});
 </script>
 </html>    
