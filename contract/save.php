@@ -208,6 +208,7 @@ if(isset($_POST['edu_ch_3']))
 	$max_marks = validate($_POST['ug_max_marks']);
 	$perc_marks = validate($_POST['ug_perc_marks']);
     $is_others=validate($_POST['ug_other_degree']);
+    $other_specs=validate($_POST['ug_other_specs']);
     if(isset($is_others) && $degree =="Others"){
 
     }
@@ -219,9 +220,9 @@ if(isset($_POST['edu_ch_3']))
     verify_doc("doc_ug",'./doc_edu','education_qual',"");
 
 	if(mysqli_num_rows($r)>0)
-		$q = "update ug set specialization = '$spec', start_date = '$start_date' , completion_date = '$completion_date', university = '$university', marks = '$marks', max_marks = '$max_marks', per_or_cgpa = '$per_cgp', `value` = '$perc_marks', degree = '$degree' , is_others = '$is_others' where user_id = '$id';";
+		$q = "update ug set specialization = '$spec', start_date = '$start_date' , completion_date = '$completion_date', university = '$university', marks = '$marks', max_marks = '$max_marks', per_or_cgpa = '$per_cgp', `value` = '$perc_marks', degree = '$degree' , is_others = '$is_others', is_others_spec = '$other_specs' where user_id = '$id';";
 	else
-		$q="INSERT INTO `ug` VALUES ('$id','$spec','$start_date','$completion_date','$university','$marks','$max_marks','$per_cgp','$perc_marks','$degree','$is_others')";
+		$q="INSERT INTO `ug` VALUES ('$id','$spec','$start_date','$completion_date','$university','$marks','$max_marks','$per_cgp','$perc_marks','$degree','$is_others','$other_specs')";
 	$r=$db->process_query($q);
 	if($r)
 	{

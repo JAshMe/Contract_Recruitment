@@ -87,6 +87,7 @@ $board_10=$comp_10=$school_10=$per_or_cgpa_10=$value_10=$marks_10=$max_marks_10=
         $max_marks_ug = $c['max_marks'];
         $university_ug = $c['university'];
         $is_others_ug= $c['is_others'];
+        $is_others_spec=$c['is_others_spec'];
     }
     ?>
     <?php
@@ -152,7 +153,6 @@ $board_10=$comp_10=$school_10=$per_or_cgpa_10=$value_10=$marks_10=$max_marks_10=
                         </div>
                     </div>
 
-                    <div class="row">
                         <div class="form-group">
                              <label class="control-label col-sm-3" for="completion_date_10th"><span class="text-danger">*</span> Completion Date:</label>
                                 <div class="col-sm-3">
@@ -163,7 +163,6 @@ $board_10=$comp_10=$school_10=$per_or_cgpa_10=$value_10=$marks_10=$max_marks_10=
                                     <input type="text" class="form-control" placeholder="Eg:-CBSE,ICSE" name="board_10th" required value="<?= $board_10?>" >
                                 </div>
                             </div>
-                    </div>
 
 
 
@@ -322,7 +321,6 @@ $board_10=$comp_10=$school_10=$per_or_cgpa_10=$value_10=$marks_10=$max_marks_10=
                     </div>
 
 
-                    <div class="row">
                         <div class="form-group">
                             <label class="control-label col-sm-3" for="comp_12"><span class="text-danger">*</span> Completion Date:</label>
                             <div class="col-sm-3">
@@ -333,7 +331,6 @@ $board_10=$comp_10=$school_10=$per_or_cgpa_10=$value_10=$marks_10=$max_marks_10=
                                 <input type="text" class="form-control" placeholder="Eg:-CBSE,ICSE" name="board_12th" required value="<?= $board_12?>"  >
                             </div>
                         </div>
-                    </div>
 
 
 
@@ -392,6 +389,12 @@ $board_10=$comp_10=$school_10=$per_or_cgpa_10=$value_10=$marks_10=$max_marks_10=
 <!--                    <div class="col-sm-3">-->
 <!--                        <input type="text" class="form-control"   name="ug_field" required value="--><?//= $degree_ug?><!--"  id="field_ug">-->
 <!--                    </div>-->
+                <div id="ug" class="form-group">
+                    <label class="control-label col-sm-2" for="university_ug"><span class="text-danger">*</span> University:</label>
+                    <div class="col-sm-4">
+                        <input type="text" class="form-control"  name="ug_university" id="university_ug" required value="<?= $university_ug?>"  >
+                    </div>
+                </div>
 
 
                 <div class="form-group">
@@ -431,19 +434,45 @@ $board_10=$comp_10=$school_10=$per_or_cgpa_10=$value_10=$marks_10=$max_marks_10=
 
 
 
-                <div id="ug" class="form-group">
-                <label class="control-label col-sm-2" for="specialization_ug"><span class="text-danger">*</span>Specialization:</label>
+<!--                <div id="ug" class="form-group">-->
+<!--                <label class="control-label col-sm-2" for="specialization_ug"><span class="text-danger">*</span>Specialization:</label>-->
+<!--                    <div class="col-sm-4">-->
+<!--                        <input type="text" class="form-control" name="ug_specialization" id="specialization_ug" required value="--><?//= $specialization_ug?><!--"   >-->
+<!--                    </div>-->
+<!--                </div>-->
+                <div class="form-group">
+                    <label class="control-label col-sm-2" for="specialization_ug"><span class="text-danger">*</span>Specialization:</label>
+                <div class="col-sm-4" >
+                    <select id="specialization_ug" name="ug_specialization" required class="form-control degree3">
+                        <option value="CSE" id="cse" <?php if($specialization_ug=="CSE") echo "selected" ?> >Computer Science Engineering (CSE)</option>
+                        <option value="ECE" id="ece" <?php if($specialization_ug=="ECE") echo "selected" ?> >Electronics and Communication Engineering (ECE)</option>
+                        <option value="CE" id="ce" <?php if($specialization_ug=="CE") echo "selected" ?> >Civil Engineering (CE)</option>
+                        <option value="EE" id="ee" <?php if($specialization_ug=="EE") echo "selected" ?> >Electrical Engineering (EE)</option>
+                        <option value="ME" id="me" <?php if($specialization_ug=="ME") echo "selected" ?> >Mechanical Engineering(ME)</option>
+                        <option value="PIE" id="pie" <?php if($specialization_ug=="PIE") echo "selected" ?> >Production and Industrial Engineering(PIE)</option>
+                        <option value="IT" id="it" <?php if($specialization_ug=="IT") echo "selected" ?> >Information Technology(IT)</option>
+                        <option value="EEE" id="eee" <?php if($specialization_ug=="EEE") echo "selected" ?> >Electrical And Electronics Engineering (EEE)</option>
+                        <option value="BT" id="bt" <?php if($specialization_ug=="BT") echo "selected" ?> >Biotechnology</option>
+                        <option value="CHE" id="che" <?php if($specialization_ug=="CHE") echo "selected" ?> >Chemical Engineering (CE)</option>
+                        <option value="IE" id="ie" <?php if($specialization_ug=="IE") echo "selected" ?> >Industrial Engineering (IE)</option>
+                        <option value="AE" id="ae" <?php if($specialization_ug=="AE") echo "selected" ?> >Aerospace engineering (AE)</option>
+                        <option value="Others" id="others" <?php if($specialization_ug=="Others") echo "selected" ?> >Others</option>
+                    </select>
+                </div>
+            </div>
+
+
+                <div class="form-group otherscome3"   id="otherscome1" <?php if(isset($specialization_ug) && $specialization_ug=="Others") echo"style=\"display:block\""; else echo "style=\"display:none\"; ";?> >
+                    <label class="control-label col-sm-2" for="specialization_ug"><span class="text-danger">*</span>Others:</label>
                     <div class="col-sm-4">
-                        <input type="text" class="form-control" name="ug_specialization" id="specialization_ug" required value="<?= $specialization_ug?>"   >
+                        <input type="text" class="form-control"  id="specialization_ug" <?php if(isset($specialization_ug) && $specialization_ug=="Others") echo "value=\"$is_others_spec\" required "; ?> name="ug_other_specs"  >
                     </div>
                 </div>
 
-                <div id="ug" class="form-group">
-                    <label class="control-label col-sm-2" for="university_ug"><span class="text-danger">*</span> University:</label>
-                    <div class="col-sm-4">
-                        <input type="text" class="form-control"  name="ug_university" id="university_ug" required value="<?= $university_ug?>"  >
-                    </div>
-                </div>
+
+
+
+
 
 
                 <div class="form-group">
@@ -702,6 +731,24 @@ $board_10=$comp_10=$school_10=$per_or_cgpa_10=$value_10=$marks_10=$max_marks_10=
                 $('.otherscome2').stop(true, true).show(200).attr("required","true"); //than show
             else
                 $('.otherscome2').stop(true, true).hide(200).removeAttr("required"); //than hide
+
+
+        });
+    });
+
+</script>
+
+
+<script>
+    $(document).ready(function () {
+
+        $('.degree3').change(function () {
+            var val = $(this).val();
+            //console.log(val);
+            if (val === "Others")
+                $('.otherscome3').stop(true, true).show(200).attr("required","true"); //than show
+            else
+                $('.otherscome3').stop(true, true).hide(200).removeAttr("required"); //than hide
 
 
         });
