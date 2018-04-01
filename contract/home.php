@@ -58,12 +58,14 @@ if(!isset($_SESSION['user']))
 								include("work_exp.php");
 							else  if($_GET['val']=="reference")
 								include("reference.php");
-                                                         else if($_GET['val']=="app_post")
-                                                                 include("app_post.php");
-							else if($_GET['val']=="print")
+             else if($_GET['val']=='post_detail')
+                 include("post_detail.php");
+             else if($_GET['val']=="app_post")
+                     include("app_post.php");
+						else if($_GET['val']=="print")
 								include("print.php");
-                                                        else if($_GET['val']=='other_info')
-                                                                include("other_info.php");
+            else if($_GET['val']=='other_info')
+                    include("other_info.php");
 							else if($_GET['val']=="contact")
 								include("contact.php");
            	   				?>

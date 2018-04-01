@@ -31,6 +31,7 @@
                             <a class="list-group-item <?php if(isset($_GET['val']) && $_GET['val']=='present_emp' ) echo "active"; ?>" id="midframe" href="./home.php?val=present_emp">Present Employer</a>
                             <a class="list-group-item <?php if(isset($_GET['val']) && $_GET['val']=='work_exp' ) echo "active"; ?>" id="midframe" href="./home.php?val=work_exp">Work Experience</a>
                             <a class="list-group-item <?php if(isset($_GET['val']) && $_GET['val']=='reference' ) echo "active"; ?> " id="midframe" href="./home.php?val=reference">Reference</a>
+                            <a class="list-group-item <?php if(isset($_GET['val']) && $_GET['val']=='other_info' ) echo "active"; ?> " id="midframe" href="./home.php?val=post_detail">Details Regarding Posts</a>
                             <a class="list-group-item <?php if(isset($_GET['val']) && $_GET['val']=='other_info' ) echo "active"; ?> " id="midframe" href="./home.php?val=other_info">Any Other Information</a>
                                 <a class="list-group-item <?php
                                                 $verdict = verify_fill($_SESSION['user']);
