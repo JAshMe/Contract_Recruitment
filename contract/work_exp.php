@@ -85,11 +85,11 @@
      <div class="form-group">
       <label class="control-label col-sm-3" for="from"><span class="text-danger">*</span> From :</label> 
       <div class="col-sm-3">
-        <input type="date" class="form-control"  id="from" name="from" required id="from"> <font class="text-danger">(DD-MM-YYYY)</font>
+        <input type="date" class="form-control"  id="from" name="from" required id="from">
       </div>
         <label class="control-label col-sm-2" for="to"><span class="text-danger">*</span> To:</label>
       <div class="col-sm-4">
-        <input type="date" class="form-control" id="to" name="to" required id="to"> <font class="text-danger">(DD-MM-YYYY)</font>
+        <input type="date" class="form-control" id="to" name="to" required id="to">
       </div>
     </div>
 
@@ -122,8 +122,8 @@
             </div>
         </div>
     	<ul class="text-danger">
-  			<li> Doucument size should not exceed 1MB.</li>	
-  			<li> Doucument should be in .pdf format.</li>	
+  			<li> Doucument size should not exceed 1MB.</li>
+  			<li> Doucument should be in .pdf format.</li>
 		</ul>
     </div>
 

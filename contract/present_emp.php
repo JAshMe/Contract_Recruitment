@@ -90,7 +90,7 @@ $emol   =  validate($r['emoluments']);
          <div class="form-group">
           <label class="control-label col-sm-3" for="dob"><span class="text-danger">*</span> From :</label> 
           <div class="col-sm-3">
-            <input type="date" class="form-control"  value="<?php if(isset($from)) echo "$from"; ?>" name="from" required id="from"> <font class="text-danger">(YYYY-MM-DD)</font>
+            <input type="date" class="form-control"  value="<?php if(isset($from)) echo "$from"; ?>" name="from" required id="from">
           </div>
             <label class="control-label col-sm-2" for="email"><span class="text-danger">*</span> To:</label>
           <div class="col-sm-3">
