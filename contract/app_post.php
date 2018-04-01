@@ -6,7 +6,6 @@
  * Time: 11:19 PM
  */
 
-session_start();
 if(!isset($_SESSION['verdict']))
     die("<h3>Unauthorized Access!!</h3>");
 if(isset($_SESSION['verdict']) && $_SESSION['verdict']!="ok")
@@ -363,12 +362,19 @@ for($i = 0; $i < 7 ; $i++)
                 <h3>Apply For Post</h3>
                 <hr>
 
-
-
                 <div class="form-group">
-                    <label class="control-label col-sm-5" for="app_post_label">These are the posts for which you can apply (based on the information you provided earlier) :</label>
+                    <h4><label class="control-label col-sm-11" for="app_post_label">These are the posts for which you can apply (based on the information you provided earlier) :</label></h4>
                     <div class="col-sm-6">
-
+                        <select id="app_post_label" class="form-control">
+                                <option value="projectsuper">Project Supervisor [Junior Engineer-Civil/ Electrical]
+                                </option>
+                                <option value="executive" >Executive in Executive Development Centre</option>
+                                <option value="officeass">Office Assistant in EDC</option>
+                                <option value="techman_clinic" >Technical Manpower [for Clinical Diagnostics and Pathological Studies</option>
+                                <option value="labass">Lab Assistant [for CMDR]</option>
+                                <option value="techoff">Technical Officer [Centre for Interdisciplinary Research (CIR)]</option>
+                                <option value="techman_CIR">Technical Manpower [Centre for Interdisciplinary Research (CIR)]</option>
+                        </select>
                     </div>
                 </div>
 
@@ -377,7 +383,10 @@ for($i = 0; $i < 7 ; $i++)
                         <button type="submit" name="info_pg" class="btn btn-primary col-sm-12">Submit Information</button>
                     </div>
                 </div>
+            </div>
+        </div>
     </form>
 </div>
+
 </body>
 </html>
