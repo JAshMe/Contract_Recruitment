@@ -1,0 +1,45 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "",
+      "DisplayName": ""
+    },
+    "ClosedComment": "",
+    "ClosedDate": null,
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "On my system, Kaspersky antivirus has found a trojan in given sample pdf by PDFMerger. I request people downloading it to be aware of this fact and check through antivirus.",
+    "LastUpdatedDate": "2013-12-19T18:25:53.13-08:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Unassigned",
+      "Severity": 0,
+      "Id": 0
+    },
+    "ProjectName": "pdfmerger",
+    "ReportedDate": "2013-08-08T00:35:08.8-07:00",
+    "Status": {
+      "Name": "Proposed",
+      "Id": 1
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "trojan in sample pdf",
+    "Type": {
+      "Name": "Unassigned",
+      "Id": 5
+    },
+    "VoteCount": 1,
+    "Id": 8938
+  },
+  "FileAttachments": [],
+  "Comments": [
+    {
+      "Message": "Thank you for your reminding. By the way, can I [create a PDF document](http://www.rasteredge.com/how-to/vb-net-imaging/pdf-creating/) by myself as the sample pdf? ",
+      "PostedDate": "2013-12-19T18:25:53.13-08:00",
+      "Id": -2147483648
+    }
+  ]
+}

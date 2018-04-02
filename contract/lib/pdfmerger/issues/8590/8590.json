@@ -1,0 +1,50 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "",
+      "DisplayName": ""
+    },
+    "ClosedComment": "",
+    "ClosedDate": null,
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "I have been getting this error\n\n\nStrict Standards: Declaration of FPDF_TPL::Image() should be compatible with FPDF::Image($file, $x = NULL, $y = NULL, $w = 0, $h = 0, $type = '', $link = '') in C:\\xampp\\htdocs\\Pdfmerge\\fpdi\\fpdf_tpl.php on line 409\n\nPlease help",
+    "LastUpdatedDate": "2013-10-07T16:08:27.51-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "pdfmerger",
+    "ReportedDate": "2013-02-23T02:55:29.09-08:00",
+    "Status": {
+      "Name": "Proposed",
+      "Id": 1
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "Fix this error",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 8590
+  },
+  "FileAttachments": [],
+  "Comments": [
+    {
+      "Message": "The arguments need to match exactly between the Image() in fpdf_tpl.php and the Image() in fpdf.php.   \r\n\r\nIn fpdf_tpl.php change line 269 to be: \nfunction Image($file, $x=null, $y=null, $w=0, $h=0, $type='', $link='',$align='', $resize=false, $dpi=300, $palign='', $ismask=false, $imgmask=false, $border=0) {\r\n\r\nand in fpdf.php change line 898 to be the same thing.  This notice will go away. ",
+      "PostedDate": "2013-10-07T16:06:49.25-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "I know the initial request is old, but I just found this class and needed to use it - was getting the same error and worked through it.  Hope it helps someone! ",
+      "PostedDate": "2013-10-07T16:08:27.51-07:00",
+      "Id": -2147483648
+    }
+  ]
+}

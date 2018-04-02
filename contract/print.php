@@ -38,22 +38,22 @@
 <form class="form-horizontal" name="phd_frm" method="post" action="upload_points.php" enctype="multipart/form-data">
 <div class="tab-content">
       <div id="home" class="tab-pane fade in active">
-        <h3>Print</h3>
+        <h3>Print forms for Applied Posts</h3>
         <hr>
         <ul>
-            <?php if($pos1==1) echo"<li><a href="."printform.php"." target="."_blank"." style="."
+            <?php if($pos1==1) echo"<li><a href="."printform.php?type=1"." target="."_blank"." style="."
             font-size:18px;".">Application Form for Project Supervisor [Junior Engineer-Civil/ Electrical]</a></li>"; ?>
-            <?php if($pos2==1) echo"<li><a href="."printform.php"." target="."_blank"." style="."
+            <?php if($pos2==1) echo"<li><a href="."printform.php?type=2"." target="."_blank"." style="."
             font-size:18px;".">Application Form for Executive in Executive Development Centre</a></li>"; ?>
-            <?php if($pos3==1) echo"<li><a href="."printform.php"." target="."_blank"." style="."
+            <?php if($pos3==1) echo"<li><a href="."printform.php?type=3"." target="."_blank"." style="."
             font-size:18px;".">Application Form for Office Assistant in EDC</a></li>"; ?>
-            <?php if($pos4==1) echo"<li><a href="."printform.php"." target="."_blank"." style="."
+            <?php if($pos4==1) echo"<li><a href="."printform.php?type=4"." target="."_blank"." style="."
             font-size:18px;".">Application Form for Technical Manpower for Clinical Diagnostics and Pathological Studies</a></li>"; ?>
-            <?php if($pos5==1) echo"<li><a href="."printform.php"." target="."_blank"." style="."
+            <?php if($pos5==1) echo"<li><a href="."printform.php?type=5"." target="."_blank"." style="."
             font-size:18px;".">Application Form for Lab Assistant [for CMDR]</a></li>"; ?>
-            <?php if($pos6==1) echo"<li><a href="."printform.php"." target="."_blank"." style="."
+            <?php if($pos6==1) echo"<li><a href="."printform.php?type=6"." target="."_blank"." style="."
             font-size:18px;".">Application Form for Technical Officer [Centre for Interdisciplinary Research (CIR)]</a></li>"; ?>
-            <?php if($pos7==1) echo"<li><a href="."printform.php"." target="."_blank"." style="."
+            <?php if($pos7==1) echo"<li><a href="."printform.php?type=7"." target="."_blank"." style="."
             font-size:18px;".">Application Form for Technical Manpower [Centre for Interdisciplinary Research (CIR)]</a></li>"; ?>
         </ul>
 </div>

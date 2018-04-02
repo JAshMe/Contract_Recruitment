@@ -105,7 +105,7 @@ $emp_code=validate($r['emp_code']);
 		<div class="form-group">
 			<label class="control-label col-sm-3" for="dob"><span class="text-danger">*</span> Date of Birth :</label>
 			<div class="col-sm-5">
-				<input  id="dob" type="date" class="form-control" required value="<?php if(isset($dob)) echo "$dob"; ?>" name="dob" > <font class="text-danger">(MM-DD-YYYY)</font>
+				<input  id="dob" type="date" class="form-control" required value="<?php if(isset($dob)) echo "$dob"; ?>" name="dob" >
 			</div>
 		</div>
 
@@ -200,9 +200,7 @@ $emp_code=validate($r['emp_code']);
 			<div class="form-group">
 			<label class="control-label col-sm-3" for="c_add"><span class="text-danger">*</span> Correspondence Address:</label>
 			<div class="col-sm-9">
-				<textarea class="form-control" id="c_add" required  name="corr_address">
-                    <?php if(isset($corr_address)) echo "$corr_address"; ?>
-				</textarea>
+				<textarea class="form-control" id="c_add" required  name="corr_address"><?php if(isset($corr_address)) echo "$corr_address"; ?></textarea>
 			</div>
 		</div>
 
@@ -210,9 +208,7 @@ $emp_code=validate($r['emp_code']);
 		<div class="form-group">
 			<label class="control-label col-sm-3" for="add"><span class="text-danger">*</span> Permanent Address:</label>
 			<div class="col-sm-9">
-				<textarea class="form-control" id="add" required  name="address">
-                    <?php if(isset($address)) echo "$address"; ?>
-				</textarea>
+				<textarea class="form-control" id="add" required  name="address"><?php if(isset($address)) echo "$address"; ?></textarea>
 			</div>
 		</div>
 

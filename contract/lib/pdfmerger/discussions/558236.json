@@ -1,0 +1,10 @@
+[
+  {
+    "Id": "1284474",
+    "ThreadId": "558236",
+    "Html": "Hi, i have a database in mysql with the path or the name of the pdf file.\r<br />\nthe problem is that addpdf doesn't recognize this as a path and by so it does nothing.<br />\n",
+    "PostedDate": "2014-08-04T03:37:40.203-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

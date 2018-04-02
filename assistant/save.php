@@ -11,7 +11,7 @@ require_once("./included_classes/class_user.php");
 	
 	$query="SELECT * from freeze where user_id='$id'";
 	$r = $db->process_query($query);
-	if(mysql_num_rows($r)>0)
+	if(mysqli_num_rows($r)>0)
 	{
 		$misc->palert("You cannot modify you information after you have freezed your form","home.php?val=perinfo");
 	}
@@ -28,7 +28,7 @@ $id=$_SESSION['user'];
 $query="SELECT * from `phd_info` where `user_id` like '$id'";
 $r = $db->process_query($query);
 
-if(mysql_num_rows($r)>0)
+if(mysqli_num_rows($r)>0)
 {
 	$q="UPDATE `phd_info` SET `date`='$date',`title`='$title',`university`='$university',`status`='$status' WHERE `user_id` = '$id'";
 }
@@ -77,7 +77,7 @@ if($emp=='y'&&$emp_code!="")
 	{
 	$query="SELECT * FROM `emp` WHERE emp_code='$emp_code'";
     $r = $db->process_query($query);
-    if(mysql_num_rows($r)==0)
+    if(mysqli_num_rows($r)==0)
     {
      $misc->palert("Your Employee Code is not present","home.php?val=perinfo");
 
@@ -112,7 +112,7 @@ foreach ($_POST['dept'] as $dep) {
 	}
 }
 
-if(mysql_num_rows($r)>0)
+if(mysqli_num_rows($r)>0)
 {
 	 $q="delete from department where user_id = '$id'";
 	$q = $db->process_query($q);
@@ -213,7 +213,7 @@ $id=$_SESSION['user'];
 $query="SELECT * from `employer` where `user_id` like '$id'";
 $r = $db->process_query($query);
 
-if(mysql_num_rows($r)>0)
+if(mysqli_num_rows($r)>0)
 {
 	$q="UPDATE `employer` SET `position`='$position',`from`='$from',`to`='$to',`pay`='$pay',`agp`='$agp',`basic_pay`='$basic_pay',`nature`='$nature',`organisation`='$organisation',`emp_type`='$emp_type' WHERE user_id = '$id'";
 }
@@ -350,7 +350,7 @@ if(isset($pincode)&&strlen($pincode)!=6)
 }
 	$q="Select * from reference where user_id='$id'";
 	$r=$db->process_query($q);
-     if(mysql_num_rows($r)==2){
+     if(mysqli_num_rows($r)==2){
 		  $misc->palert("Only 2 references can be submitted","home.php?val=reference");
 	 }
 
@@ -376,7 +376,7 @@ if(strlen($info)>500)
 {
 	$misc->palert("Only 500 characters allowed","home.php?val=info");
 }
-if(mysql_num_rows($r)>0)
+if(mysqli_num_rows($r)>0)
 {
 	$q="UPDATE `other_info` SET `info`='$info' WHERE user_id = '$id'";
 }

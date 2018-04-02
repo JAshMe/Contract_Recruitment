@@ -70,7 +70,7 @@
 		//$errorInUploading++;
 		//$misc->palert("No File Selected!",""); 
 	}
-	else if (($extension != "JPG") &&($extension != "jpg"))
+	else if (($extension != "JPG") &&($extension != "jpg") && ($extension != "jpeg") && ($extension != "JPEG"))
 	{
 		$errorInUploading++;
 		$misc->palert("The Extension of your file was ".$extension.". Only JPG Files are allowed!","home.php?val=image");

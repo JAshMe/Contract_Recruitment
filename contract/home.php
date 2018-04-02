@@ -46,28 +46,28 @@ if(!isset($_SESSION['user']))
                 	<div class="well">
                         <div class="list-group">
                              <?php 
-        			                        if($_GET['val']=="perinfo")
-                                                                 include("personal_info.php");
-							else  if($_GET['val']=="image")
-								include("image.php");
-							else  if($_GET['val']=="education_qual")
-								include("education_qual.php");
-							else  if($_GET['val']=="present_emp")
-								include("present_emp.php");
-							else  if($_GET['val']=="work_exp")
-								include("work_exp.php");
-							else  if($_GET['val']=="reference")
-								include("reference.php");
-             else if($_GET['val']=='post_detail')
-                 include("post_detail.php");
-             else if($_GET['val']=="app_post")
-                     include("app_post.php");
-						else if($_GET['val']=="print")
-								include("print.php");
-            else if($_GET['val']=='other_info')
-                    include("other_info.php");
-							else if($_GET['val']=="contact")
-								include("contact.php");
+                                if($_GET['val']=="perinfo")
+                                         include("personal_info.php");
+                                else  if($_GET['val']=="image")
+                                        include("image.php");
+                                else  if($_GET['val']=="education_qual")
+                                        include("education_qual.php");
+                                else  if($_GET['val']=="present_emp")
+                                        include("present_emp.php");
+                                else  if($_GET['val']=="work_exp")
+                                        include("work_exp.php");
+                                else  if($_GET['val']=="reference")
+                                        include("reference.php");
+                                else if($_GET['val']=='post_detail')
+                                        include("post_detail.php");
+                                else if($_GET['val']=="app_post")
+                                        include("app_post.php");
+                                else if($_GET['val']=="print")
+                                        include("print.php");
+                                else if($_GET['val']=='other_info')
+                                        include("other_info.php");
+                                else if($_GET['val']=="contact")
+                                        include("contact.php");
            	   				?>
                         </div>
                     </div>

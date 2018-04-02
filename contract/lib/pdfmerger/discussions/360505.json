@@ -1,0 +1,10 @@
+[
+  {
+    "Id": "852224",
+    "ThreadId": "360505",
+    "Html": "\r\n<p>Definitely not denying the fact that maybe I am missing something but for now I am stumped.</p>\r\n<p>Nothing else seems to run after this script.&nbsp; It just stops.&nbsp; Is there an exit; somewhere that I am missing?&nbsp; My work around is to have it run last on the page after everything else but would like to have it work in order.</p>\r\n<p>So there is no confusion, I have a basic page that runs the script to combine a couple of PDF's together and then an HTML line that says &quot;It ready, click to download&quot;.</p>\r\n<p>&nbsp;</p>\r\n<p>Thanks.</p>\r\n",
+    "PostedDate": "2012-06-21T10:05:52.737-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]
