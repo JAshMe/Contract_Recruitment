@@ -35,12 +35,12 @@
                             <a class="list-group-item <?php if(isset($_GET['val']) && $_GET['val']=='other_info' ) echo "active"; ?> " id="midframe" href="./home.php?val=other_info">Any Other Information</a>
                                 <a class="list-group-item <?php
 
+                                if(isset($_GET['val']) && $_GET['val']=='app_post' ) echo " active";
                                         $verdict = verify_fill($_SESSION['user']);
                                         $_SESSION['verdict']=$verdict;
                                         if($verdict!="ok")
                                                 echo "disabled\" href=\"#\" data-toggle=\"tooltip\" title=\"$verdict before applying for any post.\" ";
-                                        else echo " \" href=\"./home.php?val=app_post";
-                                         if(isset($_GET['val']) && $_GET['val']=='app_post' ) echo "active";
+                                        else echo " \" href=\"./home.php?val=app_post\"";
                                         ?>" id="midframe">Apply For Post</a>
                                 <a class="list-group-item <?php if(isset($_GET['val']) && $_GET['val']=='print' ) echo "active"; ?> " id="midframe" href="./home.php?val=print">Print Form</a>
                             <a class="list-group-item <?php if(isset($_GET['val']) && $_GET['val']=='contact' ) echo "active"; ?> " id="midframe" href="./home.php?val=contact">Contact Us</a>

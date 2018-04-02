@@ -366,7 +366,7 @@ for($i = 0; $i < 7 ; $i++)
                     <h4><label class="control-label col-sm-11" for="app_post_label">These are the posts for which you can apply (based on the information you provided earlier) :</label></h4>
                     <br><br><br>
                     <div class="col-sm-offset-3 col-sm-6">
-                        <select id="app_post_label" class="form-control">
+                        <select id="app_post_label" class="form-control" name="app_post">
                                 <option value="0">---Choose your post---</option>
                                 <?php if($post_array[0]) echo "<option value=\"1\">Project Supervisor [Junior Engineer-Civil/ Electrical]</option>" ?>
                                 <?php if($post_array[1]) echo "<option value=\"2\" >Executive in Executive Development Centre</option>" ?>

@@ -7,7 +7,7 @@ $misc= new miscfunctions();
  $db = new sqlfunctions();
 $id=$_SESSION['user'];
 
-	
+
 	$doc1 = $id.".DOCX";
 	$doc2 = $id."_2.DOCX";
 	$pdf1 = $id.".pdf";
@@ -23,7 +23,7 @@ $id=$_SESSION['user'];
 	$c12 = "convert -density 300 -trim -quality 100 CreditSheets/".$pdf1." CreditSheets/".$img1;
 	exec($c11);
 	exec($c22);
-  echo exec('whoami');*/
+  //echo exec('whoami');*/
 ?>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
@@ -132,11 +132,11 @@ while(($r = $db->fetch_rows($c)))
   $marital=validate($r['marital_status']);
   $domicile=validate($r['domicile']);
   $corr_address=validate($r['corr_address']);
-  
+
   $place_of_application=validate($r['place_of_application']);
-  $mobile=validate($r['mobile']); 
+  $mobile=validate($r['mobile']);
   $id_type=validate($r['id_type']);
-  $id_no=validate($r['id_no']); 
+  $id_no=validate($r['id_no']);
   $emp = $r['emp'];
   $emp_code = $r['emp_code'];
  }
@@ -178,23 +178,23 @@ while(($r = $db->fetch_rows($c)))
 <?php
 	if($emp == 'y'){
 		$emp = $emp_code." - ".$emp_name;
-		echo "<tr><th>MNNIT Staff:</th><td>$emp</td></tr>";
+		//echo "<tr><th>MNNIT Staff:</th><td>$emp</td></tr>";
 	}
 ?>
-	
-<tr><th>Application Id:</th><td><?php echo $_SESSION['user']."/ ".$count." (".$totalcount.")";?></td></tr>
-<tr><th>Post Applied For:</th><td>Assistant Professor AGP-<?php echo $post;?></td></tr>
-<tr><th>Department:</th><td><?php echo $rd['dept'];?></td></tr>
-<tr><th>MNNIT Reference No.:</th><td><?php echo $refno;?></td></tr> 	
-<tr><th>Bank Transaction Id:</th><td><?php echo $tranid;?></td></tr> 
-<tr><th>Amount:</th><td><?php echo " Rs ".$amount;?></td></tr> 
+
+<tr><th>Application Id:</th><td><?php //echo $_SESSION['user']."/ ".$count." (".$totalcount.")";?></td></tr>
+<tr><th>Post Applied For:</th><td>Assistant Professor AGP-<?php //echo $post;?></td></tr>
+<tr><th>Department:</th><td><?php //echo $rd['dept'];?></td></tr>
+<tr><th>MNNIT Reference No.:</th><td><?php //echo $refno;?></td></tr>
+<tr><th>Bank Transaction Id:</th><td><?php //echo $tranid;?></td></tr>
+<tr><th>Amount:</th><td><?php //echo " Rs ".$amount;?></td></tr>
 </table>
 </div>
 
 
 <div class="col-md-4 col-xs-4">
 <table class="table">
-<div align="center"><div style="margin-top:0px;margin-bottom:0px"><?php echo "<img src=./photos/".$_SESSION['user'].".JPG style=\"margin-top:0px; border-width:thin;\" width=\"175\" height=\"180\" alt = \"Photo not in Records Please Upload Your Photo\" /> "; ?> </div>
+<div align="center"><div style="margin-top:0px;margin-bottom:0px"><?php //echo "<img src=./photos/".$_SESSION['user'].".JPG style=\"margin-top:0px; border-width:thin;\" width=\"175\" height=\"180\" alt = \"Photo not in Records Please Upload Your Photo\" /> "; ?> </div>
 </div></div>
 <div align="center"><div style="margin-top:0px;margin-bottom:0px"><?php echo "<img src=./photos/".$_SESSION['user']."_2.JPG style=\"margin-top:0px; border-width:thin;\" width=\"175\" height=\"50\" alt = \"Photo not in Records Please Upload Your Photo\" /> "; ?> </div>
 </div></div>
@@ -278,7 +278,7 @@ while(($r = $db->fetch_rows($c)))
 	  $division = validate($r['division']);
 	  $qualification = validate($r['qualification']);
 	  $board = validate($r['board']);
-	  
+
 	  if($division=='2'){
 	  	$division = "<u><b>2</b></u>";
 	  }
@@ -349,12 +349,12 @@ if(mysqli_num_rows($r)>0)
 <tr><th>D) From:</th><td><?php echo $from;?></td><th style="width:10%">E) To</th><td><?php echo $to;?></td></tr>
 <tr><th>F) Pay in Pay Band:</th><td><?php echo $pay;?></td><th>G) AGP/GP:</th><td><?php echo $agp;?></td></tr>
 <tr><th>H) Basic Pay:</th><td><?php echo $basic_pay;?></td></tr>
-<tr><th>I) Nature of work:</th><td><?php echo $nature;?></td></tr> 
+<tr><th>I) Nature of work:</th><td><?php echo $nature;?></td></tr>
 </table>
- 
- 
- 
- 
+
+
+
+
  <?php
  	$query="SELECT * from `teaching` where `user_id` like '$id'";
     $c = $db->process_query($query);
@@ -374,20 +374,20 @@ if(mysqli_num_rows($r)>0)
 	  $month=validate($r['month']);
 	  $pay=validate($r['pay']);
 	  $type=validate($r['emp_type']);
-	  
+
 	  $tenure = $year." Year(s) ".$month." Month(s)";
-	  
+
 ?>
 	<li>
     	<table class="table table-bordered table-striped">
         <tr><th>A) Organisation:</th><td><?php echo $organisation;?></td><th>B) Position Held:</th><td><?php echo $position;?></td></tr>
         <tr><th>C) From:</th><td><?php echo $from;?></td><th style="width:10%">D) To</th><td><?php echo $to;?></td></tr>
         <tr><th>E) Pay Scale with AGP:</th><td><?php echo $pay;?></td><th>F) Type of Employer:</th><td><?php echo $type;?></td></tr>
-        <tr><th>G) Tenure:</th><td><?php echo $tenure;?></td></tr> 
+        <tr><th>G) Tenure:</th><td><?php echo $tenure;?></td></tr>
         </table>
 	</li>
     <?php } ?>
-    
+
 </ol>
 </table>
 
@@ -400,7 +400,7 @@ if(mysqli_num_rows($r)>0)
  <hr />
 <h4><strong>7. Research Experience / Post Doctoral Research:</strong></h4>
 <ol>
-<?php 
+<?php
 while(($r = $db->fetch_rows($c)))
     {
   $tmp_id=$r['id'];
@@ -412,7 +412,7 @@ while(($r = $db->fetch_rows($c)))
   $month=validate($r['month']);
   $salary=validate($r['salary']);
   $nature=validate($r['nature']);
-  
+
   $tenure = $year." Year(s) ".$month." Month(s)";
 ?>
 	<li>
@@ -420,7 +420,7 @@ while(($r = $db->fetch_rows($c)))
         <tr><th>A) Organisation:</th><td><?php echo $organisation;?></td><th>B) Position Held:</th><td><?php echo $position;?></td></tr>
         <tr><th>C) From:</th><td><?php echo $from;?></td><th style="width:10%">D) To</th><td><?php echo $to;?></td></tr>
         <tr><th>E) Salary/Fellowship/Stipend:</th><td><?php echo $salary;?></td></tr>
-        <tr><th>F) Nature of work:</th><td><?php echo $nature;?></td><th>G) Tenure:</th><td><?php echo $tenure;?></td></tr> 
+        <tr><th>F) Nature of work:</th><td><?php echo $nature;?></td><th>G) Tenure:</th><td><?php echo $tenure;?></td></tr>
         </table>
 	</li>
     <?php } ?>
@@ -453,7 +453,7 @@ while(($r = $db->fetch_rows($c)))
         <tr><th>A) Organisation:</th><td><?php echo $organisation;?></td><th>B) Position:</th><td><?php echo $position;?></td></tr>
         <tr><th>C) From:</th><td><?php echo $from;?></td><th style="width:10%">D) To</th><td><?php echo $to;?></td></tr>
         <tr><th>E) Pay Scale with AGP:</th><td><?php echo $pay;?></td><th>F) Type of Employer:</th><td><?php echo $type;?></td></tr>
-        <tr><th>G) Nature of work:</th><td><?php echo $nature;?></td></tr> 
+        <tr><th>G) Nature of work:</th><td><?php echo $nature;?></td></tr>
         </table>
 	</li>
      <?php } ?>
@@ -486,7 +486,7 @@ while(($r = $db->fetch_rows($c)))
         <tr><th>A) Name:</th><td><?php echo $name;?></td><th>B) Desgination:</th><td><?php echo $designation;?></td></tr>
         <tr><th>C) Address:</th><td><?php echo $address;?></td></tr>
         <tr><th>D) City:</th><td><?php echo $city;?></td><th>E) PIN:</th><td><?php echo $pincode;?></td></tr>
-        <tr><th>F) Mobile:</th><td><?php echo $mobile;?></td><th>G) Email:</th><td><?php echo $email;?></td></tr> 
+        <tr><th>F) Mobile:</th><td><?php echo $mobile;?></td><th>G) Email:</th><td><?php echo $email;?></td></tr>
         </table>
 	</li>
     <?php } ?>
@@ -501,13 +501,13 @@ while(($r = $db->fetch_rows($c)))
     if(mysqli_num_rows($r)>0)
     {
     	$r = $db->fetch_rows($r);
-   	    $info = validate($r['info']);  
+   	    $info = validate($r['info']);
 	}
 ?>
  <hr />
 <h4><strong>10. Any Other Information:</strong></h4>
     <table class="table table-bordered table-striped">
-    <tr><th>Information:</th><td><?php echo $info;?></td></tr>
+    <tr><th>Information:</th><td><?php// echo $info;?></td></tr>
     </table>
 </table>
 
@@ -519,7 +519,7 @@ while(($r = $db->fetch_rows($c)))
     if(mysqli_num_rows($r)>0)
     {
     	$r = $db->fetch_rows($r);
-   	    $points = validate($r['points']);  
+   	    $points = validate($r['points']);
 	}
 ?>
 <hr/>
@@ -544,8 +544,8 @@ while(($r = $db->fetch_rows($c)))
 <?php } ?><!-- END OF DEPARTMENT LOOP-->
 
 
-<script> window.print(); </script>
-
+<script>// window.print(); </script>
 
 </html>
+
 

@@ -1,0 +1,50 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "",
+      "DisplayName": ""
+    },
+    "ClosedComment": "",
+    "ClosedDate": null,
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "Whenever I used pdfmerge to merge PDF files, it strips all the hyperlinks from the PDF's.\nIs there anyway to counter this?\n\nSince there's no documentation, it's really hard to figure this out.\n\nCheers,\nReinier.",
+    "LastUpdatedDate": "2013-12-08T18:34:32.017-08:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Unassigned",
+      "Severity": 0,
+      "Id": 0
+    },
+    "ProjectName": "pdfmerger",
+    "ReportedDate": "2013-06-03T08:18:49.88-07:00",
+    "Status": {
+      "Name": "Proposed",
+      "Id": 1
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "PDFmerge removes all links from PDF",
+    "Type": {
+      "Name": "Unassigned",
+      "Id": 5
+    },
+    "VoteCount": 1,
+    "Id": 8782
+  },
+  "FileAttachments": [],
+  "Comments": [
+    {
+      "Message": "I've noticed the same issue with PDF Forms and JavaScript.\r\n\r\nWhile reading the code, I found this comment:\r\n\r\n> PDFMerger has all the limitations of the FPDI package - essentially, it cannot import dynamic content such as form fields, links or page annotations (anything not a part of the page content stream).\r\n\r\nI've found [this package](http://www.fpdf.org/en/script/script36.php) (PHP Class) that advertises adding JavaScript to the PDF. I wonder if the same package could exist for links",
+      "PostedDate": "2013-07-29T15:22:47.007-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "An advanced PDF merging library can efficiently enable developers to merge two or more PDF document into one and then save as another PDF document without changing the original content and format. Different from PDF document appending, which is processed by directly tagging the second PDF file to the target one, this [PDF file merging function](http://www.rasteredge.com/how-to/vb-net-imaging/pdf-merge/) will put the two target PDF together and save as new PDF, without changing the previous two PDF documents at all. ",
+      "PostedDate": "2013-12-08T18:34:32.017-08:00",
+      "Id": -2147483648
+    }
+  ]
+}

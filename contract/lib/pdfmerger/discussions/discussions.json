@@ -1,0 +1,102 @@
+[
+  {
+    "Id": "264402",
+    "Title": "PHP Unknown: Assigning the return value of new by reference is deprecated",
+    "LatestDate": "2011-07-08T04:33:45.567-07:00"
+  },
+  {
+    "Id": "265546",
+    "Title": "Number limit of page",
+    "LatestDate": "2011-07-18T06:05:51.177-07:00"
+  },
+  {
+    "Id": "285102",
+    "Title": "Merging encrypted PDFs",
+    "LatestDate": "2012-01-05T09:04:38.087-08:00"
+  },
+  {
+    "Id": "288534",
+    "Title": "Doesn't work at all?",
+    "LatestDate": "2016-04-04T06:04:12.193-07:00"
+  },
+  {
+    "Id": "358833",
+    "Title": "Page orientation",
+    "LatestDate": "2014-06-18T08:26:52.507-07:00"
+  },
+  {
+    "Id": "360505",
+    "Title": "Nothing else runs after script",
+    "LatestDate": "2012-06-21T10:05:52.737-07:00"
+  },
+  {
+    "Id": "362586",
+    "Title": "Using external PDFs via URL",
+    "LatestDate": "2014-12-15T00:40:34.007-08:00"
+  },
+  {
+    "Id": "397549",
+    "Title": "Upcoming Support Release - Please Read!",
+    "LatestDate": "2013-01-17T16:10:19.133-08:00"
+  },
+  {
+    "Id": "441729",
+    "Title": "does this only work with certain types/version of pdfs?",
+    "LatestDate": "2014-01-06T22:59:01.683-08:00"
+  },
+  {
+    "Id": "445058",
+    "Title": "Bookmark",
+    "LatestDate": "2013-05-27T00:03:37.667-07:00"
+  },
+  {
+    "Id": "465288",
+    "Title": "Size limit?",
+    "LatestDate": "2013-11-04T04:24:49.93-08:00"
+  },
+  {
+    "Id": "470727",
+    "Title": "Problem with PDF Merger (download & browser option)",
+    "LatestDate": "2014-03-23T18:48:49.49-07:00"
+  },
+  {
+    "Id": "546159",
+    "Title": "Merging Adobe PDF",
+    "LatestDate": "2014-05-21T12:13:02.223-07:00"
+  },
+  {
+    "Id": "550943",
+    "Title": "Is it possible to merge 2 pdf (half pages) to 1 page pdf?",
+    "LatestDate": "2014-07-08T07:56:21.82-07:00"
+  },
+  {
+    "Id": "558236",
+    "Title": "Merge PDF's from Database",
+    "LatestDate": "2014-08-04T03:37:40.203-07:00"
+  },
+  {
+    "Id": "631978",
+    "Title": "Keep Getting 500 Internal Server Error?",
+    "LatestDate": "2015-04-21T07:48:07.867-07:00"
+  },
+  {
+    "Id": "640603",
+    "Title": "Is there a way to merge all PDF's in a folder",
+    "LatestDate": "2015-06-29T14:12:02.063-07:00"
+  },
+  {
+    "Id": "651321",
+    "Title": "Output Exception",
+    "LatestDate": "2016-02-15T06:37:54.68-08:00"
+  },
+  {
+    "Id": "663405",
+    "Title": "Merging Images",
+    "LatestDate": "2017-07-11T07:05:56.757-07:00"
+  },
+  {
+    "Id": "663961",
+    "Title": "Password Protection to Merged Files",
+    "LatestDate": "2017-11-14T03:16:20.927-08:00"
+  }
+]

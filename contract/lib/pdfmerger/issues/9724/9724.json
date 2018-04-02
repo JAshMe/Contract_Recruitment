@@ -1,0 +1,39 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "",
+      "DisplayName": ""
+    },
+    "ClosedComment": "",
+    "ClosedDate": null,
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "Hello,\n\nI'm having a issue here, working with a lot of XML data, and putting them to a well-formed report, and, for a reason i don't know, the regex (on my file, fpdfmerge.php, at line 666, wich reads XObjets) has the following regex: `(/[^%\\[\\]<>\\(\\)\\r\\n\\t/]+) Do`\n\nWith this pattern, any text present in the document that has ' Do' will cause the pdf merge to crash and fail. How can i fix this? For what i could understand the treatment is to find specific XObjects and do something to them, however the Regex finds text according to Street information and sometimes Names, is there any workaround on this?\n\nException is:\nUndefined index: xxxxxxxxxx - in fpdf_merge.php on line 668 : reference d'object inconnue\n\nI could paste the value of the 'content' variable here, but its too extensive",
+    "LastUpdatedDate": "2017-05-11T09:23:59.107-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Unassigned",
+      "Severity": 0,
+      "Id": 0
+    },
+    "ProjectName": "pdfmerger",
+    "ReportedDate": "2017-05-11T09:22:02.89-07:00",
+    "Status": {
+      "Name": "Proposed",
+      "Id": 1
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "Regex Prevents PDF to merge",
+    "Type": {
+      "Name": "Unassigned",
+      "Id": 5
+    },
+    "VoteCount": 1,
+    "Id": 9724
+  },
+  "FileAttachments": [],
+  "Comments": []
+}

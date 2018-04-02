@@ -1,0 +1,10 @@
+[
+  {
+    "Id": "639382",
+    "ThreadId": "264402",
+    "Html": "\r\n<p>I retrieve this error when I use PDF merger class but file is still created</p>\r\n<p>This is my log</p>\r\n<p>2011-07-08 4:00:05 - PHP Unknown: Assigning the return value of new by reference is deprecated in /PDFMerger/fpdi/fpdi.php on line 88<br>\r\n2011-07-08 4:00:05 - PHP Unknown: Declaration of FPDF_TPL::Image() should be compatible with that of FPDF::Image() in /PDFMerger/fpdi/fpdf_tpl.php on line 409<br>\r\n2011-07-08 4:00:05 - PHP Unknown: Assigning the return value of new by reference is deprecated in /PDFMerger/fpdi/fpdi_pdf_parser.php on line 239<br>\r\n2011-07-08 4:00:05 - PHP Unknown: Assigning the return value of new by reference is deprecated in /PDFMerger/fpdi/fpdi_pdf_parser.php on line 244<br>\r\n2011-07-08 4:00:05 - PHP Unknown: Assigning the return value of new by reference is deprecated in /PDFMerger/fpdi/pdf_parser.php on line 104<br>\r\n2011-07-08 4:00:05 - PHP Unknown: Assigning the return value of new by reference is deprecated in /PDFMerger/fpdi/pdf_parser.php on line 217<br>\r\n2011-07-08 4:00:05 - PHP Unknown: Assigning the return value of new by reference is deprecated in /PDFMerger/fpdi/pdf_parser.php on line 297<br>\r\n2011-07-08 4:00:05 - PHP Unknown: Assigning the return value of new by reference is deprecated in /PDFMerger/fpdi/pdf_parser.php on line 448</p>\r\n",
+    "PostedDate": "2011-07-08T04:33:45.567-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]
