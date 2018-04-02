@@ -42,6 +42,7 @@
                                                 echo "disabled\" href=\"#\" data-toggle=\"tooltip\" title=\"$verdict before applying for any post.\" ";
                                         else echo " \" href=\"./home.php?val=app_post\"";
                                         ?>" id="midframe">Apply For Post</a>
+                                <a class="list-group-item <?php if(isset($_GET['val']) && $_GET['val']=='withdraw' ) echo "active"; ?> " id="midframe" href="./home.php?val=withdraw">Withdraw from a Post</a>
                                 <a class="list-group-item <?php if(isset($_GET['val']) && $_GET['val']=='print' ) echo "active"; ?> " id="midframe" href="./home.php?val=print">Print Form</a>
                             <a class="list-group-item <?php if(isset($_GET['val']) && $_GET['val']=='contact' ) echo "active"; ?> " id="midframe" href="./home.php?val=contact">Contact Us</a>
 

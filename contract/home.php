@@ -62,6 +62,8 @@ if(!isset($_SESSION['user']))
                                         include("post_detail.php");
                                 else if($_GET['val']=="app_post")
                                         include("app_post.php");
+                                else if($_GET['val']=="withdraw")
+                                        include("withdraw.php");
                                 else if($_GET['val']=="print")
                                         include("print.php");
                                 else if($_GET['val']=='other_info')
