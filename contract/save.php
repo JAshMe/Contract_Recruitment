@@ -457,6 +457,8 @@ if(isset($_POST['info_pg']))
 if(isset($_POST['post_app']))
 {
 	$post = validate($_POST['app_post']);
+	if($post==0)
+		$misc->palert("Please Select the post you want to apply.","home.php?val=app_post");
 
 	//updating it in apply_final
 	$iquery = "update final_apply set pos".$post." = 1 where user_id = '$id'";

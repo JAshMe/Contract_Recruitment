@@ -1,0 +1,50 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "",
+      "DisplayName": ""
+    },
+    "ClosedComment": "",
+    "ClosedDate": null,
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "Error produced:\n-----------------\n\nFatal error: Uncaught exception 'Exception' with message 'Error outputting PDF to 'file'.' in C:\\inetpub\\wwwroot\\iQForms894_special\\iQagentLibrary\\libs\\PDFMerger\\PDFMerger.php:124 Stack trace: #0 C:\\inetpub\\wwwroot\\iQForms894_special\\output\\forms\\test_pdf_multipage_out\\page3.php(41): PDFMerger->merge('file', 'Always_Saved/rq...') #1 {main} thrown in C:\\inetpub\\wwwroot\\iQForms894_special\\iQagentLibrary\\libs\\PDFMerger\\PDFMerger.php on line 124\n\nCode producing this error:\n-----------------------------\n\n$pdf = new PDFMerger;\n\n$sequence_count = count($_SESSION['pdf_merge_sequence']);\nfor ($x = 0; $x <= $sequence_count-2; $x++) {\n  \t$pdf->addPDF(get_file_name(), 'all');\n    $_SESSION['pdf_merge_counter']++;\n} \n\n$pdf->merge('file', get_merged_file_name());",
+    "LastUpdatedDate": "2016-08-19T14:29:00.24-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Unassigned",
+      "Severity": 0,
+      "Id": 0
+    },
+    "ProjectName": "pdfmerger",
+    "ReportedDate": "2016-08-19T14:01:40.77-07:00",
+    "Status": {
+      "Name": "Proposed",
+      "Id": 1
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "Error with no explanation",
+    "Type": {
+      "Name": "Unassigned",
+      "Id": 5
+    },
+    "VoteCount": 1,
+    "Id": 9696
+  },
+  "FileAttachments": [],
+  "Comments": [
+    {
+      "Message": "$pdf1 = new PDFMerger;\r\n\r\n$pdf1->addPDF('samplepdfs/one.pdf')\n\t->addPDF('samplepdfs/two.pdf')\n\t->addPDF('samplepdfs/three.pdf')\n\t->merge('file', 'samplepdfs/TEST2.pdf');\r\n\r\n\nThe above code provided with the sample also does not work. Moving to another library. Too many obvious bugs.",
+      "PostedDate": "2016-08-19T14:26:46.74-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "0 errors are produced when the merging is set to 'download' instead of 'file'.  Please figure this out and fix it.",
+      "PostedDate": "2016-08-19T14:29:00.24-07:00",
+      "Id": -2147483648
+    }
+  ]
+}

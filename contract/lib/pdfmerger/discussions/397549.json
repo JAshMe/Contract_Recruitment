@@ -1,0 +1,18 @@
+[
+  {
+    "Id": "920069",
+    "ThreadId": "397549",
+    "Html": "\r\n<p>My apologies to everybody that has posted here looking for support or documentation and never received any. I wrote this class over three years ago now when I needed a quick way to merge PDF documents for a project at work. My needs were simple and as a\r\n result so was this class. It was quick, dirty, and it worked like a charm. My boss at the time told me to put it on Codeplex in case we needed it again someday.</p>\r\n<p>I confess that after putting it here I completely forgot about it (and Codeplex does not notify me of posts or new issues for some reason).</p>\r\n<p>I'm not at all surprised at the mistakes and shortcomings - I wrote it quickly and didn't put much thought into the needs of other people trying to use it, only myself. I'm pleasantly surprised to see other people pitching in and providing occasional support\r\n to confused users.</p>\r\n<p>I've decided to go ahead and do a support release of this project. I have no need for PDF merging anymore (but I might someday - you truly never know!) but I dislike the idea of starting a project and leaving it in a buggy or unfinished state.</p>\r\n<p>Here are the problems I've identified:</p>\r\n<ul>\r\n<li>Warnings and notices. I coded this against PHP 5.2 (I believe) and with only minimal error reporting turned on so there are bound to be problems with the aging codebase on newer versions of PHP.\r\n</li><li>Lack of reporting. When problems occur, the class simply shuts down without much feedback in the way of an exception.\r\n</li><li>Requires a physical PDF file to operate against (no stream option). </li><li>The class expects to be the last thing to run, and sends headers on its own. </li><li>No option to adjust page orientation. </li></ul>\r\n<p>One of the biggest selling points of this class is its simplicity, and I definitely mean to try and maintain that ease of use while still having modern code.</p>\r\n<p>I plan on starting the support release soon - and definitely plan to have it out by the end of the year, if not sooner.</p>\r\n",
+    "PostedDate": "2012-10-01T08:18:26.327-07:00",
+    "UserRole": "Owner",
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "988452",
+    "ThreadId": "397549",
+    "Html": "\r\n<p>I have already fixed the bug on Output param using file and make this code support up to php 5.3.</p>\r\n<p>Please find the code in issure tracker</p>\r\n",
+    "PostedDate": "2013-01-17T16:10:19.133-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

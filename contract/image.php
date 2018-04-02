@@ -53,17 +53,17 @@
                 <hr>
 
                 <div class="form-group">
-                  <label class="control-label col-sm-3" for="dob"><span class="text-danger">*</span> Upload your photograph :</label>
+                  <label class="control-label col-sm-3" for="dob">Upload your photograph :</label>
                   <div class="col-sm-5">
-                    <input type="file"  name="photo" required>
+                    <input type="file"  name="photo">
                   </div>
                 </div>
 
 
                 <div class="form-group">
-                  <label class="control-label col-sm-3" for="dob"><span class="text-danger">*</span> Upload your Signature :</label>
+                  <label class="control-label col-sm-3" for="dob"> Upload your Signature :</label>
                   <div class="col-sm-5">
-                    <input type="file"  name="sign" required>
+                    <input type="file"  name="sign">
                   </div>
         </div>
         </div>

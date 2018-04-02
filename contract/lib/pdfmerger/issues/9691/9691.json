@@ -1,0 +1,39 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "",
+      "DisplayName": ""
+    },
+    "ClosedComment": "",
+    "ClosedDate": null,
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "When splitting file, the file size is getting increased. The original file was 1.8 mb , when I splitted it , the splitted file size became 40 mb.\n\nHere is my code-\n$result = split_pdf($filenamepath,$splitTo,$splitForm);\n$merge = new PDFMerger();\n\n            foreach($result['splittedfiles'] as $file)\n            {\n              //$merge->add($file);\n              $merge->addPDF($file, 'all');\n            }\n            $fName = str_replace('.pdf', '', $fileName).'_split_'.$k.'.pdf';\n            $newFileName = $_SESSION['userFileUpload'].'/'.$fName;\n            $merge->merge('file', $newFileName);\n\n            $newMergefiles[] = $fName;\n\nPlease let me know where I am making the mistake?",
+    "LastUpdatedDate": "2016-07-18T05:26:32.2-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Unassigned",
+      "Severity": 0,
+      "Id": 0
+    },
+    "ProjectName": "pdfmerger",
+    "ReportedDate": "2016-07-18T05:23:50.843-07:00",
+    "Status": {
+      "Name": "Proposed",
+      "Id": 1
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "With Split file size increasing",
+    "Type": {
+      "Name": "Unassigned",
+      "Id": 5
+    },
+    "VoteCount": 1,
+    "Id": 9691
+  },
+  "FileAttachments": [],
+  "Comments": []
+}

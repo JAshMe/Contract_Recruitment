@@ -1,0 +1,61 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "",
+      "DisplayName": ""
+    },
+    "ClosedComment": "",
+    "ClosedDate": null,
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "1.when you use 'file' to Output merge file it doesn't work.\nto fix this:\nfpdf.php  go to line:1056\nchange return '';  to return true;\n\n\n2.if it doesn't work when your php version over 5.3\nmake sure update fpdi folder as attachment.\n\nTo fix this problem took me a whole day... good luck everyone",
+    "LastUpdatedDate": "2013-05-15T06:14:34.32-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "pdfmerger",
+    "ReportedDate": "2013-01-17T16:08:02.527-08:00",
+    "Status": {
+      "Name": "Proposed",
+      "Id": 1
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "fixed bug for this",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 3,
+    "Id": 8515
+  },
+  "FileAttachments": [
+    {
+      "FileId": 3112,
+      "FileName": "fpdi.zip",
+      "DownloadUrl": ".\\3112"
+    }
+  ],
+  "Comments": [
+    {
+      "Message": "Thank you very much for taking the time to fix it! Works very well. This should be added to the official download, so future users don't get frustrated like me :P\r\n\r\nCheers!",
+      "PostedDate": "2013-01-30T10:40:10.883-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T15:52:02.697-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-15T06:14:34.32-07:00",
+      "Id": -2147483648
+    }
+  ]
+}

@@ -1,0 +1,26 @@
+[
+  {
+    "Id": "859399",
+    "ThreadId": "362586",
+    "Html": "\r\n<p>I would like to use this class to merge external PDF files via an HTTP call.</p>\r\n<p>But even with&nbsp;<em><code>allow_url_fopen set to yes and a full http://file.path, the script insists on looking for it in my default path.\r\n</code></em></p>\r\n<p><em><code>I've used file() wrapper and a few others with no luck. What am I missing or is this simply not an available option?</code></em></p>\r\n<p>I'm not a php guru and maybe this is simple, but of anyone could indicate how to include an external pdf file for merging with this I would be most grateful.</p>\r\n<p>Thanks much!</p>\r\n",
+    "PostedDate": "2012-07-09T14:55:57.37-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1331101",
+    "ThreadId": "362586",
+    "Html": "Did you ever resolve this issue?\r<br />\n<br />\nThanks<br />\n",
+    "PostedDate": "2014-12-11T11:16:18.023-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1331929",
+    "ThreadId": "362586",
+    "Html": "\r\n<div>\r\n<div style=\"font-family:Calibri,sans-serif\"><span style=\"font-family:Calibri\">Hi Ronnie,</span></div>\r\n</div>\r\n<div style=\"font-family:Calibri,sans-serif\"><span style=\"font-family:Calibri\"><br>\r\n</span></div>\r\n<div style=\"font-family:Calibri,sans-serif\"><span style=\"font-family:Calibri\">The project changed, so nope. Sorry.</span></div>\r\n<div style=\"font-family:Calibri,sans-serif\"><span style=\"font-family:Calibri\"><br>\r\n</span></div>\r\n<div style=\"font-family:Calibri,sans-serif\"><span style=\"font-family:Calibri\">Alx</span></div>\r\n<div style=\"font-family:Calibri,sans-serif\"><br>\r\n</div>\r\n<span id=\"OLK_SRC_BODY_SECTION\" style=\"font-family:Calibri,sans-serif\">\r\n<div style=\"font-family:Calibri; font-size:11pt; text-align:left; color:black; border-bottom:medium none; border-left:medium none; padding-bottom:0in; padding-left:0in; padding-right:0in; border-top:#b5c4df 1pt solid; border-right:medium none; padding-top:3pt\">\r\n<span style=\"font-weight:bold\"></span></div>\r\n</span>",
+    "PostedDate": "2014-12-15T00:40:34.007-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]
