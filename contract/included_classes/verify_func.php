@@ -23,7 +23,7 @@ function verify_fill($id)
         $q = "select user_id from `user`  where user_id ='$id'";
         $r=$db->process_query($q);
         if(mysqli_num_rows($r)==0)
-                return "Personal Details";
+                return "Fill Personal Details";
 
     if (file_exists('./photos/'.$_SESSION['user'].".JPG")){}
     else
