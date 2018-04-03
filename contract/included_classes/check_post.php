@@ -95,7 +95,7 @@
             } else {
                 $diff_date_d_1 = date_diff(date_create($start_date_d), date_create($end_date_d))->days;
                 $year_3 = 365 * 3;
-                if ($value_d < 70 or $year_3 < $diff_date_d_1 or ($field_d != 'CE' and $field_d != 'EE')) {
+                if ($value_d < 70 or $year_3 > $diff_date_d_1 or ($field_d != 'CE' and $field_d != 'EE')) {
                     $post_array[0] = 0;
                     goto post_2_edu;
                 }
@@ -133,7 +133,7 @@ if ($max_marks_pg == '' or ($degree_pg != 'MSC' and $degree_pg != "MS" and $degr
         } else {
             $diff_date_d_1 = date_diff(date_create($start_date_d), date_create($end_date_d))->days;
             $year_3 = 365 * 3;
-            if ($value_d < 70 or $year_3 < $diff_date_d_1 or ($field_d == 'Others')) {
+            if ($value_d < 70 or $year_3 > $diff_date_d_1 or ($field_d == 'Others')) {
                 $post_array[3] = 0;
                 goto post_5_edu;
             }
@@ -152,7 +152,7 @@ $post_array[3]=1;
                 } else {
                     $diff_date_d_1 = date_diff(date_create($start_date_d), date_create($end_date_d))->days;
                     $year_3 = 365 * 3;
-                    if ($value_d < 70 or $year_3 < $diff_date_d_1 or ($field_d == 'Others')) {
+                    if ($value_d < 70 or $year_3 > $diff_date_d_1 or ($field_d == 'Others')) {
                         $post_array[4] = 0;
                         goto post_6_edu;
                     }
@@ -178,10 +178,11 @@ $post_array[3]=1;
             if ($max_marks_d == '') {
                 $post_array[6] = 0;
                 goto end1;
-            } else {
+            }
+            else {
                 $diff_date_d_1 = date_diff(date_create($start_date_d), date_create($end_date_d))->days;
                 $year_3 = 365 * 3;
-                if ($value_d < 70 or $year_3 < $diff_date_d_1 or ( $field_d == 'Others' or $field_d == 'DS')) {
+                if ($value_d < 70 or $year_3 > $diff_date_d_1 or ( $field_d == 'Others' or $field_d == 'DS')) {
                     $post_array[6] = 0;
                     goto end1;
                 }
