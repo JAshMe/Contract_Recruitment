@@ -72,16 +72,16 @@ else
 //function to save the form to server
 function saveForm($post_type)
 {
-//        ob_start();
+        ob_start();
         $id = $_SESSION['user'];
-//        require_once("printform".$post_type."_server.php");
-//        $output = ob_get_clean();
-//
-//        $dompdf = new DOMPDF();
-//        $dompdf->loadHtml($output);
-//        $dompdf->render();
-//        $output = $dompdf->output();
-//        file_put_contents("applications/".$id."_".$post_type.".pdf", $output);
+        require_once("printform".$post_type."_server.php");
+        $output = ob_get_clean();
+
+        $dompdf = new DOMPDF();
+        $dompdf->loadHtml($output);
+        $dompdf->render();
+        $output = $dompdf->output();
+        file_put_contents("applications/".$id."_".$post_type.".pdf", $output);
         return "applications/".$id."_".$post_type.".pdf";
 
 }
