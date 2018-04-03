@@ -13,29 +13,21 @@ require_once ("./include/verify_document.php");
 $misc= new miscfunctions();
 $db = new sqlfunctions();
 
+if(!isset($_SESSION['user']))
+        die("Please Login First!!");
 $id=$_SESSION['user'];
-$type = $_GET['type'];
+$post_type = $_GET['type'];
 
-if(!isset($_SESSION['post_'.$type]))
+if(!isset($_SESSION['post_'.$post_type]))
         die("<h2>Unauthorized Access</h2>");
-if(!$_SESSION['post_'.$type])
+if(!$_SESSION['post_'.$post_type])
         die("<h3>You aren't eligible for this post right now! Check in Apply for posts section.</h3>");
+
+
 
 
 $posts = array("Project Supervisor [Junior Engineer-Civil/ Electrical]","Executive in Executive Development Centre","Office Assistant in EDC","Technical Manpower [for Clinical Diagnostics and Pathological Studies, Animal Tissue Culture, Immunodiagnostics, PCR/ Molecular Based Diagnostics Lab]","Lab Assistant [for CMDR]","Technical Officer [Centre for Interdisciplinary Research (CIR)]","Technical Manpower [Centre for Interdisciplinary Research (CIR)]");
 
-
-
-//saving the pdf
-
-//
-//
-//	$doc1 = $id.".DOCX";
-//	$doc2 = $id."_2.DOCX";
-//	$pdf1 = $id.".pdf";
-//	$pdf2 = $id."_2.pdf";
-//	$img1 = $id.".jpeg";
-//	$img2 = $id."_2.jpeg";
 
 ?>
 
@@ -45,8 +37,9 @@ $posts = array("Project Supervisor [Junior Engineer-Civil/ Electrical]","Executi
         <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
         <title>Form</title>
         <link rel="stylesheet" type="text/css" href="../include/bootstrap/css/bootstrap.min.css" >
+        <script type="text/javascript" src="../include/jquery-2.1.4.min.js"></script>
         <script type="text/javascript" src="../include/bootstrap/js/bootstrap.min.js"></script>
-        <link href="https://fonts.googleapis.com/css?family=Graduate|Roboto+Condensed|Yanone+Kaffeesatz" rel="stylesheet">
+<!--        <link href="https://fonts.googleapis.com/css?family=Graduate|Roboto+Condensed|Yanone+Kaffeesatz" rel="stylesheet">-->
         <link rel="stylesheet" type="text/css" href="main.css" >
         <style type="text/css">
                 .table-bordered{
@@ -55,22 +48,23 @@ $posts = array("Project Supervisor [Junior Engineer-Civil/ Electrical]","Executi
                 .style1 {font-size: 16px}
         </style>
         <style type="text/css">
-                /*@page  {*/
-                        /*margin: 0;*/
-                        /*margin-bottom: 0;*/
-                        /*size:8.3in 11.7in;*/
-                /*}*/
-
-                .style5 {font-size: 18px; font-weight: bold; }
-                .style51 {font-size: 16px; font-weight: bold; }
-                .style6 {
-                        font-size: 18px;
-                        font-weight: bold;
+                /*!* latin *!*/
+                @font-face {
+                        font-family: 'Graduate';
+                        font-style: normal;
+                        src:url('../fonts/Graduate/Graduate-Regular.ttf');
                 }
-                .style7 {font-size: 12px}
-                .style8 {font-size: 24px}
-                .style10 {color: #000000}
-                .style37 {font-size: 18px; font-weight: bold; color: #000000; }
+
+                @font-face {
+                        font-family: 'Roboto Condensed';
+                       src: url(http://localhost/Contract_Recruitment/fonts/Roboto_Condensed/RobotoCondensed-Regular.ttf) format('truetype');
+                }
+                @font-face {
+                        font-family: 'Roboto Condensed';
+                        font-weight: bold;
+                        src: url(http://localhost/Contract_Recruitment/fonts/Roboto_Condensed/RobotoCondensed-Bold.ttf) format('truetype');
+                }
+                .style5 {font-size: 18px; font-weight: bold; font-family: 'Roboto Condensed',sans-serif;}
                 label{
                         display:inline-block;
                         width:200px;
@@ -81,6 +75,9 @@ $posts = array("Project Supervisor [Junior Engineer-Civil/ Electrical]","Executi
                 input[type=checkbox]{
                         margin-right:10px;
 
+                }
+                h4{
+                        font-family: 'Roboto Condensed',sans-serif;
                 }
                 .form
                 {
@@ -108,7 +105,7 @@ $posts = array("Project Supervisor [Junior Engineer-Civil/ Electrical]","Executi
 ?>
 
 
-        <div class="form" style="page-break-before: always">
+        <div class="form" style="width: 900px">
 
                 <table width="100%" border="0">
                         <tr>
@@ -167,43 +164,27 @@ $posts = array("Project Supervisor [Junior Engineer-Civil/ Electrical]","Executi
                 $c = $db->process_query($query);
                 $r = $db->fetch_rows($c);
                 $email=validate($r['email']);
-
-                $query="SELECT * from `emp` where emp_code = '$emp_code'";
-                $cc = $db->process_query($query);
-                while(($rr = $db->fetch_rows($cc)))
-                {
-                	$emp_name=validate($rr['emp_name']);
-                	$emp_code = $rr['emp_code'];
-                } ?>
+                ?>
 
 
                 <div class="col-md-8 col-xs-8">
                         <br>
                         <table class="table table-bordered table-striped">
-                                <?php
-                                	if($emp == 'y'){
-                                		$emp = $emp_code." - ".$emp_name;
-                                		echo "<tr><th>MNNIT Staff:</th><td>$emp</td></tr>";
-                                	}
-                                ?>
-
                                 <tr><th>Application Id:</th><td><?=$_SESSION['user'];?></td></tr>
-                                <tr><th>Post Applied For:</th><td><?= $posts[$type];?></td></tr>
+                                <tr><th>Post Applied For:</th><td><?= $posts[$post_type-1];?></td></tr>
                                 <tr><th>Department:</th><td><?= '' ?></td></tr>
                         </table>
                 </div>
 
-                <div class="col-md-4 col-xs-4">
+                <div class="col-md-4 col-xs-4" style="height: 210px;">
                         <table class="table">
                                 <div align="center"><div style="margin-top:0;margin-bottom:0"><?php echo "<img src=./photos/".$_SESSION['user'].".JPG style=\"margin-top:0; border-width:thin;\" width=\"175\" height=\"180\" alt = \"Photo not in Records Please Upload Your Photo\" /> "; ?> </div>
                                 </div>
-                                <br>
-                                <div align="center"><div style="margin-top:0;margin-bottom:0"><?php echo "<img src=./photos/".$_SESSION['user']."_2.JPG style=\"margin-top:0; border-width:thin;\" width=\"175\" height=\"50\" alt = \"Photo not in Records Please Upload Your Photo\" /> "; ?> </div>
+                                <div align="center"><div style="margin-top:10px;margin-bottom:0"><?php echo "<img src=./photos/".$_SESSION['user']."_2.JPG style=\"margin-top:0; border-width:thin;\" width=\"175\" height=\"50\" alt = \"Photo not in Records Please Upload Your Photo\" /> "; ?> </div>
                                 </div>
                         </table>
                 </div>
         </div>
-<hr>
 <h4><strong>1. Personal Info:</strong></h4>
 <hr>
 <table class="table table-bordered table-striped">
@@ -417,9 +398,6 @@ if(mysqli_num_rows($c)>0) {
 <?php } ?>
 
 
-<hr />
-
-
 <?php
 $query="SELECT * from `employer` where `user_id` like '$id'";
 $r = $db->process_query($query);
@@ -531,7 +509,6 @@ $emol = validate($r['emoluments']);
    	    $info = validate($r['info']);
 	}
 ?>
-<hr />
 <h4><strong>6. Any Other Information:</strong></h4>
                 <hr>
 <table class="table table-bordered table-striped">
@@ -556,6 +533,7 @@ $emol = validate($r['emoluments']);
         </tr>
 </table>
 </div>
+<!--<script type="text/javascript">window.print();</script>-->
 </body>
 
 </html>
