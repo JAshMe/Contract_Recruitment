@@ -379,7 +379,6 @@ $posts = array("Project Supervisor [Junior Engineer-Civil/ Electrical]","Executi
         <?php } ?>
 
 
-        <hr />
 
 
         <?php
