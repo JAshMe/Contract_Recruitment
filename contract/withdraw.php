@@ -1,11 +1,11 @@
 <?php
-	require_once("./included_classes/class_user.php");
+	  require_once("./included_classes/class_user.php");
     require_once("./included_classes/class_misc.php");
     require_once("./included_classes/class_sql.php");
     $misc= new miscfunctions();
     $db = new sqlfunctions();
-	$id=$_SESSION['user'];
-	$query="SELECT * from `final_apply` where `user_id` like '$id'";
+	  $id=$_SESSION['user'];
+	  $query="SELECT * from `final_apply` where `user_id` like '$id'";
    	$c = $db->process_query($query);
    	global $pos1,$pos2,$pos3,$pos4,$pos5,$pos6,$pos7;
    	while(($r = $db->fetch_rows($c)))
@@ -36,19 +36,19 @@
         <hr>
         <ul>
         	<?php $_SESSION['verdict']="delete"; ?>
-            <?php if($pos1==1) echo"<li><a href="."withdrawform.php?type=1"." style="."
+            <?php if($pos1==1) echo"<li><a class=\"delete\" href="."withdrawform.php?type=1"." style="."
             font-size:18px;".">Withdraw from Project Supervisor [Junior Engineer-Civil/ Electrical]</a></li>"; ?>
-            <?php if($pos2==1) echo"<li><a href="."withdrawform.php?type=2"." style="."
+            <?php if($pos2==1) echo"<li><a class=\"delete\" href="."withdrawform.php?type=2"." style="."
             font-size:18px;".">Withdraw from Executive in Executive Development Centre</a></li>"; ?>
-            <?php if($pos3==1) echo"<li><a href="."withdrawform.php?type=3"." style="."
+            <?php if($pos3==1) echo"<li><a class=\"delete\" href="."withdrawform.php?type=3"." style="."
             font-size:18px;".">Withdraw from Office Assistant in EDC</a></li>"; ?>
-            <?php if($pos4==1) echo"<li><a href="."withdrawform.php?type=4"." style="."
+            <?php if($pos4==1) echo"<li><a class=\"delete\" href="."withdrawform.php?type=4"." style="."
             font-size:18px;".">Withdraw from Technical Manpower for Clinical Diagnostics and Pathological Studies</a></li>"; ?>
-            <?php if($pos5==1) echo"<li><a href="."withdrawform.php?type=5"." style="."
+            <?php if($pos5==1) echo"<li><a class=\"delete\" href="."withdrawform.php?type=5"." style="."
             font-size:18px;".">Withdraw from Lab Assistant [for CMDR]</a></li>"; ?>
-            <?php if($pos6==1) echo"<li><a href="."withdrawform.php?type=6"." style="."
+            <?php if($pos6==1) echo"<li><a class=\"delete\" href="."withdrawform.php?type=6"." style="."
             font-size:18px;".">Withdraw from Technical Officer [Centre for Interdisciplinary Research (CIR)]</a></li>"; ?>
-            <?php if($pos7==1) echo"<li><a href="."withdrawform.php?type=7"." style="."
+            <?php if($pos7==1) echo"<li><a class=\"delete\" href="."withdrawform.php?type=7"." style="."
             font-size:18px;".">Withdraw from Technical Manpower [Centre for Interdisciplinary Research (CIR)]</a></li>"; ?>
         </ul>
 </div>
@@ -59,5 +59,16 @@
 		You have not applied for any post.</p>';
 	}
 ?>
+<script>
+    $('.delete').on('click',function(e){
+        var answer=confirm('Do you want to delete?');
+        if(answer){
+            \
+        }
+        else{
+            e.preventDefault();      
+        }
+    });
+</script>
 </body>
 </html>    
