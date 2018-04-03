@@ -68,6 +68,15 @@ function verify_fill($id)
                 else
                         return "Fill".$ans."s";
         }
+
+
+        $q="select user_id from `experience` where user_id ='$id'";
+        $r=$db->process_query($q);
+        if(mysqli_num_rows($r)==0)
+        {
+            return "Fill Work Experience Details";
+        }
+
             $q = "select  user_id,completion_date from `10th_mark` where user_id= '$id'";
             $q1= "select  user_id,completion_date from `12th_mark` where user_id= '$id'";
             $r1=$db->process_query($q);

@@ -40,4 +40,5 @@ function verify_doc($fileval,$targetDir,$site,$filename)
     }
     $misc->palert2("Document successfully uploaded !!!");
 }
+
 ?>
