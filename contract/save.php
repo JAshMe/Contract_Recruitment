@@ -343,7 +343,7 @@ if($r){
        {
                 $misc->palert("Some error occured","home.php?val=other_acads");
        }
-    	
+
 }
 if(isset($_POST['emp_ch']))
 {
