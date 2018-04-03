@@ -10,6 +10,7 @@
 
 	function check_posts()
 	{
+	    global $id,$db;
 		$post_array=array(1,1,1,1,1,1,1);
 
 		/** Educational Checks **/
@@ -317,6 +318,7 @@
 
 
 		end:
+        return $post_array;
 
 	}
 ?>
