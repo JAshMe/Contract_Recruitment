@@ -15,14 +15,29 @@ if(isset($_SESSION['verdict']) && $_SESSION['verdict']!="ok")
 require_once("./included_classes/class_user.php");
 require_once("./included_classes/class_misc.php");
 require_once("./included_classes/class_sql.php");
-require_once("./included_classes/verify_func.php");
+require_once("./included_classes/check_post.php");
 $misc= new miscfunctions();
 $db = new sqlfunctions();
 
 
 $id=$_SESSION['user'];
 
-$post_array=check_posts();
+//$post_array=check_posts();
+check_posts();
+check_exp();
+$q="select * from `eligible` where `user_id` like '$id'";
+$h=$db->process_query($q);
+if(mysqli_num_rows($h)>0){
+    $r=$db->fetch_rows($h);
+    $pos1=$r['pos1'];
+    $pos2=$r['pos2'];
+    $pos3=$r['pos3'];
+    $pos4=$r['pos4'];
+    $pos5=$r['pos5'];
+    $pos6=$r['pos6'];
+    $pos7=$r['pos7'];
+    $post_array=array($pos1,$pos2,$pos3,$pos4,$pos5,$pos6,$pos7);
+}
 //adding values to session variables
 for($i = 0; $i < 7 ; $i++)
     $_SESSION['post_'.($i+1)] = $post_array[$i];
