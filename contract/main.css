@@ -1,3 +1,30 @@
+/*!* latin *!*/
+/*@font-face {*/
+	/*font-family: 'Graduate';*/
+	/*font-style: normal;*/
+	/*src:url('../fonts/Graduate/Graduate-Regular.ttf');*/
+/*}*/
+/*!* latin *!*/
+/*@font-face {*/
+	/*font-family: 'Roboto Condensed';*/
+	/*font-style: normal;*/
+	/*src:  url("../fonts/Roboto_Condensed/RobotoCondensed-Regular.ttf");*/
+/*}*/
+/*@font-face {*/
+	/*font-family: 'Roboto Condensed';*/
+	/*font-style: italic;*/
+	/*src:  url("../fonts/Roboto_Condensed/RobotoCondensed-Italic.ttf");*/
+/*}*/
+/*@font-face {*/
+	/*font-family: 'Roboto Condensed';*/
+	/*font-style: normal;*/
+	/*font-weight: bold;*/
+	/*src: url("../fonts/Roboto_Condensed/RobotoCondensed-Bold.ttf");*/
+/*}*/
+/*@font-face {*/
+	/*font-family: "Yanone Kaffeesatz";*/
+	/*src: url("../fonts/Yanone_Kaffeesatz/YanoneKaffeesatz-Regular.ttf");*/
+/*}*/
 body{
 	color: #23527c;
 	/*background:url(logotp.png);*/
