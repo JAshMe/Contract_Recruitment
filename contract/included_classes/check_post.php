@@ -8,7 +8,7 @@
 
 	$id=$_SESSION['user'];
 
-	function check_posts()
+	function check_edu()
     {
         global $id, $db;
       //  $post_array = array(1, 1, 1, 1, 1, 1, 1);
@@ -102,7 +102,7 @@
             }
         }
 
-
+$post_array[0]=1;
         post_2_edu:
         if ($max_marks_ug == '') {
             $post_array[1] = 0;
@@ -113,6 +113,7 @@
             goto post_3_edu;
         }
 
+$post_array[1]=1;
 
         post_3_edu:
 
@@ -120,25 +121,27 @@
             $post_array[2] = 0;
             goto post_4_edu;
         }
+$post_array[2]=1;
 
-        post_4_edu:
-        if ($max_marks_pg == '' or ($degree_pg != 'MSC' and $degree_pg != "MS" and $degree_pg != 'M.Tech') or $value_pg < 55) {
-            if ($max_marks_ug == '' or ($degree_ug != 'B.Sc' and $degree_ug != 'B.Tech') or $value_ug < 70) {
-                echo $max_marks_ug;
-                if ($max_marks_d == '') {
-                    $post_array[3] = 0;
-                    goto post_5_edu;
-                } else {
-                    $diff_date_d_1 = date_diff(date_create($start_date_d), date_create($end_date_d))->days;
-                    $year_3 = 365 * 3;
-                    if ($value_d < 70 or $year_3 < $diff_date_d_1 or ($field_d == 'Others')) {
-                        $post_array[3] = 0;
-                        goto post_5_edu;
-                    }
-
-                }
+post_4_edu:
+if ($max_marks_pg == '' or ($degree_pg != 'MSC' and $degree_pg != "MS" and $degree_pg != 'M.Tech') or $value_pg < 55) {
+    if ($max_marks_ug == '' or ($degree_ug != 'B.Sc' and $degree_ug != 'B.Tech') or $value_ug < 70) {
+        echo $max_marks_ug;
+        if ($max_marks_d == '') {
+            $post_array[3] = 0;
+            goto post_5_edu;
+        } else {
+            $diff_date_d_1 = date_diff(date_create($start_date_d), date_create($end_date_d))->days;
+            $year_3 = 365 * 3;
+            if ($value_d < 70 or $year_3 < $diff_date_d_1 or ($field_d == 'Others')) {
+                $post_array[3] = 0;
+                goto post_5_edu;
             }
+
         }
+    }
+}
+$post_array[3]=1;
         post_5_edu:
 
         if ($max_marks_pg == '' or ($degree_pg != 'MSC' and $degree_pg != "MS" and $degree_pg != 'M.Tech') or $value_pg < 55) {
@@ -157,6 +160,7 @@
                 }
             }
         }
+        $post_array[4]=1;
 
         post_6_edu:
 
@@ -166,23 +170,26 @@
                 goto post_7_edu;
             }
         }
+        $post_array[5]=1;
 
         post_7_edu:
         if ($max_marks_ug == '' or ($degree_ug != "B.Tech" and $degree_ug != "BE")) {
 
             if ($max_marks_d == '') {
                 $post_array[6] = 0;
-                goto end;
+                goto end1;
             } else {
                 $diff_date_d_1 = date_diff(date_create($start_date_d), date_create($end_date_d))->days;
                 $year_3 = 365 * 3;
-                if ($value_d < 70 or $year_3 < $diff_date_d_1 or ($field_d == 'Others' or $field_d == 'DS')) {
-                    $post_array[4] = 0;
-                    goto end;
+                if ($value_d < 70 or $year_3 < $diff_date_d_1 or ( $field_d == 'Others' or $field_d == 'DS')) {
+                    $post_array[6] = 0;
+                    goto end1;
                 }
             }
         }
-        end:
+        $post_array[6]=1;
+
+        end1:
         $q="update `eligible` set `pos1` = '$post_array[0]',`pos2` = '$post_array[1]',`pos3` = '$post_array[2]',`pos4` = '$post_array[3]',`pos5` = '$post_array[4]',`pos6` = '$post_array[5]',`pos7` = '$post_array[6]' where `user_id` like '$id'";
         $db->process_query($q);
 
@@ -204,8 +211,9 @@ function check_exp()
         $pos5=$r['pos5'];
         $pos6=$r['pos6'];
         $pos7=$r['pos7'];
+        $post_array=array($pos1,$pos2,$pos3,$pos4,$pos5,$pos6,$pos7);
     }
-    $post_array=array($pos1,$pos2,$pos3,$pos4,$pos5,$pos6,$pos7);
+
 		exp_check:
 		goto end;
 
@@ -241,7 +249,9 @@ function check_exp()
 		for($i=0;$i<$num_exp;$i++)
 		{
 		    if($exp[$i]['tot_exp']>365) //experience less than 1 year
-		        goto post_2_exp;
+            {$post_array[0]=1;
+                goto post_2_exp;
+            }
 		}
 		$post_array[0]=0;
 
@@ -254,7 +264,10 @@ function check_exp()
 		for($i=0;$i<$num_exp;$i++)
 		{
 		    if($exp[$i]['tot_exp']>365*3) //experience greater than 3 years
-		        goto post_3_exp;
+            {
+                $post_array[1] = 1;
+                goto post_3_exp;
+            }
 		}
 		$post_array[1]=0;
 
@@ -273,7 +286,10 @@ function check_exp()
 		        $end_date = $completion_date_ug or $end_date_d;
 		        $diff = date_diff(date_create($end_date), date_create($exp[$i]['from']));
 		        if ($diff->format("%R") == '+') //end date is less than start of experience
-		            goto post_4_exp;
+                {
+                    $post_array[2]=1;
+                    goto post_4_exp;
+                }
 		    }
 		}
 		$post_array[2]=0;
@@ -292,7 +308,10 @@ function check_exp()
 		        $end_date = $completion_date_ug or $end_date_d;
 		        $diff = date_diff(date_create($end_date), date_create($exp[$i]['from']));
 		        if ($diff->format("%R") == '+') //end date is less than start of experience
-		            goto post_5_exp;
+                {
+                    $post_array[3]=1;
+                    goto post_5_exp;
+                }
 		    }
 		}
 		$post_array[3]=0;
@@ -311,7 +330,10 @@ function check_exp()
 		        $end_date = $completion_date_ug or $end_date_d;
 		        $diff = date_diff(date_create($end_date), date_create($exp[$i]['from']));
 		        if ($diff->format("%R") == '+') //end date is less than start of experience
-		            goto post_6_exp;
+                {
+                    $post_array[4]=1;
+                    goto post_6_exp;
+                }
 		    }
 		}
 		$post_array[4]=0;
@@ -319,7 +341,10 @@ function check_exp()
 		post_6_exp:
 
 		if(!$post_array[5] || $num_exp)  //there should be some experience
-		    goto post_7_exp;
+        {
+            $post_array[5]=1;
+            goto post_7_exp;
+        }
 
 		$post_array[5]=0;
 
@@ -337,7 +362,10 @@ function check_exp()
 		        $end_date = $completion_date_ug or $end_date_d;
 		        $diff = date_diff(date_create($end_date), date_create($exp[$i]['from']));
 		        if ($diff->format("%R") == '+') //end date is less than start of experience
-		            goto end;
+                {
+                    $post_array[6]=1;
+                    goto end;
+                }
 		    }
 		}
 		$post_array[6]=0;

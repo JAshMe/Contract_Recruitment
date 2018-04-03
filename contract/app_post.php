@@ -23,7 +23,7 @@ $db = new sqlfunctions();
 $id=$_SESSION['user'];
 
 //$post_array=check_posts();
-check_posts();
+check_edu();
 check_exp();
 $q="select * from `eligible` where `user_id` like '$id'";
 $h=$db->process_query($q);
