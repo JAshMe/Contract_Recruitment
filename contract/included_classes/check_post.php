@@ -377,4 +377,21 @@ function check_exp()
     $db->process_query($q);
 
 	}
+
+	function check_elig($type)
+    {
+        global $db,$id;
+        $q="select * from `eligible` where `user_id` like '$id'";
+        $c = $db->process_query($q);
+
+            $c = $db->fetch_rows($c);
+            $val='pos'.($type);
+            if($c[$val]==1)
+                return true;
+            return false;
+
+
+
+    }
+
 ?>
