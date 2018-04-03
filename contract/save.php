@@ -4,7 +4,9 @@
     require_once("./included_classes/class_misc.php");
     require_once("./included_classes/class_sql.php");
     require_once ("./include/verify_document.php");
-    $misc= new miscfunctions();
+    require_once("./included_classes/check_post.php");
+
+$misc= new miscfunctions();
     $db = new sqlfunctions();
  
     $id=$_SESSION['user'];
@@ -117,7 +119,10 @@ if(isset($_POST['edu_ch_0']))
 	$r = $db->process_query($q);
     verify_doc("doc_10th",'./doc_edu','education_qual',"");
 	if(mysqli_num_rows($r)>0) //then update
-		$q = "update 10th_mark set completion_date = '$completion_date_10th',board = '$board_10th',school = '$school_10th', marks = '$marks_10th', max_marks = '$max_marks_10th', per_or_cgpa = '$per_cgp_10th', `value` = '$perc_marks_10th' where user_id = '$id' ";
+    {
+        check_edu();
+        $q = "update 10th_mark set completion_date = '$completion_date_10th',board = '$board_10th',school = '$school_10th', marks = '$marks_10th', max_marks = '$max_marks_10th', per_or_cgpa = '$per_cgp_10th', `value` = '$perc_marks_10th' where user_id = '$id' ";
+    }
 	else  //insert in table
 		$q="INSERT INTO `10th_mark` VALUES ('$id','$completion_date_10th','$board_10th','$school_10th','$marks_10th','$max_marks_10th','$per_cgp_10th','$perc_marks_10th')";
 
@@ -150,7 +155,10 @@ if(isset($_POST['edu_ch_1']))
 	$r = $db->process_query($q);
     verify_doc("doc_diploma",'./doc_edu','education_qual',"");
 	if(mysqli_num_rows($r)>0)
-		$q = "update diploma set field = '$spec', start_date = '$start_date' , end_date = '$completion_date', university = '$university', marks = '$marks', max_marks = '$max_marks', per_or_cgpa = '$per_cgp', `value` = '$perc_marks' , is_others = '$is_others' where user_id = '$id';";
+    {
+        check_edu();
+        $q = "update diploma set field = '$spec', start_date = '$start_date' , end_date = '$completion_date', university = '$university', marks = '$marks', max_marks = '$max_marks', per_or_cgpa = '$per_cgp', `value` = '$perc_marks' , is_others = '$is_others' where user_id = '$id';";
+    }
 	else
 		$q="INSERT INTO `diploma` VALUES ('$id','$spec','$start_date','$completion_date','$university','$marks','$max_marks','$per_cgp','$perc_marks','$is_others')";
 
@@ -181,7 +189,10 @@ if(isset($_POST['edu_ch_2']))
 	$r = $db->process_query($q);
     verify_doc("doc_12th",'./doc_edu','education_qual',"");
 	if(mysqli_num_rows($r)>0) //then update
-		$q = "update 12th_mark set completion_date = '$completion_date',board = '$board',school = '$school', marks = '$marks', max_marks = '$max_marks', per_or_cgpa = '$per_cgp', `value` = '$perc_marks' where user_id = '$id' ";
+    {
+        check_edu();
+        $q = "update 12th_mark set completion_date = '$completion_date',board = '$board',school = '$school', marks = '$marks', max_marks = '$max_marks', per_or_cgpa = '$per_cgp', `value` = '$perc_marks' where user_id = '$id' ";
+    }
 	else  //insert in table
 		$q="INSERT INTO `12th_mark` VALUES ('$id','$completion_date','$board','$school','$marks','$max_marks','$per_cgp','$perc_marks')";
 	$r=$db->process_query($q);
@@ -220,7 +231,10 @@ if(isset($_POST['edu_ch_3']))
     verify_doc("doc_ug",'./doc_edu','education_qual',"");
 
 	if(mysqli_num_rows($r)>0)
-		$q = "update ug set specialization = '$spec', start_date = '$start_date' , completion_date = '$completion_date', university = '$university', marks = '$marks', max_marks = '$max_marks', per_or_cgpa = '$per_cgp', `value` = '$perc_marks', degree = '$degree' , is_others = '$is_others', is_others_spec = '$other_specs' where user_id = '$id';";
+    {
+        check_edu();
+        $q = "update ug set specialization = '$spec', start_date = '$start_date' , completion_date = '$completion_date', university = '$university', marks = '$marks', max_marks = '$max_marks', per_or_cgpa = '$per_cgp', `value` = '$perc_marks', degree = '$degree' , is_others = '$is_others', is_others_spec = '$other_specs' where user_id = '$id';";
+    }
 	else
 		$q="INSERT INTO `ug` VALUES ('$id','$spec','$start_date','$completion_date','$university','$marks','$max_marks','$per_cgp','$perc_marks','$degree','$is_others','$other_specs')";
 	$r=$db->process_query($q);
@@ -259,7 +273,10 @@ if(isset($_POST['edu_ch_4']))
     verify_doc("doc_pg",'./doc_edu','education_qual',"");
 
 	if(mysqli_num_rows($r)>0)  //update
-		$q = "update pg set specialization = '$spec', start_date = '$start_date' , completion_date = '$completion_date', university = '$university', marks = '$marks', max_marks = '$max_marks', per_or_cgpa = '$per_cgp', `value` = '$perc_marks', degree = '$degree'is_others = '$is_others' where user_id = '$id';";
+    {
+        check_edu();
+        $q = "update pg set specialization = '$spec', start_date = '$start_date' , completion_date = '$completion_date', university = '$university', marks = '$marks', max_marks = '$max_marks', per_or_cgpa = '$per_cgp', `value` = '$perc_marks', degree = '$degree'is_others = '$is_others' where user_id = '$id';";
+    }
 	else  //insert
 		$q="INSERT INTO `pg` VALUES ('$id','$spec','$start_date','$completion_date','$university','$marks','$max_marks','$per_cgp','$perc_marks','$degree','$is_others')";
 	$r=$db->process_query($q);
@@ -465,7 +482,7 @@ if(isset($_POST['post_app']))
 	$r = $db->process_query($iquery);
 
 	//redirecting to its print form
-	header("location:storeForm.php?type=$post");
+	header("location:printform.php?type=$post");
 
 }
 
