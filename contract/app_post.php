@@ -15,7 +15,7 @@ if(isset($_SESSION['verdict']) && $_SESSION['verdict']!="ok")
 require_once("./included_classes/class_user.php");
 require_once("./included_classes/class_misc.php");
 require_once("./included_classes/class_sql.php");
-require_once("./included_classes/check_post.php");
+require_once("./include/verify_document.php");
 $misc= new miscfunctions();
 $db = new sqlfunctions();
 
