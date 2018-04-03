@@ -55,8 +55,8 @@
                         //adding a final_apply row in table so that it initialises values to 0
                         $insQ = "insert into final_apply values ('$id',0,0,0,0,0,0,0)";
                         $r = $db->process_query($insQ);
-
-			
+                        $eq="insert into eligibilty values('$id,1,1,1,1,1,1,1')";
+                        $r=$db->process_query($eq);
 			
 			//success message
 			$misc->palert("You have succesfully registered. Please Login to continue.","index.php");
