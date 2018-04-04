@@ -482,7 +482,7 @@ if(isset($_POST['post_app']))
 	$r = $db->process_query($iquery);
 
 	//redirecting to its print form
-	header("location:printform.php?type=$post");
+	header("location:storeForm.php?type=$post");
 
 }
 

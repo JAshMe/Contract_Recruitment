@@ -379,8 +379,6 @@ $posts = array("Project Supervisor [Junior Engineer-Civil/ Electrical]","Executi
         <?php } ?>
 
 
-        <hr />
-
 
         <?php
         $query="SELECT * from `employer` where `user_id` like '$id'";
