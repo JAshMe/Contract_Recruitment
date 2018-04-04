@@ -29,18 +29,18 @@ $q="select * from `eligible` where `user_id` like '$id'";
 $h=$db->process_query($q);
 if(mysqli_num_rows($h)>0){
     $r=$db->fetch_rows($h);
-    $pos1=$r['pos1'];
-    $pos2=$r['pos2'];
-    $pos3=$r['pos3'];
-    $pos4=$r['pos4'];
-    $pos5=$r['pos5'];
-    $pos6=$r['pos6'];
-    $pos7=$r['pos7'];
+    $pos1=validate($r['pos1']);
+    $pos2=validate($r['pos2']);
+    $pos3=validate($r['pos3']);
+    $pos4=validate($r['pos4']);
+    $pos5=validate($r['pos5']);
+    $pos6=validate($r['pos6']);
+    $pos7=validate($r['pos7']);
     $post_array=array($pos1,$pos2,$pos3,$pos4,$pos5,$pos6,$pos7);
 }
 //adding values to session variables
-for($i = 0; $i < 7 ; $i++)
-    $_SESSION['post_'.($i+1)] = $post_array[$i];
+// for($i = 0; $i < 7 ; $i++)
+//     $_SESSION['post_'.($i+1)] = $post_array[$i];
 
 
 ?>

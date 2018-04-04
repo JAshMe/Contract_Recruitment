@@ -2,6 +2,7 @@
 	require_once("class_user.php");
 	require_once("class_misc.php");
 	require_once("class_sql.php");
+    require_once("check_apply.php");
 	$misc= new miscfunctions();
 	$db = new sqlfunctions();
 
@@ -191,8 +192,10 @@ $post_array[3]=1;
         $post_array[6]=1;
 
         end1:
-        $q="update `eligible` set `pos1` = '$post_array[0]',`pos2` = '$post_array[1]',`pos3` = '$post_array[2]',`pos4` = '$post_array[3]',`pos5` = '$post_array[4]',`pos6` = '$post_array[5]',`pos7` = '$post_array[6]' where `user_id` like '$id'";
-        $db->process_query($q);
+            $q="update `eligible` set `pos1` = '$post_array[0]',`pos2` = '$post_array[1]',`pos3` = '$post_array[2]',`pos4` = '$post_array[3]',`pos5` = '$post_array[4]',`pos6` = '$post_array[5]',`pos7` = '$post_array[6]' where `user_id` like '$id'";
+            //echo "$q";
+            $db->process_query($q);
+            check_apply();
 
         }
 
@@ -374,6 +377,7 @@ function check_exp()
 
 		end:
     $q="update `eligible` set `pos1` = '$post_array[0]',`pos2` = '$post_array[1]',`pos3` = '$post_array[2]',`pos4` = '$post_array[3]',`pos5` = '$post_array[4]',`pos6` = '$post_array[5]',`pos7` = '$post_array[6]' where `user_id` like '$id'";
+    //echo "$q";
     $db->process_query($q);
 
 	}

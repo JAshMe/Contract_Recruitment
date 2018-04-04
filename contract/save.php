@@ -6,7 +6,7 @@
     require_once ("./include/verify_document.php");
     require_once("./included_classes/check_post.php");
 
-$misc= new miscfunctions();
+	$misc= new miscfunctions();
     $db = new sqlfunctions();
  
     $id=$_SESSION['user'];
