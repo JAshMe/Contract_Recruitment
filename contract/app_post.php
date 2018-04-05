@@ -39,8 +39,13 @@ if(mysqli_num_rows($h)>0){
     $post_array=array($pos1,$pos2,$pos3,$pos4,$pos5,$pos6,$pos7);
 }
 //adding values to session variables
+<<<<<<< HEAD
 // for($i = 0; $i < 7 ; $i++)
 //     $_SESSION['post_'.($i+1)] = $post_array[$i];
+=======
+//for($i = 0; $i < 7 ; $i++)
+//    $_SESSION['post_'.($i+1)] = $post_array[$i];
+>>>>>>> c56fe82e9732c03d45927ae7ab49c127535bf7fe
 
 
 ?>

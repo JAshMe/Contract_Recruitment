@@ -10,6 +10,7 @@ require_once("./included_classes/class_user.php");
 require_once("./included_classes/class_misc.php");
 require_once("./included_classes/class_sql.php");
 require_once ("./include/verify_document.php");
+require_once ("./included_classes/check_post.php");
 $misc= new miscfunctions();
 $db = new sqlfunctions();
 
@@ -18,9 +19,7 @@ if(!isset($_SESSION['user']))
 $id=$_SESSION['user'];
 $post_type = $_GET['type'];
 
-if(!isset($_SESSION['post_'.$post_type]))
-        die("<h2>Unauthorized Access</h2>");
-if(!$_SESSION['post_'.$post_type])
+if(!check_elig($post_type))
         die("<h3>You aren't eligible for this post right now! Check in Apply for posts section.</h3>");
 
 

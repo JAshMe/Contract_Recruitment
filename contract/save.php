@@ -477,6 +477,11 @@ if(isset($_POST['post_app']))
 	if($post==0)
 		$misc->palert("Please Select the post you want to apply.","home.php?val=app_post");
 
+	//checking if he already applied for the post
+	$query = "select pos$post from final_apply where user_id = '$id'";
+	$r = $db->process_query($query);
+
+
 	//updating it in apply_final
 	$iquery = "update final_apply set pos".$post." = 1 where user_id = '$id'";
 	$r = $db->process_query($iquery);
