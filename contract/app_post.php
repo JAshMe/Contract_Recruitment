@@ -23,8 +23,7 @@ $db = new sqlfunctions();
 $id=$_SESSION['user'];
 
 //$post_array=check_posts();
-check_edu();
-check_exp();
+//check_post();
 $q="select * from `eligible` where `user_id` like '$id'";
 $h=$db->process_query($q);
 if(mysqli_num_rows($h)>0){
@@ -39,14 +38,8 @@ if(mysqli_num_rows($h)>0){
     $post_array=array($pos1,$pos2,$pos3,$pos4,$pos5,$pos6,$pos7);
 }
 //adding values to session variables
-<<<<<<< HEAD
 // for($i = 0; $i < 7 ; $i++)
 //     $_SESSION['post_'.($i+1)] = $post_array[$i];
-=======
-//for($i = 0; $i < 7 ; $i++)
-//    $_SESSION['post_'.($i+1)] = $post_array[$i];
->>>>>>> c56fe82e9732c03d45927ae7ab49c127535bf7fe
-
 
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
@@ -79,13 +72,13 @@ if(mysqli_num_rows($h)>0){
                     <div class="col-sm-offset-3 col-sm-6">
                         <select id="app_post_label" class="form-control" name="app_post">
                                 <option value="0">---Choose your post---</option>
-                                <?php if($post_array[0]) echo "<option value=\"1\">Project Supervisor [Junior Engineer-Civil/ Electrical]</option>" ?>
-                                <?php if($post_array[1]) echo "<option value=\"2\" >Executive in Executive Development Centre</option>" ?>
-                                <?php if($post_array[2]) echo "<option value=\"3\">Office Assistant in EDC</option>" ?>
-                                <?php if($post_array[3]) echo "<option value=\"4\" >Technical Manpower [for Clinical Diagnostics and Pathological Studies,Animal Tissue Culture, Immunodiagnostics, PCR/ Molecular Based Diagnostics Lab]</option>" ?>
-                                <?php if($post_array[4]) echo "<option value=\"5\">Lab Assistant [for CMDR]</option>" ?>
-                                <?php if($post_array[5]) echo "<option value=\"6\">Technical Officer [Centre for Interdisciplinary Research (CIR)]</option>" ?>
-                                <?php if($post_array[6]) echo "<option value=\"7\">Technical Manpower [Centre for Interdisciplinary Research (CIR)]</option> " ?>
+                                <?php if($post_array[0]) echo "<option value=\"1\">Post 1: Project Supervisor [Junior Engineer-Civil/ Electrical]</option>" ?>
+                                <?php if($post_array[1]) echo "<option value=\"2\" >Post 2: Executive in Executive Development Centre</option>" ?>
+                                <?php if($post_array[2]) echo "<option value=\"3\">Post 3: Office Assistant in EDC</option>" ?>
+                                <?php if($post_array[3]) echo "<option value=\"4\" >Post 4: Technical Manpower [for Clinical Diagnostics and Pathological Studies,Animal Tissue Culture, Immunodiagnostics, PCR/ Molecular Based Diagnostics Lab]</option>" ?>
+                                <?php if($post_array[4]) echo "<option value=\"5\">Post 5: Lab Assistant [for CMDR]</option>" ?>
+                                <?php if($post_array[5]) echo "<option value=\"6\">Post 6: Technical Officer [Centre for Interdisciplinary Research (CIR)]</option>" ?>
+                                <?php if($post_array[6]) echo "<option value=\"7\">Post 7: Technical Manpower [Centre for Interdisciplinary Research (CIR)]</option> " ?>
                         </select>
                     </div>
                 </div>

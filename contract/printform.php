@@ -21,6 +21,8 @@ $post_type = $_GET['type'];
 
 if(!check_elig($post_type))
         die("<h3>You aren't eligible for this post right now! Check in Apply for posts section.</h3>");
+if(!check_post_apply($post_type))
+        die("<h3>You haven't applied for this post right now! Apply in Apply for posts section.</h3>");
 
 
 

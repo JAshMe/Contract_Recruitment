@@ -3,6 +3,7 @@
 	require_once("./included_classes/class_user.php");
     require_once("./included_classes/class_misc.php");
     require_once("./included_classes/class_sql.php");
+        require_once ("./included_classes/check_post.php");
     $misc= new miscfunctions();
     $db = new sqlfunctions();
    
@@ -20,7 +21,8 @@
 		$q = $db->process_query($q);
 		if($q)
 		{
-			$misc->palert("Deleted successfully","home.php?val=work_exp");
+			check_post();
+                        $misc->palert("Deleted successfully","home.php?val=work_exp");
 		}
 		else
 		{

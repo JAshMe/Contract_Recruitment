@@ -43,7 +43,7 @@
     			if($apply_array[$x]==1)
     			{
     				$z=$x+1;
-    				$y="Withdrawing Your Application from Post ".$z;
+    				$y="Withdrawing Your Application from Post ".$z." due to insufficient qualifications.";
     				echo "<script>
 				      alert( \"$y\" );
 				      </script>";
@@ -51,9 +51,10 @@
 				    //echo($q);
 				    $q = $db->process_query($q);
 				    $filename=$id."_".$z.".pdf";
-				    unlink("../applications/".$filename);
+				    unlink("./applications/".$filename);
+				    unlink("./final_app/".$filename);
     			}
     		}
 		} 
 	}
-	check_apply();
+//	check_apply();
