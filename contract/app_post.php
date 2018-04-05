@@ -50,7 +50,15 @@ if(mysqli_num_rows($h)>0){
 </head>
 
 <body>
-<div id="main" style="font-size:13px; margin:0px 0 0 0;" align="justify">
+<div class="curtain" align="center"></div>
+
+<div class="loaderDiv loaderDiv-small" align="center">
+    <div class="loader"></div>
+    <div class="status">Please wait while we generate your form and store your attachments...</div>
+    <div class="status text-danger" style="margin-top: -20px">Please do not refresh or go back... </div>
+</div>
+
+<div id="main" style="font-size:13px; margin:0 0 0 0;" align="justify">
     <center><b style="font-size:18px;">Apply for Post</b></center>
     <hr>
 
@@ -152,7 +160,7 @@ if(mysqli_num_rows($h)>0){
                 <br>
                 <div class="form-group">
                     <div class="col-sm-offset-4 col-sm-4">
-                        <button type="submit" name="post_app" class="btn btn-primary col-sm-12">Apply</button>
+                        <button type="submit" id="post_app" name="post_app" class="btn btn-primary col-sm-12">Apply</button>
                     </div>
                 </div>
             </div>
@@ -164,7 +172,6 @@ if(mysqli_num_rows($h)>0){
     $(".info").hide();
     $("#app_post_label").change(function(){
         var id = $(this).val();
-        var first = 1;
         if(id=="0")
                 $(".info").slideUp();
         else
@@ -175,6 +182,22 @@ if(mysqli_num_rows($h)>0){
 
 
     });
+</script>
+<script type="text/javascript">
+    $("#post_app").click(function(){
+        $(".curtain").show();
+        $(".loaderDiv").removeClass("loaderDiv-small").addClass("loaderDiv-big");
+        $(".loader").show(100);
+        $(".status").show().animate({opacity: 1},"slow");
+    });
+
+//    $(window).unload(function{
+//        $(".status").hide();
+//        $(".loader").hide();
+//
+//        $(".curtain").hide();
+//
+//    });
 </script>
 
 </body>

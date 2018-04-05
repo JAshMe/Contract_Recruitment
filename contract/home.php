@@ -29,6 +29,7 @@ if(!isset($_SESSION['user']))
     <link rel="stylesheet" type="text/css" href="include/lv-ripple.css">
 	<link rel="stylesheet" type="text/css" href="include/style.css">
      <link rel="stylesheet" type="text/css" href="main.css" >
+    <link rel="stylesheet" type="text/css" href="loader.css">
     </head>
    
     <body style="overflow-x:hidden;">

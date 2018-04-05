@@ -194,7 +194,7 @@ $posts = array("Project Supervisor [Junior Engineer-Civil/ Electrical]","Executi
         <th>B) Mobile No:</th><td><?php echo $mobile;?></td>
         </tr>
         <tr>
-        <th>C)Age as on date of application: </th><td><?php  ?></td>
+        <th>C)Age as on date of application: </th><td><?= calculateAge($dob);  ?></td>
         <th>D) Date of Birth:</th><td><?php echo $dob;?></td>
         </tr>
         <tr>
