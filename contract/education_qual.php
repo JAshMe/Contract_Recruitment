@@ -406,7 +406,7 @@ $board_10=$comp_10=$school_10=$per_or_cgpa_10=$value_10=$marks_10=$max_marks_10=
                             <option value="B.Sc" id="bsc" <?php if($degree_ug=="B.Sc") echo "selected" ?> >Bachelor of Science (B.Sc)</option>
                             <option value="B.Com" id="ms" <?php if($degree_ug=="B.Com") echo "selected" ?> >Bachelor of Commerce (B.Com)</option>
                             <option value="BE" id="be" <?php if($degree_ug=="BE") echo "selected" ?> >Bachelor of Engineering (BE)</option>
-                            <option value="B.Tech" id="btech" <?php if($degree_ug=="B.Tech)") echo "selected" ?> >Bachelor of Technology (B.Tech)</option>
+                            <option value="B.Tech" id="btech" <?php if($degree_ug=="B.Tech") echo "selected" ?> >Bachelor of Technology (B.Tech)</option>
                             <option value="LLB" id="llb" <?php if($degree_ug=="LLB") echo "selected" ?> >Bachelor of Law (LLB)</option>
                             <option value="BCA" id="bca" <?php if($degree_ug=="BCA") echo "selected" ?> >Bachelor of Computer Application (BCA)</option>
                             <option value="BBA" id="bba" <?php if($degree_ug=="BBA") echo "selected" ?> >Bachelor of Business Administration (BBA)</option>
@@ -434,12 +434,6 @@ $board_10=$comp_10=$school_10=$per_or_cgpa_10=$value_10=$marks_10=$max_marks_10=
 
 
 
-<!--                <div id="ug" class="form-group">-->
-<!--                <label class="control-label col-sm-2" for="specialization_ug"><span class="text-danger">*</span>Specialization:</label>-->
-<!--                    <div class="col-sm-4">-->
-<!--                        <input type="text" class="form-control" name="ug_specialization" id="specialization_ug" required value="--><?//= $specialization_ug?><!--"   >-->
-<!--                    </div>-->
-<!--                </div>-->
                 <div class="form-group">
                     <label class="control-label col-sm-2" for="specialization_ug"><span class="text-danger">*</span>Specialization:</label>
                 <div class="col-sm-4" >

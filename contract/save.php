@@ -6,7 +6,7 @@
     require_once ("./include/verify_document.php");
     require_once("./included_classes/check_post.php");
 
-$misc= new miscfunctions();
+	$misc= new miscfunctions();
     $db = new sqlfunctions();
  
     $id=$_SESSION['user'];
@@ -120,7 +120,7 @@ if(isset($_POST['edu_ch_0']))
     verify_doc("doc_10th",'./doc_edu','education_qual',"");
 	if(mysqli_num_rows($r)>0) //then update
     {
-        check_edu();
+
         $q = "update 10th_mark set completion_date = '$completion_date_10th',board = '$board_10th',school = '$school_10th', marks = '$marks_10th', max_marks = '$max_marks_10th', per_or_cgpa = '$per_cgp_10th', `value` = '$perc_marks_10th' where user_id = '$id' ";
     }
 	else  //insert in table
@@ -156,13 +156,13 @@ if(isset($_POST['edu_ch_1']))
     verify_doc("doc_diploma",'./doc_edu','education_qual',"");
 	if(mysqli_num_rows($r)>0)
     {
-        check_edu();
+
         $q = "update diploma set field = '$spec', start_date = '$start_date' , end_date = '$completion_date', university = '$university', marks = '$marks', max_marks = '$max_marks', per_or_cgpa = '$per_cgp', `value` = '$perc_marks' , is_others = '$is_others' where user_id = '$id';";
     }
 	else
 		$q="INSERT INTO `diploma` VALUES ('$id','$spec','$start_date','$completion_date','$university','$marks','$max_marks','$per_cgp','$perc_marks','$is_others')";
 
-	$r=$db->process_query($q);
+	$r=$db->process_query($q);check_post();
 	if($r){
 		$misc->palert("Details Submitted","home.php?val=education_qual");
 	}
@@ -190,7 +190,7 @@ if(isset($_POST['edu_ch_2']))
     verify_doc("doc_12th",'./doc_edu','education_qual',"");
 	if(mysqli_num_rows($r)>0) //then update
     {
-        check_edu();
+
         $q = "update 12th_mark set completion_date = '$completion_date',board = '$board',school = '$school', marks = '$marks', max_marks = '$max_marks', per_or_cgpa = '$per_cgp', `value` = '$perc_marks' where user_id = '$id' ";
     }
 	else  //insert in table
@@ -232,15 +232,16 @@ if(isset($_POST['edu_ch_3']))
 
 	if(mysqli_num_rows($r)>0)
     {
-        check_edu();
         $q = "update ug set specialization = '$spec', start_date = '$start_date' , completion_date = '$completion_date', university = '$university', marks = '$marks', max_marks = '$max_marks', per_or_cgpa = '$per_cgp', `value` = '$perc_marks', degree = '$degree' , is_others = '$is_others', is_others_spec = '$other_specs' where user_id = '$id';";
     }
 	else
 		$q="INSERT INTO `ug` VALUES ('$id','$spec','$start_date','$completion_date','$university','$marks','$max_marks','$per_cgp','$perc_marks','$degree','$is_others','$other_specs')";
+
 	$r=$db->process_query($q);
 	if($r)
 	{
 		$misc->palert("Details Submitted","home.php?val=education_qual");
+		check_post();
 	}
 	else
 	{
@@ -274,7 +275,6 @@ if(isset($_POST['edu_ch_4']))
 
 	if(mysqli_num_rows($r)>0)  //update
     {
-        check_edu();
         $q = "update pg set specialization = '$spec', start_date = '$start_date' , completion_date = '$completion_date', university = '$university', marks = '$marks', max_marks = '$max_marks', per_or_cgpa = '$per_cgp', `value` = '$perc_marks', degree = '$degree'is_others = '$is_others' where user_id = '$id';";
     }
 	else  //insert
@@ -282,6 +282,7 @@ if(isset($_POST['edu_ch_4']))
 	$r=$db->process_query($q);
 	if($r){
 		$misc->palert("Details Submitted","home.php?val=education_qual");
+		check_post();
 	}
 	else
 	{
@@ -323,6 +324,7 @@ if(isset($_POST['work_exp']))
     $r=$db->process_query($q);
     if($r){
         $misc->palert("Details Submitted","home.php?val=work_exp");
+	    check_post();
     }
     else
     {
@@ -476,6 +478,14 @@ if(isset($_POST['post_app']))
 	$post = validate($_POST['app_post']);
 	if($post==0)
 		$misc->palert("Please Select the post you want to apply.","home.php?val=app_post");
+
+	//checking if he already applied for the post
+	$query = "select pos$post from final_apply where user_id = '$id'";
+	$r = $db->process_query($query);
+	$r = $db->fetch_rows($r);
+	if($r['pos'.$post])
+		$misc->palert("You have already applied for this job.","home.php?val=app_post");
+
 
 	//updating it in apply_final
 	$iquery = "update final_apply set pos".$post." = 1 where user_id = '$id'";

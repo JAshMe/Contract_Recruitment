@@ -23,25 +23,23 @@ $db = new sqlfunctions();
 $id=$_SESSION['user'];
 
 //$post_array=check_posts();
-check_edu();
-check_exp();
+//check_post();
 $q="select * from `eligible` where `user_id` like '$id'";
 $h=$db->process_query($q);
 if(mysqli_num_rows($h)>0){
     $r=$db->fetch_rows($h);
-    $pos1=$r['pos1'];
-    $pos2=$r['pos2'];
-    $pos3=$r['pos3'];
-    $pos4=$r['pos4'];
-    $pos5=$r['pos5'];
-    $pos6=$r['pos6'];
-    $pos7=$r['pos7'];
+    $pos1=validate($r['pos1']);
+    $pos2=validate($r['pos2']);
+    $pos3=validate($r['pos3']);
+    $pos4=validate($r['pos4']);
+    $pos5=validate($r['pos5']);
+    $pos6=validate($r['pos6']);
+    $pos7=validate($r['pos7']);
     $post_array=array($pos1,$pos2,$pos3,$pos4,$pos5,$pos6,$pos7);
 }
 //adding values to session variables
-//for($i = 0; $i < 7 ; $i++)
-//    $_SESSION['post_'.($i+1)] = $post_array[$i];
-
+// for($i = 0; $i < 7 ; $i++)
+//     $_SESSION['post_'.($i+1)] = $post_array[$i];
 
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
@@ -52,7 +50,15 @@ if(mysqli_num_rows($h)>0){
 </head>
 
 <body>
-<div id="main" style="font-size:13px; margin:0px 0 0 0;" align="justify">
+<div class="curtain" align="center"></div>
+
+<div class="loaderDiv loaderDiv-small" align="center">
+    <div class="loader"></div>
+    <div class="status">Please wait while we generate your form and store your attachments...</div>
+    <div class="status text-danger" style="margin-top: -20px">Please do not refresh or go back... </div>
+</div>
+
+<div id="main" style="font-size:13px; margin:0 0 0 0;" align="justify">
     <center><b style="font-size:18px;">Apply for Post</b></center>
     <hr>
 
@@ -74,13 +80,13 @@ if(mysqli_num_rows($h)>0){
                     <div class="col-sm-offset-3 col-sm-6">
                         <select id="app_post_label" class="form-control" name="app_post">
                                 <option value="0">---Choose your post---</option>
-                                <?php if($post_array[0]) echo "<option value=\"1\">Project Supervisor [Junior Engineer-Civil/ Electrical]</option>" ?>
-                                <?php if($post_array[1]) echo "<option value=\"2\" >Executive in Executive Development Centre</option>" ?>
-                                <?php if($post_array[2]) echo "<option value=\"3\">Office Assistant in EDC</option>" ?>
-                                <?php if($post_array[3]) echo "<option value=\"4\" >Technical Manpower [for Clinical Diagnostics and Pathological Studies,Animal Tissue Culture, Immunodiagnostics, PCR/ Molecular Based Diagnostics Lab]</option>" ?>
-                                <?php if($post_array[4]) echo "<option value=\"5\">Lab Assistant [for CMDR]</option>" ?>
-                                <?php if($post_array[5]) echo "<option value=\"6\">Technical Officer [Centre for Interdisciplinary Research (CIR)]</option>" ?>
-                                <?php if($post_array[6]) echo "<option value=\"7\">Technical Manpower [Centre for Interdisciplinary Research (CIR)]</option> " ?>
+                                <?php if($post_array[0]) echo "<option value=\"1\">Post 1: Project Supervisor [Junior Engineer-Civil/ Electrical]</option>" ?>
+                                <?php if($post_array[1]) echo "<option value=\"2\" >Post 2: Executive in Executive Development Centre</option>" ?>
+                                <?php if($post_array[2]) echo "<option value=\"3\">Post 3: Office Assistant in EDC</option>" ?>
+                                <?php if($post_array[3]) echo "<option value=\"4\" >Post 4: Technical Manpower [for Clinical Diagnostics and Pathological Studies,Animal Tissue Culture, Immunodiagnostics, PCR/ Molecular Based Diagnostics Lab]</option>" ?>
+                                <?php if($post_array[4]) echo "<option value=\"5\">Post 5: Lab Assistant [for CMDR]</option>" ?>
+                                <?php if($post_array[5]) echo "<option value=\"6\">Post 6: Technical Officer [Centre for Interdisciplinary Research (CIR)]</option>" ?>
+                                <?php if($post_array[6]) echo "<option value=\"7\">Post 7: Technical Manpower [Centre for Interdisciplinary Research (CIR)]</option> " ?>
                         </select>
                     </div>
                 </div>
@@ -154,7 +160,7 @@ if(mysqli_num_rows($h)>0){
                 <br>
                 <div class="form-group">
                     <div class="col-sm-offset-4 col-sm-4">
-                        <button type="submit" name="post_app" class="btn btn-primary col-sm-12">Apply</button>
+                        <button type="submit" id="post_app" name="post_app" class="btn btn-primary col-sm-12">Apply</button>
                     </div>
                 </div>
             </div>
@@ -166,7 +172,6 @@ if(mysqli_num_rows($h)>0){
     $(".info").hide();
     $("#app_post_label").change(function(){
         var id = $(this).val();
-        var first = 1;
         if(id=="0")
                 $(".info").slideUp();
         else
@@ -177,6 +182,22 @@ if(mysqli_num_rows($h)>0){
 
 
     });
+</script>
+<script type="text/javascript">
+    $("#post_app").click(function(){
+        $(".curtain").show();
+        $(".loaderDiv").removeClass("loaderDiv-small").addClass("loaderDiv-big");
+        $(".loader").show(100);
+        $(".status").show().animate({opacity: 1},"slow");
+    });
+
+//    $(window).unload(function{
+//        $(".status").hide();
+//        $(".loader").hide();
+//
+//        $(".curtain").hide();
+//
+//    });
 </script>
 
 </body>

@@ -21,6 +21,8 @@ $post_type = $_GET['type'];
 
 if(!check_elig($post_type))
         die("<h3>You aren't eligible for this post right now! Check in Apply for posts section.</h3>");
+if(!check_post_apply($post_type))
+        die("<h3>You haven't applied for this post right now! Apply in Apply for posts section.</h3>");
 
 
 
@@ -192,7 +194,7 @@ $posts = array("Project Supervisor [Junior Engineer-Civil/ Electrical]","Executi
         <th>B) Mobile No:</th><td><?php echo $mobile;?></td>
         </tr>
         <tr>
-        <th>C)Age as on date of application: </th><td><?php  ?></td>
+        <th>C)Age as on date of application: </th><td><?= calculateAge($dob);  ?></td>
         <th>D) Date of Birth:</th><td><?php echo $dob;?></td>
         </tr>
         <tr>

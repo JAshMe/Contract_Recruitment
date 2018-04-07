@@ -45,6 +45,9 @@
     $q = $db->process_query($q);
     if($q)
     {
+        $filename=$id."_".$_GET['type'].".pdf";
+        unlink("./applications/".$filename);
+        unlink("./final_app/$filename");
         $misc->palert("Withdrawn Successfully","home.php?val=withdraw");
     }
     else

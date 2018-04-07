@@ -63,7 +63,7 @@
     $('.delete').on('click',function(e){
         var answer=confirm('Do you want to delete?');
         if(answer){
-            \
+
         }
         else{
             e.preventDefault();      

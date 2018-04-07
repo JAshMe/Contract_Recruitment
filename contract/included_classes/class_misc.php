@@ -265,4 +265,8 @@ function randomNumber($length) {
 
     return $result;
 }
+function calculateAge($dob)
+{
+        return date_diff(date_create(date("Y-m-d")),date_create($dob))->y;
+}
 ?>
