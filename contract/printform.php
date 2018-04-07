@@ -10,7 +10,6 @@ require_once("./included_classes/class_user.php");
 require_once("./included_classes/class_misc.php");
 require_once("./included_classes/class_sql.php");
 require_once ("./include/verify_document.php");
-require_once ("./included_classes/check_post.php");
 $misc= new miscfunctions();
 $db = new sqlfunctions();
 
@@ -19,10 +18,10 @@ if(!isset($_SESSION['user']))
 $id=$_SESSION['user'];
 $post_type = $_GET['type'];
 
-if(!check_elig($post_type))
+if(!isset($_SESSION['post_'.$post_type]))
+        die("<h2>Unauthorized Access</h2>");
+if(!$_SESSION['post_'.$post_type])
         die("<h3>You aren't eligible for this post right now! Check in Apply for posts section.</h3>");
-if(!check_post_apply($post_type))
-        die("<h3>You haven't applied for this post right now! Apply in Apply for posts section.</h3>");
 
 
 
@@ -194,7 +193,11 @@ $posts = array("Project Supervisor [Junior Engineer-Civil/ Electrical]","Executi
         <th>B) Mobile No:</th><td><?php echo $mobile;?></td>
         </tr>
         <tr>
+<<<<<<< HEAD
         <th>C)Age as on date of application: </th><td><?= calculateAge($dob);  ?></td>
+=======
+        <th>C)Age as on date of application: </th><td><?php echo "date()-$dob";  ?></td>
+>>>>>>> 3f2f89b8bc943cf18ffd020e9971969f6404a30c
         <th>D) Date of Birth:</th><td><?php echo $dob;?></td>
         </tr>
         <tr>
