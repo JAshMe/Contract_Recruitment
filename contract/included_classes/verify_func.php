@@ -64,9 +64,9 @@ function verify_fill($id)
                 $num = mysqli_num_rows($r);
                 $ans = 2-$num." Reference";
                 if($num==1)
-                        return "Fill".$ans;
-                else
-                        return "Fill".$ans."s";
+                        return " Fill ".$ans;
+                else 
+                        return " Fill ".$ans."s";
         }
 
 

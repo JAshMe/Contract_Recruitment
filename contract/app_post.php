@@ -23,7 +23,7 @@ $db = new sqlfunctions();
 $id=$_SESSION['user'];
 
 //$post_array=check_posts();
-//check_post();
+check_post();
 $q="select * from `eligible` where `user_id` like '$id'";
 $h=$db->process_query($q);
 if(mysqli_num_rows($h)>0){

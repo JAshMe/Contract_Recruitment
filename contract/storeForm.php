@@ -71,24 +71,28 @@ $pdf = new PDFMerger;
 
 $pdf->addPDF($saved,'all');
 $pdf->addPDF($doc_10th, 'all');
+
 $pdf->addPDF($doc_12th, 'all');
 if($doc_dip) $pdf->addPDF($doc_dip,'all');
 if($doc_ug) $pdf->addPDF($doc_ug, 'all');
 if($doc_pg) $pdf->addPDF($doc_pg, 'all');
 
 //adding experience pages
+
 $expQuery = "select user_id,id from experience where user_id = '$id' ORDER by id desc";
 $r = $db->process_query($expQuery);
 while($row = $db->fetch_rows($r))
 {
        $doc_exp = "doc_exp/$id"."_doc_exp".$row['id'].".pdf";
+	   
         $pdf->addPDF($doc_exp, 'all');
 }
 
-$pdf->merge('file',"/I:/Xampp/htdocs/Contract_Recruitment/contract/final_app/$id"."_$post_type.pdf"); // generate the file
+
+$pdf->merge('file',"/var/www/html/academics/acadserver/academic_new/Contract_Recruitment/contract/final_app/$id"."_$post_type.pdf"); // generate the file
 
 
- header("Location:printform.php?type=$post_type");
+//header("Location:printform.php?type=$post_type");
 
 
 

