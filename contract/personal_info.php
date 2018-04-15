@@ -71,6 +71,7 @@ $emp_code=validate($r['emp_code']);
 
 <ul class="text-danger">
   <li> * Marked fields are mandatory.</li>
+  <li>Format of date is (YYYY-MM-DD), if format not shown in field</li>
 </ul>
 
 <form class="form-horizontal" name="reg_frm" method="post" action="save.php" >
@@ -79,20 +80,6 @@ $emp_code=validate($r['emp_code']);
 		<h3>Personal Details</h3>
 		<hr>
 
-		<div class="form-group">
-			<label class="control-label col-sm-3" for="dob"><span class="text-danger">*</span> Staff of MNNIT :</label>
-			<div class="col-sm-5">
-				<label class="radio-inline"><input type="radio" name="emp" value="y" id="mnnit_yes" <?php if(isset($emp) && $emp=='y') echo 'checked';?> >Yes</label>
-					<label class="radio-inline"><input type="radio" name="emp" value="n" id="mnnit_no" <?php if(isset($emp) && $emp=='n') echo 'checked';?> >No</label>
-			</div>
-		</div>
-
-		<div class="form-group"  id="mnnitemp" <?php if(isset($emp)&&$emp=='y') echo"style=\"display:block\"; else style=\"display:none\"; ";?> >
-			<label class="control-label col-sm-3" for="emp_code"> MNNIT employee code :</label>
-			<div class="col-sm-5">
-				<input type="text" class="form-control"  id="emp_code" value="<?php if(isset($emp_code)) echo "$emp_code"; ?>" name="emp_code" >
-			</div>
-		</div>
 
 		<div class="form-group">
 			<label class="control-label col-sm-3" for="name"><span class="text-danger">*</span> Name :</label>
@@ -107,6 +94,9 @@ $emp_code=validate($r['emp_code']);
 			<div class="col-sm-5">
 				<input  id="dob" type="date" class="form-control" required value="<?php if(isset($dob)) echo "$dob"; ?>" name="dob" >
 			</div>
+			<!-- <div class="col-md-8">
+				<span class="text-danger" style="margin-left: 210px;">Format is (YYYY-MM-DD), if format not shown in field</span>
+			</div> -->
 		</div>
 
 
@@ -132,17 +122,17 @@ $emp_code=validate($r['emp_code']);
 
 
 		<div class="form-group">
-			<label class="control-label col-sm-3" for="dob"><span class="text-danger">*</span> Physically Handicapped:</label>
+			<label class="control-label col-sm-3" for="dob"><span class="text-danger">*</span> PwD:</label>
 			<div class="col-sm-3">
 				<label class="radio-inline"><input type="radio" required name="pwd" id="yes" value="y" <?php if(isset($pwd) && $pwd=='y') echo 'checked';?> >Yes</label>
 			<label class="radio-inline"><input type="radio" required name="pwd" id="no" value="n"<?php if(isset($pwd) && $pwd=='n') echo 'checked';?> >No</label>
 			</div>
 		</div>
-		<div class="form-group" id="phyhandicap">
+		<div class="form-group" id="phyhandicap" >
 			<label class="control-label col-sm-3" for="type_dis"><span class="text-danger">*</span> Type of Disability :</label>
 			<div class="col-sm-5">
 			<select  id="type_dis" class="form-control" name="pwd_type" id="selectphy" >
-			  <option value="NA" <?php if(isset($pwd_type) && $pwd_type=='NA') echo 'selected';?> >NA</option>
+			  <!--<option value="NA" <?php if(isset($pwd_type) && $pwd_type=='NA') echo 'selected';?> >NA</option>-->
 					  <option value="OH" <?php if(isset($pwd_type) && $pwd_type=='OH') echo 'selected';?> >Orthopedically Handicapped</option>
 					  <option value="VH" <?php if(isset($pwd_type) && $pwd_type=='VH') echo 'selected';?> >Visually Handicapped</option>
 					  <option value="HH" <?php if(isset($pwd_type) && $pwd_type=='HH') echo 'selected';?> >Hearing Handicapped</option>
@@ -218,17 +208,6 @@ $emp_code=validate($r['emp_code']);
 				<input type="text" class="form-control" id="nationality" required placeholder="Nationality" name="nationality" value="<?php if(isset($nationality)) echo "$nationality"; ?>">
 			</div>
 		</div>
-
-
-      	<div class="form-group">
-         	<label class="control-label col-sm-3" for="poa"><span class="text-danger">*</span> Port/Place of Applying Application Form :</label>
-          	<div class="col-sm-4">
-          		<select id="poa" name="place_of_application" required class="form-control">
-				  <option value="inside india" <?php if(isset($place_of_application) && $place_of_application=='inside india') echo 'selected';?> >INSIDE INDIA</option>
-				  <option value="outside india" <?php if(isset($place_of_application) && $place_of_application=='outside india') echo 'selected';?> >OUTSIDE INDIA</option>
-				</select>
-          	</div>
-      	</div>
         
         
         <div class="form-group">
@@ -256,35 +235,7 @@ $emp_code=validate($r['emp_code']);
 </div>
 </body>
 <script>
-<?php
-if($emp!='y')
-{?>
-	$(document).ready(function () {
-    $('#mnnitemp').hide();
-    $("#mnnit_yes").click(function () { //use change event
-            $('#mnnitemp').stop(true,true).show(200); //than show
-    });
-	$("#mnnit_no").click(function () { //use change event
-            $('#mnnitemp').stop(true,true).hide(200); //than show
-    });
-});
-<?php
-}?>
-<?php
-if($emp!='y')
-{?>
-	$(document).ready(function () {
-    $('#mnnitdept').hide();
-    $("#mnnit_yes").click(function () { //use change event
-            $('#mnnitdept').stop(true,true).show(200); //than show
-    });
-	$("#mnnit_no").click(function () { //use change event
-            $('#mnnitdept').stop(true,true).hide(200); //than show
-    });
-});
-<?php
-}?>
-
+$('#phyhandicap').addClass('hidden');
 $('#yes').click(function() {
    if($('#yes').is(':checked')) { $('#phyhandicap').removeClass('hidden'); $('#selectphy').addClass('required'); }
 });

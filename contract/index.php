@@ -18,7 +18,14 @@
             $misc->redirect("home.php?val=perinfo");
 	if(isset($_POST['register-submit']))
 	{
+		//echo "Here!!<br>";
 		//getting the data
+                if(!isset($_POST['tnc'])) {
+                        palert("Please Agree to out Terms and Conditions!!","");
+                        die();
+                }
+                $tnc = validate($_POST['tnc']);
+
 		$email = validate($_POST['email']);
 		$otp = validate($_POST['otp']);
 		$pass = validate($_POST['pass']);
@@ -30,6 +37,7 @@
 		
 		//getting the details of the user
 		$detailQuery = "select * from login where email = '$email'";
+		//echo $detailQuery;
 		$r = $db->process_query($detailQuery);
 		if(mysqli_num_rows($r)>0)
 		{
@@ -50,6 +58,7 @@
 			$pass = hash("sha256",$pass);
 			//update verify, password
 			$verifyQuery = "update login set verify = '1', password = '$pass' where email = '$email'";
+			//echo "<br>".$verifyQuery;
 			$r = $db->process_query($verifyQuery);
 
                         //adding a final_apply row in table so that it initialises values to 0
@@ -84,7 +93,7 @@
                             $misc->palert("Please verify your account","index.php");
 
                     }
-                    $misc->palert("Logged in successfully","home.php?val=perinfo");
+                    $misc->palert("Logged in successfully","home.php?val=app_post");
 
             }
             else{
@@ -226,7 +235,7 @@
                 <img class="img-responsive" src="logo-MNNIT.png" style="height:150px">
         </div>
         <div class="col-md-9">
-                <center><h3 style="color:white;font-family: 'Graduate', cursive;margin-left:50px; line-height:30px;">MOTILAL NEHRU NATIONAL INSTITUTE OF TECHNOLOGY<br />ALLAHABAD<br /></h3><br><h3 style="color:white;">Recruitment for Contract Employee</h3></center>
+                <center><h3 style="color:white;font-family: 'Graduate', cursive;margin-left:50px; line-height:30px;">MOTILAL NEHRU NATIONAL INSTITUTE OF TECHNOLOGY<br />ALLAHABAD<br /></h3><br><h3 style="color:white;">Recruitment for Non-Teaching positions on Contract Basis</h3></center>
         </div>
 </div>
 
@@ -283,15 +292,18 @@
                                                                                 </div>
                                                                         </div>
                                                                 </div>
-                                                                <div class="text-danger" align="center">If you can't find the mail, please check your Email ID or check your SPAM FOLDER!</div>
+                                                                <div class="text-danger" align="center">If you can't find the mail, please check your SPAM FOLDER of provided Email-ID</div>
                                                                 <br />
                                                                 <div class="form-group">
                                                                         <input type="password" name="otp" id="otp" tabindex="2" class="form-control" placeholder="Enter OTP Sent to the provided E-mail">
                                                                 </div>
+                                                                <div class="form-group col-md-offset-1">
+                                                                        <label for="tnc" class="control-label"><input type="checkbox" name="tnc" id="tnc" class="">&nbsp;&nbsp;I have Downloaded and Agree to <a href="General%20Instructions.pdf" target="_blank">Terms and Conditions</a></label>
+                                                                </div>
                                                                 <div class="form-group">
                                                                         <div class="row">
                                                                                 <div class="col-sm-6 col-sm-offset-3">
-                                                                                        <input type="submit" name="register-submit" id="register-submit" tabindex="4" class="form-control btn btn-register" value="Register Now">
+                                                                                        <input type="submit" name="register-submit"  id="register-submit" tabindex="4" class="form-control btn btn-register" value="Register Now">
                                                                                 </div>
                                                                         </div>
                                                                 </div>
@@ -301,12 +313,6 @@
                                 </div>
                         </div>
                 </div>
-        </div>
-</div>
-
-<div class="row" style="margin-top:-50px">
-        <div class="col-md-6 col-md-push-3">
-                <h2><center>Instructions to fill the form. <a href="General%20Instructions.pdf">Click Here</a></center></h2>
         </div>
 </div>
 <footer class="well col-sm-12" style="margin:0px; padding:10px;margin-top:12px;">
@@ -386,7 +392,7 @@ $("#otp_btn").click(function(){
 
 <script type="text/javascript">
         $(function() {
-
+				$("#register-submit").hide();
                 $('#login-form-link').click(function(e) {
                         $("#login-form").delay(100).fadeIn(100);
                         $("#register-form").fadeOut(100);
@@ -403,7 +409,16 @@ $("#otp_btn").click(function(){
                 });
 
         });
+		
+		$(":checkbox").change(function(){
+			if(this.checked)
+				$("#register-submit").slideDown();
+			else
+				$("#register-submit").slideUp();
+			
+		});
 
+      
 </script>
 <script type="text/javascript" src="include/lv-ripple.jquery.js"></script>
 <script type="text/javascript" src="include/app.js"></script>

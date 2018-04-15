@@ -13,7 +13,7 @@ class sqlfunctions {
 
 		    $this->host="localhost";
 		    $this->user="root";
-		    $pass="";
+		    $pass="914passwd";
 		   $con= mysqli_connect($this->host,$this->user,$pass,$db) or die(mysqli_error($con));
 	          $this->connection = $con;
 	           $this->database=$db;

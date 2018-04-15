@@ -17,7 +17,7 @@
         <hr>
 		<h4>For any further queries, contact us at<br /><br />
          Email Id: <font style="color:#E53935">recruitmentcell@mnnit.ac.in</font><br />
-         Phone No. <font style="color:#E53935">0532-2271027</font>
+<!--         Phone No. <font style="color:#E53935">0532-2271027</font>-->
          </h4>   
 </div>
 </body>

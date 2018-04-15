@@ -20,7 +20,7 @@
 
 <body>
 <div id="main" style="font-size:13px; margin:0px 0 0 0;" align="justify">
-	<center><b style="font-size:18px;">Work Experience</b></center>
+	<center><b style="font-size:18px;">Work Experience(Please enter in order from oldest to latest)</b></center>
 <hr>
 
 
@@ -52,6 +52,7 @@
 
 <ul class="text-danger">
   <li> * Marked fields are mandatory.</li>
+  <li>Format of date is (YYYY-MM-DD), if format not shown in field</li>
 </ul>
 
 <form class="form-horizontal" name="reg_frm" method="post" action="save.php" onSubmit="return validate();" enctype="multipart/form-data">

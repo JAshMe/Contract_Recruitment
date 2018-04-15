@@ -46,14 +46,14 @@
 <hr>
 <!-- HTML for details for project supervisor -->
  <table class="table table-striped posts_div" id="projectsuper">
-      <tr><td><strong>Name of Post:</strong></td><td>Project Supervisor [Junior Engineer-Civil/ Electrical]</td></tr>
+      <!-- <tr><td><strong>Name of Post:</strong></td><td>Project Supervisor [Junior Engineer-Civil/ Electrical]</td></tr> -->
       <tr><td><strong>Remuneration:</strong></td><td>Will be communicated later</td></tr>
       <tr><td><strong>Age Limit:</strong></td><td>Preferably below 35 years </td></tr>
       <tr><td><strong>Essential Qualification:</strong></td><td>First class diploma of three years duration in Civil/Electrical Engineering with one year experience in relevant field</td></tr>
  </table>
 <!-- HTML for details for Executive in executive developement centre -->
  <table class="table table-striped posts_div" style=" display: none;" id="executive">
-      <tr><td><strong>Name of Post:</strong></td><td>Executive in Executive Development Centre</td></tr>
+      <!-- <tr><td><strong>Name of Post:</strong></td><td>Executive in Executive Development Centre</td></tr> -->
       <tr><td><strong>Remuneration:</strong></td><td>Will be communicated later</td></tr>
       <tr><td><strong>Age Limit:</strong></td><td>Preferably below 35 years </td></tr>
       <tr><td><strong>Essential Qualification:</strong></td><td>Graduate in any discipline. Good working knowledge of computer [MS Office], and knowledge of accounts procedures.</td></tr>
@@ -62,7 +62,7 @@
  </table>
 <!-- HTML for details for office assisant in edc -->
  <table class="table table-striped posts_div" style=" display: none;" id="officeass">
-      <tr><td><strong>Name of Post:</strong></td><td>Office Assistant in EDC</td></tr>
+      <!-- <tr><td><strong>Name of Post:</strong></td><td>Office Assistant in EDC</td></tr> -->
       <tr><td><strong>Remuneration:</strong></td><td>Will be communicated later</td></tr>
       <tr><td><strong>Age Limit:</strong></td><td>Preferably below 35 years </td></tr>
       <tr><td><strong>Essential Qualification:</strong></td><td>Bachelors Degree in any subject.</td></tr>
@@ -70,7 +70,7 @@
  </table>
 <!-- HTML for details for technical manpower in clinic -->
  <table class="table table-striped posts_div" style=" display: none;" id="techman_clinic">
-      <tr><td><strong>Name of Post:</strong></td><td>Technical Manpower [for Clinical Diagnostics and Pathological Studies, Animal Tissue Culture, Immunodiagnostics, PCR/ Molecular Based Diagnostics Lab]</td></tr>
+      <!-- <tr><td><strong>Name of Post:</strong></td><td>Technical Manpower [for Clinical Diagnostics and Pathological Studies, Animal Tissue Culture, Immunodiagnostics, PCR/ Molecular Based Diagnostics Lab]</td></tr> -->
       <tr><td><strong>Remuneration:</strong></td><td>Will be communicated later</td></tr>
       <tr><td><strong>Age Limit:</strong></td><td>Preferably below 35 years </td></tr>
       <tr><td><strong>Essential Qualification:</strong></td><td>First class Diploma of minimum 3 years duration in appropriate branch of Science /Engineering/ Technology.&nbsp;<strong>OR</strong>&nbsp;
@@ -79,7 +79,7 @@
  </table>
 <!-- HTML for details for lab assisant -->
  <table class="table table-striped posts_div" style=" display: none;" id="labass">
-      <tr><td><strong>Name of Post:</strong></td><td>Lab Assistant [for CMDR]</td></tr>
+      <!-- <tr><td><strong>Name of Post:</strong></td><td>Lab Assistant [for CMDR]</td></tr>  -->
       <tr><td><strong>Remuneration:</strong></td><td>Will be communicated later</td></tr>
       <tr><td><strong>Age Limit:</strong></td><td>Preferably below 35 years </td></tr>
       <tr><td><strong>Essential Qualification:</strong></td><td>First class of minimum 3 years duration in appropriate branch of Science/ Engineering/ Technology.&nbsp;<strong>OR</strong>&nbsp;
@@ -88,7 +88,7 @@
  </table>
 <!-- HTML for details for technical officer -->	
  <table class="table table-striped posts_div" style=" display: none;" id="techoff">
-      <tr><td><strong>Name of Post:</strong></td><td>Technical Officer [Centre for Interdisciplinary Research (CIR)]</td></tr>
+     <!-- <tr><td><strong>Name of Post:</strong></td><td>Technical Officer [Centre for Interdisciplinary Research (CIR)]</td></tr> -->
       <tr><td><strong>Remuneration:</strong></td><td>Will be communicated later</td></tr>
       <tr><td><strong>Age Limit:</strong></td><td>Preferably below 35 years </td></tr>
       <tr><td><strong>Essential Qualification:</strong></td><td>B.E./ B.Tech. or M.Sc./ MCA Degree in relevant filed with first class or equivalent grade (6.5 in 10 point scale) and consistently excellent academic record. </td></tr>
@@ -96,7 +96,7 @@
  </table>
 <!-- HTML for details for technical manpower in CIR -->
  <table class="table table-striped posts_div" style=" display: none;" id="techman_CIR">
-      <tr><td><strong>Name of Post:</strong></td><td>Technical Manpower [Centre for Interdisciplinary Research (CIR)]</td></tr>
+      <!-- <tr><td><strong>Name of Post:</strong></td><td>Technical Manpower [Centre for Interdisciplinary Research (CIR)]</td></tr> -->
       <tr><td><strong>Remuneration:</strong></td><td>Will be communicated later</td></tr>
       <tr><td><strong>Age Limit:</strong></td><td>Preferably below 35 years </td></tr>
       <tr><td><strong>Essential Qualification :</strong></td><td>First class Diploma of minimum 3 years duration in appropriate branch of Engineering/ Technology.</td></tr>

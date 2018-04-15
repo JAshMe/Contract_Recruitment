@@ -52,21 +52,24 @@ function verify_fill($id)
         }
 
 
-        $q = "select  user_id  from `employer` where user_id= '$id'";
+        /*$q = "select  user_id  from `employer` where user_id= '$id'";
         $r=$db->process_query($q);
         if(mysqli_num_rows($r)==0)
                 return "Fill Present Employment";
-
-        $q = "select  user_id  from `reference` where user_id= '$id'";
+*/
+        
+		//reference check
+		
+		$q = "select  user_id  from `reference` where user_id= '$id'";
         $r=$db->process_query($q);
         if(mysqli_num_rows($r)<2)
         {
                 $num = mysqli_num_rows($r);
-                $ans = 2-$num." Reference";
+                $ans = 2-$num;
                 if($num==1)
-                        return " Fill ".$ans;
+                        return " Fill ".$ans." more Reference";
                 else 
-                        return " Fill ".$ans."s";
+                        return " Fill ".$ans." References";
         }
 
 
