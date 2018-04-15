@@ -7,7 +7,7 @@
  */
 // if(substr($_SERVER['REMOTE_ADDR'],0,9)!='172.31.9.')
 //	die('Website Under Maintenance!!');
-<<<<<<< HEAD
+
 session_start();
 require_once("included_classes/class_user.php");
 require_once("included_classes/class_misc.php");
@@ -93,8 +93,8 @@ if(isset($_POST['login-submit'])){
 
         }
 }
-=======
-    session_start();
+
+    
     require_once("included_classes/class_user.php");
     require_once("included_classes/class_misc.php");
     require_once("included_classes/class_sql.php");
@@ -188,7 +188,7 @@ if(isset($_POST['login-submit'])){
 
             }
     }
->>>>>>> 51624a835a6f507c89bc48996fb45cb51e95d799
+
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -380,11 +380,11 @@ if(isset($_POST['login-submit'])){
                                                                                 </div>
                                                                         </div>
                                                                 </div>
-<<<<<<< HEAD
-                                                                <div class="text-danger" align="center">If you can't find the mail, please check your Email ID or check your SPAM FOLDER!</div>
-=======
+
+                                                                
+
                                                                 <div class="text-danger" align="center">If you can't find the mail, please check your SPAM FOLDER of provided Email-ID</div>
->>>>>>> 51624a835a6f507c89bc48996fb45cb51e95d799
+
                                                                 <br />
                                                                 <div class="form-group">
                                                                         <input type="password" name="otp" id="otp" tabindex="2" class="form-control" placeholder="Enter OTP Sent to the provided E-mail">
