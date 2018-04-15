@@ -10,7 +10,7 @@ if(!isset($_SESSION['user']))
   header("location:index.php");
 }
 ?>
-    <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+    <!DOCTYPE html>
     <html xmlns="http://www.w3.org/1999/xhtml">
     <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -40,7 +40,7 @@ if(!isset($_SESSION['user']))
             <div class="panel panel-default" style="border:0px">
                 <div class="panel panel-heading" style="background:#012B5D">
                         <h3 align="center" class="text-info" style="font-family: 'Yanone Kaffeesatz', sans-serif;font-size:26px;color:#fff;margin-top:10px">
-                        	Online Application for Contract Employee Position
+                        Online Application for Recruitment of Non-Teaching positions on Contract Basis
                         </h3>
                 </div>
                 <div class="panel panel-body" style="padding:0px;">
@@ -59,12 +59,12 @@ if(!isset($_SESSION['user']))
                                         include("work_exp.php");
                                 else  if($_GET['val']=="reference")
                                         include("reference.php");
-                                else if($_GET['val']=='post_detail')
-                                        include("post_detail.php");
+                             /*   else if($_GET['val']=='post_detail')
+                                        include("post_detail.php");*/
                                 else if($_GET['val']=="app_post")
                                         include("app_post.php");
-                                else if($_GET['val']=="withdraw")
-                                        include("withdraw.php");
+                   /*             else if($_GET['val']=="withdraw")
+                                        include("withdraw.php");*/
                                 else if($_GET['val']=="print")
                                         include("print.php");
                                 else if($_GET['val']=='other_info')

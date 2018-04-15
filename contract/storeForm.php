@@ -24,6 +24,7 @@ if(!isset($_SESSION['user']))
 
 $id=$_SESSION['user'];
 $post_type = $_GET['type'];
+$kind = $_GET['kind'];
 $db = new sqlfunctions();
 
 
@@ -37,6 +38,8 @@ $doc_12th = "doc_edu/$id"."_doc_12th.pdf";
 $doc_ug = '';
 $doc_dip = '';
 $doc_pg = '';
+$doc_dpg = '';
+$doc_dug = '';
 
 $query = "select user_id from diploma where user_id = '$id'";
 $r = $db->process_query($query);
@@ -48,10 +51,21 @@ $r = $db->process_query($query);
 if(mysqli_num_rows($r)>0)
         $doc_ug = "doc_edu/$id"."_doc_ug.pdf";
 
+
+$query = "select user_id from dug where user_id = '$id'";
+$r = $db->process_query($query);
+if(mysqli_num_rows($r)>0)
+        $doc_pg = "doc_edu/$id"."_doc_dug.pdf";
+
 $query = "select user_id from pg where user_id = '$id'";
 $r = $db->process_query($query);
 if(mysqli_num_rows($r)>0)
         $doc_pg = "doc_edu/$id"."_doc_pg.pdf";
+
+$query = "select user_id from dpg where user_id = '$id'";
+$r = $db->process_query($query);
+if(mysqli_num_rows($r)>0)
+        $doc_pg = "doc_edu/$id"."_doc_dpg.pdf";
 
 
 
@@ -71,24 +85,32 @@ $pdf = new PDFMerger;
 
 $pdf->addPDF($saved,'all');
 $pdf->addPDF($doc_10th, 'all');
+
 $pdf->addPDF($doc_12th, 'all');
 if($doc_dip) $pdf->addPDF($doc_dip,'all');
 if($doc_ug) $pdf->addPDF($doc_ug, 'all');
 if($doc_pg) $pdf->addPDF($doc_pg, 'all');
+if($doc_dpg) $pdf->addPDF($doc_dpg, 'all');
+if($doc_dug) $pdf->addPDF($doc_dug, 'all');
 
 //adding experience pages
+
 $expQuery = "select user_id,id from experience where user_id = '$id' ORDER by id desc";
 $r = $db->process_query($expQuery);
 while($row = $db->fetch_rows($r))
 {
        $doc_exp = "doc_exp/$id"."_doc_exp".$row['id'].".pdf";
+	   
         $pdf->addPDF($doc_exp, 'all');
 }
 
-$pdf->merge('file',"/I:/Xampp/htdocs/Contract_Recruitment/contract/final_app/$id"."_$post_type.pdf"); // generate the file
 
+$pdf->merge('file',"I:/Xampp/htdocs/Contract_Recruitment/contract/final_app/$id"."_$post_type.pdf"); // generate the file
 
- header("Location:printform.php?type=$post_type");
+if($kind=="1")
+        header("Location:printform.php?type=$post_type");
+else
+        header("Location:final_app/$id"."_$post_type.pdf");
 
 
 

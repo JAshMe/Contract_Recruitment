@@ -108,11 +108,52 @@ $board_10=$comp_10=$school_10=$per_or_cgpa_10=$value_10=$marks_10=$max_marks_10=
         $university_pg = $c['university'];
         $is_others_pg= $c['is_others'];
     }
+
+    $id=$_SESSION['user'];
+    $query="SELECT * from `dug` where `user_id` like '$id'";
+    $c = $db->process_query($query);
+    $degree_dug=$specialization_dug=$start_date_dug=$completion_date_dug=$per_or_cgpa_dug=$value_dug=$marks_dug=$max_marks_dug=$university_dug=$is_others_dug=null;
+    if(mysqli_num_rows($c)>0) {
+        $c = $db->fetch_rows($c);
+        $degree_dug = $c['degree'];
+        $specialization_dug = $c['specialization'];
+        $start_date_dug = $c['start_date'];
+        $completion_date_dug = $c['completion_date'];
+        $per_or_cgpa_dug = $c['per_or_cgpa'];
+        $value_dug = $c['value'];
+        $marks_dug = $c['marks'];
+        $max_marks_dug = $c['max_marks'];
+        $university_dug = $c['university'];
+        $is_others_dug= $c['is_others'];
+        $is_others_spec=$c['is_others_spec'];
+    }
+
+
+    $id=$_SESSION['user'];
+    $query="SELECT * from `dpg` where `user_id` like '$id'";
+    $c = $db->process_query($query);
+    $degree_dpg=$specialization_dpg=$start_date_dpg=$completion_date_dpg=$per_or_cgpa_dpg=$value_dpg=$marks_dpg=$max_marks_dpg=$university_dpg=$is_others_dpg=null;
+    if(mysqli_num_rows($c)>0) {
+        $c = $db->fetch_rows($c);
+        $degree_dpg = $c['degree'];
+        $specialization_dpg = $c['specialization'];
+        $start_date_dpg = $c['start_date'];
+        $completion_date_dpg = $c['completion_date'];
+        $per_or_cgpa_dpg = $c['per_or_cgpa'];
+        $value_dpg = $c['value'];
+        $marks_dpg = $c['marks'];
+        $max_marks_dpg = $c['max_marks'];
+        $university_dpg = $c['university'];
+        $is_others_dpg= $c['is_others'];
+    }
+
+
     ?>
     <p align="justify" class="larger-font">
 
     <ul class="text-danger">
         <li> * Marked fields are mandatory.</li>
+        <li>Format of date is (YYYY-MM-DD), if format not shown in field</li>
     </ul>
 
 <style>
@@ -133,7 +174,9 @@ $board_10=$comp_10=$school_10=$per_or_cgpa_10=$value_10=$marks_10=$max_marks_10=
                         <option value="diploma" >Diploma</option>
                         <option value="12th">12th Standard</option>
                         <option value="ug" >Under Graduate</option>
+                        <option value="dug">Double Under Graduate (if any)</option>
                         <option value="pg">Post Graduate</option>
+                        <option value="dpg">Double Post Graduate (if any)</option>
                     </select>
                 </div>
             </div>
@@ -194,9 +237,10 @@ $board_10=$comp_10=$school_10=$per_or_cgpa_10=$value_10=$marks_10=$max_marks_10=
                         <div class="form-group">
                             <label class="control-label col-sm-3" for="value_10"><span class="text-danger">*</span> % Marks/CGPA :</label>
                             <div class="col-sm-3">
-                                <input type="text" class="form-control"   id="value_10" name="perc_marks_10th" readonly value="<?= $value_10?>" >
+                                <input type="text" class="form-control"   id="value_10" name="perc_marks_10th" readonly>
                             </div>
                         </div>
+                        <input type="hidden" name="perc_marks_10th" value="<?= $value_10?>">
 
                     <div class="form-group">
                         <label class="control-label col-sm-3" for="doc_10th"><span class="text-danger">*</span> Attach Appropriate proof:</label>
@@ -290,9 +334,10 @@ $board_10=$comp_10=$school_10=$per_or_cgpa_10=$value_10=$marks_10=$max_marks_10=
                         <div class="form-group">
                             <label class="control-label col-sm-3" for="value_d"><span class="text-danger">*</span> % Marks/CGPA :</label>
                             <div class="col-sm-3">
-                                <input type="text" class="form-control"  id="value_d" name="dip_perc_marks" readonly value="<?= $value_d?>" >
+                                <input type="text" class="form-control"  id="value_d" name="dip_perc_marks" readonly value="" >
                             </div>
                         </div>
+                <input type="hidden" name="dip_perc_marks" value="<?= $value_d?>">
 
                 <div class="form-group">
                     <label class="control-label col-sm-3" for="doc_diploma"><span class="text-danger">*</span> Attach Appropriate proof:</label>
@@ -362,9 +407,10 @@ $board_10=$comp_10=$school_10=$per_or_cgpa_10=$value_10=$marks_10=$max_marks_10=
                     <div class="form-group">
                         <label class="control-label col-sm-3" for="value_12"><span class="text-danger">*</span> % Marks/CGPA :</label>
                         <div class="col-sm-3">
-                            <input type="text" class="form-control"   name="perc_marks_12th" readonly value="<?= $value_12?>"  id="value_12" >
+                            <input type="text" class="form-control"   name="perc_marks_12th" readonly value=""  id="value_12" >
                         </div>
                     </div>
+                    <input type="hidden" name="perc_marks_12th" value="<?= $value_12?>">
 
                     <div class="form-group">
                         <label class="control-label col-sm-3" for="doc_12th"><span class="text-danger">*</span> Attach Appropriate proof:</label>
@@ -437,31 +483,32 @@ $board_10=$comp_10=$school_10=$per_or_cgpa_10=$value_10=$marks_10=$max_marks_10=
                 <div class="form-group">
                     <label class="control-label col-sm-2" for="specialization_ug"><span class="text-danger">*</span>Specialization:</label>
                 <div class="col-sm-4" >
-                    <select id="specialization_ug" name="ug_specialization" required class="form-control degree3">
-                        <option value="CSE" id="cse" <?php if($specialization_ug=="CSE") echo "selected" ?> >Computer Science Engineering (CSE)</option>
-                        <option value="ECE" id="ece" <?php if($specialization_ug=="ECE") echo "selected" ?> >Electronics and Communication Engineering (ECE)</option>
-                        <option value="CE" id="ce" <?php if($specialization_ug=="CE") echo "selected" ?> >Civil Engineering (CE)</option>
-                        <option value="EE" id="ee" <?php if($specialization_ug=="EE") echo "selected" ?> >Electrical Engineering (EE)</option>
-                        <option value="ME" id="me" <?php if($specialization_ug=="ME") echo "selected" ?> >Mechanical Engineering(ME)</option>
-                        <option value="PIE" id="pie" <?php if($specialization_ug=="PIE") echo "selected" ?> >Production and Industrial Engineering(PIE)</option>
-                        <option value="IT" id="it" <?php if($specialization_ug=="IT") echo "selected" ?> >Information Technology(IT)</option>
-                        <option value="EEE" id="eee" <?php if($specialization_ug=="EEE") echo "selected" ?> >Electrical And Electronics Engineering (EEE)</option>
-                        <option value="BT" id="bt" <?php if($specialization_ug=="BT") echo "selected" ?> >Biotechnology</option>
-                        <option value="CHE" id="che" <?php if($specialization_ug=="CHE") echo "selected" ?> >Chemical Engineering (CE)</option>
-                        <option value="IE" id="ie" <?php if($specialization_ug=="IE") echo "selected" ?> >Industrial Engineering (IE)</option>
-                        <option value="AE" id="ae" <?php if($specialization_ug=="AE") echo "selected" ?> >Aerospace engineering (AE)</option>
-                        <option value="Others" id="others" <?php if($specialization_ug=="Others") echo "selected" ?> >Others</option>
-                    </select>
+<!--                    <select id="specialization_ug" name="ug_specialization" required class="form-control degree3">-->
+<!--                        <option value="CSE" id="cse" --><?php //if($specialization_ug=="CSE") echo "selected" ?><!-- >Computer Science Engineering (CSE)</option>-->
+<!--                        <option value="ECE" id="ece" --><?php //if($specialization_ug=="ECE") echo "selected" ?><!-- >Electronics and Communication Engineering (ECE)</option>-->
+<!--                        <option value="CE" id="ce" --><?php //if($specialization_ug=="CE") echo "selected" ?><!-- >Civil Engineering (CE)</option>-->
+<!--                        <option value="EE" id="ee" --><?php //if($specialization_ug=="EE") echo "selected" ?><!-- >Electrical Engineering (EE)</option>-->
+<!--                        <option value="ME" id="me" --><?php //if($specialization_ug=="ME") echo "selected" ?><!-- >Mechanical Engineering(ME)</option>-->
+<!--                        <option value="PIE" id="pie" --><?php //if($specialization_ug=="PIE") echo "selected" ?><!-- >Production and Industrial Engineering(PIE)</option>-->
+<!--                        <option value="IT" id="it" --><?php //if($specialization_ug=="IT") echo "selected" ?><!-- >Information Technology(IT)</option>-->
+<!--                        <option value="EEE" id="eee" --><?php //if($specialization_ug=="EEE") echo "selected" ?><!-- >Electrical And Electronics Engineering (EEE)</option>-->
+<!--                        <option value="BT" id="bt" --><?php //if($specialization_ug=="BT") echo "selected" ?><!-- >Biotechnology</option>-->
+<!--                        <option value="CHE" id="che" --><?php //if($specialization_ug=="CHE") echo "selected" ?><!-- >Chemical Engineering (CE)</option>-->
+<!--                        <option value="IE" id="ie" --><?php //if($specialization_ug=="IE") echo "selected" ?><!-- >Industrial Engineering (IE)</option>-->
+<!--                        <option value="AE" id="ae" --><?php //if($specialization_ug=="AE") echo "selected" ?><!-- >Aerospace engineering (AE)</option>-->
+<!--                        <option value="Others" id="others" --><?php //if($specialization_ug=="Others") echo "selected" ?><!-- >Others</option>-->
+<!--                    </select>-->
+                        <input type="text" class="form-control" id="specialization_ug" name="ug_specialization"  value="<?=$specialization_ug?>" required>
                 </div>
             </div>
 
 
-                <div class="form-group otherscome3"   id="otherscome1" <?php if(isset($specialization_ug) && $specialization_ug=="Others") echo"style=\"display:block\""; else echo "style=\"display:none\"; ";?> >
-                    <label class="control-label col-sm-2" for="specialization_ug"><span class="text-danger">*</span>Others:</label>
-                    <div class="col-sm-4">
-                        <input type="text" class="form-control"  id="specialization_ug" <?php if(isset($specialization_ug) && $specialization_ug=="Others") echo "value=\"$is_others_spec\" required "; ?> name="ug_other_specs"  >
-                    </div>
-                </div>
+<!--                <div class="form-group otherscome3"   id="otherscome1" --><?php //if(isset($specialization_ug) && $specialization_ug=="Others") echo"style=\"display:block\""; else echo "style=\"display:none\"; ";?><!-- >-->
+<!--                    <label class="control-label col-sm-2" for="specialization_ug"><span class="text-danger">*</span>Others:</label>-->
+<!--                    <div class="col-sm-4">-->
+<!--                        <input type="text" class="form-control"  id="specialization_ug" --><?php //if(isset($specialization_ug) && $specialization_ug=="Others") echo "value=\"$is_others_spec\" required "; ?><!-- name="ug_other_specs"  >-->
+<!--                    </div>-->
+<!--                </div>-->
 
 
 
@@ -512,9 +559,10 @@ $board_10=$comp_10=$school_10=$per_or_cgpa_10=$value_10=$marks_10=$max_marks_10=
 
                     <label class="control-label col-sm-3" for="value_ug"><span class="text-danger">*</span> % Marks/CGPA :</label>
                     <div class="col-sm-3">
-                        <input type="text" class="form-control"   id="value_ug" name="ug_perc_marks" readonly value="<?= $value_ug?>">
+                        <input type="text" class="form-control"   id="value_ug" name="ug_perc_marks" readonly value="">
                     </div>
                 </div>
+                <input type="hidden" name="ug_perc_marks" value="<?= $value_ug?>">
 
                 <div class="form-group">
                     <label class="control-label col-sm-3" for="doc_ug"><span class="text-danger">*</span> Attach Appropriate proof:</label>
@@ -531,6 +579,153 @@ $board_10=$comp_10=$school_10=$per_or_cgpa_10=$value_10=$marks_10=$max_marks_10=
                 </div>
             </div>
             </form>
+            <!------------------------------------------Double UG--------------------------------------------------------------------->
+    <form class="form-horizontal" name="reg_frm" method="post" action="save.php" onSubmit="return validate();" enctype="multipart/form-data">
+        <div id="dug" class="qual_div"  style=" display: none;">
+            <div id="dug" class="form-group">
+                <label class="control-label col-sm-2" for="university_dug"><span class="text-danger">*</span> University:</label>
+                <div class="col-sm-4">
+                    <input type="text" class="form-control"  name="dug_university" id="university_dug" required value="<?= $university_dug?>"  >
+                </div>
+            </div>
+
+
+            <div class="form-group">
+                <label class="control-label col-sm-2" for="degree1"><span class="text-danger">*</span> Degree:</label>
+
+                <div class="col-sm-3">
+                    <select id="degree1" name="dug_degree" required class="form-control degree2">
+                        <option value="BA" id="ba" <?php if($degree_dug=="BA") echo "selected" ?> >Bachelor of Arts (BA)</option>
+                        <option value="B.Sc" id="bsc" <?php if($degree_dug=="B.Sc") echo "selected" ?> >Bachelor of Science (B.Sc)</option>
+                        <option value="B.Com" id="ms" <?php if($degree_dug=="B.Com") echo "selected" ?> >Bachelor of Commerce (B.Com)</option>
+                        <option value="BE" id="be" <?php if($degree_dug=="BE") echo "selected" ?> >Bachelor of Engineering (BE)</option>
+                        <option value="B.Tech" id="btech" <?php if($degree_dug=="B.Tech") echo "selected" ?> >Bachelor of Technology (B.Tech)</option>
+                        <option value="LLB" id="llb" <?php if($degree_dug=="LLB") echo "selected" ?> >Bachelor of Law (LLB)</option>
+                        <option value="BCA" id="bca" <?php if($degree_dug=="BCA") echo "selected" ?> >Bachelor of Computer Application (BCA)</option>
+                        <option value="BBA" id="bba" <?php if($degree_dug=="BBA") echo "selected" ?> >Bachelor of Business Administration (BBA)</option>
+                        <option value="B.Pharma" id="bpharma" <?php if($degree_dug=="B.Pharma") echo "selected" ?> >Bachelor of Pharmacy (B.Pharma)</option>
+                        <option value="B.Arch" id="barch" <?php if($degree_dug=="B.Arch") echo "selected" ?> >Bachelor of Architecture (B.Arch)</option>
+                        <option value="BDS" id="bds" <?php if($degree_dug=="BDS") echo "selected" ?> >Bachelor of Dental Surgery (BDS)</option>
+                        <option value="BHMS" id="bhms" <?php if($degree_dug=="BHMS") echo "selected" ?> >Bachelor of Homeopathic Medicine & Surgery (BHMS)</option>
+                        <option value="BAMS" id="bams" <?php if($degree_dug=="BAMS") echo "selected" ?> >Bachelor of Ayurvedic Medicine & Surgery (BAMS)</option>
+                        <option value="BHM" id="bhm" <?php if($degree_dug=="BHM") echo "selected" ?> >Bachelor of Hotel Management (BHM)</option>
+                        <option value="B.P.Ed" id="bped" <?php if($degree_dug=="B.P.Ed") echo "selected" ?> >Bachelor of Physical Education (B.P.Ed)</option>
+                        <option value="B.Ed" id="bed" <?php if($degree_dug=="B.Ed") echo "selected" ?> >Bachelor of Education (B.Ed)</option>
+                        <option value="BHMS2" id="bhms2" <?php if($degree_dug=="BHMS2") echo "selected" ?> >Bachelor of Hospitality Management</option>
+                        <option value="Others" id="others" <?php if($degree_dug=="Others") echo "selected" ?> >Others</option>
+                    </select>
+                </div>
+            </div>
+
+
+            <div class="form-group otherscome2"   id="otherscome1" <?php if(isset($degree_dug) && $degree_dug=="Others") echo"style=\"display:block\""; else echo "style=\"display:none\"; ";?> >
+                <label class="control-label col-sm-2" for="degree_dug"><span class="text-danger">*</span>Others:</label>
+                <div class="col-sm-4">
+                    <input type="text" class="form-control"  id="degree_dug" <?php if(isset($degree_dug) && $degree_dug=="Others") echo "value=\"$is_others_dug\" required "; ?> name="dug_other_degree"  >
+                </div>
+            </div>
+
+
+
+            <div class="form-group">
+                <label class="control-label col-sm-2" for="specialization_dug"><span class="text-danger">*</span>Specialization:</label>
+                <div class="col-sm-4" >
+                    <!--                    <select id="specialization_dug" name="dug_specialization" required class="form-control degree3">-->
+                    <!--                        <option value="CSE" id="cse" --><?php //if($specialization_dug=="CSE") echo "selected" ?><!-- >Computer Science Engineering (CSE)</option>-->
+                    <!--                        <option value="ECE" id="ece" --><?php //if($specialization_dug=="ECE") echo "selected" ?><!-- >Electronics and Communication Engineering (ECE)</option>-->
+                    <!--                        <option value="CE" id="ce" --><?php //if($specialization_dug=="CE") echo "selected" ?><!-- >Civil Engineering (CE)</option>-->
+                    <!--                        <option value="EE" id="ee" --><?php //if($specialization_dug=="EE") echo "selected" ?><!-- >Electrical Engineering (EE)</option>-->
+                    <!--                        <option value="ME" id="me" --><?php //if($specialization_dug=="ME") echo "selected" ?><!-- >Mechanical Engineering(ME)</option>-->
+                    <!--                        <option value="PIE" id="pie" --><?php //if($specialization_dug=="PIE") echo "selected" ?><!-- >Production and Industrial Engineering(PIE)</option>-->
+                    <!--                        <option value="IT" id="it" --><?php //if($specialization_dug=="IT") echo "selected" ?><!-- >Information Technology(IT)</option>-->
+                    <!--                        <option value="EEE" id="eee" --><?php //if($specialization_dug=="EEE") echo "selected" ?><!-- >Electrical And Electronics Engineering (EEE)</option>-->
+                    <!--                        <option value="BT" id="bt" --><?php //if($specialization_dug=="BT") echo "selected" ?><!-- >Biotechnology</option>-->
+                    <!--                        <option value="CHE" id="che" --><?php //if($specialization_dug=="CHE") echo "selected" ?><!-- >Chemical Engineering (CE)</option>-->
+                    <!--                        <option value="IE" id="ie" --><?php //if($specialization_dug=="IE") echo "selected" ?><!-- >Industrial Engineering (IE)</option>-->
+                    <!--                        <option value="AE" id="ae" --><?php //if($specialization_dug=="AE") echo "selected" ?><!-- >Aerospace engineering (AE)</option>-->
+                    <!--                        <option value="Others" id="others" --><?php //if($specialization_dug=="Others") echo "selected" ?><!-- >Others</option>-->
+                    <!--                    </select>-->
+                    <input type="text" class="form-control" id="specialization_dug" name="dug_specialization"  value="<?=$specialization_dug?>" required>
+                </div>
+            </div>
+
+
+            <!--                <div class="form-group otherscome3"   id="otherscome1" --><?php //if(isset($specialization_dug) && $specialization_dug=="Others") echo"style=\"display:block\""; else echo "style=\"display:none\"; ";?><!-- >-->
+            <!--                    <label class="control-label col-sm-2" for="specialization_dug"><span class="text-danger">*</span>Others:</label>-->
+            <!--                    <div class="col-sm-4">-->
+            <!--                        <input type="text" class="form-control"  id="specialization_dug" --><?php //if(isset($specialization_dug) && $specialization_dug=="Others") echo "value=\"$is_others_spec\" required "; ?><!-- name="dug_other_specs"  >-->
+            <!--                    </div>-->
+            <!--                </div>-->
+
+
+
+
+
+
+
+            <div class="form-group">
+                <label class="control-label col-sm-2" for="from"><span class="text-danger">*</span> Entry Date :</label>
+                <div class="col-sm-3">
+                    <input type="date" class="form-control from_1" name="dug_start_date" required id="from" value="<?= $start_date_dug?>"  >
+                </div>
+                <label class="control-label col-sm-3" for="to"><span class="text-danger">*</span> Completion Date:</label>
+                <div class="col-sm-3">
+                    <input type="date" class="form-control to_1"   name="dug_end_date" required id="to" value="<?= $completion_date_dug?>"> <span class="text-danger"   >(DD-MM-YYYY)</span>
+                </div>
+            </div>
+
+
+            <div class="form-group">
+                <label class="control-label col-sm-3" for="email"> <span class="text-danger">*</span>Marking Scheme:</label>
+                <div class=" col-sm-5" >
+
+                    <label class="radio-inline" for="per_or_cgp_dug0">
+                        <input type="radio" id="per_or_cgp_dug0" class="radio-inline" value="0" name="dug_per_or_cgp" required  <?php if(isset($per_or_cgpa_dug) && $per_or_cgpa_dug=='0') echo 'checked="checked"'; ?> >CGPA<br></label>
+                    <label class="radio-inline" for="per_or_cgp_dug1">
+                        <input type="radio" id="per_or_cgp_dug1" class="radio-inline" value="1" name="dug_per_or_cgp" required  <?php if(isset($per_or_cgpa_dug) && $per_or_cgpa_dug=='1') echo 'checked="checked"'; ?> >Percentage
+                    </label>
+
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="control-label col-sm-3" for="marks_dug"><span class="text-danger">*</span> Marks/CGPA Obtained :</label>
+                <div class="col-sm-3">
+                    <input type="text" class="form-control marks event_marks"   name="dug_marks" required id="marks_dug" value="<?= $marks_dug?>">
+                </div>
+                <label class="control-label col-sm-2" for="max_marks_dug"><span class="text-danger">*</span> Maximum Marks/CGPA:</label>
+                <div class="col-sm-4">
+                    <input type="text" class="form-control max_marks event_marks"  name="dug_max_marks" required id="max_marks_dug" value="<?= $max_marks_dug?>">
+                </div>
+            </div>
+
+
+
+
+            <div class="form-group">
+
+                <label class="control-label col-sm-3" for="value_dug"><span class="text-danger">*</span> % Marks/CGPA :</label>
+                <div class="col-sm-3">
+                    <input type="text" class="form-control"   id="value_dug" name="dug_perc_marks" readonly value="">
+                </div>
+            </div>
+            <input type="hidden" name="dug_perc_marks" value="<?= $value_dug?>">
+
+            <div class="form-group">
+                <label class="control-label col-sm-3" for="doc_dug"><span class="text-danger">*</span> Attach Appropriate proof:</label>
+                <div class="col-sm-5">
+                    <input type="file"  name="doc_dug" id="doc_dug" required>
+                    <span class="text-danger">*Max File Size 1MB. PDF Documents Required</span>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-sm-offset-4 col-sm-4">
+                    <button type="submit" name="edu_ch_5" class="btn btn-primary col-sm-12">Submit Information</button>
+                </div>
+            </div>
+        </div>
+    </form>
             <!-------------------------------------------------------------PG---------------------------------------------------------->
             <form class="form-horizontal" name="reg_frm" method="post" action="save.php" onSubmit="return validate();" enctype="multipart/form-data">
             <div id="pg"  class="qual_div" style=" display: none;">
@@ -544,8 +739,8 @@ $board_10=$comp_10=$school_10=$per_or_cgpa_10=$value_10=$marks_10=$max_marks_10=
                             <option value="MSC" id="msc" <?php if($degree_pg=="MSC") echo "selected" ?> >Master of Science (M.Sc)</option>
                             <option value="MS" id="ms" <?php if($degree_pg=="MS") echo "selected" ?> >Master of Science (MS)</option>
                             <option value="ME" id="me" <?php if($degree_pg=="ME") echo "selected" ?> >Master of Engineering (ME)</option>
+                            <option value="MA" id="ma" <?php if($degree_pg=="MA") echo "selected" ?> >Master of Arts (MA)</option>
                             <option value="MHM" id="mh," <?php if($degree_pg=="MHM") echo "selected" ?> >Master of Hotel Management (MHM)</option>
-                            <option value="ME" id="me" <?php if($degree_pg=="ME") echo "selected" ?> >Master of Engineering (ME)</option>
                             <option value="MCA" id="mca" <?php if($degree_pg=="MCA") echo "selected" ?> >Master of Computer Applications (MCA)</option>
                             <option value="Others" id="others" <?php if($degree_pg=="Others") echo "selected" ?> >Others</option>
                         </select>
@@ -560,10 +755,10 @@ $board_10=$comp_10=$school_10=$per_or_cgpa_10=$value_10=$marks_10=$max_marks_10=
                     </div>
                 </div>
 
-                <div id="ug" class="form-group">
+                <div id="pg" class="form-group">
                     <label class="control-label col-sm-2" for="specialization_pg"><span class="text-danger">*</span>Specialization:</label>
                     <div class="col-sm-4">
-                        <input type="text" class="form-control" name="pg_specialization" id="specialization_pg" required value="<?= $specialization_ug?>"   >
+                        <input type="text" class="form-control" name="pg_specialization" id="specialization_pg" required value="<?= $specialization_pg?>"   >
                     </div>
                 </div>
 
@@ -626,9 +821,10 @@ $board_10=$comp_10=$school_10=$per_or_cgpa_10=$value_10=$marks_10=$max_marks_10=
 
                     <label class="control-label col-sm-3" for="value_pg"><span class="text-danger">*</span> % Marks/CGPA :</label>
                     <div class="col-sm-3">
-                        <input type="text" class="form-control"   name="pg_perc_marks" readonly  value="<?= $value_pg?>" id="value_pg" >
+                        <input type="text" class="form-control"   name="pg_perc_marks" readonly  value="" id="value_pg" >
                     </div>
                 </div>
+                <input type="hidden" name="pg_perc_marks" value="<?= $value_pg?>">
 
                 <div class="form-group">
                     <label class="control-label col-sm-3" for="doc_pg"><span class="text-danger">*</span> Attach Appropriate proof:</label>
@@ -646,74 +842,130 @@ $board_10=$comp_10=$school_10=$per_or_cgpa_10=$value_10=$marks_10=$max_marks_10=
 
             </div>
     </form>
+
+                <!-------------------------------------Double PG -------------------------------------------------------->
+    <form class="form-horizontal" name="reg_frm" method="post" action="save.php" onSubmit="return validate();" enctype="multipart/form-data">
+        <div id="dpg"  class="qual_div" style=" display: none;">
+
+            <div class="form-group">
+                <label class="control-label col-sm-2" for="degree"><span class="text-danger">*</span> Degree:</label>
+
+                <div class="col-sm-3">
+                    <select id="degree" name="dpg_field" required class="form-control degree2">
+                        <option value="M.Tech" id="mtech" <?php if($degree_dpg=="M.Tech") echo "selected" ?> >Master of Tech (M.Tech)</option>
+                        <option value="MSC" id="msc" <?php if($degree_dpg=="MSC") echo "selected" ?> >Master of Science (M.Sc)</option>
+                        <option value="MS" id="ms" <?php if($degree_dpg=="MS") echo "selected" ?> >Master of Science (MS)</option>
+                        <option value="ME" id="me" <?php if($degree_dpg=="ME") echo "selected" ?> >Master of Engineering (ME)</option>
+                        <option value="MA" id="ma" <?php if($degree_dpg=="MA") echo "selected" ?> >Master of Arts (MA)</option>
+                        <option value="MHM" id="mh," <?php if($degree_dpg=="MHM") echo "selected" ?> >Master of Hotel Management (MHM)</option>
+                        <option value="MCA" id="mca" <?php if($degree_dpg=="MCA") echo "selected" ?> >Master of Computer Applications (MCA)</option>
+                        <option value="Others" id="others" <?php if($degree_dpg=="Others") echo "selected" ?> >Others</option>
+                    </select>
+                </div>
+            </div>
+
+
+            <div class="form-group otherscome2"   id="otherscome" <?php if(isset($degree_dpg) && $degree_dpg=="Others") echo"style=\"display:block\""; else echo "style=\"display:none\"; ";?> >
+                <label class="control-label col-sm-2" for="degree_dpg"><span class="text-danger">*</span>Others:</label>
+                <div class="col-sm-4">
+                    <input type="text" class="form-control"  id="degree_dpg" <?php if(isset($degree_dpg) && $degree_dpg=="Others") echo "value=\"$is_others_dpg\" required "; ?> name="dpg_other_specialization" >
+                </div>
+            </div>
+
+            <div id="dpg" class="form-group">
+                <label class="control-label col-sm-2" for="specialization_dpg"><span class="text-danger">*</span>Specialization:</label>
+                <div class="col-sm-4">
+                    <input type="text" class="form-control" name="dpg_specialization" id="specialization_dpg" required value="<?= $specialization_dpg?>"   >
+                </div>
+            </div>
+
+
+
+            <div id="dpg" class="form-group">
+                <label class="control-label col-sm-2" for="university_dpg"><span class="text-danger">*</span> University:</label>
+                <div class="col-sm-5">
+                    <input type="text" class="form-control"  name="dpg_university"  required value="<?= $university_dpg?>" id="university_dpg">
+                </div>
+            </div>
+
+
+            <div class="form-group">
+                <label class="control-label col-sm-2" for="from"><span class="text-danger">*</span> Entry Date :</label>
+                <div class="col-sm-3">
+                    <input type="date" class="form-control from_1"   name="dpg_start_date" required id="from" value="<?= $start_date_dpg?>">
+                </div>
+                <label class="control-label col-sm-2" for="to"><span class="text-danger">*</span> Completion Date:</label>
+                <div class="col-sm-3">
+                    <input type="date" class="form-control to_1"   name="dpg_end_date" required id="to" value="<?= $completion_date_dpg?>" >
+                </div>
+            </div>
+
+
+
+
+
+
+
+
+            <div class="form-group">
+                <label class="control-label col-sm-3" for="email"><span class="text-danger">*</span>Marking Scheme:</label>
+                <div class=" col-sm-5" >
+
+                    <label class="radio-inline " for="per_or_cgp_dpg0">
+                        <input type="radio" class="radio-inline" id="per_or_cgp_dpg0" value="0" name="dpg_per_or_cgp" required  <?php if(isset($per_or_cgpa_dpg) && $per_or_cgpa_dpg=='0') echo 'checked="checked"'; ?> >CGPA<br></label>
+                    <label class="radio-inline" for="per_or_cgp_dpg1">
+                        <input type="radio" class="radio-inline" id="per_or_cgp_dpg1" value="1" name="dpg_per_or_cgp" required  <?php if(isset($per_or_cgpa_dpg) && $per_or_cgpa_dpg=='1') echo 'checked="checked"'; ?> >Percentage
+                    </label>
+
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="control-label col-sm-3" for="marks_dpg"><span class="text-danger" >*</span> Marks/CGPA Obtained :</label>
+                <div class="col-sm-3">
+                    <input type="text" class="form-control marks event_marks"   name="dpg_marks" required id="marks_dpg" value="<?= $marks_dpg?>" >
+                </div>
+                <label class="control-label col-sm-2" for="max_marks_dpg"><span class="text-danger">*</span> Maximum Marks/CGPA:</label>
+                <div class="col-sm-4">
+                    <input type="text" class="form-control max_marks event_marks"  name="dpg_max_marks" required id="max_marks_dpg"  value="<?= $max_marks_dpg?>" >
+                </div>
+            </div>
+
+
+
+
+            <div class="form-group">
+
+                <label class="control-label col-sm-3" for="value_dpg"><span class="text-danger">*</span> % Marks/CGPA :</label>
+                <div class="col-sm-3">
+                    <input type="text" class="form-control"   name="dpg_perc_marks" readonly  value="" id="value_dpg" >
+                </div>
+            </div>
+            <input type="hidden" name="dpg_perc_marks" value="<?= $value_dpg?>">
+
+            <div class="form-group">
+                <label class="control-label col-sm-3" for="doc_dpg"><span class="text-danger">*</span> Attach Appropriate proof:</label>
+                <div class="col-sm-5">
+                    <input type="file"  name="doc_dpg" id="doc_dpg" required>
+                    <span class="text-danger">*Max File Size 1MB. PDF Documents Required</span>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-sm-offset-4 col-sm-4">
+                    <button type="submit" name="edu_ch_6" class="btn btn-primary col-sm-12">Submit Information</button>
+                </div>
+            </div>
+
+        </div>
+    </form>
 </div>
 
 
 
-
-
-    <script>
-        // function validate(){
-        //     if($(this).children().filter('#from').val()>$(this).children().filter('#to').val()){
-        //         alert("Completion Date must be greater than start date!");
-        //         $(this).children().filter('#from').val('');
-        //         $(this).children().filter('#to').val('');
-        //         return false;
-        //     }
-    //    function validate(){
-    //        if($(this).children().filter('.marks').val()> $(this).children().filter('.max_marks').val()){
-    //            console.log( $(this).children().filter('.marks').val()+"  "+ $(this).children().filter('.max_marks').val());
-    //            alert("Marks should not be greater than maximum marks!");
-    //            $(this).children().filter('.marks').val('');
-    //            $(this).children().filter('.max_marks').val('');
-    //            return false;
-    //        }
-    //        return true;
-    //    }
-    //</script>
-
 <script>
-    $("#qual").change(function(){
-                var qual  = $("#qual").val();
-                $(".qual_div").hide();
-                qual = "#".concat(qual);
-                $(qual).show();
-    });
-<!--</script>-->
-<!---->
-<!--    <script>-->
-<!--        $(document).ready(function () {-->
-<!--            $('#otherscome').hide();-->
-<!---->
-<!--            $('#degree').change(function () {-->
-<!--                var val = $(this).val();-->
-<!--                if (val === "Others")-->
-<!--                    $('#otherscome').stop(true, true).show(200).attr("required","true"); //than show-->
-<!--                else-->
-<!--                    $('#otherscome').stop(true, true).hide(200).removeAttr("required"); //than hide-->
-<!---->
-<!---->
-<!--            });-->
-<!--        });-->
-<!---->
-<!--        </script>-->
-<!---->
-<!--<script>-->
-<!--    $(document).ready(function () {-->
-<!--        $('#otherscome1').hide();-->
-<!---->
-<!--        $('#degree1').change(function () {-->
-<!--            var val = $(this).val();-->
-<!--            if (val === "Others")-->
-<!--                $('#otherscome1').stop(true, true).show(200).attr("required","true"); //than show-->
-<!--            else-->
-<!--                $('#otherscome1').stop(true, true).hide(200).removeAttr("required"); //than hide-->
-<!---->
-<!---->
-<!--        });-->
-<!--    });-->
-<!---->
-<!--</script>-->
+
+</script>
 
 <script>
     $(document).ready(function () {
@@ -728,6 +980,61 @@ $board_10=$comp_10=$school_10=$per_or_cgpa_10=$value_10=$marks_10=$max_marks_10=
 
 
         });
+
+        function update_perc_cpi_sel(sel_div)
+        {
+            // console.log('change');
+            var marks = $(sel_div).parents('form').find(".marks");
+            var max_marks = $(sel_div).parents('form').find(".max_marks");
+            var marks_fl = parseFloat(marks.val());
+            var max_marks_fl = parseFloat(max_marks.val());
+            // console.log(marks_fl+" "+max_marks_fl);
+            if(max_marks_fl === 0)
+            {
+                alert("Max Marks is zero . Change the value to a valid number");
+                $(marks).val("");
+                $(max_marks).val("");
+            }
+
+            if(marks_fl>max_marks_fl)
+            {
+                alert("Max Marks is less than your original marks");
+                $(marks).val("");
+                $(max_marks).val();
+            }
+
+            var ans=marks_fl/max_marks_fl;
+            // console.log(ans);
+            var x= $(sel_div).parents("form").find("input[type=radio]:checked").val();
+            //console.log(x);
+            if(x === '1') {
+                // console.log(ans);
+                ans = ans * 100;
+				ans=ans.toFixed(2);
+                $(sel_div).parents("form").find("input[readonly]").val(ans);
+            }
+            else
+            {
+                $(sel_div).parents("form").find("input[readonly]").val(marks.val()+"/"+max_marks.val());
+
+            }
+            ans=ans.toFixed(2);
+            $(sel_div).parents("form").find("input[type=hidden]").val(ans);
+            //console.log(ans);
+        }
+        update_perc_cpi_sel("#10th");
+
+
+        $("#qual").change(function(){
+            var qual  = $("#qual").val();
+            $(".qual_div").hide();
+            qual = "#".concat(qual);
+            $(qual).show();
+            update_perc_cpi_sel(qual);
+
+        });
+
+
     });
 
 </script>
@@ -746,59 +1053,62 @@ $board_10=$comp_10=$school_10=$per_or_cgpa_10=$value_10=$marks_10=$max_marks_10=
 
 
         });
+
     });
 
 </script>
 
 <script>
-    $(".event_marks").on('focusout',function(){
-       // console.log('change');
+
+
+    function update_perc_cpi()
+    {
+        // console.log('change');
         var marks = $(this).parents('form').find(".marks");
         var max_marks = $(this).parents('form').find(".max_marks");
         var marks_fl = parseFloat(marks.val());
         var max_marks_fl = parseFloat(max_marks.val());
-       // console.log(marks_fl+" "+max_marks_fl);
+        // console.log(marks_fl+" "+max_marks_fl);
         if(max_marks_fl === 0)
         {
             alert("Max Marks is zero . Change the value to a valid number");
-            $(this).val("");
+            $(marks).val("");
+            $(max_marks).val("");
         }
 
         if(marks_fl>max_marks_fl)
         {
             alert("Max Marks is less than your original marks");
-            $(this).val("")
+            $(marks).val("");
+            $(max_marks).val();
         }
 
         var ans=marks_fl/max_marks_fl;
-       // console.log(ans);
+        // console.log(ans);
         var x= $(this).parents("form").find("input[type=radio]:checked").val();
         //console.log(x);
         if(x === '1') {
-           // console.log(ans);
+            // console.log(ans);
             ans = ans * 100;
+			ans=ans.toFixed(2);
+            $(this).parents("form").find("input[readonly]").val(ans);
         }
-        else {
-            ans = ans * 95;
+        else
+        {
+            $(this).parents("form").find("input[readonly]").val(marks.val()+"/"+max_marks.val());
+
         }
         ans=ans.toFixed(2);
+        $(this).parents("form").find("input[type=hidden]").val(ans);
         //console.log(ans);
-        $(this).parents("form").find("input[readonly]").val(ans);
-    });
+    }
+    $(".event_marks").on('focusout',update_perc_cpi);
+
+    $(".radio-inline").on('change',update_perc_cpi);
+
+
 </script>
 
-<!--<script>-->
-<!--    document.getElementsByClassName("marks_10").onchange = function(){myfunction()};-->
-<!--    document.getElementsByClassName("max_marks_10").onchange = function() {myfunction()};-->
-<!--    function myfunction(){-->
-<!--        var input = parseFloat(document.getElementById("marks_10").value);-->
-<!--        var input2 = parseFloat(document.getElementById("max_marks_10").value);-->
-<!--        var ans=input/input2;-->
-<!--        ans=ans*100.0;-->
-<!--        document.getElementById('value_10').value = ans.toString();-->
-<!--    }-->
-<!---->
-<!--</script>-->
 
 <script>
     $("input[type=date").on('focusout',function(){

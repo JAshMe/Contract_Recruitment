@@ -23,27 +23,27 @@
                 </div>
                 <div class="panel panel-body" style="padding:0px; margin:0px;">
                 	<div class="well" style="margin:0px;">
-                        <div class="list-group">           	
+                        <div class="list-group">
                             <a class="list-group-item" name="logout" href="./logout.php" style="background:#E53935;color:white">Logout <span class="glyphicon glyphicon-off"></span></a>
+                                <a class="list-group-item <?php if(isset($_GET['val']) && $_GET['val']=='app_post' ) echo "active"; ?>"
+                                href="./home.php?val=app_post" id="midframe">Apply For Post</a>
                             <a class="list-group-item <?php if(isset($_GET['val']) && $_GET['val']=='perinfo' ) echo "active"; ?> " name="profile" href="./home.php?val=perinfo" >Personal Information</a>
                             <a class="list-group-item <?php if(isset($_GET['val']) && $_GET['val']=='image' ) echo "active"; ?>" id="midframe" href="./home.php?val=image">Upload Photograph</a>
                             <a class="list-group-item <?php if(isset($_GET['val']) && $_GET['val']=='education_qual' ) echo "active"; ?>" id="midframe" href="./home.php?val=education_qual">Educational Qualification</a>
                             <a class="list-group-item <?php if(isset($_GET['val']) && $_GET['val']=='present_emp' ) echo "active"; ?>" id="midframe" href="./home.php?val=present_emp">Present Employer</a>
                             <a class="list-group-item <?php if(isset($_GET['val']) && $_GET['val']=='work_exp' ) echo "active"; ?>" id="midframe" href="./home.php?val=work_exp">Work Experience</a>
                             <a class="list-group-item <?php if(isset($_GET['val']) && $_GET['val']=='reference' ) echo "active"; ?> " id="midframe" href="./home.php?val=reference">Reference</a>
-                            <a class="list-group-item <?php if(isset($_GET['val']) && $_GET['val']=='post_detail' ) echo "active"; ?> " id="midframe" href="./home.php?val=post_detail">Details Regarding Posts</a>
+                           <!-- <a class="list-group-item <?php //if(isset($_GET['val']) && $_GET['val']=='post_detail' ) echo "active"; ?> " id="midframe" href="./home.php?val=post_detail">Details Regarding Posts</a> -->
                             <a class="list-group-item <?php if(isset($_GET['val']) && $_GET['val']=='other_info' ) echo "active"; ?> " id="midframe" href="./home.php?val=other_info">Any Other Information</a>
+<!--                                <a class="list-group-item --><?php //if(isset($_GET['val']) && $_GET['val']=='withdraw' ) echo "active"; ?><!-- " id="midframe" href="./home.php?val=withdraw">Withdraw from a Post</a>-->
                                 <a class="list-group-item <?php
-
-                                if(isset($_GET['val']) && $_GET['val']=='app_post' ) echo " active";
-                                        $verdict = verify_fill($_SESSION['user']);
-                                        $_SESSION['verdict']=$verdict;
-                                        if($verdict!="ok")
-                                                echo "disabled\" href=\"#\" data-toggle=\"tooltip\" title=\"$verdict before applying for any post.\" ";
-                                        else echo " \" href=\"./home.php?val=app_post\"";
-                                        ?>" id="midframe">Apply For Post</a>
-                                <a class="list-group-item <?php if(isset($_GET['val']) && $_GET['val']=='withdraw' ) echo "active"; ?> " id="midframe" href="./home.php?val=withdraw">Withdraw from a Post</a>
-                                <a class="list-group-item <?php if(isset($_GET['val']) && $_GET['val']=='print' ) echo "active"; ?> " id="midframe" href="./home.php?val=print">Print Form</a>
+                                if(isset($_GET['val']) && $_GET['val']=='print' ) echo " active";
+                                $verdict = verify_fill($_SESSION['user']);
+                                $_SESSION['verdict']=$verdict;
+                                if($verdict!="ok")
+                                        echo "disabled\" href=\"#\" data-toggle=\"tooltip\" title=\"$verdict before printing the forms.\" ";
+                                else echo " \" href=\"./home.php?val=print\"";
+                                ?>" id="midframe">Print Forms</a>
                             <a class="list-group-item <?php if(isset($_GET['val']) && $_GET['val']=='contact' ) echo "active"; ?> " id="midframe" href="./home.php?val=contact">Contact Us</a>
 
                         </div>

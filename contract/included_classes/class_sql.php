@@ -122,10 +122,10 @@ class sqlfunctions {
 
     public  function close_con()
     {
-	return mysql_close($this->connection);
+	return mysqli_close($this->connection);
     }
 	public function errno(){
-		return mysql_errno($this->connection);
+		return mysqli_errno($this->connection);
 	}
 	public function error(){
 		return mysqli_error($this->connection);

@@ -151,7 +151,7 @@ $posts = array("Project Supervisor [Junior Engineer-Civil/ Electrical]","Executi
                         <table class="table table-bordered table-striped">
                                 <tr><th>Application Id:</th><td><?=$_SESSION['user'];?></td></tr>
                                 <tr><th>Post Applied For:</th><td><?= $posts[7];?></td></tr>
-                                <tr><th>Department:</th><td><?= '' ?></td></tr>
+                                <!-- <tr><th>Department:</th><td></td></tr> -->
                         </table>
                 </div>
 
@@ -195,7 +195,7 @@ $posts = array("Project Supervisor [Junior Engineer-Civil/ Electrical]","Executi
                 <tr><th>N) Identity Proof:</th><td><?php echo $id_type." - ".$id_no;?></td></tr>
                 <tr><th>O) Correspondence Address:</th><td><?php echo $corr_address;?></td></tr>
                 <tr><th>P) Permanent Address:</th><td><?php echo $address;?></td></tr>
-                <tr><th>Q) Port/Place of Applying Application Form:</th><td><?php echo $place_of_application;?></td></tr>
+                <!-- <tr><th>Q) Port/Place of Applying Application Form:</th><td><?php //echo $place_of_application;?></td></tr> -->
         </table>
 
 
@@ -287,7 +287,43 @@ $posts = array("Project Supervisor [Junior Engineer-Civil/ Electrical]","Executi
                 $university_pg = $c['university'];
                 $is_others_pg= $c['is_others'];
         }
-        //?>
+        //dug data
+$query="SELECT * from `dug` where `user_id` like '$id'";
+$c = $db->process_query($query);
+$degree_dug=$specialization_dug=$start_date_dug=$completion_date_dug=$per_or_cgpa_dug=$value_dug=$marks_dug=$max_marks_dug=$university_dug=$is_others_dug=null;
+if(mysqli_num_rows($c)>0) {
+        $c = $db->fetch_rows($c);
+        $degree_dug = $c['degree'];
+        $specialization_dug = $c['specialization'];
+        $start_date_dug = $c['start_date'];
+        $completion_date_dug = $c['completion_date'];
+        $per_or_cgpa_dug = $c['per_or_cgpa'];
+        $value_dug = $c['value'];
+        $marks_dug = $c['marks'];
+        $max_marks_dug = $c['max_marks'];
+        $university_dug = $c['university'];
+        $is_others_dug= $c['is_others'];
+        $is_others_spec=$c['is_others_spec'];
+}
+
+//dpg data
+$query="SELECT * from `dpg` where `user_id` like '$id'";
+$c = $db->process_query($query);
+$degree_dpg=$specialization_dpg=$start_date_dpg=$completion_date_dpg=$per_or_cgpa_dpg=$value_dpg=$marks_dpg=$max_marks_dpg=$university_dpg=$is_others_dpg=null;
+if(mysqli_num_rows($c)>0) {
+        $c = $db->fetch_rows($c);
+        $degree_dpg = $c['degree'];
+        $specialization_dpg = $c['specialization'];
+        $start_date_dpg = $c['start_date'];
+        $completion_date_dpg = $c['completion_date'];
+        $per_or_cgpa_dpg = $c['per_or_cgpa'];
+        $value_dpg = $c['value'];
+        $marks_dpg = $c['marks'];
+        $max_marks_dpg = $c['max_marks'];
+        $university_dpg = $c['university'];
+        $is_others_dpg= $c['is_others'];
+}
+//?>
         <div></div>
         <hr />
         <h4><strong>2. Educational Qualification:</strong></h4>
@@ -359,7 +395,24 @@ $posts = array("Project Supervisor [Junior Engineer-Civil/ Electrical]","Executi
                         echo "<tr><td>$degree_ug</td><td>$specialization_ug</td><td>$university_ug</td><td>$start_date_ug</td><td>$completion_date_ug</td><td>$marks_ug</td><td>$max_marks_ug</td><td>$value_ug</td></tr>";
                         ?>
                 </table>
-        <?php } ?>
+        <?php } if($max_marks_dug!=''){ ?>
+
+        <h4 align="center"><u><strong>DOUBLE GRADUATION</strong></u></h4>
+        <table class="table acdqual table-bordered">
+                <tr style="width:100%"><th style="width:10%">Degree</th><th style="width:22%">Specialization</th><th style="width: 31%">Institute</th><th style="width: 12%">Start Date</th><th style="width: 12%">End Date</th>
+                        <th style="width: 8%"><?php
+                                if($per_or_cgpa_dug) echo "Marks </th><th style='width: 8%'>Max Marks</th></tr>";
+                                else echo "Pointer</th><th style='width: 8%'>Scale</th>"
+                                ?>
+                        <th style="width: 8%">Percentage</th>
+                </tr>
+                <tr><td>
+                <?php
+                echo "$degree_dug</td><td>$specialization_dug</td><td>$university_dug</td><td>$start_date_dug</td><td>$completion_date_dug</td><td>$marks_dug</td><td>$max_marks_dug</td><td>";
+                if($per_or_cgpa_dug) echo $value_dug; else echo $marks_dug."/".$max_marks_dug;
+                ?></td></tr>
+        </table>
+<?php } ?>
 
         <?php if($max_marks_pg!=''){ ?>
 
@@ -376,28 +429,29 @@ $posts = array("Project Supervisor [Junior Engineer-Civil/ Electrical]","Executi
                         echo "<tr><td>$degree_pg</td><td>$specialization_pg</td><td>$university_pg</td><td>$start_date_pg</td><td>$completion_date_pg</td><td>$marks_pg</td><td>$max_marks_pg</td><td>$value_pg</td></tr>";
                         ?>
                 </table>
-        <?php } ?>
+       <?php } if($max_marks_dpg!=''){ ?>
+
+        <h4 align="center"><u><strong>DOUBLE POST GRADUATION</strong></u></h4>
+        <table class="table acdqual table-bordered">
+                <tr style="width:100%"><th style="width:10%">Degree</th><th style="width:22%">Specialization</th><th style="width: 31%">Institute</th><th style="width: 12%">Start Date</th><th style="width: 12%">End Date</th>
+                        <th style="width: 8%"><?php
+                                if($per_or_cgpa_dpg) echo "Marks </th><th style='width: 8%'>Max Marks</th></tr>";
+                                else echo "Pointer</th><th style='width: 8%'>Scale</th>"
+                                ?>
+                        <th style="width: 8%">Pointer/Percentage</th>
+                </tr>
+                <tr><td>
+                        <?php
+                        echo "$degree_dpg</td><td>$specialization_dpg</td><td>$university_dpg</td><td>$start_date_dpg</td><td>$completion_date_dpg</td><td>$marks_dpg</td><td>$max_marks_dpg</td><td>";
+                        if($per_or_cgpa_dpg) echo $value_dpg; else echo $marks_dpg."/".$max_marks_dpg;
+                        ?></td></tr>
+        </table>
+<?php } ?>
 
 
 
 
-        <?php
-        $query="SELECT * from `employer` where `user_id` like '$id'";
-        $r = $db->process_query($query);
-        $r = $db->fetch_rows($r);
-        $nat_emp = validate($r['nat_emp']);
-        $position=validate($r['position']);
-        $from=validate($r['from']);
-        $to=validate($r['to']);
-        $pay=validate($r['pay']);
-        $agp=validate($r['agp']);
-        $basic_pay=validate($r['basic_pay']);
-        $nature=validate($r['nature']);
-        $organisation=validate($r['organisation']);
-        $type=validate($r['emp_type']);
-        $emol = validate($r['emoluments']);
-        ?>
-
+ 
         <?php
         $query="SELECT * from `experience` where `user_id` like '$id' ORDER by id desc";
         $c = $db->process_query($query);
@@ -435,18 +489,43 @@ $posts = array("Project Supervisor [Junior Engineer-Civil/ Electrical]","Executi
         <!---->
         <!---->
 
-        <hr />
-        <h4><strong>4. Present Employment Information:</strong></h4>
-        <hr>
-        <table class="table table-bordered table-striped">
-                <tr><th>A) Nature of Employment:</th><td><?php echo $nat_emp;?></td></tr>
-                <tr><th>B) Organisation:</th><td><?php echo $organisation;?></td></tr>
-                <tr><th>C) Position Held:</th><td><?php echo $position;?></td><th style="width:10%">D) Type of Employer:</th><td><?php echo $type;?></td></tr>
-                <tr><th>E) From:</th><td><?php echo $from;?></td><th style="width:10%">F) To</th><td><?php echo $to;?></td></tr>
-                <tr><th>G) Pay in Pay Band:</th><td><?php echo $pay;?></td><th>H) AGP/GP:</th><td><?php echo $agp;?></td></tr>
-                <tr><th>I) Basic Pay:</th><td><?php echo $basic_pay;?></td><th>J) Total emoluments per month drawn at present:</th><td><?php echo $emol;?></td></tr>
-                <tr><th>K) Nature of work:</th><td><?php echo $nature;?></td></tr>
-        </table>
+       <?php
+$query="SELECT * from `employer` where `user_id` like '$id'";
+$r = $db->process_query($query);
+if(mysqli_num_rows($r)>0)
+{
+	$r = $db->fetch_rows($r);
+	$nat_emp = validate($r['nat_emp']);
+	$position=validate($r['position']);
+	$from=validate($r['from']);
+	$to=validate($r['to']);
+	$pay=validate($r['pay']);
+	$agp=validate($r['agp']);
+	$basic_pay=validate($r['basic_pay']);
+	$nature=validate($r['nature']);
+	$organisation=validate($r['organisation']);
+	$type=validate($r['emp_type']);
+	$emol = validate($r['emoluments']);
+}
+?>
+
+<hr />
+<h4><strong>4. Present Employment Information:</strong></h4>
+<hr>
+<?php if(!$pres) echo "<span style=\"font-size:18px;\">NA</span>";
+
+else {
+?>
+<table class="table table-bordered table-striped">
+        <tr><th>A) Nature of Employment:</th><td><?php echo $nat_emp;?></td></tr>
+        <tr><th>B) Organisation:</th><td><?php echo $organisation;?></td></tr>
+        <tr><th>C) Position Held:</th><td><?php echo $position;?></td><th style="width:10%">D) Type of Employer:</th><td><?php echo $type;?></td></tr>
+        <tr><th>E) From:</th><td><?php echo $from;?></td><th style="width:10%">F) To</th><td><?php echo $to;?></td></tr>
+        <tr><th>G) Pay in Pay Band:</th><td><?php echo $pay;?></td><th>H) AGP/GP:</th><td><?php echo $agp;?></td></tr>
+        <tr><th>I) Basic Pay:</th><td><?php echo $basic_pay;?></td><th>J) Total emoluments per month drawn at present:</th><td><?php echo $emol;?></td></tr>
+        <tr><th>K) Nature of work:</th><td><?php echo $nature;?></td></tr>
+</table>
+<?php } ?>
         <!---->
         <!---->
         <!---->

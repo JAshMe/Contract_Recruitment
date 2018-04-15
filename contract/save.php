@@ -4,7 +4,7 @@
     require_once("./included_classes/class_misc.php");
     require_once("./included_classes/class_sql.php");
     require_once ("./include/verify_document.php");
-    require_once("./included_classes/check_post.php");
+    //require_once("./included_classes/check_post.php");
 
 	$misc= new miscfunctions();
     $db = new sqlfunctions();
@@ -53,25 +53,11 @@ if(isset($_POST['per_ch']))
 	$domicile=validate($_POST['domicile']);
 	$nationality=validate($_POST['nationality']);
 	$corr_address=validate($_POST['corr_address']);
-	$emp=validate($_POST['emp']);
-	$place_of_application=validate($_POST['place_of_application']);
 	$mobile=validate($_POST['mobile']);
 	$address=validate($_POST['address']);
 	$pwd_type=validate($_POST['pwd_type']);
 	$id_type=validate($_POST['id_type']);
 	$id_no=validate($_POST['id_no']);
-
-	$emp_code=validate($_POST['emp_code']);
-
-	if($emp=='y'&&$emp_code!="")
-	{
-		$query="SELECT * FROM `emp` WHERE emp_code='$emp_code'";
-		$r = $db->process_query($query);
-		if(mysqli_num_rows($r)==0)
-			$misc->palert("Your Employee Code is not present","home.php?val=perinfo");
-
-	}
-	
 
 	if(!is_numeric($mobile))	{
 		$misc->palert("Enter 10 digit valid mobile number","home.php?val=perinfo");
@@ -90,12 +76,12 @@ if(isset($_POST['per_ch']))
 
 	if(mysqli_num_rows($r)>0)
 	{
-	   $query="UPDATE `user` SET `name`='$name',`dob`='$dob',`gender`='$gender',`category`='$category',`pwd`='$pwd',`f_name`='$f_name',`m_name`='$m_name',`marital_status`='$marital_status',`domicile`='$domicile',`nationality`='$nationality',`corr_address`='$corr_address',`place_of_application`='$place_of_application',`mobile`='$mobile',`address`='$address',`pwd_type`='$pwd_type',`id_type`='$id_type',`id_no`='$id_no',`emp_code`='$emp_code',`emp`='$emp' WHERE user_id = '$id' ";
+	   $query="UPDATE `user` SET `name`='$name',`dob`='$dob',`gender`='$gender',`category`='$category',`pwd`='$pwd',`f_name`='$f_name',`m_name`='$m_name',`marital_status`='$marital_status',`domicile`='$domicile',`nationality`='$nationality',`corr_address`='$corr_address',`place_of_application`='NA',`mobile`='$mobile',`address`='$address',`pwd_type`='$pwd_type',`id_type`='$id_type',`id_no`='$id_no',`emp_code`='NA',`emp`='NA' WHERE user_id = '$id' ";
 
 	}
 	else
 	{
-	  $query="INSERT INTO `user`(`user_id`, `name`, `dob`, `gender`, `category`, `pwd`, `f_name`, `m_name`, `marital_status`, `domicile`, `nationality`, `corr_address`, `place_of_application`, `mobile`, `address`,`pwd_type`,`id_type`, `id_no`,`emp_code`,`emp`) VALUES ('$id','$name','$dob','$gender','$category','$pwd','$f_name','$m_name','$marital_status','$domicile','$nationality','$corr_address','$place_of_application','$mobile','$address','$pwd_type','$id_type','$id_no','$emp_code','$emp')";
+	  $query="INSERT INTO `user`(`user_id`, `name`, `dob`, `gender`, `category`, `pwd`, `f_name`, `m_name`, `marital_status`, `domicile`, `nationality`, `corr_address`, `place_of_application`, `mobile`, `address`,`pwd_type`,`id_type`, `id_no`,`emp_code`,`emp`) VALUES ('$id','$name','$dob','$gender','$category','$pwd','$f_name','$m_name','$marital_status','$domicile','$nationality','$corr_address','NA','$mobile','$address','$pwd_type','$id_type','$id_no','NA','NA')";
 	}
 	$r=$db->process_query($query);
 	if($r)
@@ -162,7 +148,7 @@ if(isset($_POST['edu_ch_1']))
 	else
 		$q="INSERT INTO `diploma` VALUES ('$id','$spec','$start_date','$completion_date','$university','$marks','$max_marks','$per_cgp','$perc_marks','$is_others')";
 
-	$r=$db->process_query($q);check_post();
+	$r=$db->process_query($q);//check_post();
 	if($r){
 		$misc->palert("Details Submitted","home.php?val=education_qual");
 	}
@@ -241,7 +227,7 @@ if(isset($_POST['edu_ch_3']))
 	if($r)
 	{
 		$misc->palert("Details Submitted","home.php?val=education_qual");
-		check_post();
+		//check_post();
 	}
 	else
 	{
@@ -282,7 +268,108 @@ if(isset($_POST['edu_ch_4']))
 	$r=$db->process_query($q);
 	if($r){
 		$misc->palert("Details Submitted","home.php?val=education_qual");
-		check_post();
+		//check_post();
+	}
+	else
+	{
+		$misc->palert("Some error occured","home.php?val=education_qual");
+	}
+
+}
+if(isset($_POST['edu_ch_5']))
+{
+
+
+	//checking if ug data exists
+
+
+	$q = "select user_id from ug where user_id = '$id' ";
+	$r = $db->process_query($q);
+	if(mysqli_num_rows($r)==0)
+		$misc->palert("Please Fill UG Details before filling Double UG Details","home.php?val=education_qual");
+
+	// double ug data
+	$degree = validate($_POST['dug_degree']);
+	$spec = validate($_POST['dug_specialization']);
+	$per_cgp = validate($_POST['dug_per_or_cgp']);
+	$university = validate($_POST['dug_university']);
+	$start_date = validate($_POST['dug_start_date']);
+	$completion_date= validate($_POST['dug_end_date']);
+	$marks = validate($_POST['dug_marks']);
+	$max_marks = validate($_POST['dug_max_marks']);
+	$perc_marks = validate($_POST['dug_perc_marks']);
+	$is_others=validate($_POST['dug_other_degree']);
+	$other_specs=validate($_POST['dug_other_specs']);
+	if(isset($is_others) && $degree =="Others"){
+
+	}
+	else
+		$is_others="0";
+	//checking if data already exists
+	$q = "select user_id from dug where user_id = '$id' ";
+	$r = $db->process_query($q);
+	verify_doc("doc_dug",'./doc_edu','education_qual',"");
+
+	if(mysqli_num_rows($r)>0)
+	{
+		$q = "update dug set specialization = '$spec', start_date = '$start_date' , completion_date = '$completion_date', university = '$university', marks = '$marks', max_marks = '$max_marks', per_or_cgpa = '$per_cgp', `value` = '$perc_marks', degree = '$degree' , is_others = '$is_others', is_others_spec = '$other_specs' where user_id = '$id';";
+	}
+	else
+		$q="INSERT INTO `dug` VALUES ('$id','$spec','$start_date','$completion_date','$university','$marks','$max_marks','$per_cgp','$perc_marks','$degree','$is_others','$other_specs')";
+
+	$r=$db->process_query($q);
+	if($r)
+	{
+		$misc->palert("Details Submitted","home.php?val=education_qual");
+		//check_post();
+	}
+	else
+	{
+		$misc->palert("Some error occured","home.php?val=education_qual");
+	}
+
+}
+if(isset($_POST['edu_ch_6']))
+{
+
+	$q = "select user_id from pg where user_id = '$id' ";
+	$r = $db->process_query($q);
+	if(mysqli_num_rows($r)==0)
+		$misc->palert("Please Fill PG Details before filling Double PG Details","home.php?val=education_qual");
+
+
+	// double pg data
+	$degree = validate($_POST['dpg_field']);
+	$spec = validate($_POST['dpg_specialization']);
+	$per_cgp = validate($_POST['dpg_per_or_cgp']);
+	$university = validate($_POST['dpg_university']);
+	$start_date = validate($_POST['dpg_start_date']);
+	$completion_date= validate($_POST['dpg_end_date']);
+	$marks = validate($_POST['dpg_marks']);
+	$max_marks = validate($_POST['dpg_max_marks']);
+	$perc_marks = validate($_POST['dpg_perc_marks']);
+	$is_others=validate($_POST['dpg_other_specialization']);
+
+	//checking if data already exists
+	if(isset($is_others) && $degree =="Others"){
+
+	}
+	else
+		$is_others="0";
+	$q = "select user_id from dpg where user_id = '$id' ";
+	$r = $db->process_query($q);
+	verify_doc("doc_dpg",'./doc_edu','education_qual',"");
+
+	if(mysqli_num_rows($r)>0)  //update
+	{
+		$q = "update dpg set specialization = '$spec', start_date = '$start_date' , completion_date = '$completion_date', university = '$university', marks = '$marks', max_marks = '$max_marks', per_or_cgpa = '$per_cgp', `value` = '$perc_marks', degree = '$degree'is_others = '$is_others' where user_id = '$id';";
+	}
+	else  //insert
+		$q="INSERT INTO `dpg` VALUES ('$id','$spec','$start_date','$completion_date','$university','$marks','$max_marks','$per_cgp','$perc_marks','$degree','$is_others')";
+	$r=$db->process_query($q);
+	if($r){
+		$misc->palert("Details Submitted","home.php?val=education_qual");
+		//check_post();
 	}
 	else
 	{
@@ -310,6 +397,13 @@ if(isset($_POST['work_exp']))
     if(($r2 = $db->fetch_rows($r1)))
     {
     	$rowid=validate($r2['id']);
+    	$comp_date = validate($r2['to']);
+
+	    //checking if date is more than the 'to' date
+	    //check if the experience is after acquiring diploma or ug degree
+	    $diff = date_diff(date_create($from), date_create($to));
+	    if ($diff->format("%R") == '+') //end date is less than start of experience
+	    	$misc->palert("The starting date is less than the completion of the latest work experience","home.php?val=work_exp");
     }
 
     $rowid=$rowid+1;
@@ -324,45 +418,12 @@ if(isset($_POST['work_exp']))
     $r=$db->process_query($q);
     if($r){
         $misc->palert("Details Submitted","home.php?val=work_exp");
-	    check_post();
+	    //check_post();
     }
     else
     {
         $misc->palert("Some error occured","home.php?val=work_exp");
     }
-}
-if(isset($_POST['other_ch']))
-{
-	$exam = validate($_POST['exam']);
-	$subject = validate($_POST['subject']);
-	$inst_name = validate($_POST['inst_name']);
-	$marks = validate($_POST['marks']);
-	$max_marks = validate($_POST['max_marks']);
-	$year = validate($_POST['year']);
-	$division = validate($_POST['division']);
-	$board = validate($_POST['board']);
-	$per_marks = validate($_POST['per_marks']);
-	if($exam=="")
-	$exam="--";
-	if($marks=="")
-	$marks="--";
-	if($max_marks=="")
-	$max_marks="--";
-	if($per_marks=="")
-	$per_marks="--";
-
-
-
-$q="INSERT INTO `other_academic`(`user_id`,`exam`, `subject`, `inst_name`, `board`, `marks`, `max_marks`, `year`, `division`,`per_marks`) VALUES ('$id','$exam','$subject','$inst_name','$board','$marks','$max_marks','$year','$division','$per_marks')";
-$r=$db->process_query($q);
-if($r){
-                $misc->palert("Details Submitted","home.php?val=other_acads");
-       }
-       else
-       {
-                $misc->palert("Some error occured","home.php?val=other_acads");
-       }
-
 }
 if(isset($_POST['emp_ch']))
 {
@@ -393,7 +454,7 @@ if(isset($_POST['emp_ch']))
 	}
 	$r=$db->process_query($q);
 	if($r){
-	                $misc->palert("Details Submitted","home.php?val=present_emp");
+	                $misc->palert("Details Submitted","home.php?val=work_exp");
 	       }
 	       else
 	       {
@@ -475,24 +536,21 @@ if(isset($_POST['info_pg']))
 }
 if(isset($_POST['post_app']))
 {
-	$post = validate($_POST['app_post']);
-	if($post==0)
+
+	if(empty($_POST['post']))
 		$misc->palert("Please Select the post you want to apply.","home.php?val=app_post");
-
-	//checking if he already applied for the post
-	$query = "select pos$post from final_apply where user_id = '$id'";
-	$r = $db->process_query($query);
-	$r = $db->fetch_rows($r);
-	if($r['pos'.$post])
-		$misc->palert("You have already applied for this job.","home.php?val=app_post");
-
-
-	//updating it in apply_final
-	$iquery = "update final_apply set pos".$post." = 1 where user_id = '$id'";
+	$iquery = "update final_apply set pos1 = '0',pos2 = '0',pos3 = '0',pos4 = '0', pos5 = '0',pos6 = '0',pos7 = '0' where user_id = '$id'";
 	$r = $db->process_query($iquery);
+	foreach($_POST['post'] as $post )
+	{
+		//updating it in apply_final
+		$iquery = "update final_apply set pos" . $post . " = 1 where user_id = '$id'";
+		$r = $db->process_query($iquery);
+	}
 
 	//redirecting to its print form
-	header("location:storeForm.php?type=$post");
+//	header("location:storeForm.php?type=$post");
+	header("location:home.php?val=perinfo");
 
 }
 

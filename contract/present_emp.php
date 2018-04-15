@@ -44,6 +44,7 @@ $emol   =  validate($r['emoluments']);
 
 <ul class="text-danger">
   <li> * Marked fields are mandatory.</li>
+  <li>Format of date is (YYYY-MM-DD), if format not shown in field</li>
 </ul>
 
 <form class="form-horizontal" name="reg_frm" method="post" action="save.php" onSubmit="return validate();">

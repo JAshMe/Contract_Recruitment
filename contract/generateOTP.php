@@ -56,7 +56,7 @@
 	if($r)
 	{
 		$otp = randomNumber(8);
-		$emailBody="<p align=\"justify\" style=\"text-indent:20px;\" > This e-mail was generated in response to a request to register on Contract Employee Recruitment portal<a href=\"academics.mnnit.ac.in/Recruitment_Contract/Contract_Recruitment/contract/index.php\"> academics.mnnit.ac.in/Recruitment_Contract/Contract_Recruitment/contract/ </a>.</p> <p align=\"justify\" style=\"text-indent:20px;\" >If you didn't perform this action, kindly ignore this e-mail. If you are being spammed, you can complain about it at recruitmentcell@mnnit.ac.in . The OTP is given below.</p><div align=\"center\"><h2><strong>$otp</strong></h2></div><br> Please enter this during registration to verify your email. <br /><br />";
+		$emailBody="<p align=\"justify\" style=\"text-indent:20px;\" > This e-mail was generated in response to a request to register on Contract Employee Recruitment portal<a href=\"academics.mnnit.ac.in/Contract_Recruitment/contract/index.php\"> academics.mnnit.ac.in/Contract_Recruitment/contract/ </a>.</p> <p align=\"justify\" style=\"text-indent:20px;\" >If you didn't perform this action, kindly ignore this e-mail. If you are being spammed, you can complain about it at recruitmentcell@mnnit.ac.in . The OTP is given below.</p><div align=\"center\"><h2><strong>$otp</strong></h2></div><br> Please enter this during registration to verify your email. <br /><br />";
 		/*echo $emailBody;*/
 		$emailUser = $email;
 		$mail = new PHPMailer;

