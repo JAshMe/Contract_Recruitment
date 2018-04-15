@@ -13,7 +13,7 @@ class sqlfunctions {
     {
 		    $this->host="localhost";
 		    $this->user="root";
-		    $pass="914passwd";
+		    $pass="";
 	           $con= mysqli_connect($this->host,$this->user,$pass,$db) or die(mysqli_error($con));
 	           $this->connection = $con;
 	           $this->database=$db;
@@ -122,10 +122,10 @@ class sqlfunctions {
 
     public  function close_con()
     {
-	return mysql_close($this->connection);
+	return mysqli_close($this->connection);
     }
 	public function errno(){
-		return mysql_errno($this->connection);
+		return mysqli_errno($this->connection);
 	}
 	public function error(){
 		return mysqli_error($this->connection);

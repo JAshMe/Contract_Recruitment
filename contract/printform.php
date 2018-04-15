@@ -515,11 +515,13 @@ if(mysqli_num_rows($c)>0) {
 <!---->
 
 <?php
+$pres=0;
 $query="SELECT * from `employer` where `user_id` like '$id'";
 $r = $db->process_query($query);
 if(mysqli_num_rows($r)>0)
 {
-	$r = $db->fetch_rows($r);
+	$pres = 1;
+        $r = $db->fetch_rows($r);
 	$nat_emp = validate($r['nat_emp']);
 	$position=validate($r['position']);
 	$from=validate($r['from']);

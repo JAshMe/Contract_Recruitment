@@ -105,7 +105,7 @@ while($row = $db->fetch_rows($r))
 }
 
 
-$pdf->merge('file',"/var/www/html/academics/acadserver/academic_new/Contract_Recruitment/contract/final_app/$id"."_$post_type.pdf"); // generate the file
+$pdf->merge('file',"I:/Xampp/htdocs/Contract_Recruitment/contract/final_app/$id"."_$post_type.pdf"); // generate the file
 
 if($kind=="1")
         header("Location:printform.php?type=$post_type");
